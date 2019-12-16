@@ -1,0 +1,9 @@
+E:\Programmering\NSOP Tournament Pro Server\bin\Debug\NSOP Tournament Pro Server.exe.config
+E:\Programmering\NSOP Tournament Pro Server\bin\Debug\NSOP Tournament Pro Server.exe
+E:\Programmering\NSOP Tournament Pro Server\bin\Debug\NSOP Tournament Pro Server.pdb
+E:\Programmering\NSOP Tournament Pro Server\bin\Debug\NSOP Torunament Pro Library.dll
+E:\Programmering\NSOP Tournament Pro Server\bin\Debug\NSOP Torunament Pro Library.pdb
+E:\Programmering\NSOP Tournament Pro Server\obj\Debug\NSOP Tournament Pro Server.csprojAssemblyReference.cache
+E:\Programmering\NSOP Tournament Pro Server\obj\Debug\NSOP Tournament Pro Server.csproj.CopyComplete
+E:\Programmering\NSOP Tournament Pro Server\obj\Debug\NSOP Tournament Pro Server.exe
+E:\Programmering\NSOP Tournament Pro Server\obj\Debug\NSOP Tournament Pro Server.pdb
