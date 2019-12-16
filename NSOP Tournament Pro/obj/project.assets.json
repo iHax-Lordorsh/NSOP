@@ -1,0 +1,763 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETFramework,Version=v4.7.2": {
+      "AForge/2.2.5": {
+        "type": "package",
+        "compile": {
+          "lib/AForge.dll": {}
+        },
+        "runtime": {
+          "lib/AForge.dll": {}
+        }
+      },
+      "AForge.Controls/2.2.5": {
+        "type": "package",
+        "dependencies": {
+          "AForge": "2.2.5",
+          "AForge.Imaging": "2.2.5",
+          "AForge.Video": "2.2.5"
+        },
+        "compile": {
+          "lib/AForge.Controls.dll": {}
+        },
+        "runtime": {
+          "lib/AForge.Controls.dll": {}
+        }
+      },
+      "AForge.Imaging/2.2.5": {
+        "type": "package",
+        "dependencies": {
+          "AForge": "2.2.5",
+          "AForge.Math": "2.2.5"
+        },
+        "compile": {
+          "lib/AForge.Imaging.dll": {}
+        },
+        "runtime": {
+          "lib/AForge.Imaging.dll": {}
+        }
+      },
+      "AForge.Imaging.Formats/2.2.5": {
+        "type": "package",
+        "compile": {
+          "lib/AForge.Imaging.Formats.dll": {}
+        },
+        "runtime": {
+          "lib/AForge.Imaging.Formats.dll": {}
+        }
+      },
+      "AForge.Math/2.2.5": {
+        "type": "package",
+        "dependencies": {
+          "AForge": "2.2.5"
+        },
+        "compile": {
+          "lib/AForge.Math.dll": {}
+        },
+        "runtime": {
+          "lib/AForge.Math.dll": {}
+        }
+      },
+      "AForge.Video/2.2.5": {
+        "type": "package",
+        "dependencies": {
+          "AForge": "2.2.5"
+        },
+        "compile": {
+          "lib/AForge.Video.dll": {}
+        },
+        "runtime": {
+          "lib/AForge.Video.dll": {}
+        }
+      },
+      "AForge.Video.DirectShow/2.2.5": {
+        "type": "package",
+        "dependencies": {
+          "AForge.Video": "2.2.5"
+        },
+        "compile": {
+          "lib/AForge.Video.DirectShow.dll": {}
+        },
+        "runtime": {
+          "lib/AForge.Video.DirectShow.dll": {}
+        }
+      },
+      "System.Drawing.Common/4.7.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System",
+          "System.Drawing",
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net461/System.Drawing.Common.dll": {}
+        },
+        "runtime": {
+          "lib/net461/System.Drawing.Common.dll": {}
+        }
+      },
+      "WindowsBase/4.6.1055": {
+        "type": "package",
+        "compile": {
+          "lib/WindowsBase.dll": {}
+        },
+        "runtime": {
+          "lib/WindowsBase.dll": {}
+        }
+      },
+      "NSOP Tournament Pro Library/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/NSOP Tournament Pro Library.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/NSOP Tournament Pro Library.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.7.2/win": {
+      "AForge/2.2.5": {
+        "type": "package",
+        "compile": {
+          "lib/AForge.dll": {}
+        },
+        "runtime": {
+          "lib/AForge.dll": {}
+        }
+      },
+      "AForge.Controls/2.2.5": {
+        "type": "package",
+        "dependencies": {
+          "AForge": "2.2.5",
+          "AForge.Imaging": "2.2.5",
+          "AForge.Video": "2.2.5"
+        },
+        "compile": {
+          "lib/AForge.Controls.dll": {}
+        },
+        "runtime": {
+          "lib/AForge.Controls.dll": {}
+        }
+      },
+      "AForge.Imaging/2.2.5": {
+        "type": "package",
+        "dependencies": {
+          "AForge": "2.2.5",
+          "AForge.Math": "2.2.5"
+        },
+        "compile": {
+          "lib/AForge.Imaging.dll": {}
+        },
+        "runtime": {
+          "lib/AForge.Imaging.dll": {}
+        }
+      },
+      "AForge.Imaging.Formats/2.2.5": {
+        "type": "package",
+        "compile": {
+          "lib/AForge.Imaging.Formats.dll": {}
+        },
+        "runtime": {
+          "lib/AForge.Imaging.Formats.dll": {}
+        }
+      },
+      "AForge.Math/2.2.5": {
+        "type": "package",
+        "dependencies": {
+          "AForge": "2.2.5"
+        },
+        "compile": {
+          "lib/AForge.Math.dll": {}
+        },
+        "runtime": {
+          "lib/AForge.Math.dll": {}
+        }
+      },
+      "AForge.Video/2.2.5": {
+        "type": "package",
+        "dependencies": {
+          "AForge": "2.2.5"
+        },
+        "compile": {
+          "lib/AForge.Video.dll": {}
+        },
+        "runtime": {
+          "lib/AForge.Video.dll": {}
+        }
+      },
+      "AForge.Video.DirectShow/2.2.5": {
+        "type": "package",
+        "dependencies": {
+          "AForge.Video": "2.2.5"
+        },
+        "compile": {
+          "lib/AForge.Video.DirectShow.dll": {}
+        },
+        "runtime": {
+          "lib/AForge.Video.DirectShow.dll": {}
+        }
+      },
+      "System.Drawing.Common/4.7.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System",
+          "System.Drawing",
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net461/System.Drawing.Common.dll": {}
+        },
+        "runtime": {
+          "lib/net461/System.Drawing.Common.dll": {}
+        }
+      },
+      "WindowsBase/4.6.1055": {
+        "type": "package",
+        "compile": {
+          "lib/WindowsBase.dll": {}
+        },
+        "runtime": {
+          "lib/WindowsBase.dll": {}
+        }
+      },
+      "NSOP Tournament Pro Library/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/NSOP Tournament Pro Library.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/NSOP Tournament Pro Library.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.7.2/win-x64": {
+      "AForge/2.2.5": {
+        "type": "package",
+        "compile": {
+          "lib/AForge.dll": {}
+        },
+        "runtime": {
+          "lib/AForge.dll": {}
+        }
+      },
+      "AForge.Controls/2.2.5": {
+        "type": "package",
+        "dependencies": {
+          "AForge": "2.2.5",
+          "AForge.Imaging": "2.2.5",
+          "AForge.Video": "2.2.5"
+        },
+        "compile": {
+          "lib/AForge.Controls.dll": {}
+        },
+        "runtime": {
+          "lib/AForge.Controls.dll": {}
+        }
+      },
+      "AForge.Imaging/2.2.5": {
+        "type": "package",
+        "dependencies": {
+          "AForge": "2.2.5",
+          "AForge.Math": "2.2.5"
+        },
+        "compile": {
+          "lib/AForge.Imaging.dll": {}
+        },
+        "runtime": {
+          "lib/AForge.Imaging.dll": {}
+        }
+      },
+      "AForge.Imaging.Formats/2.2.5": {
+        "type": "package",
+        "compile": {
+          "lib/AForge.Imaging.Formats.dll": {}
+        },
+        "runtime": {
+          "lib/AForge.Imaging.Formats.dll": {}
+        }
+      },
+      "AForge.Math/2.2.5": {
+        "type": "package",
+        "dependencies": {
+          "AForge": "2.2.5"
+        },
+        "compile": {
+          "lib/AForge.Math.dll": {}
+        },
+        "runtime": {
+          "lib/AForge.Math.dll": {}
+        }
+      },
+      "AForge.Video/2.2.5": {
+        "type": "package",
+        "dependencies": {
+          "AForge": "2.2.5"
+        },
+        "compile": {
+          "lib/AForge.Video.dll": {}
+        },
+        "runtime": {
+          "lib/AForge.Video.dll": {}
+        }
+      },
+      "AForge.Video.DirectShow/2.2.5": {
+        "type": "package",
+        "dependencies": {
+          "AForge.Video": "2.2.5"
+        },
+        "compile": {
+          "lib/AForge.Video.DirectShow.dll": {}
+        },
+        "runtime": {
+          "lib/AForge.Video.DirectShow.dll": {}
+        }
+      },
+      "System.Drawing.Common/4.7.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System",
+          "System.Drawing",
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net461/System.Drawing.Common.dll": {}
+        },
+        "runtime": {
+          "lib/net461/System.Drawing.Common.dll": {}
+        }
+      },
+      "WindowsBase/4.6.1055": {
+        "type": "package",
+        "compile": {
+          "lib/WindowsBase.dll": {}
+        },
+        "runtime": {
+          "lib/WindowsBase.dll": {}
+        }
+      },
+      "NSOP Tournament Pro Library/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/NSOP Tournament Pro Library.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/NSOP Tournament Pro Library.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.7.2/win-x86": {
+      "AForge/2.2.5": {
+        "type": "package",
+        "compile": {
+          "lib/AForge.dll": {}
+        },
+        "runtime": {
+          "lib/AForge.dll": {}
+        }
+      },
+      "AForge.Controls/2.2.5": {
+        "type": "package",
+        "dependencies": {
+          "AForge": "2.2.5",
+          "AForge.Imaging": "2.2.5",
+          "AForge.Video": "2.2.5"
+        },
+        "compile": {
+          "lib/AForge.Controls.dll": {}
+        },
+        "runtime": {
+          "lib/AForge.Controls.dll": {}
+        }
+      },
+      "AForge.Imaging/2.2.5": {
+        "type": "package",
+        "dependencies": {
+          "AForge": "2.2.5",
+          "AForge.Math": "2.2.5"
+        },
+        "compile": {
+          "lib/AForge.Imaging.dll": {}
+        },
+        "runtime": {
+          "lib/AForge.Imaging.dll": {}
+        }
+      },
+      "AForge.Imaging.Formats/2.2.5": {
+        "type": "package",
+        "compile": {
+          "lib/AForge.Imaging.Formats.dll": {}
+        },
+        "runtime": {
+          "lib/AForge.Imaging.Formats.dll": {}
+        }
+      },
+      "AForge.Math/2.2.5": {
+        "type": "package",
+        "dependencies": {
+          "AForge": "2.2.5"
+        },
+        "compile": {
+          "lib/AForge.Math.dll": {}
+        },
+        "runtime": {
+          "lib/AForge.Math.dll": {}
+        }
+      },
+      "AForge.Video/2.2.5": {
+        "type": "package",
+        "dependencies": {
+          "AForge": "2.2.5"
+        },
+        "compile": {
+          "lib/AForge.Video.dll": {}
+        },
+        "runtime": {
+          "lib/AForge.Video.dll": {}
+        }
+      },
+      "AForge.Video.DirectShow/2.2.5": {
+        "type": "package",
+        "dependencies": {
+          "AForge.Video": "2.2.5"
+        },
+        "compile": {
+          "lib/AForge.Video.DirectShow.dll": {}
+        },
+        "runtime": {
+          "lib/AForge.Video.DirectShow.dll": {}
+        }
+      },
+      "System.Drawing.Common/4.7.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System",
+          "System.Drawing",
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net461/System.Drawing.Common.dll": {}
+        },
+        "runtime": {
+          "lib/net461/System.Drawing.Common.dll": {}
+        }
+      },
+      "WindowsBase/4.6.1055": {
+        "type": "package",
+        "compile": {
+          "lib/WindowsBase.dll": {}
+        },
+        "runtime": {
+          "lib/WindowsBase.dll": {}
+        }
+      },
+      "NSOP Tournament Pro Library/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/NSOP Tournament Pro Library.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/NSOP Tournament Pro Library.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "AForge/2.2.5": {
+      "sha512": "clkumhM9DggqIzEXAHgVLeWO4arG5YfoPr7J4jfjJx35AoeEIJSSm49J25bwp/9mXQYLwi7y1Wunc8qgYJsGxg==",
+      "type": "package",
+      "path": "aforge/2.2.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "aforge.2.2.5.nupkg.sha512",
+        "aforge.nuspec",
+        "lib/AForge.dll",
+        "lib/AForge.xml"
+      ]
+    },
+    "AForge.Controls/2.2.5": {
+      "sha512": "OmJeaVTNUTX2e7i8lXWg1N1ltb836538vOdFFyZHAPv0eAuYBROyJjBKbzsJQsMOHJ14VOKp+kpxEdDIn7ND+A==",
+      "type": "package",
+      "path": "aforge.controls/2.2.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "aforge.controls.2.2.5.nupkg.sha512",
+        "aforge.controls.nuspec",
+        "lib/AForge.Controls.dll",
+        "lib/AForge.Controls.xml"
+      ]
+    },
+    "AForge.Imaging/2.2.5": {
+      "sha512": "n8l7Zdsm89EFW9Uz4uCO3D428Gu4Q56YxixSMJPruen1c30R8R9Mm8AreTdoOi2XjN5id04JwFFlXYTk8pIIfw==",
+      "type": "package",
+      "path": "aforge.imaging/2.2.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "aforge.imaging.2.2.5.nupkg.sha512",
+        "aforge.imaging.nuspec",
+        "lib/AForge.Imaging.dll",
+        "lib/AForge.Imaging.xml"
+      ]
+    },
+    "AForge.Imaging.Formats/2.2.5": {
+      "sha512": "/cU2iTJYpO+m6Z0Xn+qUs32eT+j/2ZM8nDhDwj5dd9QewTr5AchotQgaZCexSD07K+j0SXQnHQHeiM+IahkTfQ==",
+      "type": "package",
+      "path": "aforge.imaging.formats/2.2.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "AForge.Controls.dll",
+        "AForge.Controls.xml",
+        "AForge.DebuggerVisualizers (2010).dll",
+        "AForge.Fuzzy.dll",
+        "AForge.Fuzzy.xml",
+        "AForge.Genetic.dll",
+        "AForge.Genetic.xml",
+        "AForge.Imaging.Formats.dll",
+        "AForge.Imaging.Formats.xml",
+        "AForge.Imaging.IPPrototyper.dll",
+        "AForge.Imaging.dll",
+        "AForge.Imaging.xml",
+        "AForge.MachineLearning.dll",
+        "AForge.MachineLearning.xml",
+        "AForge.Math.dll",
+        "AForge.Math.xml",
+        "AForge.Neuro.dll",
+        "AForge.Neuro.xml",
+        "AForge.Robotics.Lego.dll",
+        "AForge.Robotics.Lego.xml",
+        "AForge.Robotics.Surveyor.dll",
+        "AForge.Robotics.Surveyor.xml",
+        "AForge.Robotics.TeRK.dll",
+        "AForge.Robotics.TeRK.xml",
+        "AForge.Video.DirectShow.dll",
+        "AForge.Video.DirectShow.xml",
+        "AForge.Video.FFMPEG.dll",
+        "AForge.Video.FFMPEG.xml",
+        "AForge.Video.Kinect.dll",
+        "AForge.Video.Kinect.xml",
+        "AForge.Video.VFW.dll",
+        "AForge.Video.VFW.xml",
+        "AForge.Video.Ximea.dll",
+        "AForge.Video.Ximea.xml",
+        "AForge.Video.dll",
+        "AForge.Video.xml",
+        "AForge.Vision.dll",
+        "AForge.Vision.xml",
+        "AForge.dll",
+        "AForge.xml",
+        "IPPrototyper.exe",
+        "aforge.imaging.formats.2.2.5.nupkg.sha512",
+        "aforge.imaging.formats.nuspec",
+        "lib/AForge.Imaging.Formats.dll",
+        "lib/AForge.Imaging.Formats.xml",
+        "nuget.exe"
+      ]
+    },
+    "AForge.Math/2.2.5": {
+      "sha512": "pmT1WobVv13vMxwXhCu8sRunxjiUHyURWS0+dsW/aBPi06xiyYIdCLHI6jph9Axb4QoLIlb85eBI6zd2EAbGIg==",
+      "type": "package",
+      "path": "aforge.math/2.2.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "aforge.math.2.2.5.nupkg.sha512",
+        "aforge.math.nuspec",
+        "lib/AForge.Math.dll",
+        "lib/AForge.Math.xml"
+      ]
+    },
+    "AForge.Video/2.2.5": {
+      "sha512": "XqzcOXtBUagEPRqg/00oayxlCPmxP4284SdM62mVotsNoD03fs19BrzdMBfhUOOYPyd0B/IXH7tEWnSDmc2gxA==",
+      "type": "package",
+      "path": "aforge.video/2.2.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "aforge.video.2.2.5.nupkg.sha512",
+        "aforge.video.nuspec",
+        "lib/AForge.Video.dll",
+        "lib/AForge.Video.xml"
+      ]
+    },
+    "AForge.Video.DirectShow/2.2.5": {
+      "sha512": "pEch6felU/RGAbl0A7yjaQjsGxwiRFU9R+qBqR92wQo++XhzPLeQaZHnAPIBYaG7MfoqtjgCDkK4z3Tra4VQ3w==",
+      "type": "package",
+      "path": "aforge.video.directshow/2.2.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "aforge.video.directshow.2.2.5.nupkg.sha512",
+        "aforge.video.directshow.nuspec",
+        "lib/AForge.Video.DirectShow.dll",
+        "lib/AForge.Video.DirectShow.xml"
+      ]
+    },
+    "System.Drawing.Common/4.7.0": {
+      "sha512": "v+XbyYHaZjDfn0ENmJEV1VYLgGgCTx1gnfOBcppowbpOAriglYgGCvFCPr2EEZyBvXlpxbEsTwkOlInl107ahA==",
+      "type": "package",
+      "path": "system.drawing.common/4.7.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net461/System.Drawing.Common.dll",
+        "lib/netstandard2.0/System.Drawing.Common.dll",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net461/System.Drawing.Common.dll",
+        "ref/netcoreapp3.0/System.Drawing.Common.dll",
+        "ref/netcoreapp3.0/System.Drawing.Common.xml",
+        "ref/netstandard2.0/System.Drawing.Common.dll",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "runtimes/unix/lib/netcoreapp2.0/System.Drawing.Common.dll",
+        "runtimes/unix/lib/netcoreapp3.0/System.Drawing.Common.dll",
+        "runtimes/unix/lib/netcoreapp3.0/System.Drawing.Common.xml",
+        "runtimes/win/lib/netcoreapp2.0/System.Drawing.Common.dll",
+        "runtimes/win/lib/netcoreapp3.0/System.Drawing.Common.dll",
+        "runtimes/win/lib/netcoreapp3.0/System.Drawing.Common.xml",
+        "system.drawing.common.4.7.0.nupkg.sha512",
+        "system.drawing.common.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "WindowsBase/4.6.1055": {
+      "sha512": "1NKRZTcRus8Q1ZPZz9QAucHYHLHmQ3G+MMaFFZyPTDRpEfmIFLo9mtSyO8TZkEJFXaNXvnhenPod4ltd8EOHkg==",
+      "type": "package",
+      "path": "windowsbase/4.6.1055",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/WindowsBase.dll",
+        "windowsbase.4.6.1055.nupkg.sha512",
+        "windowsbase.nuspec"
+      ]
+    },
+    "NSOP Tournament Pro Library/1.0.0": {
+      "type": "project",
+      "path": "../NSOP Tournament Pro Library/NSOP Tournament Pro Library.csproj",
+      "msbuildProject": "../NSOP Tournament Pro Library/NSOP Tournament Pro Library.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETFramework,Version=v4.7.2": [
+      "AForge >= 2.2.5",
+      "AForge.Controls >= 2.2.5",
+      "AForge.Imaging >= 2.2.5",
+      "AForge.Imaging.Formats >= 2.2.5",
+      "AForge.Math >= 2.2.5",
+      "AForge.Video >= 2.2.5",
+      "AForge.Video.DirectShow >= 2.2.5",
+      "NSOP Tournament Pro Library >= 1.0.0",
+      "System.Drawing.Common >= 4.7.0",
+      "WindowsBase >= 4.6.1055"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Lordorsh\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "E:\\Programmering\\NSOP Tournament Pro\\NSOP Tournament Pro.csproj",
+      "projectName": "NSOP Tournament Pro",
+      "projectPath": "E:\\Programmering\\NSOP Tournament Pro\\NSOP Tournament Pro.csproj",
+      "packagesPath": "C:\\Users\\Lordorsh\\.nuget\\packages\\",
+      "outputPath": "E:\\Programmering\\NSOP Tournament Pro\\obj\\",
+      "projectStyle": "PackageReference",
+      "skipContentFileWrite": true,
+      "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\Lordorsh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net472"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net472": {
+          "projectReferences": {
+            "E:\\Programmering\\NSOP Tournament Pro Library\\NSOP Tournament Pro Library.csproj": {
+              "projectPath": "E:\\Programmering\\NSOP Tournament Pro Library\\NSOP Tournament Pro Library.csproj"
+            }
+          }
+        }
+      }
+    },
+    "frameworks": {
+      "net472": {
+        "dependencies": {
+          "AForge": {
+            "target": "Package",
+            "version": "[2.2.5, )"
+          },
+          "AForge.Controls": {
+            "target": "Package",
+            "version": "[2.2.5, )"
+          },
+          "AForge.Imaging": {
+            "target": "Package",
+            "version": "[2.2.5, )"
+          },
+          "AForge.Imaging.Formats": {
+            "target": "Package",
+            "version": "[2.2.5, )"
+          },
+          "AForge.Math": {
+            "target": "Package",
+            "version": "[2.2.5, )"
+          },
+          "AForge.Video": {
+            "target": "Package",
+            "version": "[2.2.5, )"
+          },
+          "AForge.Video.DirectShow": {
+            "target": "Package",
+            "version": "[2.2.5, )"
+          },
+          "System.Drawing.Common": {
+            "target": "Package",
+            "version": "[4.7.0, )"
+          },
+          "WindowsBase": {
+            "target": "Package",
+            "version": "[4.6.1055, )"
+          }
+        }
+      }
+    },
+    "runtimes": {
+      "win": {
+        "#import": []
+      },
+      "win-x64": {
+        "#import": []
+      },
+      "win-x86": {
+        "#import": []
+      }
+    }
+  }
+}

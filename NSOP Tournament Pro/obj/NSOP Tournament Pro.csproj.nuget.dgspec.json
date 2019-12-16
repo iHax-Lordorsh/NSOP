@@ -1,0 +1,108 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\Programmering\\NSOP Tournament Pro\\NSOP Tournament Pro.csproj": {}
+  },
+  "projects": {
+    "E:\\Programmering\\NSOP Tournament Pro Library\\NSOP Tournament Pro Library.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Programmering\\NSOP Tournament Pro Library\\NSOP Tournament Pro Library.csproj",
+        "projectName": "NSOP Tournament Pro Library",
+        "projectPath": "E:\\Programmering\\NSOP Tournament Pro Library\\NSOP Tournament Pro Library.csproj"
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "E:\\Programmering\\NSOP Tournament Pro\\NSOP Tournament Pro.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Programmering\\NSOP Tournament Pro\\NSOP Tournament Pro.csproj",
+        "projectName": "NSOP Tournament Pro",
+        "projectPath": "E:\\Programmering\\NSOP Tournament Pro\\NSOP Tournament Pro.csproj",
+        "packagesPath": "C:\\Users\\Lordorsh\\.nuget\\packages\\",
+        "outputPath": "E:\\Programmering\\NSOP Tournament Pro\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Lordorsh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "E:\\Programmering\\NSOP Tournament Pro Library\\NSOP Tournament Pro Library.csproj": {
+                "projectPath": "E:\\Programmering\\NSOP Tournament Pro Library\\NSOP Tournament Pro Library.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "dependencies": {
+            "AForge": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            },
+            "AForge.Controls": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            },
+            "AForge.Imaging": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            },
+            "AForge.Imaging.Formats": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            },
+            "AForge.Math": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            },
+            "AForge.Video": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            },
+            "AForge.Video.DirectShow": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            },
+            "System.Drawing.Common": {
+              "target": "Package",
+              "version": "[4.7.0, )"
+            },
+            "WindowsBase": {
+              "target": "Package",
+              "version": "[4.6.1055, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    }
+  }
+}
