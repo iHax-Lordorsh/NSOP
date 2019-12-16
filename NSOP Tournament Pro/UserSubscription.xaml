@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="NSOP_Tournament_Pro.UserSubscription"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NSOP_Tournament_Pro"
+             mc:Ignorable="d" 
+             d:DesignHeight="990" d:DesignWidth="986">
+    <Border x:Name="brdOutline" BorderThickness="2" Margin="0">
+        <Border.Style>
+            <Style>
+                <Setter Property="Border.Background" Value="{DynamicResource BorderBackground}"/>
+                <Setter Property="Border.BorderBrush" Value="{DynamicResource ButtonBorder}"/>
+                <Style.Triggers>
+                    <Trigger Property="UIElement.IsMouseOver" Value="True">
+                        <Setter Property="Border.Background" Value="{DynamicResource LightBorderBrush}" />
+                        <Setter Property="Border.BorderBrush" Value="{DynamicResource ActiveText}" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Border.Style>
+        <Grid>
+            <Label x:Name="lblTopCenter" Content="" VerticalAlignment="Top" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Height="28" Padding="5,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+            <Label x:Name="lblTopLeft" Content="" VerticalAlignment="Top" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Height="28" Padding="5,0" VerticalContentAlignment="Center" HorizontalAlignment="Left"/>
+            <Label x:Name="lblTopRight" Content="" VerticalAlignment="Top" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Height="28" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Padding="5,0" VerticalContentAlignment="Center"/>
+            <Label VerticalAlignment="Bottom" x:Name="lblBottomCenter" Content="" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" Padding="5,0" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center"/>
+            <Label VerticalAlignment="Bottom" x:Name="lblBottomLeft" Content="" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" Padding="5,0" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalContentAlignment="Bottom" HorizontalAlignment="Left"/>
+            <Label VerticalAlignment="Bottom" x:Name="lblBottomRight" Content="" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" Padding="5,0" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Right" UseLayoutRounding="False" HorizontalAlignment="Right"/>
+            <ListBox x:Name="lstProducts" IsSynchronizedWithCurrentItem="True" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="{DynamicResource BorderBackground}" BorderBrush="{DynamicResource ButtonBorder}" Margin="0,70,0,0">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel IsItemsHost="True" Orientation="Horizontal"  />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+        </Grid>
+    </Border>
+</UserControl>
