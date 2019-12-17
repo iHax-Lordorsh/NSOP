@@ -674,11 +674,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Programmering\\NSOP Tournament Pro\\NSOP Tournament Pro.csproj",
+      "projectUniqueName": "E:\\Programmering\\NSOP\\NSOP\\NSOP Tournament Pro\\NSOP Tournament Pro.csproj",
       "projectName": "NSOP Tournament Pro",
-      "projectPath": "E:\\Programmering\\NSOP Tournament Pro\\NSOP Tournament Pro.csproj",
+      "projectPath": "E:\\Programmering\\NSOP\\NSOP\\NSOP Tournament Pro\\NSOP Tournament Pro.csproj",
       "packagesPath": "C:\\Users\\Lordorsh\\.nuget\\packages\\",
-      "outputPath": "E:\\Programmering\\NSOP Tournament Pro\\obj\\",
+      "outputPath": "E:\\Programmering\\NSOP\\NSOP\\NSOP Tournament Pro\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -699,8 +699,8 @@
       "frameworks": {
         "net472": {
           "projectReferences": {
-            "E:\\Programmering\\NSOP Tournament Pro Library\\NSOP Tournament Pro Library.csproj": {
-              "projectPath": "E:\\Programmering\\NSOP Tournament Pro Library\\NSOP Tournament Pro Library.csproj"
+            "E:\\Programmering\\NSOP\\NSOP\\NSOP Tournament Pro Library\\NSOP Tournament Pro Library.csproj": {
+              "projectPath": "E:\\Programmering\\NSOP\\NSOP\\NSOP Tournament Pro Library\\NSOP Tournament Pro Library.csproj"
             }
           }
         }

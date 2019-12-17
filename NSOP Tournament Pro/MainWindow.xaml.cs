@@ -32,7 +32,6 @@ using System.Resources;
 using System.Reflection;
 using NSOP_Tournament_Pro_Library;
 using NSOP_Torunament_Pro_Library;
-using NSOP_Torunament_Pro_Library.Properties;
 
 namespace NSOP_Tournament_Pro
 {
