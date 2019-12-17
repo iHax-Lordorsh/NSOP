@@ -1,23 +1,28 @@
-﻿using NSOP_Torunament_Pro_Library;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Net;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Globalization;
+using System.Runtime.InteropServices;
+using System.Net;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.Linq;
+using System.Data;
+using System.Data.SqlClient;
+using NSOP_Torunament_Pro_Library;
+using System.Threading;
+using System.Windows;
+using System.Resources;
+using System.Reflection;
 
 namespace NSOP_Tournament_Pro_Library
 {
     public static class DataAccess
     {
-
+       
         #region Windows API
 
         private delegate bool EnumLocalesProcExDelegate(
@@ -72,7 +77,7 @@ namespace NSOP_Tournament_Pro_Library
             return bufferTotal;
         }
 
-        //  public static readonly ResourceManager RM = new ResourceManager("NSOP_Tournament_Pro_Library.Properties.Resources", Assembly.GetExecutingAssembly());
+      //  public static readonly ResourceManager RM = new ResourceManager("NSOP_Tournament_Pro_Library.Properties.Resources", Assembly.GetExecutingAssembly());
 
         public static byte[] ConvertByte(byte[] bufferTotal, byte[] buffer, int readByte)
         {
@@ -411,7 +416,7 @@ namespace NSOP_Tournament_Pro_Library
                 try // Tournament
                 {
                     Tournament _obj = new Tournament(buffer);
-                    // _Action = _obj.ActionType.ToString();
+                   // _Action = _obj.ActionType.ToString();
                 }
                 catch (Exception)
                 {

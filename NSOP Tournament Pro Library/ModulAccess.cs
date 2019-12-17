@@ -1,8 +1,13 @@
-﻿using System;
+﻿using NSOP_Torunament_Pro_Library;
+using NSOP_Tournament_Pro_Library;
+using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Windows.Media.Imaging;
 
 namespace NSOP_Torunament_Pro_Library
 {

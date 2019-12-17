@@ -1,35 +1,35 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\chris\\Source\\Repos\\iHax-Lordorsh\\NSOP\\NSOP Tournament Pro\\NSOP Tournament Pro.csproj": {}
+    "E:\\Programmering\\NSOP\\NSOP\\NSOP Tournament Pro\\NSOP Tournament Pro.csproj": {}
   },
   "projects": {
-    "C:\\Users\\chris\\Source\\Repos\\iHax-Lordorsh\\NSOP\\NSOP Tournament Pro Library\\NSOP Tournament Pro Library.csproj": {
+    "E:\\Programmering\\NSOP\\NSOP\\NSOP Tournament Pro Library\\NSOP Tournament Pro Library.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\chris\\Source\\Repos\\iHax-Lordorsh\\NSOP\\NSOP Tournament Pro Library\\NSOP Tournament Pro Library.csproj",
+        "projectUniqueName": "E:\\Programmering\\NSOP\\NSOP\\NSOP Tournament Pro Library\\NSOP Tournament Pro Library.csproj",
         "projectName": "NSOP Tournament Pro Library",
-        "projectPath": "C:\\Users\\chris\\Source\\Repos\\iHax-Lordorsh\\NSOP\\NSOP Tournament Pro Library\\NSOP Tournament Pro Library.csproj"
+        "projectPath": "E:\\Programmering\\NSOP\\NSOP\\NSOP Tournament Pro Library\\NSOP Tournament Pro Library.csproj"
       },
       "frameworks": {
         "net472": {}
       }
     },
-    "C:\\Users\\chris\\Source\\Repos\\iHax-Lordorsh\\NSOP\\NSOP Tournament Pro\\NSOP Tournament Pro.csproj": {
+    "E:\\Programmering\\NSOP\\NSOP\\NSOP Tournament Pro\\NSOP Tournament Pro.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\chris\\Source\\Repos\\iHax-Lordorsh\\NSOP\\NSOP Tournament Pro\\NSOP Tournament Pro.csproj",
+        "projectUniqueName": "E:\\Programmering\\NSOP\\NSOP\\NSOP Tournament Pro\\NSOP Tournament Pro.csproj",
         "projectName": "NSOP Tournament Pro",
-        "projectPath": "C:\\Users\\chris\\Source\\Repos\\iHax-Lordorsh\\NSOP\\NSOP Tournament Pro\\NSOP Tournament Pro.csproj",
-        "packagesPath": "C:\\Users\\chris\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\chris\\Source\\Repos\\iHax-Lordorsh\\NSOP\\NSOP Tournament Pro\\obj\\",
+        "projectPath": "E:\\Programmering\\NSOP\\NSOP\\NSOP Tournament Pro\\NSOP Tournament Pro.csproj",
+        "packagesPath": "C:\\Users\\Lordorsh\\.nuget\\packages\\",
+        "outputPath": "E:\\Programmering\\NSOP\\NSOP\\NSOP Tournament Pro\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\chris\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Lordorsh\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -43,8 +43,8 @@
         "frameworks": {
           "net472": {
             "projectReferences": {
-              "C:\\Users\\chris\\Source\\Repos\\iHax-Lordorsh\\NSOP\\NSOP Tournament Pro Library\\NSOP Tournament Pro Library.csproj": {
-                "projectPath": "C:\\Users\\chris\\Source\\Repos\\iHax-Lordorsh\\NSOP\\NSOP Tournament Pro Library\\NSOP Tournament Pro Library.csproj"
+              "E:\\Programmering\\NSOP\\NSOP\\NSOP Tournament Pro Library\\NSOP Tournament Pro Library.csproj": {
+                "projectPath": "E:\\Programmering\\NSOP\\NSOP\\NSOP Tournament Pro Library\\NSOP Tournament Pro Library.csproj"
               }
             }
           }
