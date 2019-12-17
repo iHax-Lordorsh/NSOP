@@ -668,24 +668,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Lordorsh\\.nuget\\packages\\": {},
+    "C:\\Users\\chris\\.nuget\\packages\\": {},
     "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Programmering\\NSOP\\NSOP\\NSOP Tournament Pro\\NSOP Tournament Pro.csproj",
+      "projectUniqueName": "C:\\Users\\chris\\Source\\Repos\\iHax-Lordorsh\\NSOP\\NSOP Tournament Pro\\NSOP Tournament Pro.csproj",
       "projectName": "NSOP Tournament Pro",
-      "projectPath": "E:\\Programmering\\NSOP\\NSOP\\NSOP Tournament Pro\\NSOP Tournament Pro.csproj",
-      "packagesPath": "C:\\Users\\Lordorsh\\.nuget\\packages\\",
-      "outputPath": "E:\\Programmering\\NSOP\\NSOP\\NSOP Tournament Pro\\obj\\",
+      "projectPath": "C:\\Users\\chris\\Source\\Repos\\iHax-Lordorsh\\NSOP\\NSOP Tournament Pro\\NSOP Tournament Pro.csproj",
+      "packagesPath": "C:\\Users\\chris\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\chris\\Source\\Repos\\iHax-Lordorsh\\NSOP\\NSOP Tournament Pro\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\Lordorsh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\chris\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -699,8 +699,8 @@
       "frameworks": {
         "net472": {
           "projectReferences": {
-            "E:\\Programmering\\NSOP\\NSOP\\NSOP Tournament Pro Library\\NSOP Tournament Pro Library.csproj": {
-              "projectPath": "E:\\Programmering\\NSOP\\NSOP\\NSOP Tournament Pro Library\\NSOP Tournament Pro Library.csproj"
+            "C:\\Users\\chris\\Source\\Repos\\iHax-Lordorsh\\NSOP\\NSOP Tournament Pro Library\\NSOP Tournament Pro Library.csproj": {
+              "projectPath": "C:\\Users\\chris\\Source\\Repos\\iHax-Lordorsh\\NSOP\\NSOP Tournament Pro Library\\NSOP Tournament Pro Library.csproj"
             }
           }
         }

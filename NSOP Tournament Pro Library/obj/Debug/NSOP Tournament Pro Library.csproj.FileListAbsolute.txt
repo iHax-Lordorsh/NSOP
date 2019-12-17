@@ -6,9 +6,11 @@ E:\Programmering\NSOP Tournament Pro Library\obj\Debug\NSOP Tournament Pro Libra
 E:\Programmering\NSOP Tournament Pro Library\obj\Debug\NSOP Tournament Pro Library.csproj.CopyComplete
 E:\Programmering\NSOP Tournament Pro Library\obj\Debug\NSOP Torunament Pro Library.dll
 E:\Programmering\NSOP Tournament Pro Library\obj\Debug\NSOP Torunament Pro Library.pdb
-E:\Programmering\NSOP\NSOP\NSOP Tournament Pro Library\bin\Debug\NSOP Torunament Pro Library.dll
-E:\Programmering\NSOP\NSOP\NSOP Tournament Pro Library\bin\Debug\NSOP Torunament Pro Library.pdb
-E:\Programmering\NSOP\NSOP\NSOP Tournament Pro Library\bin\Debug\System.Drawing.Common.dll
-E:\Programmering\NSOP\NSOP\NSOP Tournament Pro Library\obj\Debug\NSOP Tournament Pro Library.csproj.CopyComplete
-E:\Programmering\NSOP\NSOP\NSOP Tournament Pro Library\obj\Debug\NSOP Torunament Pro Library.dll
-E:\Programmering\NSOP\NSOP\NSOP Tournament Pro Library\obj\Debug\NSOP Torunament Pro Library.pdb
+C:\Users\chris\Source\Repos\iHax-Lordorsh\NSOP\NSOP Tournament Pro Library\bin\Debug\NSOP Torunament Pro Library.dll
+C:\Users\chris\Source\Repos\iHax-Lordorsh\NSOP\NSOP Tournament Pro Library\bin\Debug\NSOP Torunament Pro Library.pdb
+C:\Users\chris\Source\Repos\iHax-Lordorsh\NSOP\NSOP Tournament Pro Library\bin\Debug\System.Drawing.Common.dll
+C:\Users\chris\Source\Repos\iHax-Lordorsh\NSOP\NSOP Tournament Pro Library\obj\Debug\NSOP_Torunament_Pro_Library.Properties.Resources.resources
+C:\Users\chris\Source\Repos\iHax-Lordorsh\NSOP\NSOP Tournament Pro Library\obj\Debug\NSOP Tournament Pro Library.csproj.GenerateResource.cache
+C:\Users\chris\Source\Repos\iHax-Lordorsh\NSOP\NSOP Tournament Pro Library\obj\Debug\NSOP Tournament Pro Library.csproj.CopyComplete
+C:\Users\chris\Source\Repos\iHax-Lordorsh\NSOP\NSOP Tournament Pro Library\obj\Debug\NSOP Torunament Pro Library.dll
+C:\Users\chris\Source\Repos\iHax-Lordorsh\NSOP\NSOP Tournament Pro Library\obj\Debug\NSOP Torunament Pro Library.pdb

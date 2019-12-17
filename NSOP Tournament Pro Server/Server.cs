@@ -19,7 +19,6 @@ namespace NSOP_Tournament_Pro_Server
 
         static void Main()
         {
-
             Console.WriteLine("Starting server on " + DataAccess.GetIP4Address());
 
             _listenerSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);

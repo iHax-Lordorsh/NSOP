@@ -140,7 +140,7 @@
                                 <Button x:Name="btnEditClubTakePicture" Style="{StaticResource ButtonUnPushed}" Content="EDIT PICTURE" Width="130" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="16" FontWeight="Bold" Foreground="Black" Margin="10,170,0,0" Click="BtnEditClubTakePicture_Click"/>
                             </Grid>
                         </Grid>
-                        <Button x:Name="btnSaveClubChanges" Style="{StaticResource ButtonUnPushed}" Content="SAVE CHANGES" Width="170" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="Black" Margin="152,0,174,72" Click="BtnSaveClubChanges_Click"/>
+                        <Button x:Name="btnSaveClubChanges" Style="{StaticResource ButtonUnPushed}" Content="SAVE CHANGES" Width="170" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="Black" Margin="0,0,0,35" Click="BtnSaveClubChanges_Click"/>
                         <ListBox x:Name="lstAvatar" IsSynchronizedWithCurrentItem="True" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="{DynamicResource BorderBackground}" BorderBrush="{DynamicResource ButtonBorder}" Margin="0,155,0,0" SelectionChanged="LstAvatar_SelectionChanged" d:IsHidden="True">
                             <ListBox.ItemsPanel>
                                 <ItemsPanelTemplate>
