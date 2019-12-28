@@ -82,7 +82,15 @@ namespace NSOP_Tournament_Pro_Server
                                     Thread.Sleep(30);
                                 }
                                 else
-                                    throw ex;  // any serious error occurr
+                                {
+                                    // throw ex;  // any serious error occurr
+                                    // xxx her mister vi connection
+                                    // 
+                                    Action action = delegate
+                                    {
+                                        RemoveClient(clientSocket);
+                                    };
+                                }
                             }
                         } while (_received < _size);
 
@@ -97,6 +105,32 @@ namespace NSOP_Tournament_Pro_Server
                 {
                 }
             }
+        }
+
+        private static void RemoveClient(Socket clientSocket)
+        {
+            int _clientTeller = -1;
+            bool _funnet = false;
+            Console.WriteLine(clientSocket.RemoteEndPoint.ToString() + " - Clients: " + _clients.Count.ToString());
+            // search for client who is disconnectet
+            foreach (ClientData _c in _clients)
+            {
+                _clientTeller++;
+                if (_c._clientSocket.RemoteEndPoint == clientSocket.RemoteEndPoint)
+                {
+                    _funnet = true;
+                    break;
+                }
+            }
+            // Remove Client from client list
+            if (_funnet)
+            {
+                _clients.ElementAt(_clientTeller)._clientSocket.Dispose();
+                _clients.ElementAt(_clientTeller)._clientThread.Abort();
+                _clients.RemoveAt(_clientTeller);
+                Console.WriteLine("Clients: " + _clients.Count.ToString());
+            }
+
         }
 
         //data manager
@@ -196,35 +230,37 @@ namespace NSOP_Tournament_Pro_Server
                 }
             }
         }
-        public static void Receive(Socket socket, byte[] buffer, int offset, int size)
-        {
-            //int startTickCount = Environment.TickCount;
-            int received = 0;  // how many bytes is already received
-            do
-            {
-                //if (Environment.TickCount > startTickCount + timeout)
-                //    throw new Exception("Timeout.");
-                try
-                {
-                    received += socket.Receive(buffer, offset + received, size - received, SocketFlags.None);
-                    Console.WriteLine("_readBytes : " + received.ToString() + " _BufferTotal : " + buffer.Length.ToString());
-                    DataManager(buffer, socket);
-                }
-                catch (SocketException ex)
-                {
-                    if (ex.SocketErrorCode == SocketError.WouldBlock ||
-                        ex.SocketErrorCode == SocketError.IOPending ||
-                        ex.SocketErrorCode == SocketError.NoBufferSpaceAvailable)
-                    {
-                        // socket buffer is probably empty, wait and try again
-                        Thread.Sleep(30);
-                        Console.WriteLine(ex.ToString());
-                    }
-                    else
-                        throw ex;  // any serious error occurr
-                }
-            } while (received < size);
-        }
+        //public static void Receive(Socket socket, byte[] buffer, int offset, int size)
+        //{
+        //    //int startTickCount = Environment.TickCount;
+        //    int received = 0;  // how many bytes is already received
+        //    do
+        //    {
+        //        //if (Environment.TickCount > startTickCount + timeout)
+        //        //    throw new Exception("Timeout.");
+        //        try
+        //        {
+        //            received += socket.Receive(buffer, offset + received, size - received, SocketFlags.None);
+        //            Console.WriteLine("_readBytes : " + received.ToString() + " _BufferTotal : " + buffer.Length.ToString());
+        //            DataManager(buffer, socket);
+        //        }
+        //        catch (SocketException ex)
+        //        {
+        //            if (ex.SocketErrorCode == SocketError.WouldBlock ||
+        //                ex.SocketErrorCode == SocketError.IOPending ||
+        //                ex.SocketErrorCode == SocketError.NoBufferSpaceAvailable)
+        //            {
+        //                // socket buffer is probably empty, wait and try again
+        //                Thread.Sleep(30);
+        //                Console.WriteLine(ex.ToString());
+        //            }
+        //            else
+        //                throw ex;  // any serious error occurr
+        //            //xxx her mister vi connection
+
+        //        }
+        //    } while (received < size);
+        //}
         private static bool Send_Verification(Person person)
         {
             bool _IsSendt;
@@ -359,23 +395,19 @@ namespace NSOP_Tournament_Pro_Server
             _id = Guid.NewGuid().ToString();
             _clientThread = new Thread(Server.Data_IN);
             _clientThread.Start(_clientSocket);
-            SendRegistrationPacket();
+            EndThread();
         }
-
         public ClientData(Socket clientSocket)
         {
             this._clientSocket = clientSocket;
             _id = Guid.NewGuid().ToString();
             _clientThread = new Thread(Server.Data_IN);
             _clientThread.Start(_clientSocket);
-            SendRegistrationPacket();
         }
-
-        public void SendRegistrationPacket()
+        public void EndThread()
         {
-            //Packet p = new Packet(Packet.PacketType.Registration, "server");
-            //p.Gdata.Add(_id);
-            //_clientSocket.Send(p.ToBytes());
+            _clientSocket.Dispose();
+            _clientThread.Abort();
         }
     }
 }
