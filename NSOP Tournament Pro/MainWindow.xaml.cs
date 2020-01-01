@@ -745,7 +745,7 @@ namespace NSOP_Tournament_Pro
                 case DataAccess.ActionType.ResetPassword:
                     // xxx show reset password screen
                     brdVerify.Visibility = Visibility.Hidden;
-                    
+                    brdResetPassword.Visibility = Visibility.Visible;
                     break;
             }
         }
@@ -1117,7 +1117,7 @@ namespace NSOP_Tournament_Pro
                         (sender as PasswordBox).Background = (LinearGradientBrush)FindResource("ButtonBackgroundPushed");
                         (sender as PasswordBox).Foreground = (SolidColorBrush)FindResource("ActiveText");
                         (sender as PasswordBox).Tag = 1;
-                        btn
+                        btn_SendResetPassword.Visibility = Visibility.Visible;
                     }
                     else
                     {

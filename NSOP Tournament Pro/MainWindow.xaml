@@ -240,7 +240,7 @@
                         <Button x:Name="btn_Loggin_Registrer" Style="{StaticResource ButtonPushed}" Content="NEW USER" Width="160" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource ActiveText}" Padding="1" Click="Loggin_Click"/>
                     </StackPanel>
                     <Button x:Name="btn_ForgotPassword" Style="{StaticResource ButtonUnPushed}" Content="FORGOT PASSWORD" Width="260" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="18" FontWeight="Bold" Foreground="Black" Margin="10,0,10.5,3" Padding="1" Click="LogginRequest_Click" IsCancel="True"/>
-                    <Border x:Name="brdVerify" BorderThickness="3" Background="#FF003200" CornerRadius="25" RenderTransformOrigin="0.5,0.5" Padding="4,0,0,0" Margin="0" d:IsHidden="True">
+                    <Border x:Name="brdVerify" BorderThickness="3" Background="#FF003200" CornerRadius="25" RenderTransformOrigin="0.5,0.5" Padding="4,0,0,0" Margin="0">
                         <Border.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -288,7 +288,7 @@
                             <Button x:Name="btn_SendResetMail" Style="{StaticResource ButtonUnPushed}" Content="SEND RESET MAIL" Width="260" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="Black" Margin="0,0,0,-3" Padding="1" IsCancel="True" Click="LogginRequest_Click"/>
                         </Grid>
                     </Border>
-                    <Border x:Name="brdResetPassword" BorderThickness="3" Background="#FF003200" CornerRadius="25" RenderTransformOrigin="0.5,0.5" Padding="4,0,0,0" Margin="0">
+                    <Border x:Name="brdResetPassword" BorderThickness="3" Background="#FF003200" CornerRadius="25" RenderTransformOrigin="0.5,0.5" Padding="4,0,0,0" Margin="0" d:IsHidden="True">
                         <Border.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -308,7 +308,7 @@
                             <Label x:Name="lblReset_Header" Content="ENTER YOURE EMAIL" HorizontalAlignment="Center" VerticalAlignment="Top" Height="25" Width="300" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Padding="0" Margin="0,178,0,0"/>
                             <Label x:Name="lblVerrify_Info2" Content="Type youre email " VerticalAlignment="Top" Height="108" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Padding="0" Margin="100,65,100,0"/>
                             <Button x:Name="btn_ExitAll2" Style="{StaticResource ButtonUnPushed}" Content="X" Height="30" FontSize="18" FontWeight="Bold" Foreground="Black" Margin="903,0,10,472" Padding="1" Click="Btn_ExitAll_Click" VerticalAlignment="Bottom"/>
-                            <Button x:Name="btn_SendResetPassword" Style="{StaticResource ButtonUnPushed}" Content="RESET PASSWORD" Width="260" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="Black" Margin="348,0,347,135" Padding="1" IsCancel="True" Click="LogginRequest_Click"/>
+                            <Button x:Name="btn_SendResetPassword" Style="{StaticResource ButtonUnPushed}" Content="RESET PASSWORD" Width="260" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="Black" Margin="348,0,347,135" Padding="1" IsCancel="True" Click="LogginRequest_Click" Visibility="Hidden"/>
                             <StackPanel Orientation="Vertical" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <Grid>
                                     <PasswordBox x:Name="txt_Loggin_PW_3" HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Width="300" Background="{DynamicResource ButtonBackgroundPushed}" BorderBrush="#FFADFFD6" FontSize="18" Foreground="{DynamicResource ActiveText}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" TabIndex="4" PasswordChanged="PW_Changed" GotFocus="PW_GotFocus" LostFocus="PW_LostFocus" Tag="0" Password="qwerty123q"/>
