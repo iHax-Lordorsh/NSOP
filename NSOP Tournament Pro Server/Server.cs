@@ -154,6 +154,14 @@ namespace NSOP_Tournament_Pro_Server
                             {
                                 _person.ActionType = DataAccess.ActionType.BadEMail.ToString();
                             }
+                        } else if (DataAccess.ParseEnum<DataAccess.ActionType>(_person.ActionType) == DataAccess.ActionType.ResetPassword)
+                        {
+                            if (Send_ResetPassword(_person))
+                            { }
+                            else
+                            {
+                                _person.ActionType = DataAccess.ActionType.BadEMail.ToString();
+                            }
                         }
                         Console.WriteLine(_person.PlayerID + "   " + _person.FirstName);
                      
