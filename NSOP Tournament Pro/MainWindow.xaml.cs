@@ -605,7 +605,14 @@ namespace NSOP_Tournament_Pro
                 case "SEND RESET MAIL":
                     UpdateAdminPerson();
                     _adminPerson.EMail = txtResetPasswordMail.ToString();
-                    _adminPerson.ActionType = "ResetPassword";
+                    _adminPerson.ActionType = DataAccess.ActionType.ResetPassword.ToString(); ;
+                    client.SendObject(_adminPerson.ToBytes());
+                    break;
+                case "RESET PASSWORD":
+                    UpdateAdminPerson();
+                    _adminPerson.PassWord = txt_Loggin_PW_3.Password.ToString();
+                    _adminPerson.ActionType = DataAccess.ActionType.PersonUpdate.ToString();
+
                     client.SendObject(_adminPerson.ToBytes());
                     break;
             }
@@ -1081,6 +1088,36 @@ namespace NSOP_Tournament_Pro
                         (sender as PasswordBox).Background = (LinearGradientBrush)FindResource("ButtonBackgroundPushed");
                         (sender as PasswordBox).Foreground = (SolidColorBrush)FindResource("ActiveText");
                         (sender as PasswordBox).Tag = 1;
+                    }
+                    else
+                    {
+                        (sender as PasswordBox).Background = (SolidColorBrush)FindResource("ErrorBackground");
+                        (sender as PasswordBox).Foreground = (SolidColorBrush)FindResource("ErrorText");
+                        (sender as PasswordBox).Tag = 0;
+                    }
+                    break;
+                case "txt_Loggin_PW_3": // Reset password
+                    if ((sender as PasswordBox).Password.Length >= 8)
+                    {
+                        (sender as PasswordBox).Background = (LinearGradientBrush)FindResource("ButtonBackgroundPushed");
+                        (sender as PasswordBox).Foreground = (SolidColorBrush)FindResource("ActiveText");
+                        (sender as PasswordBox).Tag = 1;
+                        _adminPerson.PassWord = txt_Loggin_PW_3.Password.ToString();
+                    }
+                    else
+                    {
+                        (sender as PasswordBox).Background = (SolidColorBrush)FindResource("ErrorBackground");
+                        (sender as PasswordBox).Foreground = (SolidColorBrush)FindResource("ErrorText");
+                        (sender as PasswordBox).Tag = 0;
+                    }
+                    break;
+                case "txt_Loggin_PW_4": // validated Reset password
+                    if ((sender as PasswordBox).Password == txt_Loggin_PW_3.Password)
+                    {
+                        (sender as PasswordBox).Background = (LinearGradientBrush)FindResource("ButtonBackgroundPushed");
+                        (sender as PasswordBox).Foreground = (SolidColorBrush)FindResource("ActiveText");
+                        (sender as PasswordBox).Tag = 1;
+                        btn
                     }
                     else
                     {

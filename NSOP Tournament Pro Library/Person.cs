@@ -370,7 +370,6 @@ namespace NSOP_Tournament_Pro_Library
             this.StandPassWord = _person.StandPassWord;
 
         }
-
         // Convert Person to Byte[]
         public byte[] ToBytes()
         {
@@ -384,7 +383,6 @@ namespace NSOP_Tournament_Pro_Library
             _ms.Close();
             return bytes;
         }
-
         public bool SaveNew()
         {
             SqlConnection con = new SqlConnection("Data Source = NSOP\\POKER; Initial Catalog = dbPerson; Trusted_Connection = True; Asynchronous Processing=True; ");
@@ -587,7 +585,6 @@ namespace NSOP_Tournament_Pro_Library
             con.Close();
             return _isOk;
         }
-
         public Person GetPerson(string personID)
         {
             SqlConnection con = new SqlConnection("Data Source = NSOP\\POKER; Initial Catalog = dbPerson; Trusted_Connection = True; Asynchronous Processing=True; ");
