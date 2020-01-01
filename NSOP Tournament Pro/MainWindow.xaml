@@ -183,7 +183,7 @@
 
             </Grid>
         </Border>
-        <Border x:Name="brdLoggin" Margin="10" Background="Black" d:IsHidden="True">
+        <Border x:Name="brdLoggin" Margin="10" Background="Black">
             <Border x:Name="brdLoggin1" BorderThickness="5" Background="#FF003200" CornerRadius="35" RenderTransformOrigin="0.5,0.5" Width="1025" Height="578">
                 <Border.RenderTransform>
                     <TransformGroup>
@@ -239,7 +239,8 @@
                         <Button x:Name="btn_Loggin_Loggin" Style="{StaticResource ButtonUnPushed}" Content="LOGG INN" Width="160" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource DeactiveText}" Padding="1" Click="Loggin_Click"/>
                         <Button x:Name="btn_Loggin_Registrer" Style="{StaticResource ButtonPushed}" Content="NEW USER" Width="160" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource ActiveText}" Padding="1" Click="Loggin_Click"/>
                     </StackPanel>
-                    <Border x:Name="brdVerify" BorderThickness="3" Background="#FF003200" CornerRadius="25" RenderTransformOrigin="0.5,0.5" Padding="4,0,0,0" Margin="0" d:IsHidden="True">
+                    <Button x:Name="btn_ForgotPassword" Style="{StaticResource ButtonUnPushed}" Content="FORGOT PASSWORD" Width="260" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="18" FontWeight="Bold" Foreground="Black" Margin="10,0,10.5,3" Padding="1" Click="LogginRequest_Click" IsCancel="True"/>
+                    <Border x:Name="brdVerify" BorderThickness="3" Background="#FF003200" CornerRadius="25" RenderTransformOrigin="0.5,0.5" Padding="4,0,0,0" Margin="0">
                         <Border.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -261,6 +262,30 @@
                             <TextBox x:Name="txtVerify_Code" HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" Background="{DynamicResource ButtonBackgroundPushed}" BorderBrush="#FFADFFD6" FontSize="18" Foreground="{DynamicResource ActiveText}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" GotFocus="TextBox_GotFocus" FontWeight="Bold" TabIndex="4" LostFocus="Textbox_LostFocus" TextChanged="Textbox_TextChanged" Tag="0" Margin="308,203,0,0" SelectionChanged="TxtVerify_Code_SelectionChanged"/>
                             <Label x:Name="lblVerrify_Info" Content="Verification mail has been sent to your email account. &#xA;Please enter the code below." VerticalAlignment="Top" Height="108" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Padding="0" Margin="100,65,100,0"/>
                             <Button x:Name="btn_ExitAll" Style="{StaticResource ButtonUnPushed}" Content="X" Height="30" FontSize="18" FontWeight="Bold" Foreground="Black" Margin="903,0,10,472" Padding="1" Click="Btn_ExitAll_Click" VerticalAlignment="Bottom"/>
+                        </Grid>
+                    </Border>
+                    <Border x:Name="brdForgotPassword" BorderThickness="3" Background="#FF003200" CornerRadius="25" RenderTransformOrigin="0.5,0.5" Padding="4,0,0,0" Margin="0" d:IsHidden="True">
+                        <Border.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Border.RenderTransform>
+                        <Border.BorderBrush>
+                            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                <GradientStop Color="#FF004B00" Offset="1"/>
+                                <GradientStop Color="#FF004B00"/>
+                                <GradientStop Color="#FF00AF00" Offset="0.5"/>
+                            </LinearGradientBrush>
+                        </Border.BorderBrush>
+                        <Grid>
+                            <Label x:Name="lblVerify_Header1" Content="ENTER YOURE EMAIL" HorizontalAlignment="Center" VerticalAlignment="Top" Height="25" Width="300" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Padding="0" Margin="0,178,0,0"/>
+                            <TextBox x:Name="txtResetPasswordMail" HorizontalAlignment="Center" Height="35" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" Background="{DynamicResource ButtonBackgroundPushed}" BorderBrush="#FFADFFD6" FontSize="18" Foreground="{DynamicResource ActiveText}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" GotFocus="TextBox_GotFocus" FontWeight="Bold" TabIndex="4" LostFocus="Textbox_LostFocus" TextChanged="Textbox_TextChanged" Tag="0" Margin="0,203,0,0" SelectionChanged="TxtVerify_Code_SelectionChanged"/>
+                            <Label x:Name="lblVerrify_Info1" Content="Type youre email " VerticalAlignment="Top" Height="108" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Padding="0" Margin="100,65,100,0"/>
+                            <Button x:Name="btn_ExitAll1" Style="{StaticResource ButtonUnPushed}" Content="X" Height="30" FontSize="18" FontWeight="Bold" Foreground="Black" Margin="903,0,10,472" Padding="1" Click="Btn_ExitAll_Click" VerticalAlignment="Bottom"/>
+                            <Button x:Name="btn_SendResetMail" Style="{StaticResource ButtonUnPushed}" Content="SEND RESET MAIL" Width="260" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="Black" Margin="0,0,0,-3" Padding="1" IsCancel="True" Click="LogginRequest_Click"/>
                         </Grid>
                     </Border>
                 </Grid>

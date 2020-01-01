@@ -89,6 +89,7 @@ namespace NSOP_Tournament_Pro
         private void Setup()
         {
             // Visible Settings
+            brdForgotPassword.Visibility = Visibility.Hidden;
             brdVerify.Visibility = Visibility.Hidden;
             brdLoggin.Visibility = Visibility.Visible;
             USS.Visibility = Visibility.Hidden;
@@ -189,6 +190,9 @@ namespace NSOP_Tournament_Pro
             string _Fotter;
             switch (DataAccess.ParseEnum<DataAccess.ActionType>(_p.ActionType))
             {
+                case DataAccess.ActionType.ResetPassword:
+
+                    break;
                 case DataAccess.ActionType.BadEMail:
                     _Header = "BAD EMAIL ADDRESS";
                     _Sub = "REGISTRATION FAILURE";
@@ -239,6 +243,10 @@ namespace NSOP_Tournament_Pro
                     break;
                 case DataAccess.ActionType.PersonCreated:
                     ShowAdminScreen();
+                    break;
+                case DataAccess.ActionType.PersonUpdate:
+                    break;
+                case DataAccess.ActionType.VerifyOK:
                     break;
             }
         }
@@ -566,6 +574,7 @@ namespace NSOP_Tournament_Pro
                     break;
             }
         }
+  
         private void LogginRequest_Click(object sender, RoutedEventArgs e)
         {
             switch ((sender as Button).Content.ToString().ToUpper())
@@ -587,6 +596,15 @@ namespace NSOP_Tournament_Pro
                         _adminPerson.ActionType = "Registrer";
                         client.SendObject(_adminPerson.ToBytes());
                     }
+                    break;
+                case "FORGOT PASSWORD":
+                    brdForgotPassword.Visibility = Visibility.Visible;
+                    break;
+                case "SEND RESET MAIL":
+                    UpdateAdminPerson();
+                    _adminPerson.EMail = txtResetPasswordMail.ToString();
+                    _adminPerson.ActionType = "ResetPassword";
+                    client.SendObject(_adminPerson.ToBytes());
                     break;
             }
         }
@@ -1075,6 +1093,5 @@ namespace NSOP_Tournament_Pro
                 e.Handled = true;
             }
         }
-
     }
 }

@@ -12,4 +12,3 @@ E:\Programmering\NSOP\NSOP\NSOP Tournament Pro Library\bin\Debug\System.Drawing.
 E:\Programmering\NSOP\NSOP\NSOP Tournament Pro Library\obj\Debug\NSOP Tournament Pro Library.csproj.CopyComplete
 E:\Programmering\NSOP\NSOP\NSOP Tournament Pro Library\obj\Debug\NSOP Torunament Pro Library.dll
 E:\Programmering\NSOP\NSOP\NSOP Tournament Pro Library\obj\Debug\NSOP Torunament Pro Library.pdb
-E:\Programmering\NSOP\NSOP\NSOP Tournament Pro Library\obj\Debug\NSOP Tournament Pro Library.csprojAssemblyReference.cache

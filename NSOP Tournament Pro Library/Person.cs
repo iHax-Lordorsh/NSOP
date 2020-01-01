@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
 using System.Windows;
 using System.Windows.Media.Imaging;
 
@@ -562,8 +563,8 @@ namespace NSOP_Tournament_Pro_Library
                 cmd.CommandText += $"FirstName = '{person.FirstName}', LastName = '{person.LastName}', ";
                 cmd.CommandText += $"Picture = @Picture, Mobile = '{person.Mobile}', ";
                 cmd.CommandText += $"Gender ='{person.Gender}', Nationality ='{person.Nationality}', ";
-                cmd.CommandText += $"Iso3166Name = '{person.Iso3166Name}', BornDate = '{person.BornDate.ToShortDateString()}', RegDate = '{person.RegDate.ToShortDateString()}', ";
-                cmd.CommandText += $"NickName = '{person.NickName}', PassWord = '{person.PassWord}', ";
+                cmd.CommandText += $"Iso3166Name = '{person.Iso3166Name}', BornDate = '{person.BornDate.ToShortDateString()}', ";
+                cmd.CommandText += $"NickName = '{person.NickName}', ";
                 cmd.CommandText += $"ClubName = '{person.ClubName}', ClubPicture = '{person.ClubPicture}', ";
                 cmd.CommandText += $"StandUserName = '{person.StandUserName}', StandPassWord = '{person.StandPassWord}' ";
 
@@ -587,80 +588,6 @@ namespace NSOP_Tournament_Pro_Library
             return _isOk;
         }
 
-        // Do all action with person
-        public static Person ProsessPerson(Person person)
-        {
-            // FillThisPerson(person);
-            switch (DataAccess.ParseEnum<DataAccess.ActionType>(person.ActionType))
-            {
-                case DataAccess.ActionType.VerifyOK:
-                    person.ActionType = DataAccess.ActionType.PersonCreated.ToString();
-                    _ = person.SaveNew();
-                    break;
-                case DataAccess.ActionType.New:
-                    // Saving new Person
-                    person.PlayerID = DataAccess.FillID(DataAccess.IdType.Person);
-                    _ = person.SaveNew();
-                    // xx check if players is saved ok
-                    break;
-                case DataAccess.ActionType.ClubUpdate:
-
-                    _ = person.ClubUpdate(person);
-                    break;
-                case DataAccess.ActionType.Delete:
-                    _ = person.Delete(person);
-                    break;
-                case DataAccess.ActionType.Get:
-                    person = person.GetPerson(person.PlayerID);
-                    break;
-                case DataAccess.ActionType.Getall:
-
-                    break;
-                case DataAccess.ActionType.Registrer:
-                    // Check if Person already exists
-                    Person _p = CheckPerson(person.UserName, person.PassWord);
-                    // Person exist if PlayerID all other than ""
-                    if (_p.PlayerID != "")
-                    {
-                        person.ActionType = DataAccess.ActionType.PersonExist.ToString();
-                    }
-                    else
-                    {
-                        // Need verification
-                        person.ActionType = DataAccess.ActionType.Verify.ToString();
-                        person.ClubID = DataAccess.GetVerificationCode();
-
-                        // Add a new person to Person Dataabase
-
-                    }
-                    break;
-                case DataAccess.ActionType.LoggInn:
-                    person = CheckPerson(person.UserName, person.PassWord);
-                    if (person.PlayerID != "")
-                    {
-                        // person found
-                        //person.GetPerson(person.PlayerID);
-                        person.ActionType = DataAccess.ActionType.True.ToString();
-                    }
-                    else
-                    {
-                        //person not found
-                        person.ActionType = DataAccess.ActionType.False.ToString();
-                    }
-                    break;
-                case DataAccess.ActionType.True:
-                    break;
-                case DataAccess.ActionType.False:
-                    break;
-                case DataAccess.ActionType.PersonExist:
-                    person.ActionType = DataAccess.ActionType.PersonExist.ToString();
-                    break;
-                case DataAccess.ActionType.PersonCreated:
-                    person.ActionType = DataAccess.ActionType.PersonCreated.ToString();
-                    break;
-            }
-            return person;
-        }
         public Person GetPerson(string personID)
         {
             SqlConnection con = new SqlConnection("Data Source = NSOP\\POKER; Initial Catalog = dbPerson; Trusted_Connection = True; Asynchronous Processing=True; ");
@@ -782,7 +709,14 @@ namespace NSOP_Tournament_Pro_Library
             try
             {
                 SqlDataReader _SqlData = null;
-                SqlCommand _SqlStr = new SqlCommand($"SELECT * FROM dbo.tbPerson WHERE UserName = '{userName}' AND PassWord = '{DataAccess.PasswordEncryption(passWord)}';", con);
+                StringBuilder _s = new StringBuilder();
+                _s.Append($"SELECT * FROM dbo.tbPerson WHERE UserName = '{userName}'");
+                if (passWord.Length>0)
+                {
+                    _s.Append($"AND PassWord = '{DataAccess.PasswordEncryption(passWord)}'");
+                }
+                _s.Append($";");
+                SqlCommand _SqlStr = new SqlCommand(_s.ToString(), con);
 
                 _SqlData = _SqlStr.ExecuteReader();
                 _SqlStr.Dispose();
@@ -932,6 +866,101 @@ namespace NSOP_Tournament_Pro_Library
             }
             con.Close();
             return _p;
+        }
+        // Do all action with person
+        public static Person ProsessPerson(Person person)
+        {
+            // FillThisPerson(person);
+            switch (DataAccess.ParseEnum<DataAccess.ActionType>(person.ActionType))
+            {
+                case DataAccess.ActionType.ResetPassword:
+                    // xxx 
+                    // Check if Person already exists
+                    Person _p0 = CheckPerson(person.UserName, "");
+                    // Person exist if PlayerID all other than ""
+                    if (_p0.PlayerID != "")
+                    {
+                        person.ActionType = DataAccess.ActionType.ResetPassword.ToString();
+                        person.ClubID = DataAccess.GetVerificationCode();
+                    }
+                    else
+                    {
+                        // player dont exist
+                    }
+                    break;
+                case DataAccess.ActionType.VerifyOK:
+                    person.ActionType = DataAccess.ActionType.PersonCreated.ToString();
+                    _ = person.SaveNew();
+                    break;
+                case DataAccess.ActionType.New:
+                    // Saving new Person
+                    person.PlayerID = DataAccess.FillID(DataAccess.IdType.Person);
+                    _ = person.SaveNew();
+                    // xx check if players is saved ok
+                    break;
+                case DataAccess.ActionType.ClubUpdate:
+
+                    _ = person.ClubUpdate(person);
+                    break;
+                case DataAccess.ActionType.Delete:
+                    _ = person.Delete(person);
+                    break;
+                case DataAccess.ActionType.Get:
+                    person = person.GetPerson(person.PlayerID);
+                    break;
+                case DataAccess.ActionType.Getall:
+
+                    break;
+                case DataAccess.ActionType.Registrer:
+                    // Check if Person already exists
+                    Person _p1 = CheckPerson(person.UserName, person.PassWord);
+                    // Person exist if PlayerID all other than ""
+                    if (_p1.PlayerID != "")
+                    {
+                        person.ActionType = DataAccess.ActionType.PersonExist.ToString();
+                    }
+                    else
+                    {
+                        // Need verification
+                        person.ActionType = DataAccess.ActionType.Verify.ToString();
+                        person.ClubID = DataAccess.GetVerificationCode();
+
+                        // Add a new person to Person Dataabase
+
+                    }
+                    break;
+                case DataAccess.ActionType.LoggInn:
+                    person = CheckPerson(person.UserName, person.PassWord);
+                    if (person.PlayerID != "")
+                    {
+                        // person found
+                        //person.GetPerson(person.PlayerID);
+                        person.ActionType = DataAccess.ActionType.True.ToString();
+                    }
+                    else
+                    {
+                        //person not found
+                        person.ActionType = DataAccess.ActionType.False.ToString();
+                    }
+                    break;
+                case DataAccess.ActionType.True:
+                    break;
+                case DataAccess.ActionType.False:
+                    break;
+                case DataAccess.ActionType.PersonExist:
+                    person.ActionType = DataAccess.ActionType.PersonExist.ToString();
+                    break;
+                case DataAccess.ActionType.PersonCreated:
+                    person.ActionType = DataAccess.ActionType.PersonCreated.ToString();
+                    break;
+                case DataAccess.ActionType.PersonUpdate:
+                    break;
+                case DataAccess.ActionType.Verify:
+                    break;
+                case DataAccess.ActionType.BadEMail:
+                    break;
+            }
+            return person;
         }
     }
 }

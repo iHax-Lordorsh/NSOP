@@ -261,6 +261,59 @@ namespace NSOP_Tournament_Pro_Server
         //        }
         //    } while (received < size);
         //}
+        private static bool Send_ResetPassword(Person person)
+        {
+            bool _IsSendt;
+            try
+            {
+                string _smtpClient = "smtp-mail.outlook.com";
+                //string _mailFrom = "post.nsop@outlook.com";
+                //string _mailPassword = "62N24s34o199p";
+                string _mailFrom = "ovehauge@hotmail.no";
+                string _mailPassword = "OSilverO1967O";
+                int _smtpPort = 25;
+
+                MailMessage _mail = new MailMessage();
+                //put your SMTP address and port here.
+                SmtpClient _SmtpServer = new SmtpClient(_smtpClient, _smtpPort);// smtp-mail.outlook.com
+                //Put the email address
+                _mail.From = new MailAddress(_mailFrom);
+                //Put the email where you want to send.
+                _mail.To.Add(person.UserName);
+
+                _mail.Subject = "NSOP Reset password verification";
+
+                StringBuilder _sb = new StringBuilder();
+                _sb.AppendLine("Your verification code is " + person.ClubID.ToString());
+
+                _mail.Body = _sb.ToString();
+
+                //Your log file path
+                //System.Net.Mail.Attachment attachment = new System.Net.Mail.Attachment(@"C:\Logs\CheckoutPOS.log");
+                //mail.Attachments.Add(attachment);
+
+                //Your username and password!
+
+                //SmtpServer.Credentials = new System.Net.NetworkCredential("ovehauge@hotmail.no", "Silver1967X");
+                _SmtpServer.Credentials = new System.Net.NetworkCredential(_mailFrom, _mailPassword);
+                //Set Smtp Server port
+                //      iVerdi = Convert.ToInt16(HENT_BASE_VERDI(dbOppsett, "DB_Mail", "Navn", dbMail, "", "", "SmtpServerPort"));
+                _SmtpServer.Port = 25;
+                //  bool xBool =Convert.ToBoolean(HENT_BASE_VERDI(dbOppsett, "DB_Mail", "Navn", dbMail, "", "", "SmtpEnable"));
+                _SmtpServer.EnableSsl = true;
+
+                _SmtpServer.Send(_mail);
+                _SmtpServer.Dispose();
+                _IsSendt = true;
+                //MessageBox.Show("The exception has been sent! :)");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                _IsSendt = false;
+            }
+            return _IsSendt;
+        }
         private static bool Send_Verification(Person person)
         {
             bool _IsSendt;
