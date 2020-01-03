@@ -515,7 +515,7 @@ namespace NSOP_Tournament_Pro_Library
             con.Close();
             return _isOk;
         }
-        public bool Delete(Person person)
+        public static bool UpdatePassword(Person person)
         {
             SqlConnection con = new SqlConnection("Data Source = NSOP\\POKER; Initial Catalog = dbPerson; Trusted_Connection = True; Asynchronous Processing=True; ");
             if (con.State == ConnectionState.Closed)
@@ -527,7 +527,13 @@ namespace NSOP_Tournament_Pro_Library
             {
                 SqlCommand cmd = con.CreateCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = $" DELETE FROM tbPerson WHERE PlayerID = '{person.PlayerID}';";
+                cmd.CommandText = $" UPDATE tbPerson SET ";
+                // Personalia
+                cmd.CommandText += $"PassWord = '{DataAccess.PasswordEncryption(person.PassWord)}' ";
+
+                // Where
+                cmd.CommandText += $"WHERE PlayerID = '{person.PlayerID}';";
+
 
                 //error = cmd.CommandText;
                 cmd.ExecuteNonQuery();
@@ -543,7 +549,7 @@ namespace NSOP_Tournament_Pro_Library
             con.Close();
             return _isOk;
         }
-        private bool ClubUpdate(Person person)
+        public bool UpdateClub(Person person)
         {
             SqlConnection con = new SqlConnection("Data Source = NSOP\\POKER; Initial Catalog = dbPerson; Trusted_Connection = True; Asynchronous Processing=True; ");
             if (con.State == ConnectionState.Closed)
@@ -570,6 +576,34 @@ namespace NSOP_Tournament_Pro_Library
                 cmd.CommandText += $"WHERE EMail = '{person.EMail}';";
                 cmd.Parameters.AddWithValue("@Picture", person.Picture);
 
+
+                //error = cmd.CommandText;
+                cmd.ExecuteNonQuery();
+
+                // Save LifeTime
+                _isOk = true;
+            }
+            catch (Exception e)
+            {
+                _ = e.ToString();
+                _isOk = false;
+            }
+            con.Close();
+            return _isOk;
+        }
+        public bool Delete(Person person)
+        {
+            SqlConnection con = new SqlConnection("Data Source = NSOP\\POKER; Initial Catalog = dbPerson; Trusted_Connection = True; Asynchronous Processing=True; ");
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            bool _isOk;
+            try
+            {
+                SqlCommand cmd = con.CreateCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = $" DELETE FROM tbPerson WHERE PlayerID = '{person.PlayerID}';";
 
                 //error = cmd.CommandText;
                 cmd.ExecuteNonQuery();
@@ -745,7 +779,6 @@ namespace NSOP_Tournament_Pro_Library
 
                     _p.NickName = _SqlData["NickName"].ToString();
                     _p.UserName = userName;
-                    _p.PassWord = passWord;
                     _p.UserID = _SqlData["UserID"].ToString();
                     _p.IsPlayerRemoved = (Boolean)_SqlData["IsPlayerRemoved"];
                     _p.IsLoggedInn = (Boolean)_SqlData["IsLoggedInn"];
@@ -897,7 +930,7 @@ namespace NSOP_Tournament_Pro_Library
                     break;
                 case DataAccess.ActionType.ClubUpdate:
 
-                    _ = person.ClubUpdate(person);
+                    _ = person.UpdateClub(person);
                     break;
                 case DataAccess.ActionType.Delete:
                     _ = person.Delete(person);
@@ -955,6 +988,10 @@ namespace NSOP_Tournament_Pro_Library
                 case DataAccess.ActionType.Verify:
                     break;
                 case DataAccess.ActionType.BadEMail:
+                    break;
+                case DataAccess.ActionType.UpdatePassword:
+                    // XXX MAKE A PASSWORD DATABASE CHANGER
+                    UpdatePassword(person);
                     break;
             }
             return person;
