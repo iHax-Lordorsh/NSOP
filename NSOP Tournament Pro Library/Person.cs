@@ -515,7 +515,7 @@ namespace NSOP_Tournament_Pro_Library
             con.Close();
             return _isOk;
         }
-        public bool UpdatePassword(Person person)
+        public static bool UpdatePassword(Person person)
         {
             SqlConnection con = new SqlConnection("Data Source = NSOP\\POKER; Initial Catalog = dbPerson; Trusted_Connection = True; Asynchronous Processing=True; ");
             if (con.State == ConnectionState.Closed)
@@ -991,6 +991,7 @@ namespace NSOP_Tournament_Pro_Library
                     break;
                 case DataAccess.ActionType.UpdatePassword:
                     // XXX MAKE A PASSWORD DATABASE CHANGER
+                    UpdatePassword(person);
                     break;
             }
             return person;
