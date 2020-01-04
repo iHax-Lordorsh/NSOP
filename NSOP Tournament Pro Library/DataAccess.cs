@@ -369,7 +369,8 @@ namespace NSOP_Tournament_Pro_Library
             Verify,
             VerifyOK,
             BadEMail,
-            ResetPassword
+            ResetPassword,
+            UpdatePassword
         }
         public static T ParseEnum<T>(string value)
         {

@@ -92,6 +92,7 @@ namespace NSOP_Tournament_Pro
             brdForgotPassword.Visibility = Visibility.Hidden;
             brdVerify.Visibility = Visibility.Hidden;
             brdLoggin.Visibility = Visibility.Visible;
+            brdResetPassword.Visibility = Visibility.Hidden;
             USS.Visibility = Visibility.Hidden;
             USS.Setup();
             // Value Settings
@@ -191,6 +192,7 @@ namespace NSOP_Tournament_Pro
             switch (DataAccess.ParseEnum<DataAccess.ActionType>(_p.ActionType))
             {
                 case DataAccess.ActionType.ResetPassword:
+                    brdForgotPassword.Visibility = Visibility.Hidden;
                     brdVerify.Visibility = Visibility.Visible;
                     btn_Verify.Tag = _p.ClubID.ToString();
                     UpdateAdmin(_p);
@@ -247,6 +249,9 @@ namespace NSOP_Tournament_Pro
                     ShowAdminScreen();
                     break;
                 case DataAccess.ActionType.PersonUpdate:
+        /////////// xxx remove
+                    ShowAdminScreen();
+
                     break;
                 case DataAccess.ActionType.VerifyOK:
                     break;
@@ -602,7 +607,7 @@ namespace NSOP_Tournament_Pro
                 case "FORGOT PASSWORD":
                     brdForgotPassword.Visibility = Visibility.Visible;
                     break;
-                case "SEND RESET MAIL":
+                case "SEND":
                     UpdateAdminPerson();
                     _adminPerson.EMail = txtResetPasswordMail.ToString();
                     _adminPerson.ActionType = DataAccess.ActionType.ResetPassword.ToString(); ;
@@ -855,19 +860,28 @@ namespace NSOP_Tournament_Pro
         }
         private void TxtVerify_Code_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            if ((sender as TextBox).Text != btn_Verify.Tag.ToString())
+            TextBox _t = new TextBox();
+            _t = (sender as TextBox);
+            switch (_t.Name)
             {
-                // You type the wrong code
-                (sender as TextBox).Background = (SolidColorBrush)FindResource("ErrorBackground");
-                (sender as TextBox).Foreground = (SolidColorBrush)FindResource("ErrorText");
-                btn_Verify.Visibility = Visibility.Hidden;
-            }
-            else
-            {
-                // Code is correct you can now verify
-                (sender as TextBox).Background = (LinearGradientBrush)FindResource("ButtonBackgroundPushed");
-                (sender as TextBox).Foreground = (SolidColorBrush)FindResource("ActiveText");
-                btn_Verify.Visibility = Visibility.Visible;
+                case "txtResetPasswordMail":
+                    break;
+                default:
+                    if ((sender as TextBox).Text != btn_Verify.Tag.ToString())
+                    {
+                        // You type the wrong code
+                        (sender as TextBox).Background = (SolidColorBrush)FindResource("ErrorBackground");
+                        (sender as TextBox).Foreground = (SolidColorBrush)FindResource("ErrorText");
+                        btn_Verify.Visibility = Visibility.Hidden;
+                    }
+                    else
+                    {
+                        // Code is correct you can now verify
+                        (sender as TextBox).Background = (LinearGradientBrush)FindResource("ButtonBackgroundPushed");
+                        (sender as TextBox).Foreground = (SolidColorBrush)FindResource("ActiveText");
+                        btn_Verify.Visibility = Visibility.Visible;
+                    }
+                    break;
             }
         }
         private void CbxNationality_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -947,6 +961,7 @@ namespace NSOP_Tournament_Pro
                     }
                     break;
                 case "txt_loggin_3": // EMail
+                case "txtResetPasswordMail": // EMail
                     if ((sender as TextBox).Text.Contains("@") && (sender as TextBox).Text.Contains(".") && (sender as TextBox).Text.Length >= 7)
                     {
                         (sender as TextBox).Background = (LinearGradientBrush)FindResource("ButtonBackgroundPushed");
@@ -1169,6 +1184,11 @@ namespace NSOP_Tournament_Pro
             {
                 e.Handled = true;
             }
+        }
+
+        private void Btn_ExitResetPassword(object sender, RoutedEventArgs e)
+        {
+            brdForgotPassword.Visibility = Visibility.Hidden;
         }
     }
 }
