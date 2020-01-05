@@ -1,5 +1,4 @@
-﻿using NSOP_Torunament_Pro_Library;
-using NSOP_Tournament_Pro_Library;
+﻿using NSOP_Tournament_Pro_Library;
 using System;
 using System.Collections.Generic;
 using System.IO;

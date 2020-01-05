@@ -7,7 +7,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NSOP_Torunament_Pro_Library
+namespace NSOP_Tournament_Pro_Library
 {
     [Serializable]
     public class CommunicationPacket

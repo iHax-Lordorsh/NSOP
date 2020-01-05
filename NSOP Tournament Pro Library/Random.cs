@@ -5,12 +5,11 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace NSOP_Torunament_Pro_Library
+namespace NSOP_Tournament_Pro_Library
 {
     public static class GetRandom
     {
         private static int seed;
-
         private static ThreadLocal<Random> threadLocal = new ThreadLocal<Random>
             (() => new Random(Interlocked.Increment(ref seed)));
 
@@ -18,7 +17,6 @@ namespace NSOP_Torunament_Pro_Library
         {
             seed = Environment.TickCount;
         }
-
         public static Random Instance { get { return threadLocal.Value; } }
     }
 }

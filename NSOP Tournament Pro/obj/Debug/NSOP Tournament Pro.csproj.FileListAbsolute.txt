@@ -58,7 +58,6 @@ E:\Programmering\NSOP\NSOP\NSOP Tournament Pro\bin\Debug\AForge.Video.DirectShow
 E:\Programmering\NSOP\NSOP\NSOP Tournament Pro\bin\Debug\System.Drawing.Common.dll
 E:\Programmering\NSOP\NSOP\NSOP Tournament Pro\bin\Debug\WindowsBase.dll
 E:\Programmering\NSOP\NSOP\NSOP Tournament Pro\bin\Debug\NSOP Torunament Pro Library.dll
-E:\Programmering\NSOP\NSOP\NSOP Tournament Pro\bin\Debug\NSOP Torunament Pro Library.pdb
 E:\Programmering\NSOP\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.csprojAssemblyReference.cache
 E:\Programmering\NSOP\NSOP\NSOP Tournament Pro\obj\Debug\ResourceDictionaries\StoryDictionary.baml
 E:\Programmering\NSOP\NSOP\NSOP Tournament Pro\obj\Debug\ResourceDictionaries\StyleDictionary.baml
@@ -108,3 +107,4 @@ C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro_MarkupCo
 C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro_MarkupCompile.lref
 C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.exe
 C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.pdb
+E:\Programmering\NSOP\NSOP\NSOP Tournament Pro\bin\Debug\NSOP Torunament Pro Library.pdb
