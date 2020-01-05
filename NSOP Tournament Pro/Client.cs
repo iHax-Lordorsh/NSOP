@@ -221,7 +221,6 @@ namespace NSOP_Tournament_Pro
                             break;
                         case DataAccess.Request.BadEMail:
                             break;
-
                     }
                     break;
                 case DataAccess.ClassType.PersonList:
