@@ -196,6 +196,7 @@ namespace NSOP_Tournament_Pro_Library
                             }
                             break;
                         case DataAccess.Request.VerifyOK:
+                            // logging granted
                             this.Request = DataAccess.Request.LoggInOK;
                             break;
                         case DataAccess.Request.BadEMail:
