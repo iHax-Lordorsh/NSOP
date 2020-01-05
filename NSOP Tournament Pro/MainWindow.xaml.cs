@@ -212,7 +212,7 @@ namespace NSOP_Tournament_Pro
                 case DataAccess.Request.New:
                     break;
                 case DataAccess.Request.ClubUpdate:
-                    UpdateAdminSite();
+                    //UpdateAdminSite();
                     break;
                 case DataAccess.Request.Delete:
                     break;
@@ -602,8 +602,7 @@ namespace NSOP_Tournament_Pro
                     {
                         //Registrer Player
                         UpdateAdminPerson();
-                        _adminPerson.ActionType = "Registrer";
-                        client.SendObject(_adminPerson.ToBytes());
+                        client.SendObject(UpdateCommunicationPacket(DataAccess.Request.Registrer, _adminPerson.ToBytes(), DataAccess.ClassType.Person));
                     }
                     break;
                 case "BTN_FORGOTPASSWORD":
