@@ -253,6 +253,7 @@ namespace NSOP_Tournament_Pro
                         // 
                         Action action = delegate
                         {
+
                             var mainWnd = Application.Current.MainWindow as MainWindow;
                             mainWnd.UpdateData(buffer,_packet);
                         };
