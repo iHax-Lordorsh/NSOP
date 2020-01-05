@@ -73,7 +73,7 @@ namespace NSOP_Tournament_Pro_Server
                             {
                                 _received += clientSocket.Receive(_buffer, _offset + _received, _size - _received, SocketFlags.Partial);
                                 // _bufferTotal = DataAccess.ConvertByte(_bufferTotal, _buffer, _received);
-                                long a = Server.BytesToInt32(_buffer, 3);
+                                long a = Server.BytesToInt32(_buffer, 0);
 
                                 if (DataManager(_buffer, clientSocket) != "")
                                 {
