@@ -340,7 +340,7 @@ namespace NSOP_Tournament_Pro_Library
             Points,
             Club
         }
-        public enum PacketType
+        public enum ClassType
         {
             Person,
             PersonList,
@@ -352,7 +352,7 @@ namespace NSOP_Tournament_Pro_Library
             Action,
             Packet
         }
-        public enum ActionType
+        public enum Request
         {
             New,
             ClubUpdate,
@@ -361,7 +361,7 @@ namespace NSOP_Tournament_Pro_Library
             Get,
             Getall,
             Registrer,
-            LoggInn,
+            LoggIn,
             True,
             False,
             PersonExist,

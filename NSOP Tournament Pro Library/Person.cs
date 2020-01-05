@@ -901,16 +901,16 @@ namespace NSOP_Tournament_Pro_Library
         public static Person ProsessPerson(Person person)
         {
             // FillThisPerson(person);
-            switch (DataAccess.ParseEnum<DataAccess.ActionType>(person.ActionType))
+            switch (DataAccess.ParseEnum<DataAccess.Request>(person.ActionType))
             {
-                case DataAccess.ActionType.ResetPassword:
+                case DataAccess.Request.ResetPassword:
                     // xxx 
                     // Check if Person already exists
                     Person _p0 = CheckPerson(person.UserName, "");
                     // Person exist if PlayerID all other than ""
                     if (_p0.PlayerID != "")
                     {
-                        person.ActionType = DataAccess.ActionType.ResetPassword.ToString();
+                        person.ActionType = DataAccess.Request.ResetPassword.ToString();
                         person.ClubID = DataAccess.GetVerificationCode();
                     }
                     else
@@ -918,80 +918,80 @@ namespace NSOP_Tournament_Pro_Library
                         // player dont exist
                     }
                     break;
-                case DataAccess.ActionType.VerifyOK:
-                    person.ActionType = DataAccess.ActionType.PersonCreated.ToString();
+                case DataAccess.Request.UpdatePassword:
+                    // XXX MAKE A PASSWORD DATABASE CHANGER
+                    UpdatePassword(person);
+                    break;
+                case DataAccess.Request.VerifyOK:
+                    person.ActionType = DataAccess.Request.PersonCreated.ToString();
                     _ = person.SaveNew();
                     break;
-                case DataAccess.ActionType.New:
+                case DataAccess.Request.New:
                     // Saving new Person
                     person.PlayerID = DataAccess.FillID(DataAccess.IdType.Person);
                     _ = person.SaveNew();
                     // xx check if players is saved ok
                     break;
-                case DataAccess.ActionType.ClubUpdate:
+                case DataAccess.Request.ClubUpdate:
 
                     _ = person.UpdateClub(person);
                     break;
-                case DataAccess.ActionType.Delete:
+                case DataAccess.Request.Delete:
                     _ = person.Delete(person);
                     break;
-                case DataAccess.ActionType.Get:
+                case DataAccess.Request.Get:
                     person = person.GetPerson(person.PlayerID);
                     break;
-                case DataAccess.ActionType.Getall:
+                case DataAccess.Request.Getall:
 
                     break;
-                case DataAccess.ActionType.Registrer:
+                case DataAccess.Request.Registrer:
                     // Check if Person already exists
                     Person _p1 = CheckPerson(person.UserName, person.PassWord);
                     // Person exist if PlayerID all other than ""
                     if (_p1.PlayerID != "")
                     {
-                        person.ActionType = DataAccess.ActionType.PersonExist.ToString();
+                        person.ActionType = DataAccess.Request.PersonExist.ToString();
                     }
                     else
                     {
                         // Need verification
-                        person.ActionType = DataAccess.ActionType.Verify.ToString();
+                        person.ActionType = DataAccess.Request.Verify.ToString();
                         person.ClubID = DataAccess.GetVerificationCode();
 
                         // Add a new person to Person Dataabase
 
                     }
                     break;
-                case DataAccess.ActionType.LoggInn:
+                case DataAccess.Request.LoggIn:
                     person = CheckPerson(person.UserName, person.PassWord);
                     if (person.PlayerID != "")
                     {
                         // person found
                         //person.GetPerson(person.PlayerID);
-                        person.ActionType = DataAccess.ActionType.True.ToString();
+                        person.ActionType = DataAccess.Request.True.ToString();
                     }
                     else
                     {
                         //person not found
-                        person.ActionType = DataAccess.ActionType.False.ToString();
+                        person.ActionType = DataAccess.Request.False.ToString();
                     }
                     break;
-                case DataAccess.ActionType.True:
+                case DataAccess.Request.True:
                     break;
-                case DataAccess.ActionType.False:
+                case DataAccess.Request.False:
                     break;
-                case DataAccess.ActionType.PersonExist:
-                    person.ActionType = DataAccess.ActionType.PersonExist.ToString();
+                case DataAccess.Request.PersonExist:
+                    person.ActionType = DataAccess.Request.PersonExist.ToString();
                     break;
-                case DataAccess.ActionType.PersonCreated:
-                    person.ActionType = DataAccess.ActionType.PersonCreated.ToString();
+                case DataAccess.Request.PersonCreated:
+                    person.ActionType = DataAccess.Request.PersonCreated.ToString();
                     break;
-                case DataAccess.ActionType.PersonUpdate:
+                case DataAccess.Request.PersonUpdate:
                     break;
-                case DataAccess.ActionType.Verify:
+                case DataAccess.Request.Verify:
                     break;
-                case DataAccess.ActionType.BadEMail:
-                    break;
-                case DataAccess.ActionType.UpdatePassword:
-                    // XXX MAKE A PASSWORD DATABASE CHANGER
-                    UpdatePassword(person);
+                case DataAccess.Request.BadEMail:
                     break;
             }
             return person;

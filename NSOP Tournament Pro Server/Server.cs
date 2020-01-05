@@ -66,7 +66,7 @@ namespace NSOP_Tournament_Pro_Server
                             {
                                 _received += clientSocket.Receive(_buffer, _offset + _received, _size - _received, SocketFlags.Partial);
                                 // _bufferTotal = DataAccess.ConvertByte(_bufferTotal, _buffer, _received);
-
+                                _size = _buffer[3];
                                 if (DataManager(_buffer, clientSocket) != "")
                                 {
                                     break;
@@ -132,7 +132,7 @@ namespace NSOP_Tournament_Pro_Server
             }
 
         }
-
+        
         //data manager
         public static string DataManager(byte[] buffer, Socket clientSocket)
         {
@@ -140,27 +140,27 @@ namespace NSOP_Tournament_Pro_Server
             string _Packet = DataAccess.GetPacket(buffer);
             if (_Packet != "")
             {
-                switch (DataAccess.ParseEnum<DataAccess.PacketType>(_Packet))
+                switch (DataAccess.ParseEnum<DataAccess.ClassType>(_Packet))
                 {
-                    case DataAccess.PacketType.Person:
+                    case DataAccess.ClassType.Person:
                         // converting bytes to Peron
                         Person _person = new Person(buffer);
                         _person = Person.ProsessPerson(_person);
-                        if (DataAccess.ParseEnum<DataAccess.ActionType>(_person.ActionType) == DataAccess.ActionType.Verify)
+                        if (DataAccess.ParseEnum<DataAccess.Request>(_person.ActionType) == DataAccess.Request.Verify)
                         {
                             if (Send_Verification(_person))
                             { }
                             else
                             {
-                                _person.ActionType = DataAccess.ActionType.BadEMail.ToString();
+                                _person.ActionType = DataAccess.Request.BadEMail.ToString();
                             }
-                        } else if (DataAccess.ParseEnum<DataAccess.ActionType>(_person.ActionType) == DataAccess.ActionType.ResetPassword)
+                        } else if (DataAccess.ParseEnum<DataAccess.Request>(_person.ActionType) == DataAccess.Request.ResetPassword)
                         {
                             if (Send_ResetPassword(_person))
                             { }
                             else
                             {
-                                _person.ActionType = DataAccess.ActionType.BadEMail.ToString();
+                                _person.ActionType = DataAccess.Request.BadEMail.ToString();
                             }
                         }
                         Console.WriteLine(_person.PlayerID + "   " + _person.FirstName);
@@ -168,26 +168,26 @@ namespace NSOP_Tournament_Pro_Server
                         // Sending back if its ok or not
                         Replay(_person.ToBytes(), _person.ClassType, clientSocket);
                         break;
-                    case DataAccess.PacketType.Tournament:
+                    case DataAccess.ClassType.Tournament:
                         Tournament _tournament = new Tournament(buffer);
                         Console.WriteLine(_tournament.TournamentID + "   " + _tournament.TournamentName);
                         // Save and Reply
                         _ = _tournament.Save();
                         Replay(_tournament.ToBytes(), _tournament.ClassType, clientSocket);
                         break;
-                    case DataAccess.PacketType.Action:
+                    case DataAccess.ClassType.Action:
                         break;
-                    case DataAccess.PacketType.Packet:
+                    case DataAccess.ClassType.Packet:
                         break;
-                    case DataAccess.PacketType.Blinds:
+                    case DataAccess.ClassType.Blinds:
                         break;
-                    case DataAccess.PacketType.Payouts:
+                    case DataAccess.ClassType.Payouts:
                         break;
-                    case DataAccess.PacketType.Points:
+                    case DataAccess.ClassType.Points:
                         break;
-                    case DataAccess.PacketType.DataVerify:
+                    case DataAccess.ClassType.DataVerify:
                         break;
-                    case DataAccess.PacketType.PersonList:
+                    case DataAccess.ClassType.PersonList:
                         break;
                 }
             }
@@ -204,29 +204,29 @@ namespace NSOP_Tournament_Pro_Server
                 if (_c._clientSocket.RemoteEndPoint == clientSocket.RemoteEndPoint)
                 {
                     // create return data
-                    switch (DataAccess.ParseEnum<DataAccess.PacketType>(packet))
+                    switch (DataAccess.ParseEnum<DataAccess.ClassType>(packet))
                     {
-                        case DataAccess.PacketType.Person:
+                        case DataAccess.ClassType.Person:
                             Person _p = new Person(obj);
                             string x = _p.ClassType;
                             _c._clientSocket.Send(_p.ToBytes());
 
                             break;
-                        case DataAccess.PacketType.Tournament:
+                        case DataAccess.ClassType.Tournament:
                             break;
-                        case DataAccess.PacketType.Blinds:
+                        case DataAccess.ClassType.Blinds:
                             break;
-                        case DataAccess.PacketType.Payouts:
+                        case DataAccess.ClassType.Payouts:
                             break;
-                        case DataAccess.PacketType.Points:
+                        case DataAccess.ClassType.Points:
                             break;
-                        case DataAccess.PacketType.DataVerify:
+                        case DataAccess.ClassType.DataVerify:
                             break;
-                        case DataAccess.PacketType.Action:
+                        case DataAccess.ClassType.Action:
                             break;
-                        case DataAccess.PacketType.Packet:
+                        case DataAccess.ClassType.Packet:
                             break;
-                        case DataAccess.PacketType.PersonList:
+                        case DataAccess.ClassType.PersonList:
                             // return PersonList
                             PersonList _pl = new PersonList(obj);
                             string xl = _pl.ClassType;
