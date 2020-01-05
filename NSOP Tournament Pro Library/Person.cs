@@ -898,10 +898,10 @@ namespace NSOP_Tournament_Pro_Library
             return _p;
         }
         // Do all action with person
-        public static Person ProsessPerson(Person person)
+        public static Person ProsessPerson(Person person, DataAccess.Request request)
         {
             // FillThisPerson(person);
-            switch (DataAccess.ParseEnum<DataAccess.Request>(person.ActionType))
+            switch (request)
             {
                 case DataAccess.Request.ResetPassword:
                     // xxx 
@@ -969,17 +969,17 @@ namespace NSOP_Tournament_Pro_Library
                     {
                         // person found
                         //person.GetPerson(person.PlayerID);
-                        person.ActionType = DataAccess.Request.True.ToString();
+                        person.ActionType = DataAccess.Request.LoggInOK.ToString();
                     }
                     else
                     {
                         //person not found
-                        person.ActionType = DataAccess.Request.False.ToString();
+                        person.ActionType = DataAccess.Request.LoggInFailed.ToString();
                     }
                     break;
-                case DataAccess.Request.True:
+                case DataAccess.Request.LoggInOK:
                     break;
-                case DataAccess.Request.False:
+                case DataAccess.Request.LoggInFailed:
                     break;
                 case DataAccess.Request.PersonExist:
                     person.ActionType = DataAccess.Request.PersonExist.ToString();

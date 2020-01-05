@@ -21,6 +21,7 @@ namespace NSOP_Tournament_Pro
         public static string IpAddress = "62.24.34.199";
         public static int IpPort = 5960;
         public static IPEndPoint _ip = new IPEndPoint(IPAddress.Parse(IpAddress), IpPort);
+        private static bool _packetRecieved;
 
         public void SendObject(byte[] byteToSend)
         {
@@ -95,11 +96,21 @@ namespace NSOP_Tournament_Pro
                             {
                                 _received += ServerSocket.Receive(_buffer, _offset + _received, _size - _received, SocketFlags.Partial);
                                 _bufferTotal = DataAccess.ConvertByte(_bufferTotal, _buffer, _received);
-
-                                if (DataManager(_bufferTotal) != "")
+                                try
                                 {
-                                    break;
+                                    CommunicationManager _cp = new CommunicationManager(_buffer);
+                                    _packetRecieved = true;
+                                    RecievedManager(_cp);
+                                    //  break;
                                 }
+                                catch (Exception)
+                                {
+                                    Console.WriteLine("Packet Recieved: " + _received.ToString() + " Continue Recieving ...");
+                                }
+                                //if (DataManager(_bufferTotal) != "")
+                                //{
+                                //    break;
+                                //}
                             }
                             catch (SocketException ex)
                             {
@@ -131,6 +142,77 @@ namespace NSOP_Tournament_Pro
                 catch (SocketException)
                 {
                 }
+            }
+        }
+
+        private static void RecievedManager(CommunicationManager cp)
+        {
+            var mainWnd = Application.Current.MainWindow as MainWindow;
+            switch (cp.ClassType)
+            {
+                case DataAccess.ClassType.Person:
+                    switch (cp.Request)
+                    {
+                        // Logg In Request to server
+                        case DataAccess.Request.LoggIn:
+                            break;
+                        // Logg In Answer from server
+                        case DataAccess.Request.LoggInOK:
+                            Action action = delegate
+                            {
+                                mainWnd.ShowAdminScreen(new Person(cp.ObjectType));
+                            };
+                            Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, action);
+                            break;
+                        // Logg In Answer from server
+                        case DataAccess.Request.LoggInFailed:
+                            break;
+                        case DataAccess.Request.New:
+                            break;
+                        case DataAccess.Request.ClubUpdate:
+                            break;
+                        case DataAccess.Request.PersonUpdate:
+                            break;
+                        case DataAccess.Request.Delete:
+                            break;
+                        case DataAccess.Request.Get:
+                            break;
+                        case DataAccess.Request.Getall:
+                            break;
+                        case DataAccess.Request.Registrer:
+                            break;
+                        case DataAccess.Request.PersonExist:
+                            break;
+                        case DataAccess.Request.PersonCreated:
+                            break;
+                        case DataAccess.Request.Verify:
+                            break;
+                        case DataAccess.Request.VerifyOK:
+                            break;
+                        case DataAccess.Request.BadEMail:
+                            break;
+                        case DataAccess.Request.ResetPassword:
+                            break;
+                        case DataAccess.Request.UpdatePassword:
+                            break;
+                    }
+                    break;
+                case DataAccess.ClassType.PersonList:
+                    break;
+                case DataAccess.ClassType.Tournament:
+                    break;
+                case DataAccess.ClassType.Blinds:
+                    break;
+                case DataAccess.ClassType.Payouts:
+                    break;
+                case DataAccess.ClassType.Points:
+                    break;
+                case DataAccess.ClassType.DataVerify:
+                    break;
+                case DataAccess.ClassType.Action:
+                    break;
+                case DataAccess.ClassType.Packet:
+                    break;
             }
         }
 
