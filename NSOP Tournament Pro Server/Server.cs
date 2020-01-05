@@ -47,6 +47,16 @@ namespace NSOP_Tournament_Pro_Server
                  + (buff[offset + 2] << 8)
                  + (buff[offset + 3]);
         }
+        public static int BytesToInt(byte[] array, int startIndex)
+        {
+            int toReturn = 0;
+            for (int i = startIndex; i < startIndex + 4; i++)
+            {
+                toReturn = toReturn << 8;
+                toReturn = toReturn + array[i];
+            }
+            return toReturn;
+        }
         // clientdata thread - receives data from each client individually
         public static void Data_IN(object vSocket)
         {
@@ -71,13 +81,29 @@ namespace NSOP_Tournament_Pro_Server
                             try
                             {
                                 _received += clientSocket.Receive(_buffer, _offset + _received, _size - _received, SocketFlags.Partial);
-                                // _bufferTotal = DataAccess.ConvertByte(_bufferTotal, _buffer, _received);
-                                long a = Server.BytesToInt32(_buffer, 3);
-
-                                if (DataManager(_buffer, clientSocket) != "")
+                                try
                                 {
+                                    CommunicationPacket _cp = new CommunicationPacket(_buffer);
+                                    long xxx = _cp.Size;
+                                    string sss = _cp.ClassType.ToString();
+                                    string rrr = _cp.Request.ToString();
+
+                                }
+                                catch (Exception)
+                                {
+                                }
+
+                                if (_received == 0)
+                                {
+                                    CommunicationPacket _cp = new CommunicationPacket(_buffer);
+                                    long xxx = _cp.Size;
                                     break;
                                 }
+
+                                //if (DataManager(_buffer, clientSocket) != "")
+                                //{
+                                //    break;
+                                //}
                             }
                             catch (SocketException ex)
                             {

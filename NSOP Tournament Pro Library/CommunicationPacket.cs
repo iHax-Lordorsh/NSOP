@@ -29,6 +29,11 @@ namespace NSOP_Tournament_Pro_Library
             };
             CommunicationPacket _cp = (CommunicationPacket)_bf.Deserialize(_ms);
             _ms.Close();
+
+            this.Size = _cp.Size;
+            this.ClassType = _cp.ClassType;
+            this.Request = _cp.Request;
+            this.ObjectType = _cp.ObjectType;
         }
         // Convert Person to Byte[]
         public byte[] ToBytes()

@@ -594,7 +594,10 @@ namespace NSOP_Tournament_Pro
                         //UpdateAdminPerson();
                         //_adminPerson.ActionType = "LoggInn";
                         //client.SendObject(_adminPerson.ToBytes());
-                        client.SendObject(UpdateCommunicationPacket(DataAccess.Request.LoggIn, new Person().ToBytes(), DataAccess.ClassType.Person));
+                        Person ppp = new Person();
+                        ppp.Picture = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject("Avatar_1")));
+
+                        client.SendObject(UpdateCommunicationPacket(DataAccess.Request.LoggIn, ppp.ToBytes(), DataAccess.ClassType.Person));
                     }
                     break;
                 case "BTN_NEWACCOUNT":
