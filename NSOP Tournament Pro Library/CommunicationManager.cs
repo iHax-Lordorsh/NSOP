@@ -201,7 +201,8 @@ namespace NSOP_Tournament_Pro_Library
                             break;
                         case DataAccess.Request.ResetPassword:
                             if (Send_ResetPassword(_person))
-                            { 
+                            {
+                                this.Request = DataAccess.Request.ResetVerification;
                             }
                             else
                             {
@@ -209,6 +210,14 @@ namespace NSOP_Tournament_Pro_Library
                             }
                             break;
                         case DataAccess.Request.UpdatePassword:
+                            if (Person.UpdatePassword(_person) == true)
+                            {
+                                this.Request = DataAccess.Request.LoggInOK;
+                            }
+                            else
+                            {
+                                this.Request = DataAccess.Request.BadEMail;
+                            }
                             break;
                     }
 

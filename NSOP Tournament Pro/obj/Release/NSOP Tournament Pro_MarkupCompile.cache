@@ -4,29 +4,16 @@
 winexe
 C#
 .cs
-<<<<<<<< HEAD:NSOP Tournament Pro/obj/Release/NSOP Tournament Pro_MarkupCompile.cache
-C:\Programmering\NSOP\NSOP Tournament Pro\obj\Release\
+E:\Programmering\NSOP\NSOP\NSOP Tournament Pro\obj\Release\
 NSOP_Tournament_Pro
 none
 false
 TRACE
-C:\Programmering\NSOP\NSOP Tournament Pro\App.xaml
-11-1648992877
-
-141388939890
-26-1455391083
-========
-E:\Programmering\NSOP\NSOP\NSOP Tournament Pro\obj\Debug\
-NSOP_Tournament_Pro
-none
-false
-DEBUG;TRACE
 E:\Programmering\NSOP\NSOP\NSOP Tournament Pro\App.xaml
 11-1648992877
 
-151793013725
-26-782748431
->>>>>>>> fc590b3517eb2126e47ba90f23a1a60c7ad49b2d:NSOP Tournament Pro/obj/Debug/NSOP Tournament Pro_MarkupCompile.i.cache
+141388939890
+26-179645219
 MainWindow.xaml;ResourceDictionaries\StoryDictionary.xaml;ResourceDictionaries\StyleDictionary.xaml;Simple Styles.xaml;UserAdminCreator.xaml;UserModuleSimple.xaml;UserItemCard.xaml;UserSalesBox.xaml;UserSalesStand.xaml;UserItemList.xaml;UserSubscription.xaml;
 
 True
