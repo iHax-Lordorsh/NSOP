@@ -225,11 +225,11 @@ namespace NSOP_Tournament_Pro
                     break;
                 case DataAccess.Request.LoggIn:
                     break;
-                case DataAccess.Request.True:
+                case DataAccess.Request.LoggInOK:
                     // Loggin Player, procced to admin screen
                     ShowAdminScreen();
                     break;
-                case DataAccess.Request.False:
+                case DataAccess.Request.LoggInFailed:
                     // Player Cant logg inn
                     _Header = "PERSON NOT FOUND";
                     _Sub = "LOGGIN FAILURE";
@@ -256,6 +256,7 @@ namespace NSOP_Tournament_Pro
                     break;
             }
         }
+
         public static System.Windows.Media.Brush BrushBackground(string fileName)
         {
             Image IMG = new Image();
@@ -300,13 +301,14 @@ namespace NSOP_Tournament_Pro
             lbl_Error_Text.Content = text.ToUpper();
             // populate message
         }
-        private void ShowAdminScreen()
+        public void ShowAdminScreen(Person person)
         {
+            UpdateAdmin(person);
+            UpdateAdminSite();
+            
             brdLoggin.Visibility = Visibility.Hidden;
             brdErrorMessage.Visibility = Visibility.Hidden;
             brdBackground.IsEnabled = true;
-            UpdateAdminSite();
-
         }
         // **************************   UPDATES
         private void UpdateAdmin(Person _person)
@@ -630,7 +632,7 @@ namespace NSOP_Tournament_Pro
 
         private byte[] UpdateCommunicationPacket(DataAccess.Request request, byte[] objType, DataAccess.ClassType classType)
         {
-            CommunicationPacket _cp = new CommunicationPacket();
+            CommunicationManager _cp = new CommunicationManager();
             _cp.Request = request;
             _cp.ObjectType = objType;
             _cp.ClassType = classType;
@@ -746,9 +748,9 @@ namespace NSOP_Tournament_Pro
                     break;
                 case DataAccess.Request.LoggIn:
                     break;
-                case DataAccess.Request.True:
+                case DataAccess.Request.LoggInOK:
                     break;
-                case DataAccess.Request.False:
+                case DataAccess.Request.LoggInFailed:
                     break;
                 case DataAccess.Request.PersonExist:
                     break;
