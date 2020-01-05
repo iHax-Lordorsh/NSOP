@@ -12,7 +12,7 @@ namespace NSOP_Torunament_Pro_Library
     [Serializable]
     public class CommunicationPacket
     {
-        public int Size { get; set; }
+        public long Size { get; set; }
         public DataAccess.ClassType ClassType { get; set; }
         public DataAccess.Request Request { get; set; }
         public object ObjectType { get; set; }

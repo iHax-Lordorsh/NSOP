@@ -90,3 +90,21 @@ E:\Programmering\NSOP\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.csp
 E:\Programmering\NSOP\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.csproj.CopyComplete
 E:\Programmering\NSOP\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.exe
 E:\Programmering\NSOP\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.pdb
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.csprojAssemblyReference.cache
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\ResourceDictionaries\StoryDictionary.baml
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\ResourceDictionaries\StyleDictionary.baml
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\Simple Styles.baml
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\MainWindow.g.cs
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserAdminCreator.g.cs
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserModuleSimple.g.cs
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserItemCard.g.cs
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserSalesBox.g.cs
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserSalesStand.g.cs
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserItemList.g.cs
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserSubscription.g.cs
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\App.g.cs
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro_MarkupCompile.cache
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro_MarkupCompile.lref
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.exe
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.pdb
