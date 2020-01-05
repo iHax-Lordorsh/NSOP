@@ -237,7 +237,7 @@
                     <Button x:Name="btn_ForgotPassword" Style="{StaticResource ButtonUnPushed}" Content="FORGOT PASSWORD" Width="260" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="18" FontWeight="Bold" Foreground="Black" Margin="10,0,10.5,3" Padding="1" Click="LogginRequest_Click" IsCancel="True"/>
                     <Grid Margin="694,485,11,3">
                         <Button x:Name="btn_LoggIn" Style="{StaticResource ButtonUnPushed}" Content="LOGG IN" Width="260" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="Black" Padding="1" Click="LogginRequest_Click" IsCancel="True"/>
-                        <Button x:Name="btn_NewAccount" Style="{StaticResource ButtonUnPushed}" Content="NEW ACCOUNT" Width="260" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="Black" Padding="1" Click="LogginRequest_Click" IsCancel="True" d:IsHidden="True"/>
+                        <Button x:Name="btn_NewAccount" Style="{StaticResource ButtonUnPushed}" Content="NEW ACCOUNT" Width="260" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="Black" Padding="1" Click="LogginRequest_Click" IsCancel="True"/>
                     </Grid>
                     <StackPanel Margin="0,28,0,448" Orientation="Horizontal" HorizontalAlignment="Center">
                         <Button x:Name="btn_LoggIn_LoggIn" Style="{StaticResource ButtonUnPushed}" Content="LOGG INN" Width="160" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource DeactiveText}" Padding="1" Click="Loggin_Click"/>
@@ -260,7 +260,10 @@
                             </LinearGradientBrush>
                         </Border.BorderBrush>
                         <Grid>
-                            <Button x:Name="btn_Verify" Style="{StaticResource ButtonUnPushed}" Content="SEND CODE" Width="260" Height="30" FontSize="18" FontWeight="Bold" Foreground="Black" Margin="333,0,362,227" Padding="1" Click="LogginRequest_Click" VerticalAlignment="Bottom" Visibility="Hidden"/>
+                            <Grid Margin="333,255,362,227">
+                                <Button x:Name="btn_Verify" Style="{StaticResource ButtonUnPushed}" Content="SEND CODE" Width="260" Height="30" FontSize="18" FontWeight="Bold" Foreground="Black" Padding="1" Click="LogginRequest_Click" VerticalAlignment="Bottom" Visibility="Hidden"/>
+                                <Button x:Name="btn_Reset" Style="{StaticResource ButtonUnPushed}" Content="SEND CODE" Width="260" Height="30" FontSize="18" FontWeight="Bold" Foreground="Black" Padding="1" Click="LogginRequest_Click" VerticalAlignment="Bottom" Visibility="Hidden"/>
+                            </Grid>
                             <Label x:Name="lblVerify_Header" Content="VERIFICATION CODE" HorizontalAlignment="Left" VerticalAlignment="Top" Height="25" Width="300" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Padding="0" Margin="308,178,0,0"/>
                             <TextBox x:Name="txtVerify_Code" HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" Background="{DynamicResource ButtonBackgroundPushed}" BorderBrush="#FFADFFD6" FontSize="18" Foreground="{DynamicResource ActiveText}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" GotFocus="TextBox_GotFocus" FontWeight="Bold" TabIndex="4" LostFocus="Textbox_LostFocus" TextChanged="Textbox_TextChanged" Tag="0" Margin="308,203,0,0" SelectionChanged="TxtVerify_Code_SelectionChanged"/>
                             <Label x:Name="lblVerrify_Info" Content="Verification mail has been sent to your email account. &#xA;Please enter the code below." VerticalAlignment="Top" Height="108" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Padding="0" Margin="100,65,100,0"/>

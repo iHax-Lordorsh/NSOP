@@ -370,7 +370,8 @@ namespace NSOP_Tournament_Pro_Library
             BadEMail,
             ResetPassword,
             UpdatePassword,
-            ResetVerification
+            ResetVerification,
+            ResetPasswordOK
         }
         public static T ParseEnum<T>(string value)
         {

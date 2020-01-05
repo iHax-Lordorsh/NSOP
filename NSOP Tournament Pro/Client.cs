@@ -157,6 +157,7 @@ namespace NSOP_Tournament_Pro
                         case DataAccess.Request.LoggIn:
                             break;
                         // Logg In Answer from server
+                        case DataAccess.Request.ResetPasswordOK:
                         case DataAccess.Request.LoggInOK:
                             Action LoggInOK = delegate
                             {
@@ -177,7 +178,7 @@ namespace NSOP_Tournament_Pro
                         // Reset request to server
                         case DataAccess.Request.ResetPassword:
                             break;
-                            // Reset verification from server
+                        // Reset verification from server
                         case DataAccess.Request.ResetVerification:
                             Action ResetVerification = delegate
                             {
@@ -186,7 +187,7 @@ namespace NSOP_Tournament_Pro
                             };
                             Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, ResetVerification);
                             break;
-                            // Update Password to server
+                        // Update Password to server
                         case DataAccess.Request.UpdatePassword:
                             Action UpdatePassword = delegate
                             {
@@ -220,7 +221,6 @@ namespace NSOP_Tournament_Pro
                             break;
                         case DataAccess.Request.BadEMail:
                             break;
-
 
                     }
                     break;

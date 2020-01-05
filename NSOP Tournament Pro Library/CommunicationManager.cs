@@ -160,11 +160,11 @@ namespace NSOP_Tournament_Pro_Library
                                 this.Request = DataAccess.Request.LoggInFailed;
                             }
                             break;
-                            // Logg In Answer from Server
+                        // Logg In Answer from Server
                         case DataAccess.Request.LoggInOK:
 
                             break;
-                            // Logg In Answer from Server
+                        // Logg In Answer from Server
                         case DataAccess.Request.LoggInFailed:
                             break;
 
@@ -215,12 +215,16 @@ namespace NSOP_Tournament_Pro_Library
                         case DataAccess.Request.UpdatePassword:
                             if (Person.UpdatePassword(_person) == true)
                             {
-                                this.Request = DataAccess.Request.LoggInOK;
+                                this.Request = DataAccess.Request.ResetPasswordOK;
                             }
                             else
                             {
                                 this.Request = DataAccess.Request.BadEMail;
                             }
+                            break;
+                        case DataAccess.Request.ResetVerification:
+                            break;
+                        case DataAccess.Request.ResetPasswordOK:
                             break;
                     }
                     this.ObjectType = _person.ToBytes();

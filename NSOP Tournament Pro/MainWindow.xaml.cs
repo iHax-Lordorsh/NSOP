@@ -322,7 +322,8 @@ namespace NSOP_Tournament_Pro
         {
             UpdateAdmin(person);
             UpdateAdminSite();
-            
+            brdVerify.Visibility = Visibility.Hidden;
+            brdResetPassword.Visibility = Visibility.Hidden;
             brdLoggin.Visibility = Visibility.Hidden;
             brdErrorMessage.Visibility = Visibility.Hidden;
             brdBackground.IsEnabled = true;
@@ -620,9 +621,13 @@ namespace NSOP_Tournament_Pro
                         //Registrer Player
                         UpdateAdminPerson();
                         client.SendObject(UpdateCommunicationPacket(DataAccess.Request.Registrer, _adminPerson.ToBytes(), DataAccess.ClassType.Person));
+                        btn_Verify.Visibility = Visibility.Visible;
+                        btn_Reset.Visibility = Visibility.Hidden;
                     }
                     break;
                 case "BTN_FORGOTPASSWORD":
+                    btn_Verify.Visibility = Visibility.Hidden;
+                    btn_Reset.Visibility = Visibility.Visible;
                     brdForgotPassword.Visibility = Visibility.Visible;
                     break;
                 case "BTN_SENDRESETMAIL":
@@ -636,8 +641,12 @@ namespace NSOP_Tournament_Pro
                     client.SendObject(UpdateCommunicationPacket(DataAccess.Request.UpdatePassword, _adminPerson.ToBytes(), DataAccess.ClassType.Person));
                     break;
                 case "BTN_VERIFY":
-                    UpdateAdminPerson();                  
+                    UpdateAdminPerson();
                     client.SendObject(UpdateCommunicationPacket(DataAccess.Request.VerifyOK, _adminPerson.ToBytes(), DataAccess.ClassType.Person));
+                    break;
+                case "BTN_RESET":
+                    UpdateAdminPerson();
+                    client.SendObject(UpdateCommunicationPacket(DataAccess.Request.ResetPasswordOK, _adminPerson.ToBytes(), DataAccess.ClassType.Person));
                     break;
             }
         }
