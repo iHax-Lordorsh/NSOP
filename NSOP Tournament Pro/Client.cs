@@ -139,9 +139,9 @@ namespace NSOP_Tournament_Pro
         string _packet = DataAccess.GetPacket(buffer);
             if (_packet !="")
             {
-                switch (DataAccess.ParseEnum<DataAccess.PacketType>(_packet))
+                switch (DataAccess.ParseEnum<DataAccess.ClassType>(_packet))
                 {
-                    case DataAccess.PacketType.Person:
+                    case DataAccess.ClassType.Person:
                         // 
                         Action action = delegate
                         {
@@ -150,21 +150,21 @@ namespace NSOP_Tournament_Pro
                         };
                         Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, action);
                         break;
-                    case DataAccess.PacketType.PersonList:
+                    case DataAccess.ClassType.PersonList:
                         break;
-                    case DataAccess.PacketType.Tournament:
+                    case DataAccess.ClassType.Tournament:
                         break;
-                    case DataAccess.PacketType.Blinds:
+                    case DataAccess.ClassType.Blinds:
                         break;
-                    case DataAccess.PacketType.Payouts:
+                    case DataAccess.ClassType.Payouts:
                         break;
-                    case DataAccess.PacketType.Points:
+                    case DataAccess.ClassType.Points:
                         break;
-                    case DataAccess.PacketType.DataVerify:
+                    case DataAccess.ClassType.DataVerify:
                         break;
-                    case DataAccess.PacketType.Action:
+                    case DataAccess.ClassType.Action:
                         break;
-                    case DataAccess.PacketType.Packet:
+                    case DataAccess.ClassType.Packet:
                         break;
 
                 }
