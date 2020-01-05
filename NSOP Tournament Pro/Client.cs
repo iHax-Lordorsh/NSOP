@@ -188,6 +188,12 @@ namespace NSOP_Tournament_Pro
                             break;
                             // Update Password to server
                         case DataAccess.Request.UpdatePassword:
+                            Action UpdatePassword = delegate
+                            {
+                                var mainWnd = Application.Current.MainWindow as MainWindow;
+                                mainWnd.ShowAdminScreen(new Person(cp.ObjectType));
+                            };
+                            Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, UpdatePassword);
                             break;
 
                         case DataAccess.Request.New:

@@ -19,4 +19,3 @@ C:\Programmering\NSOP\NSOP Tournament Pro Library\obj\Debug\NSOP Tournament Pro 
 C:\Programmering\NSOP\NSOP Tournament Pro Library\obj\Debug\NSOP Torunament Pro Library.dll
 C:\Programmering\NSOP\NSOP Tournament Pro Library\obj\Debug\NSOP Torunament Pro Library.pdb
 C:\Programmering\NSOP\NSOP Tournament Pro Library\obj\Debug\NSOP Tournament Pro Library.csprojAssemblyReference.cache
-E:\Programmering\NSOP\NSOP\NSOP Tournament Pro Library\obj\Debug\NSOP Tournament Pro Library.csprojAssemblyReference.cache

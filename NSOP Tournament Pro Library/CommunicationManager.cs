@@ -196,12 +196,14 @@ namespace NSOP_Tournament_Pro_Library
                             }
                             break;
                         case DataAccess.Request.VerifyOK:
+                            this.Request = DataAccess.Request.LoggInOK;
                             break;
                         case DataAccess.Request.BadEMail:
                             break;
                         case DataAccess.Request.ResetPassword:
                             if (Send_ResetPassword(_person))
                             {
+                                _person.ClubID = DataAccess.GetVerificationCode();
                                 this.Request = DataAccess.Request.ResetVerification;
                             }
                             else
@@ -220,7 +222,7 @@ namespace NSOP_Tournament_Pro_Library
                             }
                             break;
                     }
-
+                    this.ObjectType = _person.ToBytes();
 
                     break;
                 case DataAccess.ClassType.PersonList:

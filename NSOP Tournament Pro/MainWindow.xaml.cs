@@ -635,6 +635,10 @@ namespace NSOP_Tournament_Pro
                     _adminPerson.PassWord = txt_Loggin_PW_3.Password.ToString();
                     client.SendObject(UpdateCommunicationPacket(DataAccess.Request.UpdatePassword, _adminPerson.ToBytes(), DataAccess.ClassType.Person));
                     break;
+                case "BTN_VERIFY":
+                    UpdateAdminPerson();                  
+                    client.SendObject(UpdateCommunicationPacket(DataAccess.Request.VerifyOK, _adminPerson.ToBytes(), DataAccess.ClassType.Person));
+                    break;
             }
         }
 
@@ -736,50 +740,7 @@ namespace NSOP_Tournament_Pro
         {
             USS.Visibility = Visibility.Visible;
         }
-        private void Verify_Click(object sender, RoutedEventArgs e)
-        {
-            switch (DataAccess.ParseEnum<DataAccess.Request>(_adminPerson.ActionType))
-            {
-                case DataAccess.Request.New:
-                    break;
-                case DataAccess.Request.ClubUpdate:
-                    break;
-                case DataAccess.Request.PersonUpdate:
-                    break;
-                case DataAccess.Request.Delete:
-                    break;
-                case DataAccess.Request.Get:
-                    break;
-                case DataAccess.Request.Getall:
-                    break;
-                case DataAccess.Request.Registrer:
-                    break;
-                case DataAccess.Request.LoggIn:
-                    break;
-                case DataAccess.Request.LoggInOK:
-                    break;
-                case DataAccess.Request.LoggInFailed:
-                    break;
-                case DataAccess.Request.PersonExist:
-                    break;
-                case DataAccess.Request.PersonCreated:
-                    break;
-                case DataAccess.Request.Verify:
-                    UpdateAdminPerson();
-                    _adminPerson.ActionType = DataAccess.Request.VerifyOK.ToString();
-                    client.SendObject(_adminPerson.ToBytes());
-                    break;
-                case DataAccess.Request.VerifyOK:
-                    break;
-                case DataAccess.Request.BadEMail:
-                    break;
-                case DataAccess.Request.ResetPassword:
-                    // xxx show reset password screen
-                    brdVerify.Visibility = Visibility.Hidden;
-                    brdResetPassword.Visibility = Visibility.Visible;
-                    break;
-            }
-        }
+ 
         private void Btn_ExitAll_Click(object sender, RoutedEventArgs e)
         {
             brdVerify.Visibility = Visibility.Hidden;
