@@ -221,13 +221,13 @@ namespace NSOP_Tournament_Pro
                 case DataAccess.Request.Getall:
                     break;
                 case DataAccess.Request.Registrer:
-                    ShowAdminScreen();
+                    //ShowAdminScreen();
                     break;
                 case DataAccess.Request.LoggIn:
                     break;
                 case DataAccess.Request.LoggInOK:
                     // Loggin Player, procced to admin screen
-                    ShowAdminScreen();
+                    //ShowAdminScreen();
                     break;
                 case DataAccess.Request.LoggInFailed:
                     // Player Cant logg inn
@@ -246,11 +246,11 @@ namespace NSOP_Tournament_Pro
                     ShowErrorMessage(_Header, _Sub, _Text, _Fotter);
                     break;
                 case DataAccess.Request.PersonCreated:
-                    ShowAdminScreen();
+                    //ShowAdminScreen();
                     break;
                 case DataAccess.Request.PersonUpdate:
         /////////// xxx remove
-                    ShowAdminScreen();
+                    //ShowAdminScreen();
                     break;
                 case DataAccess.Request.VerifyOK:
                     break;
@@ -593,13 +593,8 @@ namespace NSOP_Tournament_Pro
                     if (txt_Loggin_5.Text.Length >= 7 && txt_Loggin_PW_1.Password.Length >= 8)
                     {
                         //Check if Person exists
-                        //UpdateAdminPerson();
-                        //_adminPerson.ActionType = "LoggInn";
-                        //client.SendObject(_adminPerson.ToBytes());
-                        Person ppp = new Person();
-                        ppp.Picture = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject("Avatar_1")));
-
-                        client.SendObject(UpdateCommunicationPacket(DataAccess.Request.LoggIn, ppp.ToBytes(), DataAccess.ClassType.Person));
+                        UpdateAdminPerson();
+                        client.SendObject(UpdateCommunicationPacket(DataAccess.Request.LoggIn, _adminPerson.ToBytes(), DataAccess.ClassType.Person));
                     }
                     break;
                 case "BTN_NEWACCOUNT":

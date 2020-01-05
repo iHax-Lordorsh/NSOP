@@ -18,3 +18,9 @@ C:\Programmering\NSOP\NSOP Tournament Pro Library\bin\Debug\System.Drawing.Commo
 C:\Programmering\NSOP\NSOP Tournament Pro Library\obj\Debug\NSOP Tournament Pro Library.csproj.CopyComplete
 C:\Programmering\NSOP\NSOP Tournament Pro Library\obj\Debug\NSOP Torunament Pro Library.dll
 C:\Programmering\NSOP\NSOP Tournament Pro Library\obj\Debug\NSOP Torunament Pro Library.pdb
+C:\Users\chris\Source\Repos\iHax-Lordorsh\NSOP\NSOP Tournament Pro Library\bin\Debug\NSOP Torunament Pro Library.dll
+C:\Users\chris\Source\Repos\iHax-Lordorsh\NSOP\NSOP Tournament Pro Library\bin\Debug\NSOP Torunament Pro Library.pdb
+C:\Users\chris\Source\Repos\iHax-Lordorsh\NSOP\NSOP Tournament Pro Library\bin\Debug\System.Drawing.Common.dll
+C:\Users\chris\Source\Repos\iHax-Lordorsh\NSOP\NSOP Tournament Pro Library\obj\Debug\NSOP Tournament Pro Library.csproj.CopyComplete
+C:\Users\chris\Source\Repos\iHax-Lordorsh\NSOP\NSOP Tournament Pro Library\obj\Debug\NSOP Torunament Pro Library.dll
+C:\Users\chris\Source\Repos\iHax-Lordorsh\NSOP\NSOP Tournament Pro Library\obj\Debug\NSOP Torunament Pro Library.pdb

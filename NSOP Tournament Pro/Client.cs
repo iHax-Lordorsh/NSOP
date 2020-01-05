@@ -105,7 +105,7 @@ namespace NSOP_Tournament_Pro
                                 }
                                 catch (Exception)
                                 {
-                                    Console.WriteLine("Packet Recieved: " + _received.ToString() + " Continue Recieving ...");
+                                    string X = "Packet Recieved: " + _received.ToString() + " Continue Recieving ...";
                                 }
                                 //if (DataManager(_bufferTotal) != "")
                                 //{
@@ -124,7 +124,7 @@ namespace NSOP_Tournament_Pro
                                 else
                                     throw ex;  // any serious error occurr
                             }
-                        } while (_received < _size);
+                        } while (_packetRecieved != true);
 
                         //Console.WriteLine("Done : " + ServerSocket.RemoteEndPoint.ToString());
                         _received = 0;
