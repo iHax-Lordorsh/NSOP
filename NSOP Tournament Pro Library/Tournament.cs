@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace NSOP_Torunament_Pro_Library
+namespace NSOP_Tournament_Pro_Library
 {
     [Serializable]
     public class Tournament
