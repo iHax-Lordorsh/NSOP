@@ -31,7 +31,6 @@ using System.Collections;
 using System.Resources;
 using System.Reflection;
 using NSOP_Tournament_Pro_Library;
-using NSOP_Torunament_Pro_Library;
 
 namespace NSOP_Tournament_Pro
 {
@@ -595,7 +594,7 @@ namespace NSOP_Tournament_Pro
                         //UpdateAdminPerson();
                         //_adminPerson.ActionType = "LoggInn";
                         //client.SendObject(_adminPerson.ToBytes());
-                        client.SendObject(UpdateCommunicationPacket(DataAccess.Request.LoggIn, new Person().ToBytes(), DataAccess.ClassType.Person);
+                        client.SendObject(UpdateCommunicationPacket(DataAccess.Request.LoggIn, new Person().ToBytes(), DataAccess.ClassType.Person));
                     }
                     break;
                 case "BTN_NEWACCOUNT":

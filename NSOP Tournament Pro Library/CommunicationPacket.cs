@@ -7,12 +7,12 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NSOP_Torunament_Pro_Library
+namespace NSOP_Tournament_Pro_Library
 {
     [Serializable]
     public class CommunicationPacket
     {
-        public int Size { get; set; }
+        public long Size { get; set; }
         public DataAccess.ClassType ClassType { get; set; }
         public DataAccess.Request Request { get; set; }
         public object ObjectType { get; set; }

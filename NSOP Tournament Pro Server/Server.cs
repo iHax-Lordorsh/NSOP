@@ -1,5 +1,4 @@
-﻿using NSOP_Torunament_Pro_Library;
-using NSOP_Tournament_Pro_Library;
+﻿using NSOP_Tournament_Pro_Library;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -41,7 +40,13 @@ namespace NSOP_Tournament_Pro_Server
                 _clients.Add(new ClientData(_listenerSocket.Accept()));
             }
         }
-
+        public static long BytesToInt32(byte[] buff, int offset)
+        {
+            return (buff[offset + 0] << 24)
+                 + (buff[offset + 1] << 16)
+                 + (buff[offset + 2] << 8)
+                 + (buff[offset + 3]);
+        }
         // clientdata thread - receives data from each client individually
         public static void Data_IN(object vSocket)
         {
@@ -52,6 +57,7 @@ namespace NSOP_Tournament_Pro_Server
             byte[] _buffer = new byte[clientSocket.ReceiveBufferSize]; //buffer recieved
             int _size = clientSocket.ReceiveBufferSize; // how many byte recieved this time
             int _offset = 0;
+            long _x = 0;
             for (; ; )
             {
                 try
@@ -66,7 +72,7 @@ namespace NSOP_Tournament_Pro_Server
                             {
                                 _received += clientSocket.Receive(_buffer, _offset + _received, _size - _received, SocketFlags.Partial);
                                 // _bufferTotal = DataAccess.ConvertByte(_bufferTotal, _buffer, _received);
-                                _size = _buffer[3];
+                                long a = Server.BytesToInt32(_buffer, 3);
 
                                 if (DataManager(_buffer, clientSocket) != "")
                                 {

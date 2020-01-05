@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace NSOP_Torunament_Pro_Library
+namespace NSOP_Tournament_Pro_Library
 {
     public static class GetRandom
     {

@@ -12,7 +12,6 @@ using System.Drawing.Imaging;
 using System.Linq;
 using System.Data;
 using System.Data.SqlClient;
-using NSOP_Torunament_Pro_Library;
 using System.Threading;
 using System.Windows;
 using System.Resources;
