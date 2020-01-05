@@ -291,7 +291,7 @@
                             <Button x:Name="btn_SendResetMail" Style="{StaticResource ButtonUnPushed}" Content="SEND" Width="260" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="Black" Margin="0,0,0,-3" Padding="1" IsCancel="True" Click="LogginRequest_Click"/>
                         </Grid>
                     </Border>
-                    <Border x:Name="brdResetPassword" BorderThickness="3" Background="#FF003200" CornerRadius="25" RenderTransformOrigin="0.5,0.5" Padding="4,0,0,0" Margin="0" d:IsHidden="True">
+                    <Border x:Name="brdResetPassword" BorderThickness="3" Background="#FF003200" CornerRadius="25" RenderTransformOrigin="0.5,0.5" Padding="4,0,0,0" Margin="0">
                         <Border.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>

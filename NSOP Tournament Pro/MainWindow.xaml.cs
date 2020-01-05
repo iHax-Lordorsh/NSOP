@@ -49,7 +49,11 @@ namespace NSOP_Tournament_Pro
         //private readonly List<CultureInfo> cultures = new List<CultureInfo>();
         public Client client = new Client();
         public Person _adminPerson = new Person();
- 
+        private string _Header;
+        private string _Sub;
+        private string _Text;
+        private string _Fotter;
+
         void Cam_NewFrame(object sender, NewFrameEventArgs eventArgs)
         {
             try
@@ -194,9 +198,6 @@ namespace NSOP_Tournament_Pro
             switch (DataAccess.ParseEnum<DataAccess.Request>(_p.ActionType))
             {
                 case DataAccess.Request.ResetPassword:
-                    brdForgotPassword.Visibility = Visibility.Hidden;
-                    brdVerify.Visibility = Visibility.Visible;
-                    btn_Verify.Tag = _p.ClubID.ToString();
                     break;
                 case DataAccess.Request.BadEMail:
                     _Header = "BAD EMAIL ADDRESS";
@@ -257,6 +258,22 @@ namespace NSOP_Tournament_Pro
             }
         }
 
+        internal void ResetVerification(Person person)
+        {
+            brdForgotPassword.Visibility = Visibility.Hidden;
+            brdVerify.Visibility = Visibility.Visible;
+            btn_Verify.Tag = person.ClubID.ToString();
+        }
+
+        internal void LoggInFailed(Person person)
+        {
+            _Header = "PERSON NOT FOUND";
+            _Sub = "LOGGIN FAILURE";
+            _Text = "NO PERSON WAS FOUND WITH USERNAME OR PASSWORD";
+            _Fotter = "MAKE CHANGES AND TRY AGAIN";
+            ShowErrorMessage(_Header, _Sub, _Text, _Fotter);
+        }
+
         public static System.Windows.Media.Brush BrushBackground(string fileName)
         {
             Image IMG = new Image();
@@ -301,7 +318,7 @@ namespace NSOP_Tournament_Pro
             lbl_Error_Text.Content = text.ToUpper();
             // populate message
         }
-        public void ShowAdminScreen(Person person)
+        internal void ShowAdminScreen(Person person)
         {
             UpdateAdmin(person);
             UpdateAdminSite();
@@ -611,15 +628,12 @@ namespace NSOP_Tournament_Pro
                 case "BTN_SENDRESETMAIL":
                     UpdateAdminPerson();
                     _adminPerson.EMail = txtResetPasswordMail.ToString();
-                    _adminPerson.ActionType = DataAccess.Request.ResetPassword.ToString(); ;
-                    client.SendObject(_adminPerson.ToBytes());
+                    client.SendObject(UpdateCommunicationPacket(DataAccess.Request.ResetPassword, _adminPerson.ToBytes(), DataAccess.ClassType.Person));
                     break;
-                case "RESET PASSWORD":
+                case "BTN_SENDRESETPASSWORD":
                     UpdateAdminPerson();
                     _adminPerson.PassWord = txt_Loggin_PW_3.Password.ToString();
-                    _adminPerson.ActionType = DataAccess.Request.PersonUpdate.ToString();
-
-                    client.SendObject(_adminPerson.ToBytes());
+                    client.SendObject(UpdateCommunicationPacket(DataAccess.Request.UpdatePassword, _adminPerson.ToBytes(), DataAccess.ClassType.Person));
                     break;
             }
         }

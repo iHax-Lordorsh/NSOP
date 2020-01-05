@@ -532,7 +532,7 @@ namespace NSOP_Tournament_Pro_Library
                 cmd.CommandText += $"PassWord = '{DataAccess.PasswordEncryption(person.PassWord)}' ";
 
                 // Where
-                cmd.CommandText += $"WHERE PlayerID = '{person.PlayerID}';";
+                cmd.CommandText += $"WHERE EMail = '{person.EMail}';";
 
 
                 //error = cmd.CommandText;

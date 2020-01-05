@@ -101,11 +101,11 @@ namespace NSOP_Tournament_Pro
                                     CommunicationManager _cp = new CommunicationManager(_buffer);
                                     _packetRecieved = true;
                                     RecievedManager(_cp);
-                                    //  break;
+                                    break;
                                 }
-                                catch (Exception)
+                                catch (Exception e)
                                 {
-                                    Console.WriteLine("Packet Recieved: " + _received.ToString() + " Continue Recieving ...");
+                                    string X =e.ToString();
                                 }
                                 //if (DataManager(_bufferTotal) != "")
                                 //{
@@ -124,7 +124,7 @@ namespace NSOP_Tournament_Pro
                                 else
                                     throw ex;  // any serious error occurr
                             }
-                        } while (_received < _size);
+                        } while (_packetRecieved != true);
 
                         //Console.WriteLine("Done : " + ServerSocket.RemoteEndPoint.ToString());
                         _received = 0;
@@ -147,7 +147,7 @@ namespace NSOP_Tournament_Pro
 
         private static void RecievedManager(CommunicationManager cp)
         {
-            var mainWnd = Application.Current.MainWindow as MainWindow;
+            
             switch (cp.ClassType)
             {
                 case DataAccess.ClassType.Person:
@@ -158,15 +158,38 @@ namespace NSOP_Tournament_Pro
                             break;
                         // Logg In Answer from server
                         case DataAccess.Request.LoggInOK:
-                            Action action = delegate
+                            Action LoggInOK = delegate
                             {
+                                var mainWnd = Application.Current.MainWindow as MainWindow;
                                 mainWnd.ShowAdminScreen(new Person(cp.ObjectType));
                             };
-                            Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, action);
+                            Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, LoggInOK);
                             break;
                         // Logg In Answer from server
                         case DataAccess.Request.LoggInFailed:
+                            Action LoggInFailed = delegate
+                            {
+                                var mainWnd = Application.Current.MainWindow as MainWindow;
+                                mainWnd.LoggInFailed(new Person(cp.ObjectType));
+                            };
+                            Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, LoggInFailed);
                             break;
+                        // Reset request to server
+                        case DataAccess.Request.ResetPassword:
+                            break;
+                            // Reset verification from server
+                        case DataAccess.Request.ResetVerification:
+                            Action ResetVerification = delegate
+                            {
+                                var mainWnd = Application.Current.MainWindow as MainWindow;
+                                mainWnd.ResetVerification(new Person(cp.ObjectType));
+                            };
+                            Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, ResetVerification);
+                            break;
+                            // Update Password to server
+                        case DataAccess.Request.UpdatePassword:
+                            break;
+
                         case DataAccess.Request.New:
                             break;
                         case DataAccess.Request.ClubUpdate:
@@ -191,10 +214,8 @@ namespace NSOP_Tournament_Pro
                             break;
                         case DataAccess.Request.BadEMail:
                             break;
-                        case DataAccess.Request.ResetPassword:
-                            break;
-                        case DataAccess.Request.UpdatePassword:
-                            break;
+
+
                     }
                     break;
                 case DataAccess.ClassType.PersonList:
