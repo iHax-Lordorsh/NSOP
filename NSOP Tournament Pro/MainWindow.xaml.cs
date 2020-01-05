@@ -221,13 +221,13 @@ namespace NSOP_Tournament_Pro
                 case DataAccess.Request.Getall:
                     break;
                 case DataAccess.Request.Registrer:
-                    ShowAdminScreen();
+                    //ShowAdminScreen();
                     break;
                 case DataAccess.Request.LoggIn:
                     break;
                 case DataAccess.Request.LoggInOK:
                     // Loggin Player, procced to admin screen
-                    ShowAdminScreen();
+                    //ShowAdminScreen();
                     break;
                 case DataAccess.Request.LoggInFailed:
                     // Player Cant logg inn
@@ -246,11 +246,11 @@ namespace NSOP_Tournament_Pro
                     ShowErrorMessage(_Header, _Sub, _Text, _Fotter);
                     break;
                 case DataAccess.Request.PersonCreated:
-                    ShowAdminScreen();
+                    //ShowAdminScreen();
                     break;
                 case DataAccess.Request.PersonUpdate:
         /////////// xxx remove
-                    ShowAdminScreen();
+                    //ShowAdminScreen();
                     break;
                 case DataAccess.Request.VerifyOK:
                     break;
