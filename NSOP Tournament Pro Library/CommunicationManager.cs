@@ -187,7 +187,7 @@ namespace NSOP_Tournament_Pro_Library
                         case DataAccess.Request.PersonCreated:
                             break;
                         case DataAccess.Request.Verify:
-                            if (Send_Verification(_person))
+                            if (Send_NewAccountVerification(_person))
                             {
                             }
                             else
@@ -200,7 +200,7 @@ namespace NSOP_Tournament_Pro_Library
                         case DataAccess.Request.BadEMail:
                             break;
                         case DataAccess.Request.ResetPassword:
-                            if (Send_ResetPassword(_person))
+                            if (Send_ResetVerification(_person))
                             {
                                 this.Request = DataAccess.Request.ResetVerification;
                             }
@@ -258,7 +258,7 @@ namespace NSOP_Tournament_Pro_Library
         }
 
 
-        private static bool Send_ResetPassword(Person person)
+        private static bool Send_ResetVerification(Person person)
         {
             bool _IsSendt;
             try
@@ -311,7 +311,7 @@ namespace NSOP_Tournament_Pro_Library
             }
             return _IsSendt;
         }
-        private static bool Send_Verification(Person person)
+        private static bool Send_NewAccountVerification(Person person)
         {
             bool _IsSendt;
             try

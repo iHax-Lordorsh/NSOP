@@ -89,53 +89,7 @@ E:\Programmering\NSOP\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.csp
 E:\Programmering\NSOP\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.csproj.CopyComplete
 E:\Programmering\NSOP\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.exe
 E:\Programmering\NSOP\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.pdb
-C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.csprojAssemblyReference.cache
-C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\ResourceDictionaries\StoryDictionary.baml
-C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\ResourceDictionaries\StyleDictionary.baml
-C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\Simple Styles.baml
-C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\MainWindow.g.cs
-C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserAdminCreator.g.cs
-C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserModuleSimple.g.cs
-C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserItemCard.g.cs
-C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserSalesBox.g.cs
-C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserSalesStand.g.cs
-C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserItemList.g.cs
-C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserSubscription.g.cs
-C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\App.g.cs
-C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\GeneratedInternalTypeHelper.g.cs
-C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro_MarkupCompile.cache
-C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro_MarkupCompile.lref
-C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.exe
-C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.pdb
 E:\Programmering\NSOP\NSOP\NSOP Tournament Pro\bin\Debug\NSOP Torunament Pro Library.pdb
-C:\Programmering\NSOP\NSOP Tournament Pro\bin\Debug\Properties\Resources.resx
-C:\Programmering\NSOP\NSOP Tournament Pro\bin\Debug\NSOP Tournament Pro.exe.config
-C:\Programmering\NSOP\NSOP Tournament Pro\bin\Debug\NSOP Tournament Pro.exe
-C:\Programmering\NSOP\NSOP Tournament Pro\bin\Debug\NSOP Tournament Pro.pdb
-C:\Programmering\NSOP\NSOP Tournament Pro\bin\Debug\AForge.dll
-C:\Programmering\NSOP\NSOP Tournament Pro\bin\Debug\AForge.Controls.dll
-C:\Programmering\NSOP\NSOP Tournament Pro\bin\Debug\AForge.Imaging.dll
-C:\Programmering\NSOP\NSOP Tournament Pro\bin\Debug\AForge.Imaging.Formats.dll
-C:\Programmering\NSOP\NSOP Tournament Pro\bin\Debug\AForge.Math.dll
-C:\Programmering\NSOP\NSOP Tournament Pro\bin\Debug\AForge.Video.dll
-C:\Programmering\NSOP\NSOP Tournament Pro\bin\Debug\AForge.Video.DirectShow.dll
-C:\Programmering\NSOP\NSOP Tournament Pro\bin\Debug\System.Drawing.Common.dll
-C:\Programmering\NSOP\NSOP Tournament Pro\bin\Debug\WindowsBase.dll
-C:\Programmering\NSOP\NSOP Tournament Pro\bin\Debug\NSOP Torunament Pro Library.dll
-C:\Programmering\NSOP\NSOP Tournament Pro\bin\Debug\NSOP Torunament Pro Library.pdb
-C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\App.baml
-C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\MainWindow.baml
-C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserAdminCreator.baml
-C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserModuleSimple.baml
-C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserItemCard.baml
-C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserSalesBox.baml
-C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserSalesStand.baml
-C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserItemList.baml
-C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserSubscription.baml
-C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.g.resources
-C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\NSOP_Tournament_Pro.Properties.Resources.resources
-C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.csproj.GenerateResource.cache
-C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.csproj.CopyComplete
 C:\Users\chris\Source\Repos\iHax-Lordorsh\NSOP\NSOP Tournament Pro\bin\Debug\Properties\Resources.resx
 C:\Users\chris\Source\Repos\iHax-Lordorsh\NSOP\NSOP Tournament Pro\bin\Debug\NSOP Tournament Pro.exe.config
 C:\Users\chris\Source\Repos\iHax-Lordorsh\NSOP\NSOP Tournament Pro\bin\Debug\NSOP Tournament Pro.exe
@@ -182,3 +136,49 @@ C:\Users\chris\Source\Repos\iHax-Lordorsh\NSOP\NSOP Tournament Pro\obj\Debug\NSO
 C:\Users\chris\Source\Repos\iHax-Lordorsh\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.csproj.CopyComplete
 C:\Users\chris\Source\Repos\iHax-Lordorsh\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.exe
 C:\Users\chris\Source\Repos\iHax-Lordorsh\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.pdb
+C:\Programmering\NSOP\NSOP Tournament Pro\bin\Debug\Properties\Resources.resx
+C:\Programmering\NSOP\NSOP Tournament Pro\bin\Debug\NSOP Tournament Pro.exe.config
+C:\Programmering\NSOP\NSOP Tournament Pro\bin\Debug\NSOP Tournament Pro.exe
+C:\Programmering\NSOP\NSOP Tournament Pro\bin\Debug\NSOP Tournament Pro.pdb
+C:\Programmering\NSOP\NSOP Tournament Pro\bin\Debug\AForge.dll
+C:\Programmering\NSOP\NSOP Tournament Pro\bin\Debug\AForge.Controls.dll
+C:\Programmering\NSOP\NSOP Tournament Pro\bin\Debug\AForge.Imaging.dll
+C:\Programmering\NSOP\NSOP Tournament Pro\bin\Debug\AForge.Imaging.Formats.dll
+C:\Programmering\NSOP\NSOP Tournament Pro\bin\Debug\AForge.Math.dll
+C:\Programmering\NSOP\NSOP Tournament Pro\bin\Debug\AForge.Video.dll
+C:\Programmering\NSOP\NSOP Tournament Pro\bin\Debug\AForge.Video.DirectShow.dll
+C:\Programmering\NSOP\NSOP Tournament Pro\bin\Debug\System.Drawing.Common.dll
+C:\Programmering\NSOP\NSOP Tournament Pro\bin\Debug\WindowsBase.dll
+C:\Programmering\NSOP\NSOP Tournament Pro\bin\Debug\NSOP Torunament Pro Library.dll
+C:\Programmering\NSOP\NSOP Tournament Pro\bin\Debug\NSOP Torunament Pro Library.pdb
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.csprojAssemblyReference.cache
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\ResourceDictionaries\StoryDictionary.baml
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\ResourceDictionaries\StyleDictionary.baml
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\Simple Styles.baml
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\MainWindow.g.cs
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserAdminCreator.g.cs
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserModuleSimple.g.cs
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserItemCard.g.cs
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserSalesBox.g.cs
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserSalesStand.g.cs
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserItemList.g.cs
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserSubscription.g.cs
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\App.g.cs
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro_MarkupCompile.cache
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro_MarkupCompile.lref
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\App.baml
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\MainWindow.baml
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserAdminCreator.baml
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserModuleSimple.baml
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserItemCard.baml
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserSalesBox.baml
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserSalesStand.baml
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserItemList.baml
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserSubscription.baml
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.g.resources
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\NSOP_Tournament_Pro.Properties.Resources.resources
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.csproj.GenerateResource.cache
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.csproj.CopyComplete
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.exe
+C:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.pdb
