@@ -66,6 +66,7 @@ namespace NSOP_Tournament_Pro_Server
                             {
                                 _received += clientSocket.Receive(_buffer, _offset + _received, _size - _received, SocketFlags.Partial);
                                 // _bufferTotal = DataAccess.ConvertByte(_bufferTotal, _buffer, _received);
+                                _size = _buffer[3];
 
                                 if (DataManager(_buffer, clientSocket) != "")
                                 {
@@ -82,7 +83,15 @@ namespace NSOP_Tournament_Pro_Server
                                     Thread.Sleep(30);
                                 }
                                 else
-                                    throw ex;  // any serious error occurr
+                                {
+                                    // throw ex;  // any serious error occurr
+                                    // xxx her mister vi connection
+                                    // 
+                                    Action action = delegate
+                                    {
+                                        RemoveClient(clientSocket);
+                                    };
+                                }
                             }
                         } while (_received < _size);
 
@@ -99,6 +108,32 @@ namespace NSOP_Tournament_Pro_Server
             }
         }
 
+        private static void RemoveClient(Socket clientSocket)
+        {
+            int _clientTeller = -1;
+            bool _funnet = false;
+            Console.WriteLine(clientSocket.RemoteEndPoint.ToString() + " - Clients: " + _clients.Count.ToString());
+            // search for client who is disconnectet
+            foreach (ClientData _c in _clients)
+            {
+                _clientTeller++;
+                if (_c._clientSocket.RemoteEndPoint == clientSocket.RemoteEndPoint)
+                {
+                    _funnet = true;
+                    break;
+                }
+            }
+            // Remove Client from client list
+            if (_funnet)
+            {
+                _clients.ElementAt(_clientTeller)._clientSocket.Dispose();
+                _clients.ElementAt(_clientTeller)._clientThread.Abort();
+                _clients.RemoveAt(_clientTeller);
+                Console.WriteLine("Clients: " + _clients.Count.ToString());
+            }
+
+        }
+        
         //data manager
         public static string DataManager(byte[] buffer, Socket clientSocket)
         {
@@ -106,19 +141,27 @@ namespace NSOP_Tournament_Pro_Server
             string _Packet = DataAccess.GetPacket(buffer);
             if (_Packet != "")
             {
-                switch (DataAccess.ParseEnum<DataAccess.PacketType>(_Packet))
+                switch (DataAccess.ParseEnum<DataAccess.ClassType>(_Packet))
                 {
-                    case DataAccess.PacketType.Person:
+                    case DataAccess.ClassType.Person:
                         // converting bytes to Peron
                         Person _person = new Person(buffer);
                         _person = Person.ProsessPerson(_person);
-                        if (DataAccess.ParseEnum<DataAccess.ActionType>(_person.ActionType) == DataAccess.ActionType.Verify)
+                        if (DataAccess.ParseEnum<DataAccess.Request>(_person.ActionType) == DataAccess.Request.Verify)
                         {
                             if (Send_Verification(_person))
                             { }
                             else
                             {
-                                _person.ActionType = DataAccess.ActionType.BadEMail.ToString();
+                                _person.ActionType = DataAccess.Request.BadEMail.ToString();
+                            }
+                        } else if (DataAccess.ParseEnum<DataAccess.Request>(_person.ActionType) == DataAccess.Request.ResetPassword)
+                        {
+                            if (Send_ResetPassword(_person))
+                            { }
+                            else
+                            {
+                                _person.ActionType = DataAccess.Request.BadEMail.ToString();
                             }
                         }
                         Console.WriteLine(_person.PlayerID + "   " + _person.FirstName);
@@ -126,26 +169,26 @@ namespace NSOP_Tournament_Pro_Server
                         // Sending back if its ok or not
                         Replay(_person.ToBytes(), _person.ClassType, clientSocket);
                         break;
-                    case DataAccess.PacketType.Tournament:
+                    case DataAccess.ClassType.Tournament:
                         Tournament _tournament = new Tournament(buffer);
                         Console.WriteLine(_tournament.TournamentID + "   " + _tournament.TournamentName);
                         // Save and Reply
                         _ = _tournament.Save();
                         Replay(_tournament.ToBytes(), _tournament.ClassType, clientSocket);
                         break;
-                    case DataAccess.PacketType.Action:
+                    case DataAccess.ClassType.Action:
                         break;
-                    case DataAccess.PacketType.Packet:
+                    case DataAccess.ClassType.Packet:
                         break;
-                    case DataAccess.PacketType.Blinds:
+                    case DataAccess.ClassType.Blinds:
                         break;
-                    case DataAccess.PacketType.Payouts:
+                    case DataAccess.ClassType.Payouts:
                         break;
-                    case DataAccess.PacketType.Points:
+                    case DataAccess.ClassType.Points:
                         break;
-                    case DataAccess.PacketType.DataVerify:
+                    case DataAccess.ClassType.DataVerify:
                         break;
-                    case DataAccess.PacketType.PersonList:
+                    case DataAccess.ClassType.PersonList:
                         break;
                 }
             }
@@ -162,29 +205,29 @@ namespace NSOP_Tournament_Pro_Server
                 if (_c._clientSocket.RemoteEndPoint == clientSocket.RemoteEndPoint)
                 {
                     // create return data
-                    switch (DataAccess.ParseEnum<DataAccess.PacketType>(packet))
+                    switch (DataAccess.ParseEnum<DataAccess.ClassType>(packet))
                     {
-                        case DataAccess.PacketType.Person:
+                        case DataAccess.ClassType.Person:
                             Person _p = new Person(obj);
                             string x = _p.ClassType;
                             _c._clientSocket.Send(_p.ToBytes());
 
                             break;
-                        case DataAccess.PacketType.Tournament:
+                        case DataAccess.ClassType.Tournament:
                             break;
-                        case DataAccess.PacketType.Blinds:
+                        case DataAccess.ClassType.Blinds:
                             break;
-                        case DataAccess.PacketType.Payouts:
+                        case DataAccess.ClassType.Payouts:
                             break;
-                        case DataAccess.PacketType.Points:
+                        case DataAccess.ClassType.Points:
                             break;
-                        case DataAccess.PacketType.DataVerify:
+                        case DataAccess.ClassType.DataVerify:
                             break;
-                        case DataAccess.PacketType.Action:
+                        case DataAccess.ClassType.Action:
                             break;
-                        case DataAccess.PacketType.Packet:
+                        case DataAccess.ClassType.Packet:
                             break;
-                        case DataAccess.PacketType.PersonList:
+                        case DataAccess.ClassType.PersonList:
                             // return PersonList
                             PersonList _pl = new PersonList(obj);
                             string xl = _pl.ClassType;
@@ -196,34 +239,89 @@ namespace NSOP_Tournament_Pro_Server
                 }
             }
         }
-        public static void Receive(Socket socket, byte[] buffer, int offset, int size)
+        //public static void Receive(Socket socket, byte[] buffer, int offset, int size)
+        //{
+        //    //int startTickCount = Environment.TickCount;
+        //    int received = 0;  // how many bytes is already received
+        //    do
+        //    {
+        //        //if (Environment.TickCount > startTickCount + timeout)
+        //        //    throw new Exception("Timeout.");
+        //        try
+        //        {
+        //            received += socket.Receive(buffer, offset + received, size - received, SocketFlags.None);
+        //            Console.WriteLine("_readBytes : " + received.ToString() + " _BufferTotal : " + buffer.Length.ToString());
+        //            DataManager(buffer, socket);
+        //        }
+        //        catch (SocketException ex)
+        //        {
+        //            if (ex.SocketErrorCode == SocketError.WouldBlock ||
+        //                ex.SocketErrorCode == SocketError.IOPending ||
+        //                ex.SocketErrorCode == SocketError.NoBufferSpaceAvailable)
+        //            {
+        //                // socket buffer is probably empty, wait and try again
+        //                Thread.Sleep(30);
+        //                Console.WriteLine(ex.ToString());
+        //            }
+        //            else
+        //                throw ex;  // any serious error occurr
+        //            //xxx her mister vi connection
+
+        //        }
+        //    } while (received < size);
+        //}
+        private static bool Send_ResetPassword(Person person)
         {
-            //int startTickCount = Environment.TickCount;
-            int received = 0;  // how many bytes is already received
-            do
+            bool _IsSendt;
+            try
             {
-                //if (Environment.TickCount > startTickCount + timeout)
-                //    throw new Exception("Timeout.");
-                try
-                {
-                    received += socket.Receive(buffer, offset + received, size - received, SocketFlags.None);
-                    Console.WriteLine("_readBytes : " + received.ToString() + " _BufferTotal : " + buffer.Length.ToString());
-                    DataManager(buffer, socket);
-                }
-                catch (SocketException ex)
-                {
-                    if (ex.SocketErrorCode == SocketError.WouldBlock ||
-                        ex.SocketErrorCode == SocketError.IOPending ||
-                        ex.SocketErrorCode == SocketError.NoBufferSpaceAvailable)
-                    {
-                        // socket buffer is probably empty, wait and try again
-                        Thread.Sleep(30);
-                        Console.WriteLine(ex.ToString());
-                    }
-                    else
-                        throw ex;  // any serious error occurr
-                }
-            } while (received < size);
+                string _smtpClient = "smtp-mail.outlook.com";
+                //string _mailFrom = "post.nsop@outlook.com";
+                //string _mailPassword = "62N24s34o199p";
+                string _mailFrom = "ovehauge@hotmail.no";
+                string _mailPassword = "OSilverO1967O";
+                int _smtpPort = 25;
+
+                MailMessage _mail = new MailMessage();
+                //put your SMTP address and port here.
+                SmtpClient _SmtpServer = new SmtpClient(_smtpClient, _smtpPort);// smtp-mail.outlook.com
+                //Put the email address
+                _mail.From = new MailAddress(_mailFrom);
+                //Put the email where you want to send.
+                _mail.To.Add(person.UserName);
+
+                _mail.Subject = "NSOP Reset password verification";
+
+                StringBuilder _sb = new StringBuilder();
+                _sb.AppendLine("Your verification code is " + person.ClubID.ToString());
+
+                _mail.Body = _sb.ToString();
+
+                //Your log file path
+                //System.Net.Mail.Attachment attachment = new System.Net.Mail.Attachment(@"C:\Logs\CheckoutPOS.log");
+                //mail.Attachments.Add(attachment);
+
+                //Your username and password!
+
+                //SmtpServer.Credentials = new System.Net.NetworkCredential("ovehauge@hotmail.no", "Silver1967X");
+                _SmtpServer.Credentials = new System.Net.NetworkCredential(_mailFrom, _mailPassword);
+                //Set Smtp Server port
+                //      iVerdi = Convert.ToInt16(HENT_BASE_VERDI(dbOppsett, "DB_Mail", "Navn", dbMail, "", "", "SmtpServerPort"));
+                _SmtpServer.Port = 25;
+                //  bool xBool =Convert.ToBoolean(HENT_BASE_VERDI(dbOppsett, "DB_Mail", "Navn", dbMail, "", "", "SmtpEnable"));
+                _SmtpServer.EnableSsl = true;
+
+                _SmtpServer.Send(_mail);
+                _SmtpServer.Dispose();
+                _IsSendt = true;
+                //MessageBox.Show("The exception has been sent! :)");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                _IsSendt = false;
+            }
+            return _IsSendt;
         }
         private static bool Send_Verification(Person person)
         {
@@ -359,23 +457,19 @@ namespace NSOP_Tournament_Pro_Server
             _id = Guid.NewGuid().ToString();
             _clientThread = new Thread(Server.Data_IN);
             _clientThread.Start(_clientSocket);
-            SendRegistrationPacket();
+            EndThread();
         }
-
         public ClientData(Socket clientSocket)
         {
             this._clientSocket = clientSocket;
             _id = Guid.NewGuid().ToString();
             _clientThread = new Thread(Server.Data_IN);
             _clientThread.Start(_clientSocket);
-            SendRegistrationPacket();
         }
-
-        public void SendRegistrationPacket()
+        public void EndThread()
         {
-            //Packet p = new Packet(Packet.PacketType.Registration, "server");
-            //p.Gdata.Add(_id);
-            //_clientSocket.Send(p.ToBytes());
+            _clientSocket.Dispose();
+            _clientThread.Abort();
         }
     }
 }
