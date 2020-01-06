@@ -154,7 +154,7 @@ namespace NSOP_Tournament_Pro
                     switch (cp.Request)
                     {
                         // Logg In Request to server
-                        case DataAccess.Request.LoggIn:
+                        case DataAccess.Request.LogIn:
                             break;
                         // Logg In Answer from server
                         case DataAccess.Request.ResetPasswordOK:
