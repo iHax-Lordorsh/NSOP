@@ -71,6 +71,7 @@ namespace NSOP_Tournament_Pro_Library
         //            person.PlayerID = DataAccess.FillID(DataAccess.IdType.Person);
         //            _ = person.SaveNew();
         //            // xx check if players is saved ok
+
         //            break;
         //        case DataAccess.Request.ClubUpdate:
 
