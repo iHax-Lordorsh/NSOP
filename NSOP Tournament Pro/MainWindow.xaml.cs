@@ -92,12 +92,12 @@ namespace NSOP_Tournament_Pro
         private void Setup()
         {
             // Visible Settings
-            brdForgotPassword.Visibility = Visibility.Hidden;
-            brdVerify.Visibility = Visibility.Hidden;
+            brd_ForgotPassword.Visibility = Visibility.Hidden;
+            brd_Verify.Visibility = Visibility.Hidden;
             brdLoggin.Visibility = Visibility.Visible;
             btn_LoggIn.Visibility = Visibility.Visible;
             btn_NewAccount.Visibility = Visibility.Hidden;
-            brdResetPassword.Visibility = Visibility.Hidden;
+            brd_ResetPassword.Visibility = Visibility.Hidden;
             USS.Visibility = Visibility.Hidden;
             USS.Setup();
             // Value Settings
@@ -111,6 +111,8 @@ namespace NSOP_Tournament_Pro
 
             // User Initialize
             uSubscription.FillSalesBoxes();
+            
+            
         }
 
         private List<Border> UpdateAvatars()
@@ -188,90 +190,100 @@ namespace NSOP_Tournament_Pro
             txt_Loggin_6.Visibility = Visibility.Hidden;
             txt_Loggin_PW_1.Visibility = Visibility.Visible;
         }
-        private void PerformPersonAction(Person _p)
-        {
-            string _Header;
-            string _Sub;
-            string _Text;
-            string _Fotter;
-            UpdateAdmin(_p);
-            switch (DataAccess.ParseEnum<DataAccess.Request>(_p.ActionType))
-            {
-                case DataAccess.Request.ResetPassword:
-                    break;
-                case DataAccess.Request.BadEMail:
-                    _Header = "BAD EMAIL ADDRESS";
-                    _Sub = "REGISTRATION FAILURE";
-                    _Text = "EMAIL ADDRESS DOESN'T EXIST";
-                    _Fotter = "MAKE CHANGES AND TRY AGAIN";
-                    ShowErrorMessage(_Header, _Sub, _Text, _Fotter);
-                    break;
-                case DataAccess.Request.Verify:
-                    brdVerify.Visibility = Visibility.Visible;
-                    btn_Verify.Tag = _p.ClubID.ToString();
-                    break;
-                case DataAccess.Request.New:
-                    break;
-                case DataAccess.Request.ClubUpdate:
-                    //UpdateAdminSite();
-                    break;
-                case DataAccess.Request.Delete:
-                    break;
-                case DataAccess.Request.Get:
-                    break;
-                case DataAccess.Request.Getall:
-                    break;
-                case DataAccess.Request.Registrer:
-                    //ShowAdminScreen();
-                    break;
-                case DataAccess.Request.LoggIn:
-                    break;
-                case DataAccess.Request.LoggInOK:
-                    // Loggin Player, procced to admin screen
-                    //ShowAdminScreen();
-                    break;
-                case DataAccess.Request.LoggInFailed:
-                    // Player Cant logg inn
-                    _Header = "PERSON NOT FOUND";
-                    _Sub = "LOGGIN FAILURE";
-                    _Text = "NO PERSON WAS FOUND WITH USERNAME OR PASSWORD";
-                    _Fotter = "MAKE CHANGES AND TRY AGAIN";
-                    ShowErrorMessage(_Header, _Sub, _Text, _Fotter);
-                    break;
-                case DataAccess.Request.PersonExist:
-                    // Person already exist
-                    _Header = "PERSON EXIST";
-                    _Sub = "REGISTRATION FAILURE";
-                    _Text = "PERSON WITH USERNAME ALREADY EXIST";
-                    _Fotter = "MAKE CHANGES AND TRY AGAIN";
-                    ShowErrorMessage(_Header, _Sub, _Text, _Fotter);
-                    break;
-                case DataAccess.Request.PersonCreated:
-                    //ShowAdminScreen();
-                    break;
-                case DataAccess.Request.PersonUpdate:
-        /////////// xxx remove
-                    //ShowAdminScreen();
-                    break;
-                case DataAccess.Request.VerifyOK:
-                    break;
-            }
-        }
+        //private void PerformPersonAction(Person _p)
+        //{
+        //    string _Header;
+        //    string _Sub;
+        //    string _Text;
+        //    string _Fotter;
+        //    UpdateAdmin(_p);
+        //    switch (DataAccess.ParseEnum<DataAccess.Request>(_p.ActionType))
+        //    {
+        //        case DataAccess.Request.ResetPassword:
+        //            break;
+        //        case DataAccess.Request.BadEMail:
+        //            _Header = "BAD EMAIL ADDRESS";
+        //            _Sub = "REGISTRATION FAILURE";
+        //            _Text = "EMAIL ADDRESS DOESN'T EXIST";
+        //            _Fotter = "MAKE CHANGES AND TRY AGAIN";
+        //            ShowErrorMessage(_Header, _Sub, _Text, _Fotter);
+        //            break;
+        //        case DataAccess.Request.Verify:
+        //            brdVerify.Visibility = Visibility.Visible;
+        //            btn_Verify.Tag = _p.ClubID.ToString();
+        //            break;
+        //        case DataAccess.Request.New:
+        //            break;
+        //        case DataAccess.Request.ClubUpdate:
+        //            //UpdateAdminSite();
+        //            break;
+        //        case DataAccess.Request.Delete:
+        //            break;
+        //        case DataAccess.Request.Get:
+        //            break;
+        //        case DataAccess.Request.Getall:
+        //            break;
+        //        case DataAccess.Request.Registrer:
+        //            //ShowAdminScreen();
+        //            break;
+        //        case DataAccess.Request.LoggIn:
+        //            break;
+        //        case DataAccess.Request.LoggInOK:
+        //            // Loggin Player, procced to admin screen
+        //            //ShowAdminScreen();
+        //            break;
+        //        case DataAccess.Request.LoggInFailed:
+        //            // Player Cant logg inn
+        //            _Header = "PERSON NOT FOUND";
+        //            _Sub = "LOGGIN FAILURE";
+        //            _Text = "NO PERSON WAS FOUND WITH USERNAME OR PASSWORD";
+        //            _Fotter = "MAKE CHANGES AND TRY AGAIN";
+        //            ShowErrorMessage(_Header, _Sub, _Text, _Fotter);
+        //            break;
+        //        case DataAccess.Request.PersonExist:
+        //            // Person already exist
+        //            _Header = "PERSON EXIST";
+        //            _Sub = "REGISTRATION FAILURE";
+        //            _Text = "PERSON WITH USERNAME ALREADY EXIST";
+        //            _Fotter = "MAKE CHANGES AND TRY AGAIN";
+        //            ShowErrorMessage(_Header, _Sub, _Text, _Fotter);
+        //            break;
+        //        case DataAccess.Request.PersonCreated:
+        //            //ShowAdminScreen();
+        //            break;
+        //        case DataAccess.Request.PersonUpdate:
+        ///////////// xxx remove
+        //            //ShowAdminScreen();
+        //            break;
+        //        case DataAccess.Request.VerifyOK:
+        //            break;
+        //    }
+        //}
 
         internal void ResetVerification(Person person)
         {
-            brdForgotPassword.Visibility = Visibility.Hidden;
-            brdVerify.Visibility = Visibility.Visible;
-            btn_Verify.Tag = person.ClubID.ToString();
+            brd_ForgotPassword.Visibility = Visibility.Hidden;
+            brd_Verify.Visibility = Visibility.Visible;
+            btn_NewAccountVerify.Tag = person.ClubID.ToString();
         }
 
-        internal void LoggInFailed(Person person)
+        internal void LoggInFailed()
         {
             _Header = "PERSON NOT FOUND";
             _Sub = "LOGGIN FAILURE";
             _Text = "NO PERSON WAS FOUND WITH USERNAME OR PASSWORD";
             _Fotter = "MAKE CHANGES AND TRY AGAIN";
             ShowErrorMessage(_Header, _Sub, _Text, _Fotter);
+        }
+
+        internal void NewAccountVerify(string info)
+        {
+            brd_Verify.Visibility = Visibility.Visible;
+            btn_NewAccountVerify.Visibility = Visibility.Visible;
+            btn_Reset.Visibility = Visibility.Hidden;
+            brd_ForgotPassword.Visibility = Visibility.Hidden;
+            brd_ResetPassword.Visibility = Visibility.Hidden;
+            btn_NewAccountVerify.Tag = info;
         }
 
         public static System.Windows.Media.Brush BrushBackground(string fileName)
@@ -322,8 +334,8 @@ namespace NSOP_Tournament_Pro
         {
             UpdateAdmin(person);
             UpdateAdminSite();
-            brdVerify.Visibility = Visibility.Hidden;
-            brdResetPassword.Visibility = Visibility.Hidden;
+            brd_Verify.Visibility = Visibility.Hidden;
+            brd_ResetPassword.Visibility = Visibility.Hidden;
             brdLoggin.Visibility = Visibility.Hidden;
             brdErrorMessage.Visibility = Visibility.Hidden;
             brdBackground.IsEnabled = true;
@@ -332,8 +344,6 @@ namespace NSOP_Tournament_Pro
         private void UpdateAdmin(Person _person)
         {
             // Populate Personalia
-            _adminPerson.ClassType = "Person";
-            _adminPerson.ActionType = _person.ActionType;
             _adminPerson.PlayerID = _person.PlayerID;
             _adminPerson.FirstName = _person.FirstName;
             _adminPerson.LastName = _person.LastName;
@@ -346,7 +356,6 @@ namespace NSOP_Tournament_Pro
             _adminPerson.BornDate = _person.BornDate;
             _adminPerson.RegDate = _person.RegDate;
             _adminPerson.NickName = _person.NickName;
-            _adminPerson.UserName = _person.UserName;
             _adminPerson.PassWord = _person.PassWord;
             _adminPerson.UserID = _person.UserID;
             _adminPerson.IsPlayerRemoved = _person.IsPlayerRemoved;
@@ -502,15 +511,13 @@ namespace NSOP_Tournament_Pro
         }
         private void UpdateAdminPerson()
         {
-            _adminPerson.ClassType = DataAccess.IdType.Person.ToString();
             _adminPerson.PlayerID = DataAccess.FillID(DataAccess.IdType.Person);
             _adminPerson.ClubID = DataAccess.FillID(DataAccess.IdType.Club);
             _adminPerson.ClubName = txt_Loggin_2.Text.ToString().ToUpper() + " POKER CLUB";
             _adminPerson.FirstName = txt_Loggin_1.Text.ToString();
             _adminPerson.LastName = txt_Loggin_2.Text.ToString();
-            _adminPerson.EMail = txt_Loggin_3.Text.ToString();
+            _adminPerson.EMail = txt_Loggin_5.Text.ToString();
             _adminPerson.Mobile = txt_Loggin_4.Text.ToString();
-            _adminPerson.UserName = txt_Loggin_5.Text.ToString();
             _adminPerson.UserID = "";
             _adminPerson.PassWord = txt_Loggin_PW_1.Password.ToString();
             _adminPerson.Picture = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject("profile")));
@@ -518,31 +525,47 @@ namespace NSOP_Tournament_Pro
             _adminPerson.StandUserName = txt_Loggin_1.Text.ToString().Substring(0, 1) + txt_Loggin_2.Text.ToString().Substring(0, 1) + DateTime.Now.Year.ToString();
             _adminPerson.StandPassWord = DataAccess.GetVerificationCode();
         }
-        internal void UpdateData(byte[] buffer, string _packet)
+        public void UpdateAdminPerson(Person person)
         {
-            switch (DataAccess.ParseEnum<DataAccess.ClassType>(_packet))
-            {
-                case DataAccess.ClassType.Person:
-                    PerformPersonAction(new Person(buffer));
-                    break;
-                case DataAccess.ClassType.PersonList:
-                    break;
-                case DataAccess.ClassType.Tournament:
-                    break;
-                case DataAccess.ClassType.Blinds:
-                    break;
-                case DataAccess.ClassType.Payouts:
-                    break;
-                case DataAccess.ClassType.Points:
-                    break;
-                case DataAccess.ClassType.DataVerify:
-                    break;
-                case DataAccess.ClassType.Action:
-                    break;
-                case DataAccess.ClassType.Packet:
-                    break;
-            }
+            _adminPerson.PlayerID = person.PlayerID;
+            _adminPerson.ClubID = person.ClubID;
+            _adminPerson.ClubName = person.ClubName;
+            _adminPerson.FirstName = person.FirstName;
+            _adminPerson.LastName = person.LastName;
+            _adminPerson.EMail = person.EMail;
+            _adminPerson.Mobile = person.Mobile;
+            _adminPerson.UserID = person.UserID;
+            _adminPerson.Picture = person.Picture;
+            _adminPerson.ClubPicture = person.ClubPicture;
+            _adminPerson.StandUserName = person.StandUserName;
+            _adminPerson.StandPassWord = person.StandPassWord;
+            UpdateAdminSite();
         }
+        //internal void UpdateData(byte[] buffer, string _packet)
+        //{
+        //    switch (DataAccess.ParseEnum<DataAccess.ClassType>(_packet))
+        //    {
+        //        case DataAccess.ClassType.Person:
+        //            PerformPersonAction(new Person(buffer));
+        //            break;
+        //        case DataAccess.ClassType.PersonList:
+        //            break;
+        //        case DataAccess.ClassType.Tournament:
+        //            break;
+        //        case DataAccess.ClassType.Blinds:
+        //            break;
+        //        case DataAccess.ClassType.Payouts:
+        //            break;
+        //        case DataAccess.ClassType.Points:
+        //            break;
+        //        case DataAccess.ClassType.DataVerify:
+        //            break;
+        //        case DataAccess.ClassType.Action:
+        //            break;
+        //        case DataAccess.ClassType.Packet:
+        //            break;
+        //    }
+        //}
         // **************************   CLICKS
         private void OpenAvatar_Click(object sender, MouseButtonEventArgs e)
         {
@@ -620,15 +643,13 @@ namespace NSOP_Tournament_Pro
                     {
                         //Registrer Player
                         UpdateAdminPerson();
-                        client.SendObject(UpdateCommunicationPacket(DataAccess.Request.Registrer, _adminPerson.ToBytes(), DataAccess.ClassType.Person));
-                        btn_Verify.Visibility = Visibility.Visible;
-                        btn_Reset.Visibility = Visibility.Hidden;
+                        client.SendObject(UpdateCommunicationPacket(DataAccess.Request.NewAccount, _adminPerson.ToBytes(), DataAccess.ClassType.Person));
                     }
                     break;
                 case "BTN_FORGOTPASSWORD":
-                    btn_Verify.Visibility = Visibility.Hidden;
+                    btn_NewAccountVerify.Visibility = Visibility.Hidden;
                     btn_Reset.Visibility = Visibility.Visible;
-                    brdForgotPassword.Visibility = Visibility.Visible;
+                    brd_ForgotPassword.Visibility = Visibility.Visible;
                     break;
                 case "BTN_SENDRESETMAIL":
                     UpdateAdminPerson();
@@ -640,24 +661,26 @@ namespace NSOP_Tournament_Pro
                     _adminPerson.PassWord = txt_Loggin_PW_3.Password.ToString();
                     client.SendObject(UpdateCommunicationPacket(DataAccess.Request.UpdatePassword, _adminPerson.ToBytes(), DataAccess.ClassType.Person));
                     break;
-                case "BTN_VERIFY":
+                case "BTN_NEWACCOUNTVERIFY":
                     UpdateAdminPerson();
                     client.SendObject(UpdateCommunicationPacket(DataAccess.Request.VerifyOK, _adminPerson.ToBytes(), DataAccess.ClassType.Person));
                     break;
                 case "BTN_RESET":
-                    UpdateAdminPerson();
-                    client.SendObject(UpdateCommunicationPacket(DataAccess.Request.ResetPasswordOK, _adminPerson.ToBytes(), DataAccess.ClassType.Person));
+                    brd_Verify.Visibility = Visibility.Hidden;
+                    brd_ResetPassword.Visibility = Visibility.Visible;
+                    brd_ForgotPassword.Visibility = Visibility.Hidden;
                     break;
             }
         }
-
         private byte[] UpdateCommunicationPacket(DataAccess.Request request, byte[] objType, DataAccess.ClassType classType)
         {
-            CommunicationManager _cp = new CommunicationManager();
-            _cp.Request = request;
-            _cp.ObjectType = objType;
-            _cp.ClassType = classType;
-            _cp.Size = objType.Length;
+            CommunicationManager _cp = new CommunicationManager
+            {
+                Request = request,
+                ObjectType = objType,
+                ClassType = classType,
+                Size = objType.Length
+            };
             return _cp.ToBytes();
         }
 
@@ -752,7 +775,7 @@ namespace NSOP_Tournament_Pro
  
         private void Btn_ExitAll_Click(object sender, RoutedEventArgs e)
         {
-            brdVerify.Visibility = Visibility.Hidden;
+            brd_Verify.Visibility = Visibility.Hidden;
         }
         private void Gender_Click(object sender, RoutedEventArgs e)
         {
@@ -813,9 +836,9 @@ namespace NSOP_Tournament_Pro
         private void BtnSaveClubChanges_Click(object sender, RoutedEventArgs e)
         {
             // Populate admin and save changes
-            _adminPerson.ActionType = "ClubUpdate";
-            client.SendObject(_adminPerson.ToBytes());
-
+            //Check if Person exists
+            UpdateAdminPerson(_adminPerson);
+            client.SendObject(UpdateCommunicationPacket(DataAccess.Request.ClubUpdate, _adminPerson.ToBytes(), DataAccess.ClassType.Person));
         }
         private void UModule_Click(object sender, MouseButtonEventArgs e)
         {
@@ -856,26 +879,24 @@ namespace NSOP_Tournament_Pro
         }
         private void TxtVerify_Code_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            TextBox _t = new TextBox();
-            _t = (sender as TextBox);
-            switch (_t.Name)
+            switch ((sender as TextBox).Name)
             {
                 case "txtResetPasswordMail":
                     break;
                 default:
-                    if ((sender as TextBox).Text != btn_Verify.Tag.ToString())
+                    if ((sender as TextBox).Text != btn_NewAccountVerify.Tag.ToString())
                     {
                         // You type the wrong code
                         (sender as TextBox).Background = (SolidColorBrush)FindResource("ErrorBackground");
                         (sender as TextBox).Foreground = (SolidColorBrush)FindResource("ErrorText");
-                        btn_Verify.Visibility = Visibility.Hidden;
+                        btn_NewAccountVerify.Visibility = Visibility.Hidden;
                     }
                     else
                     {
                         // Code is correct you can now verify
                         (sender as TextBox).Background = (LinearGradientBrush)FindResource("ButtonBackgroundPushed");
                         (sender as TextBox).Foreground = (SolidColorBrush)FindResource("ActiveText");
-                        btn_Verify.Visibility = Visibility.Visible;
+                        btn_NewAccountVerify.Visibility = Visibility.Visible;
                     }
                     break;
             }
@@ -909,19 +930,19 @@ namespace NSOP_Tournament_Pro
             switch ((sender as TextBox).Name.ToLower())
             {
                 case "txtVerify_Code": // Verification new account
-                    if ((sender as TextBox).Text != btn_Verify.Tag.ToString())
+                    if ((sender as TextBox).Text != btn_NewAccountVerify.Tag.ToString())
                     {
                         // You type the wrong code
                         (sender as TextBox).Background = (SolidColorBrush)FindResource("ErrorBackground");
                         (sender as TextBox).Foreground = (SolidColorBrush)FindResource("ErrorText");
-                        btn_Verify.Visibility = Visibility.Hidden;
+                        btn_NewAccountVerify.Visibility = Visibility.Hidden;
                     }
                     else
                     {
                         // Code is correct you can now verify
                         (sender as TextBox).Background = (LinearGradientBrush)FindResource("ButtonBackgroundPushed");
                         (sender as TextBox).Foreground = (SolidColorBrush)FindResource("ActiveText");
-                        btn_Verify.Visibility = Visibility.Visible;
+                        btn_NewAccountVerify.Visibility = Visibility.Visible;
                     }
                     break;
                 case "txt_loggin_1": // FirstName
@@ -964,7 +985,6 @@ namespace NSOP_Tournament_Pro
                         (sender as TextBox).Foreground = (SolidColorBrush)FindResource("ActiveText");
                         (sender as TextBox).Tag = 1;
                         _adminPerson.EMail = (sender as TextBox).Text.ToString();
-                        _adminPerson.UserName = (sender as TextBox).Text.ToString();
                     }
                     else
                     {
@@ -1002,7 +1022,6 @@ namespace NSOP_Tournament_Pro
                         (sender as TextBox).Background = (LinearGradientBrush)FindResource("ButtonBackgroundPushed");
                         (sender as TextBox).Foreground = (SolidColorBrush)FindResource("ActiveText");
                         (sender as TextBox).Tag = 1;
-                        _adminPerson.UserName = (sender as TextBox).Text.ToString();
                         _adminPerson.EMail = (sender as TextBox).Text.ToString();
                     }
                     else
@@ -1184,7 +1203,7 @@ namespace NSOP_Tournament_Pro
 
         private void Btn_ExitResetPassword(object sender, RoutedEventArgs e)
         {
-            brdForgotPassword.Visibility = Visibility.Hidden;
+            brd_ForgotPassword.Visibility = Visibility.Hidden;
         }
     }
 }

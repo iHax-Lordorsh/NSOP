@@ -200,47 +200,41 @@ namespace NSOP_Tournament_Pro_Server
         //    }
         //    return _Packet;
         //}
-        private static void Replay(byte[] obj, string packet, Socket clientSocket)
-        {
-            foreach (ClientData _c in _clients)
-            {
-                if (_c._clientSocket.RemoteEndPoint == clientSocket.RemoteEndPoint)
-                {
-                    // create return data
-                    switch (DataAccess.ParseEnum<DataAccess.ClassType>(packet))
-                    {
-                        case DataAccess.ClassType.Person:
-                            Person _p = new Person(obj);
-                            string x = _p.ClassType;
-                            _c._clientSocket.Send(_p.ToBytes());
+        //private static void Replay(byte[] obj, string packet, Socket clientSocket)
+        //{
+        //    foreach (ClientData _c in _clients)
+        //    {
+        //        if (_c._clientSocket.RemoteEndPoint == clientSocket.RemoteEndPoint)
+        //        {
+        //            // create return data
+        //            switch (DataAccess.ParseEnum<DataAccess.ClassType>(packet))
+        //            {
+        //                case DataAccess.ClassType.Person:
+        //                    Person _p = new Person(obj);
+        //                    _c._clientSocket.Send(_p.ToBytes());
 
-                            break;
-                        case DataAccess.ClassType.Tournament:
-                            break;
-                        case DataAccess.ClassType.Blinds:
-                            break;
-                        case DataAccess.ClassType.Payouts:
-                            break;
-                        case DataAccess.ClassType.Points:
-                            break;
-                        case DataAccess.ClassType.DataVerify:
-                            break;
-                        case DataAccess.ClassType.Action:
-                            break;
-                        case DataAccess.ClassType.Packet:
-                            break;
-                        case DataAccess.ClassType.PersonList:
-                            // return PersonList
-                            PersonList _pl = new PersonList(obj);
-                            string xl = _pl.ClassType;
-                            _pl.GetPersons("ClubID","0000 0000 0000 000C");
-                            _c._clientSocket.Send(_pl.ToBytes());
-                            break;
-                    }
-                    break;
-                }
-            }
-        }
+        //                    break;
+        //                case DataAccess.ClassType.Tournament:
+        //                    break;
+        //                case DataAccess.ClassType.Blinds:
+        //                    break;
+        //                case DataAccess.ClassType.Payouts:
+        //                    break;
+        //                case DataAccess.ClassType.Points:
+        //                    break;
+        //                case DataAccess.ClassType.DataVerify:
+        //                    break;
+        //                case DataAccess.ClassType.Action:
+        //                    break;
+        //                case DataAccess.ClassType.Packet:
+        //                    break;
+        //                case DataAccess.ClassType.PersonList:
+        //                    break;
+        //            }
+        //            break;
+        //        }
+        //    }
+        //}
         //public static void Receive(Socket socket, byte[] buffer, int offset, int size)
         //{
         //    //int startTickCount = Environment.TickCount;

@@ -359,82 +359,83 @@ namespace NSOP_Tournament_Pro_Library
             Delete,
             Get,
             Getall,
-            Registrer,
+            NewAccount,
             LoggIn,
             LoggInOK,
             LoggInFailed,
             PersonExist,
             PersonCreated,
-            Verify,
+            NewAccountVerify,
             VerifyOK,
             BadEMail,
             ResetPassword,
             UpdatePassword,
             ResetVerification,
-            ResetPasswordOK
+            ResetPasswordOK,
+            UpdateFailed
         }
         public static T ParseEnum<T>(string value)
         {
             return (T)Enum.Parse(typeof(T), value, true);
         }
-        public static string GetPacket(byte[] buffer)
-        {
-            string _Packet = "";
-            try // Person
-            {
-                Person _obj = new Person(buffer);
-                _Packet = _obj.ClassType.ToString();
-            }
-            catch (Exception)
-            {
-                try // Tournament
-                {
-                    Tournament _obj = new Tournament(buffer);
-                    _Packet = _obj.ClassType.ToString();
-                }
-                catch (Exception)
-                {
-                    try // Playerlist
-                    {
-                        PersonList _obj = new PersonList(buffer);
-                        _Packet = _obj.ClassType.ToString();
-                    }
-                    catch (Exception)
-                    {
-                    }
-                }
-            }
-            return _Packet;
-        }
-        public static string GetAction(byte[] buffer)
-        {
-            string _Action = "";
-            try // Person
-            {
-                Person _obj = new Person(buffer);
-                _Action = _obj.ActionType.ToString();
-            }
-            catch (Exception)
-            {
-                try // Tournament
-                {
-                    Tournament _obj = new Tournament(buffer);
-                   // _Action = _obj.ActionType.ToString();
-                }
-                catch (Exception)
-                {
-                    try // Playerlist
-                    {
-                        PersonList _obj = new PersonList(buffer);
-                        _Action = _obj.ActionType.ToString();
-                    }
-                    catch (Exception)
-                    {
-                    }
-                }
-            }
-            return _Action;
-        }
+        //public static string GetPacket(byte[] buffer)
+        //{
+        //    string _Packet = "";
+        //    try // Person
+        //    {
+        //        Person _obj = new Person(buffer);
+        //        _Packet = _obj.ClassType.ToString();
+        //    }
+        //    catch (Exception)
+        //    {
+        //        try // Tournament
+        //        {
+        //            Tournament _obj = new Tournament(buffer);
+        //            _Packet = _obj.ClassType.ToString();
+        //        }
+        //        catch (Exception)
+        //        {
+        //            try // Playerlist
+        //            {
+        //                PersonList _obj = new PersonList(buffer);
+        //                _Packet = _obj.ClassType.ToString();
+        //            }
+        //            catch (Exception)
+        //            {
+        //            }
+        //        }
+        //    }
+        //    return _Packet;
+        //}
+        //public static string GetAction(byte[] buffer)
+        //{
+        //    string _Action = "";
+        //    try // Person
+        //    {
+        //        Person _obj = new Person(buffer);
+        //        _Action = _obj.ActionType.ToString();
+        //    }
+        //    catch (Exception)
+        //    {
+        //        try // Tournament
+        //        {
+        //            Tournament _obj = new Tournament(buffer);
+        //           // _Action = _obj.ActionType.ToString();
+        //        }
+        //        catch (Exception)
+        //        {
+        //            try // Playerlist
+        //            {
+        //                PersonList _obj = new PersonList(buffer);
+        //                _Action = _obj.ActionType.ToString();
+        //            }
+        //            catch (Exception)
+        //            {
+        //            }
+        //        }
+        //    }
+        //    return _Action;
+        //}
         public static string PasswordEncryption(string value)
         {
             var sha1 = System.Security.Cryptography.SHA1.Create();

@@ -197,21 +197,21 @@ namespace NSOP_Tournament_Pro
             switch (btn.Name)
             {
                 case "btnNew":
-                    _p.ActionType = "New";
+//                    _p.ActionType = "New";
                     break;
                 case "btnUpdate":
-                    _p.ActionType = "Update";
+  //                  _p.ActionType = "Update";
                     _p.ClubID = ClubID;
                     _p.PlayerID = PlayerID;
                     break;
                 case "btnDelete":
-                    _p.ActionType = "Delete";
+                   // _p.ActionType = "Delete";
                     _p.ClubID = ClubID;
                     //       _p.PlayerID = UPC.PlayerID;
                     _p.PlayerID = PlayerID;
                     break;
                 case "btnGet":
-                    _p.ActionType = "Get";
+                   // _p.ActionType = "Get";
                     _p.ClubID = "0000 0000 0000 000C";
                     //                    _p.PlayerID = txtIDSearch.Text.ToString();
                     break;
@@ -302,7 +302,6 @@ namespace NSOP_Tournament_Pro
             // First time registration
             Person _p = new Person
             {
-                ClassType = "Person",
                 FirstName = FirstName,
                 LastName = LastName,
                 Picture = Picture,

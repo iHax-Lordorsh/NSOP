@@ -16,6 +16,7 @@ namespace NSOP_Tournament_Pro_Library
         public long Size { get; set; }
         public DataAccess.ClassType ClassType { get; set; }
         public DataAccess.Request Request { get; set; }
+        public string Info { get; set; }
         public byte[] ObjectType { get; set; }
 
         public CommunicationManager()
@@ -147,11 +148,11 @@ namespace NSOP_Tournament_Pro_Library
                     {
                         // Logg In Request to server
                         case DataAccess.Request.LoggIn:
-                            _person = Person.CheckPerson(_person.UserName, _person.PassWord);
-                            if (_person.PlayerID != "")
+                            // Check if person exists                           
+                            if (Person.IfPersonExists("", _person.EMail, _person.PassWord))
                             {
-                                // person found
-                                //person.GetPerson(person.PlayerID);
+                                // person excists returning perosn
+                                _person = Person.GetPerson("", _person.EMail, _person.PassWord);
                                 this.Request = DataAccess.Request.LoggInOK;
                             }
                             else
@@ -171,6 +172,24 @@ namespace NSOP_Tournament_Pro_Library
                         case DataAccess.Request.New:
                             break;
                         case DataAccess.Request.ClubUpdate:
+                            //Check if Person exists
+                            if (Person.IfPersonExists("", _person.EMail, _person.PassWord))
+                            {
+                                // person found updating person
+                                if (Person.UpdateClub(_person))
+                                {
+                                    this.Request = DataAccess.Request.LoggInOK;
+                                }
+                                else
+                                {
+                                    this.Request = DataAccess.Request.UpdateFailed;
+                                }
+                            }
+                            else
+                            {
+                                //person not found
+                                this.Request = DataAccess.Request.LoggInFailed;
+                            }
                             break;
                         case DataAccess.Request.PersonUpdate:
                             break;
@@ -180,37 +199,61 @@ namespace NSOP_Tournament_Pro_Library
                             break;
                         case DataAccess.Request.Getall:
                             break;
-                        case DataAccess.Request.Registrer:
+                        case DataAccess.Request.NewAccount:
+                            // Check if Person already exists
+                            if (Person.IfPersonExists("", _person.EMail, ""))
+                            {
+                                // Player already exist
+                                this.Request = DataAccess.Request.PersonExist;
+                            }
+                            else
+                            {
+                                // Need verification
+                                this.Info = DataAccess.GetVerificationCode();
+                                if (Send_Verification("","","",_person.EMail,"NSOP New account verification.", this.Info))
+                                {
+                                    this.Request = DataAccess.Request.NewAccountVerify;
+                                    // Add a new person to Person Dataabase
+                                    _person.IsVerified = false;
+                                    _person.SaveNew();
+                                }
+                                else
+                                {
+                                    this.Request = DataAccess.Request.BadEMail;
+                                }
+
+                            }
                             break;
                         case DataAccess.Request.PersonExist:
                             break;
                         case DataAccess.Request.PersonCreated:
                             break;
-                        case DataAccess.Request.Verify:
-                            if (Send_NewAccountVerification(_person))
+                        case DataAccess.Request.NewAccountVerify:
+                            break;
+                        case DataAccess.Request.VerifyOK:
+                            // logging granted
+                            if (Person.UpdateVerification(_person.EMail) == true)
                             {
+                                _person.IsVerified = true;
+                                this.Request = DataAccess.Request.LoggInOK;
                             }
                             else
                             {
                                 this.Request = DataAccess.Request.BadEMail;
                             }
-                            break;
-                        case DataAccess.Request.VerifyOK:
-                            // logging granted
-                            this.Request = DataAccess.Request.LoggInOK;
                             break;
                         case DataAccess.Request.BadEMail:
                             break;
                         case DataAccess.Request.ResetPassword:
-                            if (Send_ResetVerification(_person))
-                            {
-                                _person.ClubID = DataAccess.GetVerificationCode();
-                                this.Request = DataAccess.Request.ResetVerification;
-                            }
-                            else
-                            {
-                                this.Request = DataAccess.Request.BadEMail;
-                            }
+                            //if (Send_ResetVerification(_person))
+                            //{
+                            //    _person.ClubID = DataAccess.GetVerificationCode();
+                            //    this.Request = DataAccess.Request.ResetVerification;
+                            //}
+                            //else
+                            //{
+                            //    this.Request = DataAccess.Request.BadEMail;
+                            //}
                             break;
                         case DataAccess.Request.UpdatePassword:
                             if (Person.UpdatePassword(_person) == true)
@@ -249,7 +292,6 @@ namespace NSOP_Tournament_Pro_Library
             }
             return this;
         }
-
         // Convert Person to Byte[]
         public byte[] ToBytes()
         {
@@ -264,8 +306,7 @@ namespace NSOP_Tournament_Pro_Library
             return bytes;
         }
 
-
-        private static bool Send_ResetVerification(Person person)
+        private static bool Send_Verification(string smtp, string emailFrom, string passWord, string eMail, string subject, string verificationCode)
         {
             bool _IsSendt;
             try
@@ -283,12 +324,12 @@ namespace NSOP_Tournament_Pro_Library
                 //Put the email address
                 _mail.From = new MailAddress(_mailFrom);
                 //Put the email where you want to send.
-                _mail.To.Add(person.UserName);
+                _mail.To.Add(eMail);
 
-                _mail.Subject = "NSOP Reset password verification";
+                _mail.Subject = subject;
 
                 StringBuilder _sb = new StringBuilder();
-                _sb.AppendLine("Your verification code is " + person.ClubID.ToString());
+                _sb.AppendLine("Your verification code is " + verificationCode);
 
                 _mail.Body = _sb.ToString();
 
@@ -318,58 +359,112 @@ namespace NSOP_Tournament_Pro_Library
             }
             return _IsSendt;
         }
-        private static bool Send_NewAccountVerification(Person person)
-        {
-            bool _IsSendt;
-            try
-            {
-                string _smtpClient = "smtp-mail.outlook.com";
-                //string _mailFrom = "post.nsop@outlook.com";
-                //string _mailPassword = "62N24s34o199p";
-                string _mailFrom = "ovehauge@hotmail.no";
-                string _mailPassword = "OSilverO1967O";
-                int _smtpPort = 25;
 
-                MailMessage _mail = new MailMessage();
-                //put your SMTP address and port here.
-                SmtpClient _SmtpServer = new SmtpClient(_smtpClient, _smtpPort);// smtp-mail.outlook.com
-                //Put the email address
-                _mail.From = new MailAddress(_mailFrom);
-                //Put the email where you want to send.
-                _mail.To.Add(person.UserName);
+        //private static bool Send_ResetVerification(string eMail, string verificationCode)
+        //{
+        //    bool _IsSendt;
+        //    try
+        //    {
+        //        string _smtpClient = "smtp-mail.outlook.com";
+        //        //string _mailFrom = "post.nsop@outlook.com";
+        //        //string _mailPassword = "62N24s34o199p";
+        //        string _mailFrom = "ovehauge@hotmail.no";
+        //        string _mailPassword = "OSilverO1967O";
+        //        int _smtpPort = 25;
 
-                _mail.Subject = "NSOP Verification";
+        //        MailMessage _mail = new MailMessage();
+        //        //put your SMTP address and port here.
+        //        SmtpClient _SmtpServer = new SmtpClient(_smtpClient, _smtpPort);// smtp-mail.outlook.com
+        //        //Put the email address
+        //        _mail.From = new MailAddress(_mailFrom);
+        //        //Put the email where you want to send.
+        //        _mail.To.Add(eMail);
 
-                StringBuilder _sb = new StringBuilder();
-                _sb.AppendLine("Your verification code is " + person.ClubID.ToString());
+        //        _mail.Subject = "NSOP Reset password verification";
 
-                _mail.Body = _sb.ToString();
+        //        StringBuilder _sb = new StringBuilder();
+        //        _sb.AppendLine("Your verification code is " + verificationCode);
 
-                //Your log file path
-                //System.Net.Mail.Attachment attachment = new System.Net.Mail.Attachment(@"C:\Logs\CheckoutPOS.log");
-                //mail.Attachments.Add(attachment);
+        //        _mail.Body = _sb.ToString();
 
-                //Your username and password!
+        //        //Your log file path
+        //        //System.Net.Mail.Attachment attachment = new System.Net.Mail.Attachment(@"C:\Logs\CheckoutPOS.log");
+        //        //mail.Attachments.Add(attachment);
 
-                //SmtpServer.Credentials = new System.Net.NetworkCredential("ovehauge@hotmail.no", "Silver1967X");
-                _SmtpServer.Credentials = new System.Net.NetworkCredential(_mailFrom, _mailPassword);
-                //Set Smtp Server port
-                //      iVerdi = Convert.ToInt16(HENT_BASE_VERDI(dbOppsett, "DB_Mail", "Navn", dbMail, "", "", "SmtpServerPort"));
-                _SmtpServer.Port = 25;
-                //  bool xBool =Convert.ToBoolean(HENT_BASE_VERDI(dbOppsett, "DB_Mail", "Navn", dbMail, "", "", "SmtpEnable"));
-                _SmtpServer.EnableSsl = true;
+        //        //Your username and password!
 
-                _SmtpServer.Send(_mail);
-                _SmtpServer.Dispose();
-                _IsSendt = true;
-                //MessageBox.Show("The exception has been sent! :)");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-                _IsSendt = false;
-            }
-            return _IsSendt;
-        }
+        //        //SmtpServer.Credentials = new System.Net.NetworkCredential("ovehauge@hotmail.no", "Silver1967X");
+        //        _SmtpServer.Credentials = new System.Net.NetworkCredential(_mailFrom, _mailPassword);
+        //        //Set Smtp Server port
+        //        //      iVerdi = Convert.ToInt16(HENT_BASE_VERDI(dbOppsett, "DB_Mail", "Navn", dbMail, "", "", "SmtpServerPort"));
+        //        _SmtpServer.Port = 25;
+        //        //  bool xBool =Convert.ToBoolean(HENT_BASE_VERDI(dbOppsett, "DB_Mail", "Navn", dbMail, "", "", "SmtpEnable"));
+        //        _SmtpServer.EnableSsl = true;
+
+        //        _SmtpServer.Send(_mail);
+        //        _SmtpServer.Dispose();
+        //        _IsSendt = true;
+        //        //MessageBox.Show("The exception has been sent! :)");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.ToString());
+        //        _IsSendt = false;
+        //    }
+        //    return _IsSendt;
+        //}
+        //private static bool Send_NewAccountVerification(string eMail, string verificationCode)
+        //{
+        //    bool _IsSendt;
+        //    try
+        //    {
+        //        string _smtpClient = "smtp-mail.outlook.com";
+        //        //string _mailFrom = "post.nsop@outlook.com";
+        //        //string _mailPassword = "62N24s34o199p";
+        //        string _mailFrom = "ovehauge@hotmail.no";
+        //        string _mailPassword = "OSilverO1967O";
+        //        int _smtpPort = 25;
+
+        //        MailMessage _mail = new MailMessage();
+        //        //put your SMTP address and port here.
+        //        SmtpClient _SmtpServer = new SmtpClient(_smtpClient, _smtpPort);// smtp-mail.outlook.com
+        //        //Put the email address
+        //        _mail.From = new MailAddress(_mailFrom);
+        //        //Put the email where you want to send.
+        //        _mail.To.Add(eMail);
+
+        //        _mail.Subject = "NSOP Verification";
+
+        //        StringBuilder _sb = new StringBuilder();
+        //        _sb.AppendLine("Your verification code is " + verificationCode);
+
+        //        _mail.Body = _sb.ToString();
+
+        //        //Your log file path
+        //        //System.Net.Mail.Attachment attachment = new System.Net.Mail.Attachment(@"C:\Logs\CheckoutPOS.log");
+        //        //mail.Attachments.Add(attachment);
+
+        //        //Your username and password!
+
+        //        //SmtpServer.Credentials = new System.Net.NetworkCredential("ovehauge@hotmail.no", "Silver1967X");
+        //        _SmtpServer.Credentials = new System.Net.NetworkCredential(_mailFrom, _mailPassword);
+        //        //Set Smtp Server port
+        //        //      iVerdi = Convert.ToInt16(HENT_BASE_VERDI(dbOppsett, "DB_Mail", "Navn", dbMail, "", "", "SmtpServerPort"));
+        //        _SmtpServer.Port = 25;
+        //        //  bool xBool =Convert.ToBoolean(HENT_BASE_VERDI(dbOppsett, "DB_Mail", "Navn", dbMail, "", "", "SmtpEnable"));
+        //        _SmtpServer.EnableSsl = true;
+
+        //        _SmtpServer.Send(_mail);
+        //        _SmtpServer.Dispose();
+        //        _IsSendt = true;
+        //        //MessageBox.Show("The exception has been sent! :)");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.ToString());
+        //        _IsSendt = false;
+        //    }
+        //    return _IsSendt;
+        //}
     }
 }

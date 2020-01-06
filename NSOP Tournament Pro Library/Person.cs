@@ -18,12 +18,6 @@ namespace NSOP_Tournament_Pro_Library
         // ***********
         // PERSONALIA
         // ***********
-        private string _classType = "Person";
-        public string ClassType { get => _classType; set => _classType = value; }
-
-        private string _ActionType = "";
-        public string ActionType { get => _ActionType; set => _ActionType = value; }
-
         private string _PlayerID = "";
         public string PlayerID { get => _PlayerID; set => _PlayerID = value; }
 
@@ -59,9 +53,6 @@ namespace NSOP_Tournament_Pro_Library
 
         private string _NickName = "";
         public string NickName { get => _NickName; set => _NickName = value; }
-
-        private string _UserName = "";
-        public string UserName { get => _UserName; set => _UserName = value; }
 
         private string _PassWord = "";
         public string PassWord { get => _PassWord; set => _PassWord = value; }
@@ -246,6 +237,9 @@ namespace NSOP_Tournament_Pro_Library
         private string _11 = "";
         public string StandPassWord { get => _11; set => _11 = value; }
 
+        private bool _12 = false;
+        public bool IsVerified { get => _12; set => _12 = value; }
+
         // ***********
         // CONSTRUCTORS
         // ***********
@@ -256,10 +250,8 @@ namespace NSOP_Tournament_Pro_Library
         }
 
         // Constructor to send Personalia
-        public Person(string playerID, string clubID, string actionType, string firstName, string lastName, byte[] picture, string mobile, string email, string gender, string nationality, string iso3166Name, DateTime bornDate, DateTime regDate, string nickName, string userName, string passWord, string userID, bool isPlayerRemoved)
+        public Person(string playerID, string clubID, string firstName, string lastName, byte[] picture, string mobile, string email, string gender, string nationality, string iso3166Name, DateTime bornDate, DateTime regDate, string nickName, string passWord, string userID, bool isPlayerRemoved, bool isVerified)
         {
-            this.ClassType = "Person";
-            this.ActionType = actionType;
             this.PlayerID = playerID;
             this.ClubID = clubID;
             this.FirstName = firstName;
@@ -273,10 +265,10 @@ namespace NSOP_Tournament_Pro_Library
             this.BornDate = bornDate;
             this.RegDate = regDate;
             this.NickName = nickName;
-            this.UserName = userName;//XXX
             this.PassWord = passWord;
             this.UserID = userID;
             this.IsPlayerRemoved = isPlayerRemoved;
+            this.IsVerified = isVerified;
         }
 
         // Constructor to recieve packet
@@ -291,8 +283,6 @@ namespace NSOP_Tournament_Pro_Library
             _ms.Close();
 
             // Populate Personalia
-            this.ClassType = "Person";
-            this.ActionType = _person.ActionType;
             this.PlayerID = _person.PlayerID;
             this.FirstName = _person.FirstName;
             this.LastName = _person.LastName;
@@ -305,7 +295,6 @@ namespace NSOP_Tournament_Pro_Library
             this.BornDate = _person.BornDate;
             this.RegDate = _person.RegDate;
             this.NickName = _person.NickName;
-            this.UserName = _person.UserName;
             this.PassWord = _person.PassWord;
             this.UserID = _person.UserID;
             this.IsPlayerRemoved = _person.IsPlayerRemoved;
@@ -368,6 +357,7 @@ namespace NSOP_Tournament_Pro_Library
             this.TableManagerQTY = _person.TableManagerQTY;
             this.StandUserName = _person.StandUserName;
             this.StandPassWord = _person.StandPassWord;
+            this.IsVerified = _person.IsVerified;
 
         }
         // Convert Person to Byte[]
@@ -398,8 +388,8 @@ namespace NSOP_Tournament_Pro_Library
                 cmd.CommandText = $" INSERT into tbPerson ";
                 cmd.CommandText += $"( ";
                 // Personalia
-                cmd.CommandText += $"ClassType, PlayerID, Picture, FirstName, LastName, ";
-                cmd.CommandText += $"Mobile, EMail, BornDate, RegDate, UserName, PassWord, UserID, IsPlayerRemoved, ";
+                cmd.CommandText += $"PlayerID, Picture, FirstName, LastName, ";
+                cmd.CommandText += $"Mobile, EMail, BornDate, RegDate, PassWord, UserID, IsPlayerRemoved, ";
                 cmd.CommandText += $"IsLoggedInn, ClubID, ClubName, ClubPicture, ";
                 // Rank
                 cmd.CommandText += $"ClubRank, ClubPoints, ClubMembership, ClubMembershipExpires, ClubRegDate, ";
@@ -414,14 +404,14 @@ namespace NSOP_Tournament_Pro_Library
                 cmd.CommandText += $"AdminSubscribtion, WebSideSubscribtion, LastLogin, Tokens, ";
                 cmd.CommandText += $"TournamentCreatorQTY, PersonRegQTY, TicketSaleQTY, BlindStructureQTY, ";
                 cmd.CommandText += $"PayoutStructureQTY, PointStructureQTY, AdvertiseModuleQTY, TableManagerQTY, ";
-                cmd.CommandText += $"StandUserName, StandPassWord ";
+                cmd.CommandText += $"StandUserName, StandPassWord, IsVerified ";
                 // Values
                 cmd.CommandText += $") ";
                 cmd.CommandText += $"VALUES ";
                 cmd.CommandText += $"( ";
                 // Personalia
-                cmd.CommandText += $"'{ClassType}','{PlayerID}', @Picture, '{FirstName}','{LastName}', ";
-                cmd.CommandText += $"'{Mobile}','{EMail}','{BornDate.ToShortDateString()}','{RegDate.ToShortDateString()}','{UserName}','{DataAccess.PasswordEncryption(PassWord)}','{Guid.NewGuid()}', 0, ";
+                cmd.CommandText += $"'{PlayerID}', @Picture, '{FirstName}','{LastName}', ";
+                cmd.CommandText += $"'{Mobile}','{EMail}','{BornDate.ToShortDateString()}','{RegDate.ToShortDateString()}','{DataAccess.PasswordEncryption(PassWord)}','{Guid.NewGuid()}', 0, ";
                 cmd.CommandText += $"1, '{ClubID}','{ClubName}', '{ClubPicture}', ";
                 // Rank
                 cmd.CommandText += $"'{ClubRank}','{ClubPoints}','{ClubMembership}','{ClubMembershipExpires.ToShortDateString()}','{ClubRegDate.ToShortDateString()}', ";
@@ -436,7 +426,7 @@ namespace NSOP_Tournament_Pro_Library
                 cmd.CommandText += $"'{AdminSubscribtion.ToShortDateString()}','{WebSideSubscribtion.ToShortDateString()}','{LastLogin.ToShortDateString()}','{Tokens}', ";
                 cmd.CommandText += $"'{TournamentCreatorQTY}','{PersonRegQTY}','{TicketSaleQTY}','{BlindStructureQTY}', ";
                 cmd.CommandText += $"'{PayoutStructureQTY}','{PointStructureQTY}','{AdvertiseModuleQTY}','{TableManagerQTY}', ";
-                cmd.CommandText += $"'{StandUserName}','{StandPassWord}' ";
+                cmd.CommandText += $"'{StandUserName}','{StandPassWord}','{IsVerified}' ";
                 cmd.CommandText += $") ";
                 cmd.Parameters.AddWithValue("@Picture", Picture);
 
@@ -468,12 +458,11 @@ namespace NSOP_Tournament_Pro_Library
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = $" UPDATE tbPerson SET ";
                 // Personalia
-                cmd.CommandText += $"ClassType = '{person.ClassType}', ";
                 cmd.CommandText += $"FirstName = '{person.FirstName}', LastName = '{person.LastName}', ";
                 cmd.CommandText += $"Picture = @Picture, Mobile = '{person.Mobile}', ";
                 cmd.CommandText += $"EMail ='{person.EMail}',Gender ='{person.Gender}', Nationality ='{person.Nationality}', ";
                 cmd.CommandText += $"Iso3166Name = '{person.Iso3166Name}', BornDate = '{person.BornDate.ToShortDateString()}', RegDate = '{person.RegDate.ToShortDateString()}', ";
-                cmd.CommandText += $"NickName = '{person.NickName}', UserName = '{person.UserName}', PassWord = '{person.PassWord}', IsPlayerRemoved = '{person.IsPlayerRemoved}', ";
+                cmd.CommandText += $"NickName = '{person.NickName}', PassWord = '{person.PassWord}', IsPlayerRemoved = '{person.IsPlayerRemoved}', ";
                 cmd.CommandText += $"IsLoggedInn = '{person.IsLoggedInn}', ClubID = '{person.ClubID}', ClubName = '{person.ClubName}', ClubPicture = '{person.ClubPicture}', ";
                 // Rank
                 cmd.CommandText += $"ClubRank = '{person.ClubRank}', ClubPoints = '{person.ClubPoints}', ";
@@ -549,7 +538,7 @@ namespace NSOP_Tournament_Pro_Library
             con.Close();
             return _isOk;
         }
-        public bool UpdateClub(Person person)
+        public static bool UpdateVerification(string eMail)
         {
             SqlConnection con = new SqlConnection("Data Source = NSOP\\POKER; Initial Catalog = dbPerson; Trusted_Connection = True; Asynchronous Processing=True; ");
             if (con.State == ConnectionState.Closed)
@@ -563,7 +552,41 @@ namespace NSOP_Tournament_Pro_Library
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = $" UPDATE tbPerson SET ";
                 // Personalia
-                cmd.CommandText += $"ClassType = '{person.ClassType}', ";
+                cmd.CommandText += $"IsVerified = '{true}' ";
+
+                // Where
+                cmd.CommandText += $"WHERE EMail = '{eMail}';";
+
+
+                //error = cmd.CommandText;
+                cmd.ExecuteNonQuery();
+
+                // Save LifeTime
+                _isOk = true;
+            }
+            catch (Exception e)
+            {
+                _ = e.ToString();
+                _isOk = false;
+            }
+            con.Close();
+            return _isOk;
+        }
+
+        public static bool UpdateClub(Person person)
+        {
+            SqlConnection con = new SqlConnection("Data Source = NSOP\\POKER; Initial Catalog = dbPerson; Trusted_Connection = True; Asynchronous Processing=True; ");
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            bool _isOk;
+            try
+            {
+                SqlCommand cmd = con.CreateCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = $" UPDATE tbPerson SET ";
+                // Personalia
                 cmd.CommandText += $"FirstName = '{person.FirstName}', LastName = '{person.LastName}', ";
                 cmd.CommandText += $"Picture = @Picture, Mobile = '{person.Mobile}', ";
                 cmd.CommandText += $"Gender ='{person.Gender}', Nationality ='{person.Nationality}', ";
@@ -619,119 +642,9 @@ namespace NSOP_Tournament_Pro_Library
             con.Close();
             return _isOk;
         }
-        public Person GetPerson(string personID)
+        public static bool IfPersonVerified(string eMail)
         {
-            SqlConnection con = new SqlConnection("Data Source = NSOP\\POKER; Initial Catalog = dbPerson; Trusted_Connection = True; Asynchronous Processing=True; ");
-            if (con.State == ConnectionState.Closed)
-            {
-                con.Open();
-            }
-            try
-            {
-                SqlDataReader _SqlData = null;
-                SqlCommand _SqlStr = new SqlCommand($"SELECT * FROM dbo.tbPerson WHERE PlayerID = '{personID}';", con);
-                _SqlData = _SqlStr.ExecuteReader();
-                _SqlStr.Dispose();
-                while (_SqlData.Read())
-                {
-                    // Populate Personalia
-                    this.ClassType = _SqlData["ClassType"].ToString();
-                    this.ActionType = _SqlData["ActionType"].ToString();
-                    this.PlayerID = personID;
-                    this.FirstName = _SqlData["FirstName"].ToString();
-                    this.LastName = _SqlData["LastName"].ToString();
-                    this.Picture = (byte[])_SqlData["Picture"];
-                    this.Mobile = _SqlData["Mobile"].ToString();
-                    this.EMail = _SqlData["EMail"].ToString();
-                    this.Gender = _SqlData["Gender"].ToString();
-                    this.Nationality = _SqlData["Nationality"].ToString();
-                    this.Iso3166Name = _SqlData["Iso3166Name"].ToString();
-                    this.BornDate = DateTime.Parse(_SqlData["BornDate"].ToString());
-                    this.RegDate = DateTime.Parse(_SqlData["RegDate"].ToString());
-                    this.NickName = _SqlData["NickName"].ToString();
-                    this.UserName = _SqlData["UserName"].ToString();
-                    this.PassWord = _SqlData["PassWord"].ToString();
-                    this.UserID = _SqlData["UserID"].ToString();
-                    this.IsPlayerRemoved = (Boolean)_SqlData["IsPlayerRemoved"];
-                    this.IsLoggedInn = (Boolean)_SqlData["IsLoggedInn"];
-                    this.ClubID = _SqlData["ClubID"].ToString();
-                    this.ClubName = _SqlData["ClubName"].ToString();
-                    this.ClubPicture = _SqlData["ClubPicture"].ToString();
-
-                    // Populate Rank
-                    this.ClubRank = (int)_SqlData["ClubRank"];
-                    this.ClubPoints = (long)_SqlData["ClubPoints"];
-                    this.ClubMembership = (int)_SqlData["ClubMembership"];
-                    this.ClubMembershipExpires = DateTime.Parse(_SqlData["ClubMembershipExpires"].ToString());
-                    this.ClubRegDate = DateTime.Parse(_SqlData["ClubRegDate"].ToString());
-
-                    this.NSOPID = _SqlData["NSOPID"].ToString();
-                    this.NSOPRank = (int)_SqlData["NSOPRank"];
-                    this.NSOPPoints = (long)_SqlData["NSOPPoints"];
-                    this.NSOPMembership = (int)_SqlData["NSOPMembership"];
-                    this.NSOPMembershipExpires = DateTime.Parse(_SqlData["NSOPMembershipExpires"].ToString());
-                    this.NSOPRegDate = DateTime.Parse(_SqlData["NSOPRegDate"].ToString());
-
-                    this.NationalID = _SqlData["NationalID"].ToString();
-                    this.NationalRank = (int)_SqlData["NationalRank"];
-                    this.NationalPoints = (long)_SqlData["NationalPoints"];
-                    this.NationalMembership = (int)_SqlData["NationalMembership"];
-                    this.NationalMembershipExpires = DateTime.Parse(_SqlData["NationalMembershipExpires"].ToString());
-                    this.NationalRegDate = DateTime.Parse(_SqlData["NationalRegDate"].ToString());
-
-                    this.WorldID = _SqlData["WorldID"].ToString();
-                    this.WorldRank = (int)_SqlData["WorldRank"];
-                    this.WorldPoints = (long)_SqlData["WorldPoints"];
-                    this.WorldMembership = (int)_SqlData["WorldMembership"];
-                    this.WorldMembershipExpires = DateTime.Parse(_SqlData["WorldMembershipExpires"].ToString());
-                    this.WorldRegDate = DateTime.Parse(_SqlData["WorldRegDate"].ToString());
-
-                    // Populate Lifetime
-                    this.LifetimePlayed = (int)_SqlData["LifetimePlayed"];
-                    this.LifetimeWins = (int)_SqlData["LifetimeWins"];
-                    this.LifetimeFinalTables = (int)_SqlData["LifetimeFinalTables"];
-                    this.LifetimeCashed = (int)_SqlData["LifetimeCashed"];
-                    this.LifetimeBubbles = (int)_SqlData["LifetimeBubbles"];
-                    this.LifetimeFirstOuts = (int)_SqlData["LifetimeFirstOuts"];
-                    this.LifetimeSevenDeuces = (int)_SqlData["LifetimeSevenDeuces"];
-                    this.LifetimeBadBeats = (int)_SqlData["LifetimeBadBeats"];
-                    this.LifetimeTakeOuts = (int)_SqlData["LifetimeTakeOuts"];
-                    this.LifetimeHunted = (int)_SqlData["LifetimeHunted"];
-                    this.LifetimeMoneyEarned = (long)_SqlData["LifetimeMoneyEarned"];
-                    this.LifetimeMoneySpent = (long)_SqlData["LifetimeMoneySpent"];
-
-                    // Populate Modul Access
-                    this.AdminSubscribtion = DateTime.Parse(_SqlData["AdminSubscribtion"].ToString());
-                    this.WebSideSubscribtion = DateTime.Parse(_SqlData["WebSideSubscribtion"].ToString());
-                    this.LastLogin = DateTime.Parse(_SqlData["LastLogin"].ToString());
-                    this.Tokens = (int)_SqlData["Tokens"];
-                    this.TournamentCreatorQTY = (int)_SqlData["TournamentCreatorQTY"];
-                    this.PersonRegQTY = (int)_SqlData["PersonRegQTY"];
-                    this.TicketSaleQTY = (int)_SqlData["TicketSaleQTY"];
-                    this.BlindStructureQTY = (int)_SqlData["BlindStructureQTY"];
-                    this.PayoutStructureQTY = (int)_SqlData["PayoutStructureQTY"];
-                    this.PointStructureQTY = (int)_SqlData["PointStructureQTY"];
-                    this.AdvertiseModuleQTY = (int)_SqlData["AdvertiseModuleQTY"];
-                    this.TableManagerQTY = (int)_SqlData["TableManagerQTY"];
-                    this.StandUserName = _SqlData["StandUserName"].ToString();
-                    this.StandPassWord = _SqlData["StandPassWord"].ToString();
-                }
-
-                // Save LifeTime
-            }
-            catch (Exception e)
-            {
-                _ = e.ToString();
-            }
-            con.Close();
-            return this;
-        }
-        public static Person CheckPerson(string userName, string passWord)
-        {
-            Person _p = new Person
-            {
-                PlayerID = "" // test if player excist
-            };
+            bool _isOK = false;
             SqlConnection con = new SqlConnection("Data Source = NSOP\\POKER; Initial Catalog = dbPerson; Trusted_Connection = True; Asynchronous Processing=True; ");
             if (con.State == ConnectionState.Closed)
             {
@@ -741,21 +654,106 @@ namespace NSOP_Tournament_Pro_Library
             {
                 SqlDataReader _SqlData = null;
                 StringBuilder _s = new StringBuilder();
-                _s.Append($"SELECT * FROM dbo.tbPerson WHERE UserName = '{userName}'");
-                if (passWord.Length>0)
+                _s.Append($"SELECT * FROM dbo.tbPerson WHERE ");
+                if (eMail.Length > 0)
                 {
-                    _s.Append($"AND PassWord = '{DataAccess.PasswordEncryption(passWord)}'");
+                    _s.Append($"EMail = '{eMail}' ");
                 }
-                _s.Append($";");
+                _s.Append($" AND IsVerified = {true};");
+
                 SqlCommand _SqlStr = new SqlCommand(_s.ToString(), con);
 
                 _SqlData = _SqlStr.ExecuteReader();
                 _SqlStr.Dispose();
                 while (_SqlData.Read())
                 {
-                    // Populate Personalia
-                    _p.ClassType = _SqlData["ClassType"].ToString();
+                    _isOK = true;
+                }
+            }
+            catch (Exception e)
+            {
+                _ = e.ToString();
+            }
+            con.Close();
+            return _isOK;
+        }
+        public static bool IfPersonExists(string personID, string eMail, string passWord)
+        {
+            bool _isOK = false;
+            SqlConnection con = new SqlConnection("Data Source = NSOP\\POKER; Initial Catalog = dbPerson; Trusted_Connection = True; Asynchronous Processing=True; ");
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            try
+            {
+                SqlDataReader _SqlData = null;
+                StringBuilder _s = new StringBuilder();
+                _s.Append($"SELECT * FROM dbo.tbPerson WHERE ");
+                if (personID.Length > 0)
+                {
+                    _s.Append($"PlayerID = '{personID}' ");
+                }
+                if (eMail.Length > 0)
+                {
+                    _s.Append($"EMail = '{eMail}' ");
+                }
+                if (passWord.Length > 0)
+                {
+                    _s.Append($"PassWord = '{DataAccess.PasswordEncryption(passWord)}' ");
+                }
+                _s.Append($";");
 
+                SqlCommand _SqlStr = new SqlCommand(_s.ToString(), con);
+
+                _SqlData = _SqlStr.ExecuteReader();
+                _SqlStr.Dispose();
+                while (_SqlData.Read())
+                {
+                    _isOK = true;
+                }
+            }
+            catch (Exception e)
+            {
+                _ = e.ToString();
+            }
+            con.Close();
+            return _isOK;
+        }
+        public static Person GetPerson(string personID, string eMail, string passWord)
+        {
+            Person _p = new Person{};
+            SqlConnection con = new SqlConnection("Data Source = NSOP\\POKER; Initial Catalog = dbPerson; Trusted_Connection = True; Asynchronous Processing=True; ");
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            try
+            {
+                SqlDataReader _SqlData = null;
+                StringBuilder _s = new StringBuilder();
+                _s.Append($"SELECT * FROM dbo.tbPerson WHERE ");
+                if (personID.Length > 0)
+                {
+                    _s.Append($"PlayerID = '{personID}' ");
+                }
+                if (eMail.Length > 0)
+                {
+                    _s.Append($"EMail = '{eMail}' ");
+                }
+                if (passWord.Length > 0)
+                {
+                    _s.Append($"PassWord = '{DataAccess.PasswordEncryption(passWord)}' ");
+                }
+                _s.Append($";");
+
+                SqlCommand _SqlStr = new SqlCommand(_s.ToString(), con);
+
+                _SqlData = _SqlStr.ExecuteReader();
+                _SqlStr.Dispose();
+                while (_SqlData.Read())
+                {
+                    // Populate Personalia 
                     _p.PlayerID = _SqlData["PlayerID"].ToString();
                     _p.FirstName = _SqlData["FirstName"].ToString();
                     _p.LastName = _SqlData["LastName"].ToString();
@@ -778,7 +776,7 @@ namespace NSOP_Tournament_Pro_Library
                     else _p.RegDate = DateTime.Parse(_SqlData["RegDate"].ToString());
 
                     _p.NickName = _SqlData["NickName"].ToString();
-                    _p.UserName = userName;
+                  
                     _p.UserID = _SqlData["UserID"].ToString();
                     _p.IsPlayerRemoved = (Boolean)_SqlData["IsPlayerRemoved"];
                     _p.IsLoggedInn = (Boolean)_SqlData["IsLoggedInn"];
@@ -897,104 +895,206 @@ namespace NSOP_Tournament_Pro_Library
             con.Close();
             return _p;
         }
-        // Do all action with person
-        public static Person ProsessPerson(Person person, DataAccess.Request request)
+        public Person GetPerson(string personID)
         {
-            // FillThisPerson(person);
-            switch (request)
+            SqlConnection con = new SqlConnection("Data Source = NSOP\\POKER; Initial Catalog = dbPerson; Trusted_Connection = True; Asynchronous Processing=True; ");
+            if (con.State == ConnectionState.Closed)
             {
-                case DataAccess.Request.ResetPassword:
-                    // xxx 
-                    // Check if Person already exists
-                    Person _p0 = CheckPerson(person.UserName, "");
-                    // Person exist if PlayerID all other than ""
-                    if (_p0.PlayerID != "")
-                    {
-                        person.ActionType = DataAccess.Request.ResetPassword.ToString();
-                        person.ClubID = DataAccess.GetVerificationCode();
-                    }
-                    else
-                    {
-                        // player dont exist
-                    }
-                    break;
-                case DataAccess.Request.UpdatePassword:
-                    // XXX MAKE A PASSWORD DATABASE CHANGER
-                    UpdatePassword(person);
-                    break;
-                case DataAccess.Request.VerifyOK:
-                    person.ActionType = DataAccess.Request.PersonCreated.ToString();
-                    _ = person.SaveNew();
-                    break;
-                case DataAccess.Request.New:
-                    // Saving new Person
-                    person.PlayerID = DataAccess.FillID(DataAccess.IdType.Person);
-                    _ = person.SaveNew();
-                    // xx check if players is saved ok
-                    break;
-                case DataAccess.Request.ClubUpdate:
-
-                    _ = person.UpdateClub(person);
-                    break;
-                case DataAccess.Request.Delete:
-                    _ = person.Delete(person);
-                    break;
-                case DataAccess.Request.Get:
-                    person = person.GetPerson(person.PlayerID);
-                    break;
-                case DataAccess.Request.Getall:
-
-                    break;
-                case DataAccess.Request.Registrer:
-                    // Check if Person already exists
-                    Person _p1 = CheckPerson(person.UserName, person.PassWord);
-                    // Person exist if PlayerID all other than ""
-                    if (_p1.PlayerID != "")
-                    {
-                        person.ActionType = DataAccess.Request.PersonExist.ToString();
-                    }
-                    else
-                    {
-                        // Need verification
-                        person.ActionType = DataAccess.Request.Verify.ToString();
-                        person.ClubID = DataAccess.GetVerificationCode();
-
-                        // Add a new person to Person Dataabase
-
-                    }
-                    break;
-                case DataAccess.Request.LoggIn:
-                    person = CheckPerson(person.UserName, person.PassWord);
-                    if (person.PlayerID != "")
-                    {
-                        // person found
-                        //person.GetPerson(person.PlayerID);
-                        person.ActionType = DataAccess.Request.LoggInOK.ToString();
-                    }
-                    else
-                    {
-                        //person not found
-                        person.ActionType = DataAccess.Request.LoggInFailed.ToString();
-                    }
-                    break;
-                case DataAccess.Request.LoggInOK:
-                    break;
-                case DataAccess.Request.LoggInFailed:
-                    break;
-                case DataAccess.Request.PersonExist:
-                    person.ActionType = DataAccess.Request.PersonExist.ToString();
-                    break;
-                case DataAccess.Request.PersonCreated:
-                    person.ActionType = DataAccess.Request.PersonCreated.ToString();
-                    break;
-                case DataAccess.Request.PersonUpdate:
-                    break;
-                case DataAccess.Request.Verify:
-                    break;
-                case DataAccess.Request.BadEMail:
-                    break;
+                con.Open();
             }
-            return person;
+            try
+            {
+                SqlDataReader _SqlData = null;
+                SqlCommand _SqlStr = new SqlCommand($"SELECT * FROM dbo.tbPerson WHERE PlayerID = '{personID}';", con);
+                _SqlData = _SqlStr.ExecuteReader();
+                _SqlStr.Dispose();
+                while (_SqlData.Read())
+                {
+                    // Populate Personalia
+                    this.PlayerID = personID;
+                    this.FirstName = _SqlData["FirstName"].ToString();
+                    this.LastName = _SqlData["LastName"].ToString();
+                    this.Picture = (byte[])_SqlData["Picture"];
+                    this.Mobile = _SqlData["Mobile"].ToString();
+                    this.EMail = _SqlData["EMail"].ToString();
+                    this.Gender = _SqlData["Gender"].ToString();
+                    this.Nationality = _SqlData["Nationality"].ToString();
+                    this.Iso3166Name = _SqlData["Iso3166Name"].ToString();
+                    this.BornDate = DateTime.Parse(_SqlData["BornDate"].ToString());
+                    this.RegDate = DateTime.Parse(_SqlData["RegDate"].ToString());
+                    this.NickName = _SqlData["NickName"].ToString();
+                    this.PassWord = _SqlData["PassWord"].ToString();
+                    this.UserID = _SqlData["UserID"].ToString();
+                    this.IsPlayerRemoved = (Boolean)_SqlData["IsPlayerRemoved"];
+                    this.IsLoggedInn = (Boolean)_SqlData["IsLoggedInn"];
+                    this.ClubID = _SqlData["ClubID"].ToString();
+                    this.ClubName = _SqlData["ClubName"].ToString();
+                    this.ClubPicture = _SqlData["ClubPicture"].ToString();
+
+                    // Populate Rank
+                    this.ClubRank = (int)_SqlData["ClubRank"];
+                    this.ClubPoints = (long)_SqlData["ClubPoints"];
+                    this.ClubMembership = (int)_SqlData["ClubMembership"];
+                    this.ClubMembershipExpires = DateTime.Parse(_SqlData["ClubMembershipExpires"].ToString());
+                    this.ClubRegDate = DateTime.Parse(_SqlData["ClubRegDate"].ToString());
+
+                    this.NSOPID = _SqlData["NSOPID"].ToString();
+                    this.NSOPRank = (int)_SqlData["NSOPRank"];
+                    this.NSOPPoints = (long)_SqlData["NSOPPoints"];
+                    this.NSOPMembership = (int)_SqlData["NSOPMembership"];
+                    this.NSOPMembershipExpires = DateTime.Parse(_SqlData["NSOPMembershipExpires"].ToString());
+                    this.NSOPRegDate = DateTime.Parse(_SqlData["NSOPRegDate"].ToString());
+
+                    this.NationalID = _SqlData["NationalID"].ToString();
+                    this.NationalRank = (int)_SqlData["NationalRank"];
+                    this.NationalPoints = (long)_SqlData["NationalPoints"];
+                    this.NationalMembership = (int)_SqlData["NationalMembership"];
+                    this.NationalMembershipExpires = DateTime.Parse(_SqlData["NationalMembershipExpires"].ToString());
+                    this.NationalRegDate = DateTime.Parse(_SqlData["NationalRegDate"].ToString());
+
+                    this.WorldID = _SqlData["WorldID"].ToString();
+                    this.WorldRank = (int)_SqlData["WorldRank"];
+                    this.WorldPoints = (long)_SqlData["WorldPoints"];
+                    this.WorldMembership = (int)_SqlData["WorldMembership"];
+                    this.WorldMembershipExpires = DateTime.Parse(_SqlData["WorldMembershipExpires"].ToString());
+                    this.WorldRegDate = DateTime.Parse(_SqlData["WorldRegDate"].ToString());
+
+                    // Populate Lifetime
+                    this.LifetimePlayed = (int)_SqlData["LifetimePlayed"];
+                    this.LifetimeWins = (int)_SqlData["LifetimeWins"];
+                    this.LifetimeFinalTables = (int)_SqlData["LifetimeFinalTables"];
+                    this.LifetimeCashed = (int)_SqlData["LifetimeCashed"];
+                    this.LifetimeBubbles = (int)_SqlData["LifetimeBubbles"];
+                    this.LifetimeFirstOuts = (int)_SqlData["LifetimeFirstOuts"];
+                    this.LifetimeSevenDeuces = (int)_SqlData["LifetimeSevenDeuces"];
+                    this.LifetimeBadBeats = (int)_SqlData["LifetimeBadBeats"];
+                    this.LifetimeTakeOuts = (int)_SqlData["LifetimeTakeOuts"];
+                    this.LifetimeHunted = (int)_SqlData["LifetimeHunted"];
+                    this.LifetimeMoneyEarned = (long)_SqlData["LifetimeMoneyEarned"];
+                    this.LifetimeMoneySpent = (long)_SqlData["LifetimeMoneySpent"];
+
+                    // Populate Modul Access
+                    this.AdminSubscribtion = DateTime.Parse(_SqlData["AdminSubscribtion"].ToString());
+                    this.WebSideSubscribtion = DateTime.Parse(_SqlData["WebSideSubscribtion"].ToString());
+                    this.LastLogin = DateTime.Parse(_SqlData["LastLogin"].ToString());
+                    this.Tokens = (int)_SqlData["Tokens"];
+                    this.TournamentCreatorQTY = (int)_SqlData["TournamentCreatorQTY"];
+                    this.PersonRegQTY = (int)_SqlData["PersonRegQTY"];
+                    this.TicketSaleQTY = (int)_SqlData["TicketSaleQTY"];
+                    this.BlindStructureQTY = (int)_SqlData["BlindStructureQTY"];
+                    this.PayoutStructureQTY = (int)_SqlData["PayoutStructureQTY"];
+                    this.PointStructureQTY = (int)_SqlData["PointStructureQTY"];
+                    this.AdvertiseModuleQTY = (int)_SqlData["AdvertiseModuleQTY"];
+                    this.TableManagerQTY = (int)_SqlData["TableManagerQTY"];
+                    this.StandUserName = _SqlData["StandUserName"].ToString();
+                    this.StandPassWord = _SqlData["StandPassWord"].ToString();
+                }
+
+                // Save LifeTime
+            }
+            catch (Exception e)
+            {
+                _ = e.ToString();
+            }
+            con.Close();
+            return this;
         }
+        // Do all action with person
+        //public static Person ProsessPerson(Person person, DataAccess.Request request)
+        //{
+        //    // FillThisPerson(person);
+        //    switch (request)
+        //    {
+        //        case DataAccess.Request.ResetPassword:
+        //            // xxx 
+        //            // Check if Person already exists
+        //            if (IfPersonExists("", person.EMail,"",""))
+        //            {
+        //                person.ActionType = DataAccess.Request.ResetPassword.ToString();
+        //                person.ClubID = DataAccess.GetVerificationCode();
+        //            }
+        //            else
+        //            {
+        //                // player dont exist
+        //            }
+        //            break;
+        //        case DataAccess.Request.UpdatePassword:
+        //            // XXX MAKE A PASSWORD DATABASE CHANGER
+        //            UpdatePassword(person);
+        //            break;
+        //        case DataAccess.Request.VerifyOK:
+        //            person.ActionType = DataAccess.Request.PersonCreated.ToString();
+        //            _ = person.SaveNew();
+        //            break;
+        //        case DataAccess.Request.New:
+        //            // Saving new Person
+        //            person.PlayerID = DataAccess.FillID(DataAccess.IdType.Person);
+        //            _ = person.SaveNew();
+        //            // xx check if players is saved ok
+        //            break;
+        //        case DataAccess.Request.ClubUpdate:
+
+        //           // _ = person.UpdateClub(person);
+        //            break;
+        //        case DataAccess.Request.Delete:
+        //            _ = person.Delete(person);
+        //            break;
+        //        case DataAccess.Request.Get:
+        //            person = person.GetPerson(person.PlayerID);
+        //            break;
+        //        case DataAccess.Request.Getall:
+
+        //            break;
+        //        case DataAccess.Request.Registrer:
+        //            // Check if Person already exists
+        //            Person _p1 = CheckPerson(person.EMail, person.PassWord);
+        //            // Person exist if PlayerID all other than ""
+        //            if (_p1.PlayerID != "")
+        //            {
+        //                person.ActionType = DataAccess.Request.PersonExist.ToString();
+        //            }
+        //            else
+        //            {
+        //                // Need verification
+        //                person.ActionType = DataAccess.Request.Verify.ToString();
+        //                person.ClubID = DataAccess.GetVerificationCode();
+
+        //                // Add a new person to Person Dataabase
+
+        //            }
+        //            break;
+        //        case DataAccess.Request.LoggIn:
+        //            person = CheckPerson(person.EMail, person.PassWord);
+        //            if (person.PlayerID != "")
+        //            {
+        //                // person found
+        //                //person.GetPerson(person.PlayerID);
+        //                person.ActionType = DataAccess.Request.LoggInOK.ToString();
+        //            }
+        //            else
+        //            {
+        //                //person not found
+        //                person.ActionType = DataAccess.Request.LoggInFailed.ToString();
+        //            }
+        //            break;
+        //        case DataAccess.Request.LoggInOK:
+        //            break;
+        //        case DataAccess.Request.LoggInFailed:
+        //            break;
+        //        case DataAccess.Request.PersonExist:
+        //            person.ActionType = DataAccess.Request.PersonExist.ToString();
+        //            break;
+        //        case DataAccess.Request.PersonCreated:
+        //            person.ActionType = DataAccess.Request.PersonCreated.ToString();
+        //            break;
+        //        case DataAccess.Request.PersonUpdate:
+        //            break;
+        //        case DataAccess.Request.Verify:
+        //            break;
+        //        case DataAccess.Request.BadEMail:
+        //            break;
+        //    }
+        //    return person;
+        //}
     }
 }

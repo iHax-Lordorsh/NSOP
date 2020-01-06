@@ -171,7 +171,7 @@ namespace NSOP_Tournament_Pro
                             Action LoggInFailed = delegate
                             {
                                 var mainWnd = Application.Current.MainWindow as MainWindow;
-                                mainWnd.LoggInFailed(new Person(cp.ObjectType));
+                                mainWnd.LoggInFailed();
                             };
                             Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, LoggInFailed);
                             break;
@@ -209,17 +209,26 @@ namespace NSOP_Tournament_Pro
                             break;
                         case DataAccess.Request.Getall:
                             break;
-                        case DataAccess.Request.Registrer:
+                        case DataAccess.Request.NewAccount:
                             break;
                         case DataAccess.Request.PersonExist:
                             break;
                         case DataAccess.Request.PersonCreated:
                             break;
-                        case DataAccess.Request.Verify:
+                        case DataAccess.Request.NewAccountVerify:
+                            Action NewAccountVerify = delegate
+                            {
+                                var mainWnd = Application.Current.MainWindow as MainWindow;
+                                mainWnd.NewAccountVerify(cp.Info);
+                            };
+                            Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, NewAccountVerify);
+
                             break;
                         case DataAccess.Request.VerifyOK:
                             break;
                         case DataAccess.Request.BadEMail:
+                            break;
+                        case DataAccess.Request.UpdateFailed:
                             break;
                     }
                     break;
@@ -242,43 +251,43 @@ namespace NSOP_Tournament_Pro
             }
         }
 
-        public static string DataManager(byte[] buffer)
-        {
-        string _packet = DataAccess.GetPacket(buffer);
-            if (_packet !="")
-            {
-                switch (DataAccess.ParseEnum<DataAccess.ClassType>(_packet))
-                {
-                    case DataAccess.ClassType.Person:
-                        // 
-                        Action action = delegate
-                        {
-                            var mainWnd = Application.Current.MainWindow as MainWindow;
-                            mainWnd.UpdateData(buffer,_packet);
-                        };
-                        Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, action);
-                        break;
-                    case DataAccess.ClassType.PersonList:
-                        break;
-                    case DataAccess.ClassType.Tournament:
-                        break;
-                    case DataAccess.ClassType.Blinds:
-                        break;
-                    case DataAccess.ClassType.Payouts:
-                        break;
-                    case DataAccess.ClassType.Points:
-                        break;
-                    case DataAccess.ClassType.DataVerify:
-                        break;
-                    case DataAccess.ClassType.Action:
-                        break;
-                    case DataAccess.ClassType.Packet:
-                        break;
+        //public static string DataManager(byte[] buffer)
+        //{
+        //string _packet = DataAccess.GetPacket(buffer);
+        //    if (_packet !="")
+        //    {
+        //        switch (DataAccess.ParseEnum<DataAccess.ClassType>(_packet))
+        //        {
+        //            case DataAccess.ClassType.Person:
+        //                // 
+        //                Action action = delegate
+        //                {
+        //                    var mainWnd = Application.Current.MainWindow as MainWindow;
+        //                    mainWnd.UpdateData(buffer,_packet);
+        //                };
+        //                Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, action);
+        //                break;
+        //            case DataAccess.ClassType.PersonList:
+        //                break;
+        //            case DataAccess.ClassType.Tournament:
+        //                break;
+        //            case DataAccess.ClassType.Blinds:
+        //                break;
+        //            case DataAccess.ClassType.Payouts:
+        //                break;
+        //            case DataAccess.ClassType.Points:
+        //                break;
+        //            case DataAccess.ClassType.DataVerify:
+        //                break;
+        //            case DataAccess.ClassType.Action:
+        //                break;
+        //            case DataAccess.ClassType.Packet:
+        //                break;
 
-                }
-            }
-            return _packet;
-        }
+        //        }
+        //    }
+        //    return _packet;
+        //}
         //public static void Data_IN(object vSocket)
         //{
         //    Socket _ResieveSocket = (Socket)vSocket;
