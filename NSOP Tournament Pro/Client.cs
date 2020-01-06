@@ -183,7 +183,7 @@ namespace NSOP_Tournament_Pro
                             Action ResetVerification = delegate
                             {
                                 var mainWnd = Application.Current.MainWindow as MainWindow;
-                                mainWnd.ResetVerification(cp.Info, cp.Request);
+                                mainWnd.ResetVerification(new CommunicationManager(cp.ToBytes()));
                             };
                             Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, ResetVerification);
                             break;

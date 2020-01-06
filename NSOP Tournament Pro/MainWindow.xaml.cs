@@ -54,8 +54,8 @@ namespace NSOP_Tournament_Pro
         private string _Text;
         private string _Fotter;
 
-        public string VerificationCode { get; private set; }
-        public DataAccess.Request VerificationLocation { get; private set; }
+        public string VerificationCode { get; set; }
+        public DataAccess.Request VerificationLocation { get; set; }
 
         void Cam_NewFrame(object sender, NewFrameEventArgs eventArgs)
         {
@@ -183,15 +183,15 @@ namespace NSOP_Tournament_Pro
 
         private void Img_Loggin_PW_View_MouseEnter(object sender, MouseEventArgs e)
         {
-            txt_Loggin_6.Text = txt_Loggin_PW_1.Password;
-            txt_Loggin_6.Visibility = Visibility.Visible;
-            txt_Loggin_PW_1.Visibility = Visibility.Hidden;
+            txt_Login_6.Text = txt_Login_PW_1.Password;
+            txt_Login_6.Visibility = Visibility.Visible;
+            txt_Login_PW_1.Visibility = Visibility.Hidden;
         }
         private void Img_Loggin_PW_View_MouseLeave(object sender, MouseEventArgs e)
         {
-            txt_Loggin_6.Text = "";
-            txt_Loggin_6.Visibility = Visibility.Hidden;
-            txt_Loggin_PW_1.Visibility = Visibility.Visible;
+            txt_Login_6.Text = "";
+            txt_Login_6.Visibility = Visibility.Hidden;
+            txt_Login_PW_1.Visibility = Visibility.Visible;
         }
 
         //private void PerformPersonAction(Person _p)
@@ -264,15 +264,15 @@ namespace NSOP_Tournament_Pro
         //    }
         //}
 
-   
-        internal void ResetVerification(string info, DataAccess.Request request)
+        internal void ResetVerification(CommunicationManager cp)
         {
             brd_ForgotPassword.Visibility = Visibility.Hidden;
             brd_Verify.Visibility = Visibility.Visible;
-            VerificationCode = info;
-            VerificationLocation = request;
+            VerificationCode = cp.Info;
+            VerificationLocation = cp.Request;
         }
 
+      
         internal void PersonExist()
         {
             _Header = "ACCOUNT CREATION FAILED";
@@ -447,19 +447,19 @@ namespace NSOP_Tournament_Pro
             // **************
             lblClubID.Content = _adminPerson.ClubID;
             lblClubName.Content = _adminPerson.ClubName;
-            txtEdit_9.Text = _adminPerson.ClubName;
+            txt_Edit_9.Text = _adminPerson.ClubName;
             brdClubPicture.Background = BrushBackground(_adminPerson.ClubPicture);
             brdEditClubPicture.Background = BrushBackground(_adminPerson.ClubPicture);
             brdEditPicture.Background = ByteToBrushBackground(_adminPerson.Picture);
-            txtEdit_1.Text = _adminPerson.FirstName;
-            txtEdit_2.Text = _adminPerson.LastName;
-            txtEdit_8.Text = _adminPerson.EMail;
-            txtEdit_3.Text = _adminPerson.Mobile;
+            txt_Edit_1.Text = _adminPerson.FirstName;
+            txt_Edit_2.Text = _adminPerson.LastName;
+            txt_Edit_8.Text = _adminPerson.EMail;
+            txt_Edit_3.Text = _adminPerson.Mobile;
             dpBorn.Text = _adminPerson.BornDate.ToShortDateString();
             cbxNationality.Text = _adminPerson.Nationality + $" [{_adminPerson.Iso3166Name}]";
-            txtEdit_4.Text = _adminPerson.NickName;
-            txtEdit_6.Text = _adminPerson.StandUserName;
-            txtEdit_7.Text = _adminPerson.StandPassWord;
+            txt_Edit_4.Text = _adminPerson.NickName;
+            txt_Edit_6.Text = _adminPerson.StandUserName;
+            txt_Edit_7.Text = _adminPerson.StandPassWord;
             // **************
             // Subscriptions
             // **************
@@ -528,16 +528,16 @@ namespace NSOP_Tournament_Pro
         {
             _adminPerson.PlayerID = DataAccess.FillID(DataAccess.IdType.Person);
             _adminPerson.ClubID = DataAccess.FillID(DataAccess.IdType.Club);
-            _adminPerson.ClubName = txt_Loggin_2.Text.ToString().ToUpper() + " POKER CLUB";
-            _adminPerson.FirstName = txt_Loggin_1.Text.ToString();
-            _adminPerson.LastName = txt_Loggin_2.Text.ToString();
-            _adminPerson.EMail = txt_Loggin_5.Text.ToString();
-            _adminPerson.Mobile = txt_Loggin_4.Text.ToString();
+            _adminPerson.ClubName = txt_Login_2.Text.ToString().ToUpper() + " POKER CLUB";
+            _adminPerson.FirstName = txt_Login_1.Text.ToString();
+            _adminPerson.LastName = txt_Login_2.Text.ToString();
+            _adminPerson.EMail = txt_Login_5.Text.ToString();
+            _adminPerson.Mobile = txt_Login_4.Text.ToString();
             _adminPerson.UserID = "";
-            _adminPerson.PassWord = txt_Loggin_PW_1.Password.ToString();
+            _adminPerson.PassWord = txt_Login_PW_1.Password.ToString();
             _adminPerson.Picture = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject("profile")));
             _adminPerson.ClubPicture = "Avatar_1";
-            _adminPerson.StandUserName = txt_Loggin_1.Text.ToString().Substring(0, 1) + txt_Loggin_2.Text.ToString().Substring(0, 1) + DateTime.Now.Year.ToString();
+            _adminPerson.StandUserName = txt_Login_1.Text.ToString().Substring(0, 1) + txt_Login_2.Text.ToString().Substring(0, 1) + DateTime.Now.Year.ToString();
             _adminPerson.StandPassWord = DataAccess.GetVerificationCode();
         }
         public void UpdateAdminPerson(Person person)
@@ -646,7 +646,7 @@ namespace NSOP_Tournament_Pro
             switch ((sender as Button).Name.ToString())
             {
                 case "btn_NewAccount":
-                    if ((int)txt_Loggin_1.Tag == 1 && (int)txt_Loggin_2.Tag == 1 && (int)txt_Loggin_3.Tag == 1 && (int)txt_Loggin_4.Tag == 1 && (int)txt_Loggin_5.Tag == 1 && (int)txt_Loggin_PW_1.Tag == 1 && (int)txt_Loggin_PW_2.Tag == 1)
+                    if ((int)txt_Login_1.Tag == 1 && (int)txt_Login_2.Tag == 1 && (int)txt_Login_3.Tag == 1 && (int)txt_Login_4.Tag == 1 && (int)txt_Login_5.Tag == 1 && (int)txt_Login_PW_1.Tag == 1 && (int)txt_Login_PW_2.Tag == 1)
                     {
                         //Registrer Player
                         UpdateAdminPerson();
@@ -667,7 +667,7 @@ namespace NSOP_Tournament_Pro
                     }
                     break;
                 case "btn_LoggIn":
-                    if (txt_Loggin_5.Text.Length >= 7 && txt_Loggin_PW_1.Password.Length >= 8)
+                    if (txt_Login_5.Text.Length >= 7 && txt_Login_PW_1.Password.Length >= 8)
                     {
                         //Check if Person exists
                         UpdateAdminPerson();
@@ -675,12 +675,11 @@ namespace NSOP_Tournament_Pro
                     }
                     break;
                 case "btn_ForgotPassword":
-                   
                     brd_ForgotPassword.Visibility = Visibility.Visible;
                     break;
                 case "btn_SendResetMail":
                     UpdateAdminPerson();
-                    _adminPerson.EMail = txtResetPasswordMail.ToString();
+                    _adminPerson.EMail = txt_ResetPasswordMail.ToString();
                     client.SendObject(UpdateCommunicationPacket(DataAccess.Request.ResetPassword, _adminPerson.ToBytes(), DataAccess.ClassType.Person));
                     break;
                 case "btn_SendResetPassword":
@@ -895,23 +894,50 @@ namespace NSOP_Tournament_Pro
         {
             lstAvatar.Visibility = Visibility.Hidden;
         }
-        private void TxtVerify_Code_SelectionChanged(object sender, RoutedEventArgs e)
-        {
-            if ((sender as TextBox).Text == VerificationCode && VerificationCode.Length > 0)
-            {
-                // Code is correct you can now verify
-                (sender as TextBox).Background = (LinearGradientBrush)FindResource("ButtonBackgroundPushed");
-                (sender as TextBox).Foreground = (SolidColorBrush)FindResource("ActiveText");
-                btn_Verification.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                // You type the wrong code
-                (sender as TextBox).Background = (SolidColorBrush)FindResource("ErrorBackground");
-                (sender as TextBox).Foreground = (SolidColorBrush)FindResource("ErrorText");
-                btn_Verification.Visibility = Visibility.Hidden;
-            }
-        }
+        //private void TxtVerify_Code_SelectionChanged(object sender, RoutedEventArgs e)
+        //{
+        //    switch ((sender as TextBox).Name)
+        //    {
+        //        case "txt_ResetPasswordMail":
+        //            if ((sender as TextBox).Text.Contains("@") && (sender as TextBox).Text.Contains(".") && (sender as TextBox).Text.Length >= 7)
+        //            {
+        //                (sender as TextBox).Background = (LinearGradientBrush)FindResource("ButtonBackgroundPushed");
+        //                (sender as TextBox).Foreground = (SolidColorBrush)FindResource("ActiveText");
+        //                (sender as TextBox).Tag = 1;
+        //                _adminPerson.EMail = (sender as TextBox).Text.ToString();
+        //            }
+        //            else
+        //            {
+        //                (sender as TextBox).Background = (SolidColorBrush)FindResource("ErrorBackground");
+        //                (sender as TextBox).Foreground = (SolidColorBrush)FindResource("ErrorText");
+        //                (sender as TextBox).Tag = 0;
+        //            }
+        //            try
+        //            {
+        //                txt_Login_5.Text = (sender as TextBox).Text;
+        //            }
+        //            catch (Exception)
+        //            {
+        //            }
+        //            break;
+        //        case "txt_Verify_Code":
+        //            break;
+        //    }
+        //    if ((sender as TextBox).Text == VerificationCode && VerificationCode.Length > 0)
+        //    {
+        //        // Code is correct you can now verify
+        //        (sender as TextBox).Background = (LinearGradientBrush)FindResource("ButtonBackgroundPushed");
+        //        (sender as TextBox).Foreground = (SolidColorBrush)FindResource("ActiveText");
+        //        btn_Verification.Visibility = Visibility.Visible;
+        //    }
+        //    else
+        //    {
+        //        // You type the wrong code
+        //        (sender as TextBox).Background = (SolidColorBrush)FindResource("ErrorBackground");
+        //        (sender as TextBox).Foreground = (SolidColorBrush)FindResource("ErrorText");
+        //        btn_Verification.Visibility = Visibility.Hidden;
+        //    }
+        //}
         private void CbxNationality_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (cbxNationality.SelectedIndex != -1)
@@ -938,26 +964,28 @@ namespace NSOP_Tournament_Pro
         }
         private void Textbox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            switch ((sender as TextBox).Name.ToLower())
+            switch ((sender as TextBox).Name)
             {
-                case "txtVerify_Code": // Verification new account
-                    if ((sender as TextBox).Text != VerificationCode && VerificationCode.Length >0)
-                    {
-                        // You type the wrong code
-                        (sender as TextBox).Background = (SolidColorBrush)FindResource("ErrorBackground");
-                        (sender as TextBox).Foreground = (SolidColorBrush)FindResource("ErrorText");
-                        btn_Verification.Visibility = Visibility.Hidden;
-                    }
-                    else
+                case "txt_Verify_Code": // Verification new account
+                    if ((sender as TextBox).Text == VerificationCode && VerificationCode.Length > 0)
                     {
                         // Code is correct you can now verify
                         (sender as TextBox).Background = (LinearGradientBrush)FindResource("ButtonBackgroundPushed");
                         (sender as TextBox).Foreground = (SolidColorBrush)FindResource("ActiveText");
+                        (sender as TextBox).Tag = 1;
                         btn_Verification.Visibility = Visibility.Visible;
                     }
+                    else
+                    {
+                        // You type the wrong code
+                        (sender as TextBox).Background = (SolidColorBrush)FindResource("ErrorBackground");
+                        (sender as TextBox).Foreground = (SolidColorBrush)FindResource("ErrorText");
+                        (sender as TextBox).Tag = 0;
+                        btn_Verification.Visibility = Visibility.Hidden;
+                    }
                     break;
-                case "txt_loggin_1": // FirstName
-                case "txtEdit_1": // FirstName
+                case "txt_Login_1": // FirstName
+                case "txt_Edit_1": // FirstName
                     if ((sender as TextBox).Text.Length >= 2)
                     {
                         (sender as TextBox).Background = (LinearGradientBrush)FindResource("ButtonBackgroundPushed");
@@ -972,8 +1000,8 @@ namespace NSOP_Tournament_Pro
                         (sender as TextBox).Tag = 0;
                     }
                     break;
-                case "txt_loggin_2": // LastName
-                case "txtEdit_2": // LastName
+                case "txt_Login_2": // LastName
+                case "txt_Edit_2": // LastName
                     if ((sender as TextBox).Text.Length >= 2)
                     {
                         (sender as TextBox).Background = (LinearGradientBrush)FindResource("ButtonBackgroundPushed");
@@ -988,31 +1016,45 @@ namespace NSOP_Tournament_Pro
                         (sender as TextBox).Tag = 0;
                     }
                     break;
-                case "txt_loggin_3": // EMail
-                case "txtResetPasswordMail": // EMail
+                case "txt_Login_3": // EMail
+                case "txt_ResetPasswordMail": // EMail
                     if ((sender as TextBox).Text.Contains("@") && (sender as TextBox).Text.Contains(".") && (sender as TextBox).Text.Length >= 7)
                     {
                         (sender as TextBox).Background = (LinearGradientBrush)FindResource("ButtonBackgroundPushed");
                         (sender as TextBox).Foreground = (SolidColorBrush)FindResource("ActiveText");
                         (sender as TextBox).Tag = 1;
                         _adminPerson.EMail = (sender as TextBox).Text.ToString();
+                        try
+                        {
+                            btn_SendResetMail.Visibility = Visibility.Visible;
+                        }
+                        catch (Exception)
+                        {
+                        }
                     }
                     else
                     {
                         (sender as TextBox).Background = (SolidColorBrush)FindResource("ErrorBackground");
                         (sender as TextBox).Foreground = (SolidColorBrush)FindResource("ErrorText");
                         (sender as TextBox).Tag = 0;
+                        try
+                        {
+                            btn_SendResetMail.Visibility = Visibility.Hidden;
+                        }
+                        catch (Exception)
+                        {
+                        }
                     }
                     try
                     {
-                        txt_Loggin_5.Text = (sender as TextBox).Text;
+                        txt_Login_5.Text = (sender as TextBox).Text;
                     }
                     catch (Exception)
                     {
                     }
                     break;
-                case "txt_loggin_4": // Mobile
-                case "txtEdit_3": // Mobile
+                case "txt_Login_4": // Mobile
+                case "txt_Edit_3": // Mobile
                     if ((sender as TextBox).Text.Length >= 8 && (sender as TextBox).Text.Length <= 10)
                     {
                         (sender as TextBox).Background = (LinearGradientBrush)FindResource("ButtonBackgroundPushed");
@@ -1027,7 +1069,7 @@ namespace NSOP_Tournament_Pro
                         (sender as TextBox).Tag = 0;
                     }
                     break;
-                case "txt_loggin_5": // UserName
+                case "txt_Login_5": // UserName
                     if ((sender as TextBox).Text.Length >= 7)
                     {
                         (sender as TextBox).Background = (LinearGradientBrush)FindResource("ButtonBackgroundPushed");
@@ -1042,7 +1084,7 @@ namespace NSOP_Tournament_Pro
                         (sender as TextBox).Tag = 0;
                     }
                     break;
-                case "txtEdit_4": // Nickname
+                case "txt_Edit_4": // Nickname
                     if ((sender as TextBox).Text.Length >= 0 && (sender as TextBox).Text.Length <= 20)
                     {
                         (sender as TextBox).Background = (LinearGradientBrush)FindResource("ButtonBackgroundPushed");
@@ -1057,7 +1099,7 @@ namespace NSOP_Tournament_Pro
                         (sender as TextBox).Tag = 0;
                     }
                     break;
-                case "txtEdit_5": // Password
+                case "txt_Edit_5": // Password
                     if ((sender as TextBox).Text.Length >= 7)
                     {
                         (sender as TextBox).Background = (LinearGradientBrush)FindResource("ButtonBackgroundPushed");
@@ -1072,7 +1114,7 @@ namespace NSOP_Tournament_Pro
                         (sender as TextBox).Tag = 0;
                     }
                     break;
-                case "txtEdit_6": // Stand Username
+                case "txt_Edit_6": // Stand Username
                     if ((sender as TextBox).Text.Length >= 0 && (sender as TextBox).Text.Length <= 12)
                     {
                         (sender as TextBox).Background = (LinearGradientBrush)FindResource("ButtonBackgroundPushed");
@@ -1087,7 +1129,7 @@ namespace NSOP_Tournament_Pro
                         (sender as TextBox).Tag = 0;
                     }
                     break;
-                case "txtEdit_7": // Stand Password
+                case "txt_Edit_7": // Stand Password
                     if ((sender as TextBox).Text.Length >= 0 && (sender as TextBox).Text.Length <= 12)
                     {
                         (sender as TextBox).Background = (LinearGradientBrush)FindResource("ButtonBackgroundPushed");
@@ -1108,13 +1150,13 @@ namespace NSOP_Tournament_Pro
         {
             switch ((sender as PasswordBox).Name)
             {
-                case "txt_Loggin_PW_1": // PAssword
+                case "txt_Login_PW_1": // PAssword
                     if ((sender as PasswordBox).Password.Length >= 8)
                     {
                         (sender as PasswordBox).Background = (LinearGradientBrush)FindResource("ButtonBackgroundPushed");
                         (sender as PasswordBox).Foreground = (SolidColorBrush)FindResource("ActiveText");
                         (sender as PasswordBox).Tag = 1;
-                        _adminPerson.PassWord = txt_Loggin_PW_1.Password.ToString();
+                        _adminPerson.PassWord = txt_Login_PW_1.Password.ToString();
                     }
                     else
                     {
@@ -1123,8 +1165,8 @@ namespace NSOP_Tournament_Pro
                         (sender as PasswordBox).Tag = 0;
                     }
                     break;
-                case "txt_Loggin_PW_2": // validated password
-                    if ((sender as PasswordBox).Password == txt_Loggin_PW_1.Password)
+                case "txt_Login_PW_2": // validated password
+                    if ((sender as PasswordBox).Password == txt_Login_PW_1.Password)
                     {
                         (sender as PasswordBox).Background = (LinearGradientBrush)FindResource("ButtonBackgroundPushed");
                         (sender as PasswordBox).Foreground = (SolidColorBrush)FindResource("ActiveText");
@@ -1137,7 +1179,7 @@ namespace NSOP_Tournament_Pro
                         (sender as PasswordBox).Tag = 0;
                     }
                     break;
-                case "txt_Loggin_PW_3": // Reset password
+                case "txt_Login_PW_3": // Reset password
                     if ((sender as PasswordBox).Password.Length >= 8)
                     {
                         (sender as PasswordBox).Background = (LinearGradientBrush)FindResource("ButtonBackgroundPushed");
@@ -1152,7 +1194,7 @@ namespace NSOP_Tournament_Pro
                         (sender as PasswordBox).Tag = 0;
                     }
                     break;
-                case "txt_Loggin_PW_4": // validated Reset password
+                case "txt_Login_PW_4": // validated Reset password
                     if ((sender as PasswordBox).Password == txt_Loggin_PW_3.Password)
                     {
                         (sender as PasswordBox).Background = (LinearGradientBrush)FindResource("ButtonBackgroundPushed");

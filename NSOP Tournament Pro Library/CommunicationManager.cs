@@ -244,9 +244,9 @@ namespace NSOP_Tournament_Pro_Library
                         case DataAccess.Request.BadEMail:
                             break;
                         case DataAccess.Request.ResetPassword:
+                            this.Info = DataAccess.GetVerificationCode();
                             if (Send_Verification("", "", "", _person.EMail, "NSOP Reset Password verification.", this.Info))
                             {
-                                _person.ClubID = DataAccess.GetVerificationCode();
                                 this.Request = DataAccess.Request.ResetPasswordVerify;
                             }
                             else
