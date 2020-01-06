@@ -1063,7 +1063,7 @@ namespace NSOP_Tournament_Pro_Library
 
         //            }
         //            break;
-        //        case DataAccess.Request.LoggIn:
+        //        case DataAccess.Request.LogIn:
         //            person = CheckPerson(person.EMail, person.PassWord);
         //            if (person.PlayerID != "")
         //            {

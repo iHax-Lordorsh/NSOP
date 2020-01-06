@@ -98,7 +98,7 @@ namespace NSOP_Tournament_Pro
             brd_ForgotPassword.Visibility = Visibility.Hidden;
             brd_Verify.Visibility = Visibility.Hidden;
             brdLoggin.Visibility = Visibility.Visible;
-            btn_LoggIn.Visibility = Visibility.Visible;
+            btn_LogIn.Visibility = Visibility.Visible;
             btn_NewAccount.Visibility = Visibility.Hidden;
             brd_ResetPassword.Visibility = Visibility.Hidden;
             USS.Visibility = Visibility.Hidden;
@@ -230,7 +230,7 @@ namespace NSOP_Tournament_Pro
         //        case DataAccess.Request.Registrer:
         //            //ShowAdminScreen();
         //            break;
-        //        case DataAccess.Request.LoggIn:
+        //        case DataAccess.Request.LogIn:
         //            break;
         //        case DataAccess.Request.LoggInOK:
         //            // Loggin Player, procced to admin screen
@@ -622,7 +622,7 @@ namespace NSOP_Tournament_Pro
                     stk_LoggIn_1.Visibility = Visibility.Hidden;
                     stk_LoggIn_2.Visibility = Visibility.Visible;
                     stk_LoggIn_3.Visibility = Visibility.Hidden;
-                    btn_LoggIn.Visibility = Visibility.Visible;
+                    btn_LogIn.Visibility = Visibility.Visible;
                     btn_NewAccount.Visibility = Visibility.Hidden;
                     break;
                 case "btn_loggin_newaccount":
@@ -636,7 +636,7 @@ namespace NSOP_Tournament_Pro
                     stk_LoggIn_3.Visibility = Visibility.Visible;
 
                     btn_NewAccount.Visibility = Visibility.Visible;
-                    btn_LoggIn.Visibility = Visibility.Hidden;
+                    btn_LogIn.Visibility = Visibility.Hidden;
                     break;
             }
         }
@@ -650,14 +650,15 @@ namespace NSOP_Tournament_Pro
                     {
                         //Registrer Player
                         UpdateAdminPerson();
-                        client.SendObject(UpdateCommunicationPacket(DataAccess.Request.NewAccount, _adminPerson.ToBytes(), DataAccess.ClassType.Person));
+                        client.SendObject(UpdateCommunicationPacket(DataAccess.Request.NewAccount, _adminPerson.ToBytes(), DataAccess.ClassType.Person, ""));
                     }
                     break;
                 case "btn_Verification":
                     if (VerificationLocation == DataAccess.Request.NewAccountVerify)
                     {
                         UpdateAdminPerson();
-                        client.SendObject(UpdateCommunicationPacket(DataAccess.Request.VerifyOK, _adminPerson.ToBytes(), DataAccess.ClassType.Person));
+                        client.SendObject(UpdateCommunicationPacket(DataAccess.Request.VerifyOK, _adminPerson.ToBytes(), DataAccess.ClassType.Person, ""));
+                        VerificationCode = "";
                     }
                     else if(VerificationLocation == DataAccess.Request.ResetPasswordVerify)
                     {
@@ -666,12 +667,12 @@ namespace NSOP_Tournament_Pro
                         brd_ForgotPassword.Visibility = Visibility.Hidden;
                     }
                     break;
-                case "btn_LoggIn":
+                case "btn_LogIn":
                     if (txt_Login_5.Text.Length >= 7 && txt_Login_PW_1.Password.Length >= 8)
                     {
                         //Check if Person exists
                         UpdateAdminPerson();
-                        client.SendObject(UpdateCommunicationPacket(DataAccess.Request.LoggIn, _adminPerson.ToBytes(), DataAccess.ClassType.Person));
+                        client.SendObject(UpdateCommunicationPacket(DataAccess.Request.LogIn, _adminPerson.ToBytes(), DataAccess.ClassType.Person, ""));
                     }
                     break;
                 case "btn_ForgotPassword":
@@ -680,22 +681,23 @@ namespace NSOP_Tournament_Pro
                 case "btn_SendResetMail":
                     UpdateAdminPerson();
                     _adminPerson.EMail = txt_ResetPasswordMail.ToString();
-                    client.SendObject(UpdateCommunicationPacket(DataAccess.Request.ResetPassword, _adminPerson.ToBytes(), DataAccess.ClassType.Person));
+                    client.SendObject(UpdateCommunicationPacket(DataAccess.Request.ResetPassword, _adminPerson.ToBytes(), DataAccess.ClassType.Person,""));
                     break;
                 case "btn_SendResetPassword":
                     UpdateAdminPerson();
-                    _adminPerson.PassWord = txt_Loggin_PW_3.Password.ToString();
-                    client.SendObject(UpdateCommunicationPacket(DataAccess.Request.UpdatePassword, _adminPerson.ToBytes(), DataAccess.ClassType.Person));
+                    _adminPerson.PassWord = txt_Login_PW_3.Password.ToString();
+                    client.SendObject(UpdateCommunicationPacket(DataAccess.Request.UpdatePassword, _adminPerson.ToBytes(), DataAccess.ClassType.Person,""));
                     break;
             }
         }
-        private byte[] UpdateCommunicationPacket(DataAccess.Request request, byte[] objType, DataAccess.ClassType classType)
+        private byte[] UpdateCommunicationPacket(DataAccess.Request request, byte[] objType, DataAccess.ClassType classType, string info)
         {
             CommunicationManager _cp = new CommunicationManager
             {
                 Request = request,
                 ObjectType = objType,
                 ClassType = classType,
+                Info = info,
                 Size = objType.Length
             };
             return _cp.ToBytes();
@@ -855,7 +857,7 @@ namespace NSOP_Tournament_Pro
             // Populate admin and save changes
             //Check if Person exists
             UpdateAdminPerson(_adminPerson);
-            client.SendObject(UpdateCommunicationPacket(DataAccess.Request.ClubUpdate, _adminPerson.ToBytes(), DataAccess.ClassType.Person));
+            client.SendObject(UpdateCommunicationPacket(DataAccess.Request.ClubUpdate, _adminPerson.ToBytes(), DataAccess.ClassType.Person,""));
         }
         private void UModule_Click(object sender, MouseButtonEventArgs e)
         {
@@ -1185,7 +1187,6 @@ namespace NSOP_Tournament_Pro
                         (sender as PasswordBox).Background = (LinearGradientBrush)FindResource("ButtonBackgroundPushed");
                         (sender as PasswordBox).Foreground = (SolidColorBrush)FindResource("ActiveText");
                         (sender as PasswordBox).Tag = 1;
-                        _adminPerson.PassWord = txt_Loggin_PW_3.Password.ToString();
                     }
                     else
                     {
@@ -1195,11 +1196,12 @@ namespace NSOP_Tournament_Pro
                     }
                     break;
                 case "txt_Login_PW_4": // validated Reset password
-                    if ((sender as PasswordBox).Password == txt_Loggin_PW_3.Password)
+                    if ((sender as PasswordBox).Password == txt_Login_PW_3.Password)
                     {
                         (sender as PasswordBox).Background = (LinearGradientBrush)FindResource("ButtonBackgroundPushed");
                         (sender as PasswordBox).Foreground = (SolidColorBrush)FindResource("ActiveText");
                         (sender as PasswordBox).Tag = 1;
+                        txt_Login_PW_1.Password = txt_Login_PW_3.Password;
                         btn_SendResetPassword.Visibility = Visibility.Visible;
                     }
                     else

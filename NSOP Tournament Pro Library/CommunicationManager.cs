@@ -105,7 +105,7 @@ namespace NSOP_Tournament_Pro_Library
 
         //            }
         //            break;
-        //        case DataAccess.Request.LoggIn:
+        //        case DataAccess.Request.LogIn:
         //            person = CheckPerson(person.UserName, person.PassWord);
         //            if (person.PlayerID != "")
         //            {
@@ -149,7 +149,7 @@ namespace NSOP_Tournament_Pro_Library
                     switch (this.Request)
                     {
                         // Logg In Request to server
-                        case DataAccess.Request.LoggIn:
+                        case DataAccess.Request.LogIn:
                             // Check if person exists                           
                             if (Person.IfPersonExists("", _person.EMail, _person.PassWord))
                             {

@@ -71,7 +71,7 @@ namespace NSOP_Tournament_Pro_Server
                                     _packetRecieved = true;
                                     Console.WriteLine("Communication Package Found: Request = " + _cp.Request.ToString() + "Packet Recieved = "+ _packetRecieved.ToString());
                                     clientSocket.Send(_cp.ManagePacket().ToBytes());
-                                    //  break;
+                                  //  break;
                                 }
                                 catch (Exception)
                                 {

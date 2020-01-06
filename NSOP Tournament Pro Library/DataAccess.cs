@@ -360,7 +360,7 @@ namespace NSOP_Tournament_Pro_Library
             Get,
             Getall,
             NewAccount,
-            LoggIn,
+            LogIn,
             LoggInOK,
             LoggInFailed,
             PersonExist,
