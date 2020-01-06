@@ -35,6 +35,7 @@ namespace NSOP_Tournament_Pro_Library
             this.Size = _cp.Size;
             this.ClassType = _cp.ClassType;
             this.Request = _cp.Request;
+            this.Info = _cp.Info;
             this.ObjectType = _cp.ObjectType;
         }
 

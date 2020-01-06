@@ -12,7 +12,6 @@ C:\Programmering\NSOP\NSOP Tournament Pro Library\bin\Debug\System.Drawing.Commo
 C:\Programmering\NSOP\NSOP Tournament Pro Library\obj\Debug\NSOP Tournament Pro Library.csproj.CopyComplete
 C:\Programmering\NSOP\NSOP Tournament Pro Library\obj\Debug\NSOP Torunament Pro Library.dll
 C:\Programmering\NSOP\NSOP Tournament Pro Library\obj\Debug\NSOP Torunament Pro Library.pdb
-C:\Programmering\NSOP\NSOP Tournament Pro Library\obj\Debug\NSOP Tournament Pro Library.csprojAssemblyReference.cache
 E:\Programmering\NSOP\NSOP\NSOP Tournament Pro Library\bin\Debug\NSOP Torunament Pro Library.dll
 E:\Programmering\NSOP\NSOP\NSOP Tournament Pro Library\bin\Debug\NSOP Torunament Pro Library.pdb
 E:\Programmering\NSOP\NSOP\NSOP Tournament Pro Library\bin\Debug\System.Drawing.Common.dll
@@ -26,3 +25,4 @@ E:\Programmering\NSOP\NSOP Tournament Pro Library\bin\Debug\System.Drawing.Commo
 E:\Programmering\NSOP\NSOP Tournament Pro Library\obj\Debug\NSOP Tournament Pro Library.csproj.CopyComplete
 E:\Programmering\NSOP\NSOP Tournament Pro Library\obj\Debug\NSOP Torunament Pro Library.dll
 E:\Programmering\NSOP\NSOP Tournament Pro Library\obj\Debug\NSOP Torunament Pro Library.pdb
+C:\Programmering\NSOP\NSOP Tournament Pro Library\obj\Debug\NSOP Tournament Pro Library.csprojAssemblyReference.cache

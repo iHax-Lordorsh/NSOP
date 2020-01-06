@@ -70,10 +70,8 @@ namespace NSOP_Tournament_Pro_Server
                                     CommunicationManager _cp = new CommunicationManager(_buffer);
                                     _packetRecieved = true;
                                     Console.WriteLine("Communication Package Found: Request = " + _cp.Request.ToString() + "Packet Recieved = "+ _packetRecieved.ToString());
-                                    CommunicationManager _cpp = new CommunicationManager(_cp.ManagePacket().ToBytes());
-                                    Console.WriteLine("Info :  = " + _cpp.Info.ToString());
-                                    clientSocket.Send(_cpp.ToBytes());
-                                  //  break;
+                                    clientSocket.Send(_cp.ManagePacket().ToBytes());
+                                    //  break;
                                 }
                                 catch (Exception)
                                 {
