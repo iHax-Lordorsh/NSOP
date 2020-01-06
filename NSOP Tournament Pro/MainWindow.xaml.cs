@@ -267,6 +267,15 @@ namespace NSOP_Tournament_Pro
             btn_NewAccountVerify.Tag = person.ClubID.ToString();
         }
 
+        internal void PersonExist()
+        {
+            _Header = "ACCOUNT CREATION FAILED";
+            _Sub = "PERSON ALREADY EXIST";
+            _Text = "LOG IN TO YOUR ACCOUNT OR TRY TO RESET YOUR PASSWORD.";
+            _Fotter = "MAKE CHANGES AND TRY AGAIN";
+            ShowErrorMessage(_Header, _Sub, _Text, _Fotter);
+        }
+
         internal void LoggInFailed()
         {
             _Header = "PERSON NOT FOUND";
