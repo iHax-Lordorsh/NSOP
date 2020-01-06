@@ -179,11 +179,11 @@ namespace NSOP_Tournament_Pro
                         case DataAccess.Request.ResetPassword:
                             break;
                         // Reset verification from server
-                        case DataAccess.Request.ResetVerification:
+                        case DataAccess.Request.ResetPasswordVerify:
                             Action ResetVerification = delegate
                             {
                                 var mainWnd = Application.Current.MainWindow as MainWindow;
-                                mainWnd.ResetVerification(new Person(cp.ObjectType));
+                                mainWnd.ResetVerification(cp.Info, cp.Request);
                             };
                             Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, ResetVerification);
                             break;
@@ -225,7 +225,7 @@ namespace NSOP_Tournament_Pro
                             Action NewAccountVerify = delegate
                             {
                                 var mainWnd = Application.Current.MainWindow as MainWindow;
-                                mainWnd.NewAccountVerify(cp.Info);
+                                mainWnd.NewAccountVerify(cp.Info, cp.Request);
                             };
                             Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, NewAccountVerify);
 

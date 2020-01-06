@@ -211,12 +211,10 @@ namespace NSOP_Tournament_Pro_Library
                             {
                                 // Need verification
                                 this.Info = DataAccess.GetVerificationCode();
-                                if (Send_Verification("","","",_person.EMail,"NSOP New account verification.", this.Info))
+                                _person.IsVerified = false;
+                                if (Send_Verification("","","",_person.EMail,"NSOP New account verification.", this.Info) && _person.SaveNew())
                                 {
                                     this.Request = DataAccess.Request.NewAccountVerify;
-                                    // Add a new person to Person Dataabase
-                                    _person.IsVerified = false;
-                                    _person.SaveNew();
                                 }
                                 else
                                 {
@@ -246,15 +244,15 @@ namespace NSOP_Tournament_Pro_Library
                         case DataAccess.Request.BadEMail:
                             break;
                         case DataAccess.Request.ResetPassword:
-                            //if (Send_ResetVerification(_person))
-                            //{
-                            //    _person.ClubID = DataAccess.GetVerificationCode();
-                            //    this.Request = DataAccess.Request.ResetVerification;
-                            //}
-                            //else
-                            //{
-                            //    this.Request = DataAccess.Request.BadEMail;
-                            //}
+                            if (Send_Verification("", "", "", _person.EMail, "NSOP Reset Password verification.", this.Info))
+                            {
+                                _person.ClubID = DataAccess.GetVerificationCode();
+                                this.Request = DataAccess.Request.ResetPasswordVerify;
+                            }
+                            else
+                            {
+                                this.Request = DataAccess.Request.BadEMail;
+                            }
                             break;
                         case DataAccess.Request.UpdatePassword:
                             if (Person.UpdatePassword(_person) == true)
@@ -266,7 +264,7 @@ namespace NSOP_Tournament_Pro_Library
                                 this.Request = DataAccess.Request.BadEMail;
                             }
                             break;
-                        case DataAccess.Request.ResetVerification:
+                        case DataAccess.Request.ResetPasswordVerify:
                             break;
                         case DataAccess.Request.ResetPasswordOK:
                             break;
