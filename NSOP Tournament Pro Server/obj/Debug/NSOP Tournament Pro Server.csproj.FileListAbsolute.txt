@@ -25,12 +25,3 @@ C:\Users\chris\Source\Repos\iHax-Lordorsh\NSOP\NSOP Tournament Pro Server\obj\De
 C:\Users\chris\Source\Repos\iHax-Lordorsh\NSOP\NSOP Tournament Pro Server\obj\Debug\NSOP Tournament Pro Server.csproj.CopyComplete
 C:\Users\chris\Source\Repos\iHax-Lordorsh\NSOP\NSOP Tournament Pro Server\obj\Debug\NSOP Tournament Pro Server.exe
 C:\Users\chris\Source\Repos\iHax-Lordorsh\NSOP\NSOP Tournament Pro Server\obj\Debug\NSOP Tournament Pro Server.pdb
-E:\Programmering\NSOP\NSOP\NSOP Tournament Pro Server\bin\Debug\NSOP Tournament Pro Server.exe.config
-E:\Programmering\NSOP\NSOP\NSOP Tournament Pro Server\bin\Debug\NSOP Tournament Pro Server.exe
-E:\Programmering\NSOP\NSOP\NSOP Tournament Pro Server\bin\Debug\NSOP Tournament Pro Server.pdb
-E:\Programmering\NSOP\NSOP\NSOP Tournament Pro Server\bin\Debug\NSOP Torunament Pro Library.dll
-E:\Programmering\NSOP\NSOP\NSOP Tournament Pro Server\bin\Debug\NSOP Torunament Pro Library.pdb
-E:\Programmering\NSOP\NSOP\NSOP Tournament Pro Server\obj\Debug\NSOP Tournament Pro Server.csprojAssemblyReference.cache
-E:\Programmering\NSOP\NSOP\NSOP Tournament Pro Server\obj\Debug\NSOP Tournament Pro Server.csproj.CopyComplete
-E:\Programmering\NSOP\NSOP\NSOP Tournament Pro Server\obj\Debug\NSOP Tournament Pro Server.exe
-E:\Programmering\NSOP\NSOP\NSOP Tournament Pro Server\obj\Debug\NSOP Tournament Pro Server.pdb
