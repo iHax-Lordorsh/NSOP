@@ -518,8 +518,8 @@ namespace NSOP_Tournament_Pro_Library
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = $" UPDATE tbPerson SET ";
                 // Personalia
-                cmd.CommandText += $"PassWord = '{DataAccess.PasswordEncryption(person.PassWord)}' ";
-
+                cmd.CommandText += $"PassWord = '{DataAccess.PasswordEncryption(person.PassWord)}', ";
+                cmd.CommandText += $"IsVerified = '{true}' ";
                 // Where
                 cmd.CommandText += $"WHERE EMail = '{person.EMail}';";
 

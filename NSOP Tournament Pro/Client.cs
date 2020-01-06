@@ -212,6 +212,12 @@ namespace NSOP_Tournament_Pro
                         case DataAccess.Request.NewAccount:
                             break;
                         case DataAccess.Request.PersonExist:
+                            Action PersonExist = delegate
+                            {
+                                var mainWnd = Application.Current.MainWindow as MainWindow;
+                                mainWnd.PersonExist();
+                            };
+                            Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, PersonExist);
                             break;
                         case DataAccess.Request.PersonCreated:
                             break;
