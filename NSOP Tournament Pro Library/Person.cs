@@ -692,16 +692,17 @@ namespace NSOP_Tournament_Pro_Library
                 _s.Append($"SELECT * FROM dbo.tbPerson WHERE ");
                 if (personID.Length > 0)
                 {
-                    _s.Append($"PlayerID = '{personID}' ");
+                    _s.Append($"PlayerID = '{personID}' AND ");
                 }
                 if (eMail.Length > 0)
                 {
-                    _s.Append($"EMail = '{eMail}' ");
+                    _s.Append($"EMail = '{eMail}' AND ");
                 }
                 if (passWord.Length > 0)
                 {
-                    _s.Append($"PassWord = '{DataAccess.PasswordEncryption(passWord)}' ");
+                    _s.Append($"PassWord = '{DataAccess.PasswordEncryption(passWord)}' AND ");
                 }
+                _s.Remove(_s.Length - 4, _s.Length);
                 _s.Append($";");
 
                 SqlCommand _SqlStr = new SqlCommand(_s.ToString(), con);
@@ -735,16 +736,17 @@ namespace NSOP_Tournament_Pro_Library
                 _s.Append($"SELECT * FROM dbo.tbPerson WHERE ");
                 if (personID.Length > 0)
                 {
-                    _s.Append($"PlayerID = '{personID}' ");
+                    _s.Append($"PlayerID = '{personID}' AND ");
                 }
                 if (eMail.Length > 0)
                 {
-                    _s.Append($"EMail = '{eMail}' ");
+                    _s.Append($"EMail = '{eMail}' AND ");
                 }
                 if (passWord.Length > 0)
                 {
-                    _s.Append($"PassWord = '{DataAccess.PasswordEncryption(passWord)}' ");
+                    _s.Append($"PassWord = '{DataAccess.PasswordEncryption(passWord)}' AND ");
                 }
+                _s.Remove(_s.Length - 4, _s.Length);
                 _s.Append($";");
 
                 SqlCommand _SqlStr = new SqlCommand(_s.ToString(), con);
