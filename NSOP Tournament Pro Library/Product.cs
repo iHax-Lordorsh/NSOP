@@ -398,8 +398,9 @@ namespace NSOP_Torunament_Pro_Library
             con.Close();
             return _p;
         }
-        public void GetProductList(string ID)
+        public Product GetProductList(string ID)
         {
+            Product _p = new Product();
             SqlConnection con = new SqlConnection("Data Source = NSOP\\POKER; Initial Catalog = dbPerson; Trusted_Connection = True; Asynchronous Processing=True; ");
             if (con.State == ConnectionState.Closed)
             {
@@ -422,32 +423,32 @@ namespace NSOP_Torunament_Pro_Library
                 _SqlStr.Dispose();
                 while (_SqlData.Read())
                 {
-                    Product _p = new Product();
+                    Product _product = new Product();
                     //Populate Product
-                    _p.ID = _SqlData["ID"].ToString();
-                    _p.Name = _SqlData["Name"].ToString();
-                    _p.Picture = _SqlData["Picture"].ToString();
-                    _p.Info = _SqlData["Info"].ToString();
-                    _p.Description = _SqlData["Description"].ToString();
-                    _p.Price = (int)_SqlData["Price"];
-                    _p.Discount = (int)_SqlData["Discount"];
-                    _p.Expires = (DateTime)_SqlData["Expires"];
-                    _p.StartDate = (DateTime)_SqlData["StartDate"];
-                    _p.EndDate = (DateTime)_SqlData["EndDate"];
+                    _product.ID = _SqlData["ID"].ToString();
+                    _product.Name = _SqlData["Name"].ToString();
+                    _product.Picture = _SqlData["Picture"].ToString();
+                    _product.Info = _SqlData["Info"].ToString();
+                    _product.Description = _SqlData["Description"].ToString();
+                    _product.Price = (int)_SqlData["Price"];
+                    _product.Discount = (int)_SqlData["Discount"];
+                    _product.Expires = (DateTime)_SqlData["Expires"];
+                    _product.StartDate = (DateTime)_SqlData["StartDate"];
+                    _product.EndDate = (DateTime)_SqlData["EndDate"];
 
-                    _p.ID_1 = _SqlData["ID_1"].ToString();
-                    _p.Qty_1 = (int)_SqlData["Qty_1"];
-                    _p.ID_2 = _SqlData["ID_2"].ToString();
-                    _p.Qty_2 = (int)_SqlData["Qty_2"];
-                    _p.ID_3 = _SqlData["ID_3"].ToString();
-                    _p.Qty_3 = (int)_SqlData["Qty_3"];
-                    _p.ID_4 = _SqlData["ID_4"].ToString();
-                    _p.Qty_4 = (int)_SqlData["Qty_4"];
-                    _p.ID_5 = _SqlData["ID_5"].ToString();
-                    _p.Qty_5 = (int)_SqlData["Qty_5"];
-                    _p.ID_6 = _SqlData["ID_6"].ToString();
-                    _p.Qty_6 = (int)_SqlData["Qty_6"];
-                    _StartProductsList.Add(_p);
+                    _product.ID_1 = _SqlData["ID_1"].ToString();
+                    _product.Qty_1 = (int)_SqlData["Qty_1"];
+                    _product.ID_2 = _SqlData["ID_2"].ToString();
+                    _product.Qty_2 = (int)_SqlData["Qty_2"];
+                    _product.ID_3 = _SqlData["ID_3"].ToString();
+                    _product.Qty_3 = (int)_SqlData["Qty_3"];
+                    _product.ID_4 = _SqlData["ID_4"].ToString();
+                    _product.Qty_4 = (int)_SqlData["Qty_4"];
+                    _product.ID_5 = _SqlData["ID_5"].ToString();
+                    _product.Qty_5 = (int)_SqlData["Qty_5"];
+                    _product.ID_6 = _SqlData["ID_6"].ToString();
+                    _product.Qty_6 = (int)_SqlData["Qty_6"];
+                    _StartProductsList.Add(_product);
 
                 }
                 //Save LifeTime
@@ -457,10 +458,11 @@ namespace NSOP_Torunament_Pro_Library
                 _ = e.ToString();
             }
             con.Close();
+            return _p;
         }
-        public void GetProductList(string startId,string endId)
+        public Product GetProductList(string startId,string endId)
         {
-         
+            Product _p = new Product();
             SqlConnection con = new SqlConnection("Data Source = NSOP\\POKER; Initial Catalog = dbPerson; Trusted_Connection = True; Asynchronous Processing=True; ");
             if (con.State == ConnectionState.Closed)
             {
@@ -488,32 +490,32 @@ namespace NSOP_Torunament_Pro_Library
                 _SqlStr.Dispose();
                 while (_SqlData.Read())
                 {
-                    Product _p = new Product();
+                    Product _product = new Product();
                     //Populate Product
-                    _p.ID = _SqlData["ID"].ToString();
-                    _p.Name = _SqlData["Name"].ToString();
-                    _p.Picture = _SqlData["Picture"].ToString();
-                    _p.Info = _SqlData["Info"].ToString();
-                    _p.Description = _SqlData["Description"].ToString();
-                    _p.Price = (int)_SqlData["Price"];
-                    _p.Discount = (int)_SqlData["Discount"];
-                    _p.Expires = (DateTime)_SqlData["Expires"];
-                    _p.StartDate = (DateTime)_SqlData["StartDate"];
-                    _p.EndDate = (DateTime)_SqlData["EndDate"];
+                    _product.ID = _SqlData["ID"].ToString();
+                    _product.Name = _SqlData["Name"].ToString();
+                    _product.Picture = _SqlData["Picture"].ToString();
+                    _product.Info = _SqlData["Info"].ToString();
+                    _product.Description = _SqlData["Description"].ToString();
+                    _product.Price = (int)_SqlData["Price"];
+                    _product.Discount = (int)_SqlData["Discount"];
+                    _product.Expires = (DateTime)_SqlData["Expires"];
+                    _product.StartDate = (DateTime)_SqlData["StartDate"];
+                    _product.EndDate = (DateTime)_SqlData["EndDate"];
 
-                    _p.ID_1 = _SqlData["ID_1"].ToString();
-                    _p.Qty_1 = (int)_SqlData["Qty_1"];
-                    _p.ID_2 = _SqlData["ID_2"].ToString();
-                    _p.Qty_2 = (int)_SqlData["Qty_2"];
-                    _p.ID_3 = _SqlData["ID_3"].ToString();
-                    _p.Qty_3 = (int)_SqlData["Qty_3"];
-                    _p.ID_4 = _SqlData["ID_4"].ToString();
-                    _p.Qty_4 = (int)_SqlData["Qty_4"];
-                    _p.ID_5 = _SqlData["ID_5"].ToString();
-                    _p.Qty_5 = (int)_SqlData["Qty_5"];
-                    _p.ID_6 = _SqlData["ID_6"].ToString();
-                    _p.Qty_6 = (int)_SqlData["Qty_6"];
-                    _StartProductsList.Add(_p);
+                    _product.ID_1 = _SqlData["ID_1"].ToString();
+                    _product.Qty_1 = (int)_SqlData["Qty_1"];
+                    _product.ID_2 = _SqlData["ID_2"].ToString();
+                    _product.Qty_2 = (int)_SqlData["Qty_2"];
+                    _product.ID_3 = _SqlData["ID_3"].ToString();
+                    _product.Qty_3 = (int)_SqlData["Qty_3"];
+                    _product.ID_4 = _SqlData["ID_4"].ToString();
+                    _product.Qty_4 = (int)_SqlData["Qty_4"];
+                    _product.ID_5 = _SqlData["ID_5"].ToString();
+                    _product.Qty_5 = (int)_SqlData["Qty_5"];
+                    _product.ID_6 = _SqlData["ID_6"].ToString();
+                    _product.Qty_6 = (int)_SqlData["Qty_6"];
+                    _p._StartProductsList.Add(_product);
                 }
                 //Save LifeTime
             }
@@ -522,6 +524,7 @@ namespace NSOP_Torunament_Pro_Library
                 _ = e.ToString();
             }
             con.Close();
+            return _p;
         }
     }
 }
