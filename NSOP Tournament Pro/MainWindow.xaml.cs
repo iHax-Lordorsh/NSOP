@@ -85,6 +85,9 @@ namespace NSOP_Tournament_Pro
             }
         }
 
+        private List<Border> listAvatar = new List<Border>();
+        private List<string> listNationalities = new List<string>();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -105,15 +108,15 @@ namespace NSOP_Tournament_Pro
             USS.Setup();
             // Value Settings
             brdClubPicture.Tag = "";
-
+            brdEditClubPicture.Tag = "";
 
             // Populate
             cbxNationality.ItemsSource = DataAccess.GetCountries();
             cbxNationality.Text = "Norway [NO]";
-            lstAvatar.ItemsSource = UpdateAvatars();
-
+            listAvatar = UpdateAvatars();
+            lstAvatar.ItemsSource = listAvatar;
+            lstAvatar.SelectedIndex = -1;
             // User Initialize
-            uSubscription.FillSalesBoxes();
             
             
         }
@@ -294,7 +297,6 @@ namespace NSOP_Tournament_Pro
         internal void NewAccountVerify(string info, DataAccess.Request request)
         {
             brd_Verify.Visibility = Visibility.Visible;
-            btn_Verification.Visibility = Visibility.Visible;
             brd_ForgotPassword.Visibility = Visibility.Hidden;
             brd_ResetPassword.Visibility = Visibility.Hidden;
             VerificationCode = info;
@@ -448,6 +450,7 @@ namespace NSOP_Tournament_Pro
             lblClubID.Content = _adminPerson.ClubID;
             lblClubName.Content = _adminPerson.ClubName;
             txt_Edit_9.Text = _adminPerson.ClubName;
+            GenderSelection(_adminPerson.Gender);
             brdClubPicture.Background = BrushBackground(_adminPerson.ClubPicture);
             brdEditClubPicture.Background = BrushBackground(_adminPerson.ClubPicture);
             brdEditPicture.Background = ByteToBrushBackground(_adminPerson.Picture);
@@ -456,7 +459,16 @@ namespace NSOP_Tournament_Pro
             txt_Edit_8.Text = _adminPerson.EMail;
             txt_Edit_3.Text = _adminPerson.Mobile;
             dpBorn.Text = _adminPerson.BornDate.ToShortDateString();
-            cbxNationality.Text = _adminPerson.Nationality + $" [{_adminPerson.Iso3166Name}]";
+            int _teller = -1;
+            foreach (var item in listNationalities)
+            {
+                _teller++;
+                if (item == _adminPerson.Nationality + $" [{_adminPerson.Iso3166Name}]")
+                {
+                    cbxNationality.SelectedIndex = _teller;
+                }
+            }
+           
             txt_Edit_4.Text = _adminPerson.NickName;
             txt_Edit_6.Text = _adminPerson.StandUserName;
             txt_Edit_7.Text = _adminPerson.StandPassWord;
@@ -524,7 +536,7 @@ namespace NSOP_Tournament_Pro
             UModule_Right_4.BottomRight = "GO TO SITE ->>>";
             UModule_Right_4.Background = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject("a0")));
         }
-        private void UpdateAdminPerson()
+        public void UpdateAdminPerson()
         {
             _adminPerson.PlayerID = DataAccess.FillID(DataAccess.IdType.Person);
             _adminPerson.ClubID = DataAccess.FillID(DataAccess.IdType.Club);
@@ -556,6 +568,7 @@ namespace NSOP_Tournament_Pro
             _adminPerson.StandPassWord = person.StandPassWord;
             UpdateAdminSite();
         }
+
         //internal void UpdateData(byte[] buffer, string _packet)
         //{
         //    switch (DataAccess.ParseEnum<DataAccess.ClassType>(_packet))
@@ -640,7 +653,6 @@ namespace NSOP_Tournament_Pro
                     break;
             }
         }
-  
         private void LogginRequest_Click(object sender, RoutedEventArgs e)
         {
             switch ((sender as Button).Name.ToString())
@@ -702,7 +714,6 @@ namespace NSOP_Tournament_Pro
             };
             return _cp.ToBytes();
         }
-
         private void Info_Click(object sender, RoutedEventArgs e)
         {
             switch (((Button)sender as Button).Name)
@@ -799,9 +810,15 @@ namespace NSOP_Tournament_Pro
         private void Gender_Click(object sender, RoutedEventArgs e)
         {
             Button b = (Button)sender;
-            switch (b.Name.ToString())
+            GenderSelection(b.Name.ToString());
+        }
+
+        private void GenderSelection(string gender)
+        {
+            switch (gender)
             {
                 case "btnMale":
+                case "MALE":
                     btnMale.Tag = "MALE";
                     _adminPerson.Gender = "MALE";
                     btnMale.Style = (Style)FindResource("ButtonPushed");
@@ -811,6 +828,7 @@ namespace NSOP_Tournament_Pro
                     btnFemale.Foreground = (SolidColorBrush)FindResource("DeactiveText");
                     break;
                 case "btnFemale":
+                case "FEMALE":
                     btnMale.Tag = "FEMALE";
                     _adminPerson.Gender = "FEMALE";
                     btnFemale.Style = (Style)FindResource("ButtonPushed");
@@ -821,6 +839,7 @@ namespace NSOP_Tournament_Pro
                     break;
             }
         }
+
         private void Admin_Click(object sender, MouseButtonEventArgs e)
         {
             switch (((Border)sender as Border).Name.ToString().ToUpper())
@@ -855,10 +874,9 @@ namespace NSOP_Tournament_Pro
         private void BtnSaveClubChanges_Click(object sender, RoutedEventArgs e)
         {
             // Populate admin and save changes
-            //Check if Person exists
-            UpdateAdminPerson(_adminPerson);
             client.SendObject(UpdateCommunicationPacket(DataAccess.Request.ClubUpdate, _adminPerson.ToBytes(), DataAccess.ClassType.Person,""));
         }
+
         private void UModule_Click(object sender, MouseButtonEventArgs e)
         {
             switch (((UserModuleSimple)sender as UserModuleSimple).Name.ToString().ToUpper())
@@ -894,6 +912,21 @@ namespace NSOP_Tournament_Pro
         // **************************   SELECTION CHANGED
         private void LstAvatar_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            // xxx get selected avatar
+            if (lstAvatar.SelectedIndex > -1)
+            {
+                foreach (var item in listAvatar)
+                {
+                    if (item == (sender as ListBox).SelectedItem)
+                    {
+                        string x = (item as Border).Name;
+                        _adminPerson.ClubPicture = (item as Border).Name;
+                        brdEditClubPicture.Background = BrushBackground((item as Border).Name);
+                        brdEditClubPicture.Tag = (item as Border).Name;
+                        break;
+                    }
+                }
+            }
             lstAvatar.Visibility = Visibility.Hidden;
         }
         //private void TxtVerify_Code_SelectionChanged(object sender, RoutedEventArgs e)
@@ -949,7 +982,6 @@ namespace NSOP_Tournament_Pro
                 try
                 {
                     imgNationality.Source = DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject(_Iso3166Name.ToLower(), _Culture));
-
                 }
                 catch (Exception)
                 {
@@ -962,7 +994,13 @@ namespace NSOP_Tournament_Pro
         }
         private void DpBorn_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            _adminPerson.BornDate = DateTime.Parse(dpBorn.Text.ToString());
+            try
+            {
+                _adminPerson.BornDate = DateTime.Parse(dpBorn.Text.ToString());
+            }
+            catch (Exception)
+            {
+            }
         }
         private void Textbox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -1146,6 +1184,21 @@ namespace NSOP_Tournament_Pro
                         (sender as TextBox).Tag = 0;
                     }
                     break;
+                case "txt_Edit_9": // Clubname
+                    if ((sender as TextBox).Text.Length >= 0 && (sender as TextBox).Text.Length <= 20)
+                    {
+                        (sender as TextBox).Background = (LinearGradientBrush)FindResource("ButtonBackgroundPushed");
+                        (sender as TextBox).Foreground = (SolidColorBrush)FindResource("ActiveText");
+                        (sender as TextBox).Tag = 1;
+                        _adminPerson.ClubName = (sender as TextBox).Text.ToString();
+                    }
+                    else
+                    {
+                        (sender as TextBox).Background = (SolidColorBrush)FindResource("ErrorBackground");
+                        (sender as TextBox).Foreground = (SolidColorBrush)FindResource("ErrorText");
+                        (sender as TextBox).Tag = 0;
+                    }
+                    break;
             }
         }
         private void PW_Changed(object sender, RoutedEventArgs e)
@@ -1247,7 +1300,6 @@ namespace NSOP_Tournament_Pro
         {
             CheckIsNumeric(e);
         }
-
         private void CheckIsNumeric(TextCompositionEventArgs e)
         {
             if (!(int.TryParse(e.Text, out _) || e.Text == "."))
@@ -1255,10 +1307,29 @@ namespace NSOP_Tournament_Pro
                 e.Handled = true;
             }
         }
-
         private void Btn_ExitResetPassword(object sender, RoutedEventArgs e)
         {
             brd_ForgotPassword.Visibility = Visibility.Hidden;
+        }
+
+        private void UModule_1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            switch ((sender as UserModuleSimple).Name)
+            {
+                case "UModule_1": // Admin Subscription
+                    // Show admin subscriptions
+                    break;
+                case "UModule_2": // Web Supscribtion
+                    break;
+                case "UModule_3": // Buy Tokens
+                    break;
+                case "UModule_4":
+                    break;
+                case "UModule_5":
+                    break;
+                case "UModule_6":
+                    break;
+            }
         }
     }
 }

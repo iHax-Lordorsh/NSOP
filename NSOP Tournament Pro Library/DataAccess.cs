@@ -16,6 +16,8 @@ using System.Threading;
 using System.Windows;
 using System.Resources;
 using System.Reflection;
+using System.Collections;
+using System.Windows.Controls;
 
 namespace NSOP_Tournament_Pro_Library
 {
@@ -32,6 +34,16 @@ namespace NSOP_Tournament_Pro_Library
         private static extern bool EnumSystemLocalesEx(EnumLocalesProcExDelegate pEnumProcEx,
            LocaleType dwFlags, int lParam, IntPtr lpReserved);
 
+        public static List<string> GetNumbers(int maxValue)
+        {
+            List<string> _list = new List<string>();
+            for (int i = 0; i <= maxValue; i++)
+            {
+                _list.Add(i.ToString());
+            }
+            return _list;
+        }
+
         private enum LocaleType : uint
         {
             LocaleAll = 0x00000000,             // Enumerate all named based locales
@@ -40,6 +52,13 @@ namespace NSOP_Tournament_Pro_Library
             LocaleAlternateSorts = 0x00000004,  // Alternate sort locales
             LocaleNeutralData = 0x00000010,     // Locales that are "neutral" (language only, region data is default)
             LocaleSpecificData = 0x00000020,    // Locales that contain language and region data
+        }
+
+        public static List<Border> GetItemPicture()
+        {
+            List<Border> _lst = new List<Border>();
+
+            return _lst;
         }
 
         #endregion
@@ -75,15 +94,12 @@ namespace NSOP_Tournament_Pro_Library
             Array.Copy(buffer, 0, bufferTotal, oldLen, readByte);
             return bufferTotal;
         }
-
-      //  public static readonly ResourceManager RM = new ResourceManager("NSOP_Tournament_Pro_Library.Properties.Resources", Assembly.GetExecutingAssembly());
-
+        //  public static readonly ResourceManager RM = new ResourceManager("NSOP_Tournament_Pro_Library.Properties.Resources", Assembly.GetExecutingAssembly());
         public static byte[] ConvertByte(byte[] bufferTotal, byte[] buffer, int readByte)
         {
             byte[] _xValue = bufferTotal.Concat(buffer, readByte);
             return _xValue;
         }
-
         public static List<string> GetCountries()
         {
             List<string> countries = new List<string>();
@@ -135,7 +151,7 @@ namespace NSOP_Tournament_Pro_Library
 
             return countries;
         }
-
+ 
         /// <summary>
         /// idType is either Person, Tournament, Blindstructure, Payoutsturcture, Pointstructure
         /// </summary>
@@ -166,6 +182,10 @@ namespace NSOP_Tournament_Pro_Library
                 case IdType.Points:
                     _H0 = "X";
                     _xV = DateTime.Now.Year.ToString();
+                    break;
+                case IdType.Product:
+                    _H0 = "I";
+                    _xV = "ITEM";
                     break;
                 case IdType.Club:
                     _H0 = "C";
@@ -330,6 +350,28 @@ namespace NSOP_Tournament_Pro_Library
             }
             return "62.24.34.199";
         }
+
+        private enum RoundingDirection { Up, Down }
+        private static double Round(double value, int precision, RoundingDirection roundingDirection)
+        {
+            RoundingFunction roundingFunction;
+            if (roundingDirection == RoundingDirection.Up)
+                roundingFunction = Math.Ceiling;
+            else
+                roundingFunction = Math.Floor;
+            value *= Math.Pow(10, precision);
+            value = roundingFunction(value);
+            return value * Math.Pow(10, -1 * precision);
+        }
+        public static double RoundUp(double value, int precision)
+        {
+            return Round(value, precision, RoundingDirection.Up);
+        }
+        public static double RoundDown(double value, int precision)
+        {
+            return Round(value, precision, RoundingDirection.Down);
+        }
+
         public enum IdType
         {
             Person,
@@ -337,7 +379,8 @@ namespace NSOP_Tournament_Pro_Library
             Blinds,
             Payouts,
             Points,
-            Club
+            Club,
+            Product
         }
         public enum ClassType
         {
