@@ -147,9 +147,62 @@ namespace NSOP_Tournament_Pro
 
         private static void RecievedManager(CommunicationManager cp)
         {
-            
+
             switch (cp.ClassType)
             {
+                case DataAccess.ClassType.Product:
+                    switch (cp.Request)
+                    {
+                        case DataAccess.Request.GetStartProduct:
+                            Action GetStartProduct = delegate
+                            {
+                                var mainWnd = Application.Current.MainWindow as MainWindow;
+                                mainWnd.ShowAdminCreator(new Product(cp.ObjectType));
+                            };
+                            Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, GetStartProduct); 
+                            break;
+                        case DataAccess.Request.New:
+                            break;
+                        case DataAccess.Request.ClubUpdate:
+                            break;
+                        case DataAccess.Request.PersonUpdate:
+                            break;
+                        case DataAccess.Request.Delete:
+                            break;
+                        case DataAccess.Request.Get:
+                            break;
+                        case DataAccess.Request.Getall:
+                            break;
+                        case DataAccess.Request.NewAccount:
+                            break;
+                        case DataAccess.Request.LogIn:
+                            break;
+                        case DataAccess.Request.LoggInOK:
+                            break;
+                        case DataAccess.Request.LoggInFailed:
+                            break;
+                        case DataAccess.Request.PersonExist:
+                            break;
+                        case DataAccess.Request.PersonCreated:
+                            break;
+                        case DataAccess.Request.NewAccountVerify:
+                            break;
+                        case DataAccess.Request.VerifyOK:
+                            break;
+                        case DataAccess.Request.BadEMail:
+                            break;
+                        case DataAccess.Request.ResetPassword:
+                            break;
+                        case DataAccess.Request.UpdatePassword:
+                            break;
+                        case DataAccess.Request.ResetPasswordVerify:
+                            break;
+                        case DataAccess.Request.ResetPasswordOK:
+                            break;
+                        case DataAccess.Request.UpdateFailed:
+                            break;
+                    }
+                    break;
                 case DataAccess.ClassType.Person:
                     switch (cp.Request)
                     {

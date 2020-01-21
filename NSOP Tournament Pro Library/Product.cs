@@ -13,7 +13,7 @@ using System.Windows.Controls;
 namespace NSOP_Torunament_Pro_Library
 {
     [Serializable]
-    class Product
+    public class Product
     {
         private string _Id = "";
         private string _Name = "";
@@ -70,6 +70,9 @@ namespace NSOP_Torunament_Pro_Library
         public int Qty_5 { get => _Qty_5; set { _Qty_5 = value; } }
         public int Qty_6 { get => _Qty_6; set { _Qty_6 = value; } }
 
+        private List<Product> _list = new List<Product>();
+        public List<Product> _StartProductsList { get => _list; set => _list = value; }
+
         // ***********
         // CONSTRUCTORS
         // ***********
@@ -77,6 +80,43 @@ namespace NSOP_Torunament_Pro_Library
         // Empty Constructor
         public Product()
         {
+        }
+        // Constructor to recieve packet
+        public Product(byte[] packetBytes)
+        {
+            BinaryFormatter _bf = new BinaryFormatter();
+            MemoryStream _ms = new MemoryStream(packetBytes)
+            {
+                Position = 0
+            };
+            Product _p = (Product)_bf.Deserialize(_ms);
+            _ms.Close();
+
+            // Populate Personalia
+            this.ID = _p.ID;
+            this.Name = _p.Name;
+            this.Picture = _p.Picture;
+            this.Info = _p.Info;
+            this.Description = _p.Description;
+            this.Price = _p.Price;
+            this.Discount = _p.Discount;
+            this.Quantity = _p.Quantity;
+            this.Expires = _p.Expires;
+            this.StartDate = _p.StartDate;
+            this.EndDate = _p.EndDate;
+            this.ID_1 = _p.ID_1;
+            this.Qty_1 = _p.Qty_1;
+            this.ID_2 = _p.ID_2;
+            this.Qty_2 = _p.Qty_2;
+            this.ID_3 = _p.ID_3;
+            this.Qty_3 = _p.Qty_3;
+            this.ID_4 = _p.ID_4;
+            this.Qty_4 = _p.Qty_4;
+            this.ID_5 = _p.ID_5;
+            this.Qty_5 = _p.Qty_5;
+            this.ID_6 = _p.ID_6;
+            this.Qty_6 = _p.Qty_6;
+
         }
 
         //Constructor to send Personalia
@@ -358,9 +398,8 @@ namespace NSOP_Torunament_Pro_Library
             con.Close();
             return _p;
         }
-        public static List<Product> GetProductList(string ID)
+        public void GetProductList(string ID)
         {
-            List<Product> _pList = new List<Product>();
             SqlConnection con = new SqlConnection("Data Source = NSOP\\POKER; Initial Catalog = dbPerson; Trusted_Connection = True; Asynchronous Processing=True; ");
             if (con.State == ConnectionState.Closed)
             {
@@ -373,7 +412,7 @@ namespace NSOP_Torunament_Pro_Library
                 _s.Append($"SELECT * FROM dbo.tbPerson WHERE ");
                 if (ID.Length > 0)
                 {
-                    _s.Append($"PlayerID = '{ID}' AND ");
+                    _s.Append($"ID = '{ID}' AND ");
                 }
                 _s.Append($";");
 
@@ -408,7 +447,7 @@ namespace NSOP_Torunament_Pro_Library
                     _p.Qty_5 = (int)_SqlData["Qty_5"];
                     _p.ID_6 = _SqlData["ID_6"].ToString();
                     _p.Qty_6 = (int)_SqlData["Qty_6"];
-                    _pList.Add(_p);
+                    _StartProductsList.Add(_p);
 
                 }
                 //Save LifeTime
@@ -418,11 +457,10 @@ namespace NSOP_Torunament_Pro_Library
                 _ = e.ToString();
             }
             con.Close();
-            return _pList;
         }
-        public static List<Product> GetProductList(string startId,string endId)
+        public void GetProductList(string startId,string endId)
         {
-            List<Product> _pList = new List<Product>();
+         
             SqlConnection con = new SqlConnection("Data Source = NSOP\\POKER; Initial Catalog = dbPerson; Trusted_Connection = True; Asynchronous Processing=True; ");
             if (con.State == ConnectionState.Closed)
             {
@@ -435,11 +473,11 @@ namespace NSOP_Torunament_Pro_Library
                 _s.Append($"SELECT * FROM dbo.tbPerson WHERE ");
                 if (startId.Length > 0)
                 {
-                    _s.Append($"PlayerID = '{startId}' AND ");
+                    _s.Append($"ID >= '{startId}' AND ");
                 }
                 if (endId.Length > 0)
                 {
-                    _s.Append($"PlayerID = '{endId}' AND ");
+                    _s.Append($"ID <= '{endId}' AND ");
                 }
                 _s.Remove(_s.Length - 4, _s.Length);
                 _s.Append($";");
@@ -475,8 +513,7 @@ namespace NSOP_Torunament_Pro_Library
                     _p.Qty_5 = (int)_SqlData["Qty_5"];
                     _p.ID_6 = _SqlData["ID_6"].ToString();
                     _p.Qty_6 = (int)_SqlData["Qty_6"];
-                    _pList.Add(_p);
-
+                    _StartProductsList.Add(_p);
                 }
                 //Save LifeTime
             }
@@ -485,7 +522,6 @@ namespace NSOP_Torunament_Pro_Library
                 _ = e.ToString();
             }
             con.Close();
-            return _pList;
         }
     }
 }

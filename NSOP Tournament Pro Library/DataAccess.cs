@@ -392,7 +392,8 @@ namespace NSOP_Tournament_Pro_Library
             Points,
             DataVerify,
             Action,
-            Packet
+            Packet,
+            Product
         }
         public enum Request
         {
@@ -415,7 +416,8 @@ namespace NSOP_Tournament_Pro_Library
             UpdatePassword,
             ResetPasswordVerify,
             ResetPasswordOK,
-            UpdateFailed
+            UpdateFailed,
+            GetStartProduct
         }
         public static T ParseEnum<T>(string value)
         {
