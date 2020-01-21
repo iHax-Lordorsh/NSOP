@@ -80,6 +80,7 @@ namespace NSOP_Torunament_Pro_Library
         // Empty Constructor
         public Product()
         {
+
         }
         // Constructor to recieve packet
         public Product(byte[] packetBytes)
