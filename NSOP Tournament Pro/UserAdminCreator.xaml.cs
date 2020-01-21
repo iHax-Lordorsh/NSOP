@@ -1,4 +1,5 @@
-﻿using NSOP_Tournament_Pro_Library;
+﻿using NSOP_Torunament_Pro_Library;
+using NSOP_Tournament_Pro_Library;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -23,80 +24,73 @@ namespace NSOP_Tournament_Pro
     public partial class UserAdminCreator : UserControl
     {
 
-        private string _ProductCode = "";
+        private string _Id = "";
         private string _Name = "";
-        private string _Description = "";
         private string _Picture;
+        private string _Info = "";
+        private string _Description = "";
         private int _Price = 0;
-        private int _TotalPrice = 0;
         private int _Discount = 0;
+        private int _Quantity = 0;
 
         private DateTime _StartDate;
         private DateTime _EndDate;
         private DateTime _Expire;
 
-        public string ProductCode { get => _ProductCode; set { _ProductCode = value; lblProductCode.Content = _ProductCode; } }
-        public string ProductName { get => _Name; set { _Name = value; txt_Name.Text = _Name; } }
-        public string Description { get => _Description; set { _Description = value; txt_Description.Text = _Description; } }
-        public string Picture { get => _Picture; set
-            {
-                _Picture = value;
-                brdPicture.Background = BrushBackground(_Picture);
-                brdPicture.Tag = _Picture;
-            } }
-        public int Price { get => _Price; set { _Price = value; lbl_Price_7.Content = _Price.ToString(); } }
-        public int TotalPrice { get => _TotalPrice; set { _TotalPrice = value; txt_SalesPrice.Text = _TotalPrice.ToString(); } }
-        public int Discount { get => _Discount; set { _Discount = value; } }
+        private string _Id_1 = "";
+        private string _Id_2 = "";
+        private string _Id_3 = "";
+        private string _Id_4 = "";
+        private string _Id_5 = "";
+        private string _Id_6 = "";
 
-        public DateTime StartDate { get => _StartDate; set { _StartDate = value;  } }
-        public DateTime EndDate { get => _EndDate; set { _EndDate = value;  } }
-        public DateTime Expire { get => _Expire; set { _Expire = value;  } }
+        private int _Qty_1 = 0;
+        private int _Qty_2 = 0;
+        private int _Qty_3 = 0;
+        private int _Qty_4 = 0;
+        private int _Qty_5 = 0;
+        private int _Qty_6 = 0;
+
+        public string ID { get => _Id; set { _Id = value; } }
+        public string ProductName { get => _Name; set { _Name = value; } }
+        public string Picture { get => _Picture; set { _Picture = value; } }
+        public string Info { get => _Info; set { _Info = value; } }
+
+        public string Description { get => _Description; set { _Description = value; } }
+        public int Price { get => _Price; set { _Price = value; } }
+        public int Discount { get => _Discount; set { _Discount = value; } }
+        public int Quantity { get => _Quantity; set { _Quantity = value; } }
+
+        public DateTime Expires { get => _Expire; set { _Expire = value; } }
+        public DateTime StartDate { get => _StartDate; set { _StartDate = value; } }
+        public DateTime EndDate { get => _EndDate; set { _EndDate = value; } }
+
+        public string ID_1 { get => _Id_1; set { _Id_1 = value; } }
+        public string ID_2 { get => _Id_2; set { _Id_2 = value; } }
+        public string ID_3 { get => _Id_3; set { _Id_3 = value; } }
+        public string ID_4 { get => _Id_4; set { _Id_4 = value; } }
+        public string ID_5 { get => _Id_5; set { _Id_5 = value; } }
+        public string ID_6 { get => _Id_6; set { _Id_6 = value; } }
+
+        public int Qty_1 { get => _Qty_1; set { _Qty_1 = value; } }
+        public int Qty_2 { get => _Qty_2; set { _Qty_2 = value; } }
+        public int Qty_3 { get => _Qty_3; set { _Qty_3 = value; } }
+        public int Qty_4 { get => _Qty_4; set { _Qty_4 = value; } }
+        public int Qty_5 { get => _Qty_5; set { _Qty_5 = value; } }
+        public int Qty_6 { get => _Qty_6; set { _Qty_6 = value; } }
 
         public List<Border> listPicture = new List<Border>();
+        public string[] _productID = new string[9];
+        public Label[] _productName = new Label[9];
         public Label[] _productPrice = new Label[9];
         public ComboBox[] _productQTY = new ComboBox[9];
 
         public UserAdminCreator()
         {
             InitializeComponent();
-            Setup();
+            Fill();
         }
 
-        private void Setup()
-        {
-            _productPrice[0] = new Label();
-            _productPrice[1] = lbl_Price_1;
-            _productPrice[2] = lbl_Price_2;
-            _productPrice[3] = lbl_Price_3;
-            _productPrice[4] = lbl_Price_4;
-            _productPrice[5] = lbl_Price_5;
-            _productPrice[6] = lbl_Price_6;
-            _productPrice[7] = lbl_Price_7;
-            _productPrice[8] = lbl_Price_8;
-            foreach (var item in _productPrice)
-            {
-                item.Content = "1";
-            }
-            _productQTY[0] = new ComboBox();
-            _productQTY[1] = cbx_QTY_1;
-            _productQTY[2] = cbx_QTY_2;
-            _productQTY[3] = cbx_QTY_3;
-            _productQTY[4] = cbx_QTY_4;
-            _productQTY[5] = cbx_QTY_5;
-            _productQTY[6] = cbx_QTY_6;
-            _productQTY[7] = cbx_QTY_7;
-            _productQTY[8] = cbx_QTY_8;
-            foreach (var item in _productQTY)
-            {
-                item.ItemsSource =DataAccess.GetNumbers(12);
-                item.SelectedIndex = 0;
-            }
-            _productQTY[8].ItemsSource = DataAccess.GetNumbers(100);
-            listPicture = GetItemPicture();
-            lstProduct.ItemsSource = listPicture;
-            lstProduct.Items.Refresh();
-            lstProduct.SelectedIndex = -1;
-        }
         private List<Border> GetItemPicture()
         {
             List<Border> _B = new List<Border>();
@@ -142,12 +136,72 @@ namespace NSOP_Tournament_Pro
             _B.Add(_b4);
             return _B;
         }
+
+        internal void Fill()
+        {
+            _productID[0] = "";
+            _productID[1] = "";
+            _productID[2] = "";
+            _productID[3] = "";
+            _productID[4] = "";
+            _productID[5] = "";
+            _productID[6] = "";
+            _productID[7] = "";
+            _productID[8] = "";
+
+            _productName[0] = new Label();
+            _productName[1] = lbl_Name_1;
+            _productName[2] = lbl_Name_2;
+            _productName[3] = lbl_Name_3;
+            _productName[4] = lbl_Name_4;
+            _productName[5] = lbl_Name_5;
+            _productName[6] = lbl_Name_6;
+            _productName[7] = lbl_Name_7;
+            _productName[8] = lbl_Name_8;
+
+            _productPrice[0] = new Label();
+            _productPrice[1] = lbl_Price_1;
+            _productPrice[2] = lbl_Price_2;
+            _productPrice[3] = lbl_Price_3;
+            _productPrice[4] = lbl_Price_4;
+            _productPrice[5] = lbl_Price_5;
+            _productPrice[6] = lbl_Price_6;
+            _productPrice[7] = lbl_Price_7;
+            _productPrice[8] = lbl_Price_8;
+            foreach (var item in _productPrice)
+            {
+                item.Content = "1";
+            }
+            _productQTY[0] = new ComboBox();
+            _productQTY[1] = cbx_QTY_1;
+            _productQTY[2] = cbx_QTY_2;
+            _productQTY[3] = cbx_QTY_3;
+            _productQTY[4] = cbx_QTY_4;
+            _productQTY[5] = cbx_QTY_5;
+            _productQTY[6] = cbx_QTY_6;
+            _productQTY[7] = cbx_QTY_7;
+            _productQTY[8] = cbx_QTY_8;
+            foreach (var item in _productQTY)
+            {
+                item.ItemsSource = DataAccess.GetNumbers(12);
+                item.SelectedIndex = 0;
+            }
+            _productQTY[8].ItemsSource = DataAccess.GetNumbers(100);
+            listPicture = GetItemPicture();
+            lstProduct.ItemsSource = listPicture;
+            lstProduct.Items.Refresh();
+            lstProduct.SelectedIndex = -1;
+      
+        }
+
+
         private void Create_Click(object sender, MouseButtonEventArgs e)
         {
             switch ((sender as Border).Name)
             {
                 case "brdProduct":
                     grdProduct.Visibility = Visibility.Visible;
+                    
                     break;
                 case "brdGadget":
                     grdProduct.Visibility = Visibility.Hidden;
@@ -159,7 +213,7 @@ namespace NSOP_Tournament_Pro
         }
         private void GenerateCode_Click(object sender, RoutedEventArgs e)
         {
-            ProductCode = DataAccess.FillID(DataAccess.IdType.Product);
+            ID = DataAccess.FillID(DataAccess.IdType.Product);
         }
         private void LstPicture_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -177,6 +231,7 @@ namespace NSOP_Tournament_Pro
         }
         private void SaveProduct_Click(object sender, RoutedEventArgs e)
         {
+
         }
         private void Textbox_LostFocus(object sender, RoutedEventArgs e)
         {
@@ -303,9 +358,9 @@ namespace NSOP_Tournament_Pro
                         {
                             float x = (((Price *100)  / 100) * _prosent); //DataAccess.RoundUp((Price / 100), 2);
 
-                            TotalPrice = (int)DataAccess.RoundUp((Price -(x/100)), 1);
+                           // TotalPrice = (int)DataAccess.RoundUp((Price -(x/100)), 1);
                         }
-                        else TotalPrice = Price;
+                       // else TotalPrice = Price;
                     }
                 }
                 catch (Exception)
@@ -313,6 +368,20 @@ namespace NSOP_Tournament_Pro
                 }
             }
         }
+
+        internal void ShowProductCreator(Product product)
+        {
+            int _teller = -1;
+            foreach (var item in product._StartProductsList)
+            {
+                _teller++;
+                _productID[_teller] = item.ID;
+                _productName[_teller].Content = item.Name;
+                _productPrice[_teller].Content = item.Price.ToString();
+                _productQTY[_teller].SelectedIndex = item.Quantity;
+            }
+        }
+
         private void QTY_MouseEnter(object sender, MouseEventArgs e)
         {
             (sender as ComboBox).Focus();

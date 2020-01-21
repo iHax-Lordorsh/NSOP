@@ -31,6 +31,7 @@ using System.Collections;
 using System.Resources;
 using System.Reflection;
 using NSOP_Tournament_Pro_Library;
+using NSOP_Torunament_Pro_Library;
 
 namespace NSOP_Tournament_Pro
 {
@@ -117,8 +118,10 @@ namespace NSOP_Tournament_Pro
             lstAvatar.ItemsSource = listAvatar;
             lstAvatar.SelectedIndex = -1;
             // User Initialize
-            
-            
+
+            // Populate Administration Creating screen
+            uAdminCreator.Fill();
+            client.SendObject(UpdateCommunicationPacket(DataAccess.Request.GetStartProduct, new Product().ToBytes()  , DataAccess.ClassType.Product, ""));
         }
 
         private List<Border> UpdateAvatars()
@@ -190,6 +193,7 @@ namespace NSOP_Tournament_Pro
             txt_Login_6.Visibility = Visibility.Visible;
             txt_Login_PW_1.Visibility = Visibility.Hidden;
         }
+
         private void Img_Loggin_PW_View_MouseLeave(object sender, MouseEventArgs e)
         {
             txt_Login_6.Text = "";
@@ -356,6 +360,10 @@ namespace NSOP_Tournament_Pro
             brdLoggin.Visibility = Visibility.Hidden;
             brdErrorMessage.Visibility = Visibility.Hidden;
             brdBackground.IsEnabled = true;
+        }
+        internal void ShowAdminCreator(Product product)
+        {
+            uAdminCreator.ShowProductCreator(product);
         }
         // **************************   UPDATES
         private void UpdateAdmin(Person _person)

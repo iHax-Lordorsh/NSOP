@@ -1,4 +1,5 @@
-﻿using NSOP_Tournament_Pro_Library;
+﻿using NSOP_Torunament_Pro_Library;
+using NSOP_Tournament_Pro_Library;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -143,6 +144,58 @@ namespace NSOP_Tournament_Pro_Library
         {
             switch (this.ClassType)
             {
+                case DataAccess.ClassType.Product:
+                    // converting bytes to Peron
+                    Product _product = new Product(this.ObjectType);
+                    switch (this.Request)
+                    {
+                        case DataAccess.Request.GetStartProduct:
+                            _product.GetProductList("ITEM 0000 0000 001I", "ITEM 0000 0000 002I");
+                            break;
+                        case DataAccess.Request.New:
+                            break;
+                        case DataAccess.Request.ClubUpdate:
+                            break;
+                        case DataAccess.Request.PersonUpdate:
+                            break;
+                        case DataAccess.Request.Delete:
+                            break;
+                        case DataAccess.Request.Get:
+                            break;
+                        case DataAccess.Request.Getall:
+                            break;
+                        case DataAccess.Request.NewAccount:
+                            break;
+                        case DataAccess.Request.LogIn:
+                            break;
+                        case DataAccess.Request.LoggInOK:
+                            break;
+                        case DataAccess.Request.LoggInFailed:
+                            break;
+                        case DataAccess.Request.PersonExist:
+                            break;
+                        case DataAccess.Request.PersonCreated:
+                            break;
+                        case DataAccess.Request.NewAccountVerify:
+                            break;
+                        case DataAccess.Request.VerifyOK:
+                            break;
+                        case DataAccess.Request.BadEMail:
+                            break;
+                        case DataAccess.Request.ResetPassword:
+                            break;
+                        case DataAccess.Request.UpdatePassword:
+                            break;
+                        case DataAccess.Request.ResetPasswordVerify:
+                            break;
+                        case DataAccess.Request.ResetPasswordOK:
+                            break;
+                        case DataAccess.Request.UpdateFailed:
+                            break;
+                    }
+                    this.ObjectType = _product.ToBytes();
+
+                    break;
                 case DataAccess.ClassType.Person:
                     // converting bytes to Peron
                     Person _person = new Person(this.ObjectType);
@@ -213,7 +266,7 @@ namespace NSOP_Tournament_Pro_Library
                                 // Need verification
                                 this.Info = DataAccess.GetVerificationCode();
                                 _person.IsVerified = false;
-                                if (Send_Verification("","","",_person.EMail,"NSOP New account verification.", this.Info) && _person.SaveNew())
+                                if (Send_Verification("", "", "", _person.EMail, "NSOP New account verification.", this.Info) && _person.SaveNew())
                                 {
                                     this.Request = DataAccess.Request.NewAccountVerify;
                                 }
@@ -221,7 +274,6 @@ namespace NSOP_Tournament_Pro_Library
                                 {
                                     this.Request = DataAccess.Request.BadEMail;
                                 }
-
                             }
                             break;
                         case DataAccess.Request.PersonExist:
