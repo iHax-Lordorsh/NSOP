@@ -499,22 +499,83 @@ namespace NSOP_Torunament_Pro_Library
                     _product.Description = _SqlData["Description"].ToString();
                     _product.Price = (int)_SqlData["Price"];
                     _product.Discount = (int)_SqlData["Discount"];
-                    _product.Expires = (DateTime)_SqlData["Expires"];
-                    _product.StartDate = (DateTime)_SqlData["StartDate"];
-                    _product.EndDate = (DateTime)_SqlData["EndDate"];
 
-                    _product.ID_1 = _SqlData["ID_1"].ToString();
-                    _product.Qty_1 = (int)_SqlData["Qty_1"];
-                    _product.ID_2 = _SqlData["ID_2"].ToString();
-                    _product.Qty_2 = (int)_SqlData["Qty_2"];
-                    _product.ID_3 = _SqlData["ID_3"].ToString();
-                    _product.Qty_3 = (int)_SqlData["Qty_3"];
-                    _product.ID_4 = _SqlData["ID_4"].ToString();
-                    _product.Qty_4 = (int)_SqlData["Qty_4"];
-                    _product.ID_5 = _SqlData["ID_5"].ToString();
-                    _product.Qty_5 = (int)_SqlData["Qty_5"];
-                    _product.ID_6 = _SqlData["ID_6"].ToString();
-                    _product.Qty_6 = (int)_SqlData["Qty_6"];
+                    if (_SqlData["Expires"].ToString() == "")
+                    {
+                    }
+                    else _product.Expires = DateTime.Parse(_SqlData["Expires"].ToString());
+
+                    if (_SqlData["StartDate"].ToString() == "")
+                    {
+                    }
+                    else _product.StartDate = DateTime.Parse(_SqlData["StartDate"].ToString());
+
+                    if (_SqlData["EndDate"].ToString() == "")
+                    {
+                    }
+                    else _product.EndDate = DateTime.Parse(_SqlData["EndDate"].ToString());
+
+                    if (_SqlData["Qty_1"].ToString() == "")
+                    {
+                    }
+                    else _product.Qty_1 = (int)_SqlData["Qty_1"];
+
+                    if (_SqlData["Qty_2"].ToString() == "")
+                    {
+                    }
+                    else _product.Qty_2 = (int)_SqlData["Qty_2"];
+
+                    if (_SqlData["Qty_3"].ToString() == "")
+                    {
+                    }
+                    else _product.Qty_3 = (int)_SqlData["Qty_3"];
+
+                    if (_SqlData["Qty_4"].ToString() == "")
+                    {
+                    }
+                    else _product.Qty_4 = (int)_SqlData["Qty_4"];
+
+                    if (_SqlData["Qty_5"].ToString() == "")
+                    {
+                    }
+                    else _product.Qty_5 = (int)_SqlData["Qty_5"];
+
+                    if (_SqlData["Qty_6"].ToString() == "")
+                    {
+                    }
+                    else _product.Qty_6 = (int)_SqlData["Qty_6"];
+
+                    if (_SqlData["ID_1"].ToString() == "")
+                    {
+                    }
+                    else _product.ID_1 = _SqlData["ID_1"].ToString();
+
+                    if (_SqlData["ID_2"].ToString() == "")
+                    {
+                    }
+                    else _product.ID_2 = _SqlData["ID_2"].ToString();
+
+                    if (_SqlData["ID_3"].ToString() == "")
+                    {
+                    }
+                    else _product.ID_3 = _SqlData["ID_3"].ToString();
+
+                    if (_SqlData["ID_4"].ToString() == "")
+                    {
+                    }
+                    else _product.ID_4 = _SqlData["ID_4"].ToString();
+
+                    if (_SqlData["ID_5"].ToString() == "")
+                    {
+                    }
+                    else _product.ID_5 = _SqlData["ID_5"].ToString();
+
+                    if (_SqlData["ID_6"].ToString() == "")
+                    {
+                    }
+                    else _product.ID_6 = _SqlData["ID_6"].ToString();
+
+
                     _p._StartProductsList.Add(_product);
                 }
                 //Save LifeTime
