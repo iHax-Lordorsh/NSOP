@@ -519,7 +519,7 @@ namespace NSOP_Tournament_Pro_Library
                 cmd.CommandText = $" UPDATE tbPerson SET ";
                 // Personalia
                 cmd.CommandText += $"PassWord = '{DataAccess.PasswordEncryption(person.PassWord)}', ";
-                cmd.CommandText += $"IsVerified = '{true}' ";
+                cmd.CommandText += $"IsVerified = 1 ";
                 // Where
                 cmd.CommandText += $"WHERE EMail = '{person.EMail}';";
 
@@ -552,7 +552,7 @@ namespace NSOP_Tournament_Pro_Library
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = $" UPDATE tbPerson SET ";
                 // Personalia
-                cmd.CommandText += $"IsVerified = '{true}' ";
+                cmd.CommandText += $"IsVerified = 1 ";
 
                 // Where
                 cmd.CommandText += $"WHERE EMail = '{eMail}';";
@@ -700,9 +700,11 @@ namespace NSOP_Tournament_Pro_Library
                 }
                 if (passWord.Length > 0)
                 {
+                    // 5CEC175B165E3D5E62C9E13CE848EF6FEAC81BFF
+                    string c = DataAccess.PasswordEncryption(passWord);
                     _s.Append($"PassWord = '{DataAccess.PasswordEncryption(passWord)}' AND ");
                 }
-                _s.Remove(_s.Length - 4, _s.Length);
+                _s.Remove(_s.Length - 4, 4);
                 _s.Append($";");
 
                 SqlCommand _SqlStr = new SqlCommand(_s.ToString(), con);
@@ -744,9 +746,11 @@ namespace NSOP_Tournament_Pro_Library
                 }
                 if (passWord.Length > 0)
                 {
+                    // 5CEC175B165E3D5E62C9E13CE848EF6FEAC81BFF
+                    string c = DataAccess.PasswordEncryption(passWord);
                     _s.Append($"PassWord = '{DataAccess.PasswordEncryption(passWord)}' AND ");
                 }
-                _s.Remove(_s.Length - 4, _s.Length);
+                _s.Remove(_s.Length - 4, 4);
                 _s.Append($";");
 
                 SqlCommand _SqlStr = new SqlCommand(_s.ToString(), con);
