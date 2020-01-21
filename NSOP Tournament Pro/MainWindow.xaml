@@ -55,7 +55,7 @@
                             </Grid>
                             <Label x:Name="lblClubHeader1" Content="MY SUBSCRIPTIONS / CHIPS" VerticalAlignment="Top" Background="Black" Foreground="{DynamicResource ActiveText}" FontSize="14" Height="28"/>
                             <StackPanel Margin="0,5,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
-                                <local:UserModuleSimple x:Name="UModule_1" Height="155" Width="155" MouseLeftButtonUp="UModule_Click"/>
+                                <local:UserModuleSimple x:Name="UModule_1" Height="155" Width="155" MouseLeftButtonUp="UModule_Click" MouseLeftButtonDown="UModule_1_MouseLeftButtonDown"/>
                                 <local:UserModuleSimple x:Name="UModule_2" Height="155" Width="155" Margin="10,0" MouseLeftButtonUp="UModule_Click"/>
                                 <local:UserModuleSimple x:Name="UModule_3" Height="155" Width="155" Margin="0" MouseLeftButtonUp="UModule_Click"/>
                             </StackPanel>
@@ -153,21 +153,7 @@
 
                 <Border x:Name="brdCenter" Margin="515,90,415,0" BorderThickness="2">
                     <Grid>
-                        <StackPanel Orientation="Vertical" VerticalAlignment="Top">
-                            <Border BorderThickness="1" VerticalAlignment="Top" Margin="0" Height="680" Background="{DynamicResource BorderBackground}" BorderBrush="{DynamicResource ButtonBorder}">
-                                <Grid>
-                                    <Label Content="LATEST NEWS" VerticalAlignment="Top" Background="Black" Foreground="{DynamicResource ActiveText}" FontSize="14" Height="28"/>
-                                    <Grid Panel.ZIndex="-4" Margin="0,28,0,0"/>
-                                </Grid>
-                            </Border>
-                            <Border BorderThickness="1" VerticalAlignment="Top" Margin="0,15,0,0" Height="295" Background="{DynamicResource BorderBackground}" BorderBrush="{DynamicResource ButtonBorder}">
-                                <Grid>
-                                    <Label Content="COMMUNICATION CENTRAL" VerticalAlignment="Top" Background="Black" Foreground="{DynamicResource ActiveText}" FontSize="14" Height="28"/>
-                                    <Grid Panel.ZIndex="-4" Margin="0,28,0,0"/>
-                                </Grid>
-                            </Border>
-                        </StackPanel>
-                        <local:UserSubscription x:Name="uSubscription"/>
+                        <local:UserAdminCreator x:Name="uAdminCreator" d:IsHidden="True"/>
                     </Grid>
                 </Border>
                 <Border x:Name="brdRight" Margin="0,90,0,0" HorizontalAlignment="Right" BorderThickness="2">
@@ -183,7 +169,7 @@
 
             </Grid>
         </Border>
-        <Border x:Name="brdLoggin" Margin="10" Background="Black">
+        <Border x:Name="brdLoggin" Margin="10" Background="Black" d:IsHidden="True">
             <Border x:Name="brdLoggin1" BorderThickness="5" Background="#FF003200" CornerRadius="35" RenderTransformOrigin="0.5,0.5" Width="1025" Height="578">
                 <Border.RenderTransform>
                     <TransformGroup>
@@ -291,7 +277,7 @@
                             <Button x:Name="btn_SendResetMail" Style="{StaticResource ButtonUnPushed}" Content="SEND" Width="260" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="Black" Margin="0,0,0,-3" Padding="1" IsCancel="True" Click="LogginRequest_Click" Visibility="Hidden"/>
                         </Grid>
                     </Border>
-                    <Border x:Name="brd_ResetPassword" BorderThickness="3" Background="#FF003200" CornerRadius="25" RenderTransformOrigin="0.5,0.5" Padding="4,0,0,0" Margin="0" d:IsHidden="True">
+                    <Border x:Name="brd_ResetPassword" BorderThickness="3" Background="#FF003200" CornerRadius="25" RenderTransformOrigin="0.5,0.5" Padding="4,0,0,0" Margin="0">
                         <Border.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -314,13 +300,13 @@
                             <Button x:Name="btn_SendResetPassword" Style="{StaticResource ButtonUnPushed}" Content="RESET PASSWORD" Width="260" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="Black" Margin="348,0,347,136" Padding="1" IsCancel="True" Click="LogginRequest_Click" Visibility="Hidden"/>
                             <StackPanel Orientation="Vertical" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <Grid>
-                                    <PasswordBox x:Name="txt_Login_PW_3" HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Width="300" Background="{DynamicResource ButtonBackgroundPushed}" BorderBrush="#FFADFFD6" FontSize="18" Foreground="{DynamicResource ActiveText}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" TabIndex="4" PasswordChanged="PW_Changed" GotFocus="PW_GotFocus" LostFocus="PW_LostFocus" Tag="0" Password="qwerty123q"/>
+                                    <PasswordBox x:Name="txt_Login_PW_3" HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Width="300" Background="{DynamicResource ButtonBackgroundPushed}" BorderBrush="#FFADFFD6" FontSize="18" Foreground="{DynamicResource ActiveText}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" TabIndex="4" PasswordChanged="PW_Changed" GotFocus="PW_GotFocus" LostFocus="PW_LostFocus" Tag="0"/>
                                     <TextBox x:Name="txt_Loggin_7" HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" Background="{DynamicResource ButtonBackgroundPushed}" BorderBrush="#FFADFFD6" FontSize="18" Foreground="{DynamicResource ActiveText}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" GotFocus="TextBox_GotFocus" FontWeight="Bold" TabIndex="4" LostFocus="Textbox_LostFocus" TextChanged="Textbox_TextChanged" Margin="0" Visibility="Hidden"/>
                                 </Grid>
                             </StackPanel>
                             <StackPanel Orientation="Vertical" Margin="0,100,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <Grid>
-                                    <PasswordBox x:Name="txt_Login_PW_4" HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Width="300" Background="{DynamicResource ButtonBackgroundPushed}" BorderBrush="#FFADFFD6" FontSize="18" Foreground="{DynamicResource ActiveText}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" TabIndex="4" PasswordChanged="PW_Changed" GotFocus="PW_GotFocus" LostFocus="PW_LostFocus" Tag="0" Password="qwerty123q"/>
+                                    <PasswordBox x:Name="txt_Login_PW_4" HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Width="300" Background="{DynamicResource ButtonBackgroundPushed}" BorderBrush="#FFADFFD6" FontSize="18" Foreground="{DynamicResource ActiveText}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" TabIndex="4" PasswordChanged="PW_Changed" GotFocus="PW_GotFocus" LostFocus="PW_LostFocus" Tag="0"/>
                                     <TextBox x:Name="txt_Loggin_8" HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" Background="{DynamicResource ButtonBackgroundPushed}" BorderBrush="#FFADFFD6" FontSize="18" Foreground="{DynamicResource ActiveText}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" GotFocus="TextBox_GotFocus" FontWeight="Bold" TabIndex="4" LostFocus="Textbox_LostFocus" TextChanged="Textbox_TextChanged" Margin="0" Visibility="Hidden"/>
                                 </Grid>
                             </StackPanel>
