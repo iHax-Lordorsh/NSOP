@@ -502,7 +502,15 @@ namespace NSOP_Torunament_Pro_Library
                     _product.Expires = (DateTime)_SqlData["Expires"];
                     _product.StartDate = (DateTime)_SqlData["StartDate"];
                     _product.EndDate = (DateTime)_SqlData["EndDate"];
+                    try
+                    {
 
+                    }
+                    catch (Exception)
+                    {
+
+                        throw;
+                    }
                     _product.ID_1 = _SqlData["ID_1"].ToString();
                     _product.Qty_1 = (int)_SqlData["Qty_1"];
                     _product.ID_2 = _SqlData["ID_2"].ToString();
