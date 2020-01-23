@@ -43,7 +43,7 @@ namespace NSOP_Torunament_Pro_Library
         private int _Qty_6 = 0;
 
         public string ID { get => _Id; set { _Id = value; } }
-        public string Name { get => _Name; set { _Name = value; } }
+        public string ProductName { get => _Name; set { _Name = value; } }
         public string Picture { get => _Picture; set { _Picture = value; } }
         public string Info { get => _Info; set { _Info = value; } }
 
@@ -80,7 +80,6 @@ namespace NSOP_Torunament_Pro_Library
         // Empty Constructor
         public Product()
         {
-
         }
         // Constructor to recieve packet
         public Product(byte[] packetBytes)
@@ -95,7 +94,7 @@ namespace NSOP_Torunament_Pro_Library
 
             // Populate Personalia
             this.ID = _p.ID;
-            this.Name = _p.Name;
+            this.ProductName = _p.ProductName;
             this.Picture = _p.Picture;
             this.Info = _p.Info;
             this.Description = _p.Description;
@@ -184,7 +183,7 @@ namespace NSOP_Torunament_Pro_Library
                 cmd.CommandText += $"VALUES ";
                 cmd.CommandText += $"( ";
                 //Personalia
-                cmd.CommandText += $"'{ID}', '{Name}','{Picture}', '{Info}', ";
+                cmd.CommandText += $"'{ID}', '{ProductName}','{Picture}', '{Info}', ";
                 cmd.CommandText += $"'{Description}','{Price}', '{Discount}', '{Quantity}', ";
                 cmd.CommandText += $"'{Expires}', '{StartDate}', '{EndDate}', ";
                 cmd.CommandText += $"'{ID_1}', '{Qty_1}', ";
@@ -366,7 +365,7 @@ namespace NSOP_Torunament_Pro_Library
                 {
                     //Populate Product
                     _p.ID = _SqlData["ID"].ToString();
-                    _p.Name = _SqlData["Name"].ToString();
+                    _p.ProductName = _SqlData["Name"].ToString();
                     _p.Picture = _SqlData["Picture"].ToString();
                     _p.Info = _SqlData["Info"].ToString();
                     _p.Description = _SqlData["Description"].ToString();
@@ -402,7 +401,7 @@ namespace NSOP_Torunament_Pro_Library
         public Product GetProductList(string ID)
         {
             Product _p = new Product();
-            SqlConnection con = new SqlConnection("Data Source = NSOP\\POKER; Initial Catalog = dbPerson; Trusted_Connection = True; Asynchronous Processing=True; ");
+            SqlConnection con = new SqlConnection("Data Source = NSOP\\POKER; Initial Catalog = dbOption; Trusted_Connection = True; Asynchronous Processing=True; ");
             if (con.State == ConnectionState.Closed)
             {
                 con.Open();
@@ -411,7 +410,7 @@ namespace NSOP_Torunament_Pro_Library
             {
                 SqlDataReader _SqlData = null;
                 StringBuilder _s = new StringBuilder();
-                _s.Append($"SELECT * FROM dbo.tbPerson WHERE ");
+                _s.Append($"SELECT * FROM dbo.tbProduct WHERE ");
                 if (ID.Length > 0)
                 {
                     _s.Append($"ID = '{ID}' AND ");
@@ -427,7 +426,7 @@ namespace NSOP_Torunament_Pro_Library
                     Product _product = new Product();
                     //Populate Product
                     _product.ID = _SqlData["ID"].ToString();
-                    _product.Name = _SqlData["Name"].ToString();
+                    _product.ProductName = _SqlData["Name"].ToString();
                     _product.Picture = _SqlData["Picture"].ToString();
                     _product.Info = _SqlData["Info"].ToString();
                     _product.Description = _SqlData["Description"].ToString();
@@ -461,10 +460,10 @@ namespace NSOP_Torunament_Pro_Library
             con.Close();
             return _p;
         }
-        public Product GetProductList(string startId,string endId)
+        public List<Product> GetProductList(string startId, string endId)
         {
-            Product _p = new Product();
-            SqlConnection con = new SqlConnection("Data Source = NSOP\\POKER; Initial Catalog = dbPerson; Trusted_Connection = True; Asynchronous Processing=True; ");
+            List<Product> _pList = new List<Product>();
+            SqlConnection con = new SqlConnection("Data Source = NSOP\\POKER; Initial Catalog = dbOption; Trusted_Connection = True; Asynchronous Processing=True; ");
             if (con.State == ConnectionState.Closed)
             {
                 con.Open();
@@ -473,16 +472,15 @@ namespace NSOP_Torunament_Pro_Library
             {
                 SqlDataReader _SqlData = null;
                 StringBuilder _s = new StringBuilder();
-                _s.Append($"SELECT * FROM dbo.tbPerson WHERE ");
+                _s.Append($"SELECT * FROM dbo.tbProduct WHERE ");
                 if (startId.Length > 0)
                 {
                     _s.Append($"ID >= '{startId}' AND ");
                 }
                 if (endId.Length > 0)
                 {
-                    _s.Append($"ID <= '{endId}' AND ");
+                    _s.Append($"ID <= '{endId}'");
                 }
-                _s.Remove(_s.Length - 4, _s.Length);
                 _s.Append($";");
 
                 SqlCommand _SqlStr = new SqlCommand(_s.ToString(), con);
@@ -494,12 +492,12 @@ namespace NSOP_Torunament_Pro_Library
                     Product _product = new Product();
                     //Populate Product
                     _product.ID = _SqlData["ID"].ToString();
-                    _product.Name = _SqlData["Name"].ToString();
+                    _product.ProductName = _SqlData["Name"].ToString();
                     _product.Picture = _SqlData["Picture"].ToString();
                     _product.Info = _SqlData["Info"].ToString();
-                    _product.Description = _SqlData["Description"].ToString();
+                    _product.Description = _SqlData["Decription"].ToString();
                     _product.Price = (int)_SqlData["Price"];
-                    _product.Discount = (int)_SqlData["Discount"];
+                    _product.Discount = (int)_SqlData["Disount"];
 
                     if (_SqlData["Expires"].ToString() == "")
                     {
@@ -577,7 +575,7 @@ namespace NSOP_Torunament_Pro_Library
                     else _product.ID_6 = _SqlData["ID_6"].ToString();
 
 
-                    _p._StartProductsList.Add(_product);
+                    _pList.Add(_product);
                 }
                 //Save LifeTime
             }
@@ -586,7 +584,7 @@ namespace NSOP_Torunament_Pro_Library
                 _ = e.ToString();
             }
             con.Close();
-            return _p;
+            return _pList;
         }
     }
 }
