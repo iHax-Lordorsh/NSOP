@@ -150,7 +150,7 @@ namespace NSOP_Tournament_Pro_Library
                     switch (this.Request)
                     {
                         case DataAccess.Request.GetStartProduct:
-                            _product.GetProductList("ITEM 0000 0000 001I", "ITEM 0000 0000 002I");
+                            _product.GetStartUpProductList();
                             break;
                         case DataAccess.Request.New:
                             break;

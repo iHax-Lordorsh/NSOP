@@ -169,7 +169,7 @@
 
             </Grid>
         </Border>
-        <Border x:Name="brdLoggin" Margin="10" Background="Black" d:IsHidden="True">
+        <Border x:Name="brdLoggin" Margin="10" Background="Black">
             <Border x:Name="brdLoggin1" BorderThickness="5" Background="#FF003200" CornerRadius="35" RenderTransformOrigin="0.5,0.5" Width="1025" Height="578">
                 <Border.RenderTransform>
                     <TransformGroup>
@@ -187,7 +187,7 @@
                     </LinearGradientBrush>
                 </Border.BorderBrush>
                 <Grid Margin="25">
-                    <Image x:Name="img_LoggIn_1" HorizontalAlignment="Left" Height="200" VerticalAlignment="Top" Width="200" Source="NSOP.png"/>
+                    <Image x:Name="img_LoggIn_1" HorizontalAlignment="Left" Height="200" VerticalAlignment="Top" Width="200" Source="NSOP.png" MouseLeftButtonUp="img_LoggIn_1_MouseLeftButtonUp"/>
                     <Image x:Name="img_LoggIn_2" HorizontalAlignment="Right" Height="200" VerticalAlignment="Top" Width="200" Source="NSOP.png"/>
                     <StackPanel Margin="324.333,0,339.667,0" Orientation="Vertical" VerticalAlignment="Bottom">
                         <StackPanel x:Name="stk_LoggIn_1" Orientation="Vertical">
@@ -229,7 +229,7 @@
                         <Button x:Name="btn_LoggIn_LoggIn" Style="{StaticResource ButtonUnPushed}" Content="LOGG INN" Width="160" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource DeactiveText}" Padding="1" Click="Loggin_Click"/>
                         <Button x:Name="btn_LoggIn_NewAccount" Style="{StaticResource ButtonPushed}" Content="NEW USER" Width="160" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource ActiveText}" Padding="1" Click="Loggin_Click"/>
                     </StackPanel>
-                    <Border x:Name="brd_Verify" BorderThickness="3" Background="#FF003200" CornerRadius="25" RenderTransformOrigin="0.5,0.5" Padding="4,0,0,0" Margin="0">
+                    <Border x:Name="brd_Verify" BorderThickness="3" Background="#FF003200" CornerRadius="25" RenderTransformOrigin="0.5,0.5" Padding="4,0,0,0" Margin="0" d:IsHidden="True">
                         <Border.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -277,7 +277,7 @@
                             <Button x:Name="btn_SendResetMail" Style="{StaticResource ButtonUnPushed}" Content="SEND" Width="260" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="Black" Margin="0,0,0,-3" Padding="1" IsCancel="True" Click="LogginRequest_Click" Visibility="Hidden"/>
                         </Grid>
                     </Border>
-                    <Border x:Name="brd_ResetPassword" BorderThickness="3" Background="#FF003200" CornerRadius="25" RenderTransformOrigin="0.5,0.5" Padding="4,0,0,0" Margin="0">
+                    <Border x:Name="brd_ResetPassword" BorderThickness="3" Background="#FF003200" CornerRadius="25" RenderTransformOrigin="0.5,0.5" Padding="4,0,0,0" Margin="0" d:IsHidden="True">
                         <Border.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>

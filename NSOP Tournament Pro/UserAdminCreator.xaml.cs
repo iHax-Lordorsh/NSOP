@@ -376,7 +376,7 @@ namespace NSOP_Tournament_Pro
             {
                 _teller++;
                 _productID[_teller] = item.ID;
-                _productName[_teller].Content = item.Name;
+                _productName[_teller].Content = item.ProductName;
                 _productPrice[_teller].Content = item.Price.ToString();
                 _productQTY[_teller].SelectedIndex = item.Quantity;
             }
