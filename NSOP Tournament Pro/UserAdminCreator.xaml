@@ -53,11 +53,11 @@
                             </Border>
                             <Border x:Name="brdPicture" BorderBrush="{DynamicResource ButtonBackground}" BorderThickness="1" HorizontalAlignment="Center" Height="100" VerticalAlignment="Top" Width="100" Margin="0,36,0,0" Background="{DynamicResource BorderBackgroundLocked}" MouseLeftButtonUp="brdPicture_MouseLeftButtonUp"/>
                         </Grid>
-                        <Grid Height="150" Background="{DynamicResource BorderBackground}" Margin="0,79,0,0" Width="185" HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <Grid Height="150" Background="{DynamicResource BorderBackground}" Margin="15,79,0,0" Width="185" HorizontalAlignment="Left" VerticalAlignment="Top">
                             <Border VerticalAlignment="Top" Height="28" BorderBrush="{DynamicResource ButtonBackground}" BorderThickness="1" MouseLeftButtonUp="Create_Click">
                                 <Label Content="CREATE DESCROPTION" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="5,0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
                             </Border>
-                            <TextBox x:Name="txt_Description" TextWrapping="Wrap" Text="ENTER PRODUCT DESCRIPTION" VerticalAlignment="Top" Height="107" TextAlignment="Center" Margin="3,33,3,0" Foreground="{DynamicResource ActiveText}" Background="{DynamicResource ButtonBackgroundPushed}" BorderBrush="{DynamicResource ButtonBackground}" SelectionChanged="SelectionChange"/>
+                            <TextBox x:Name="txt_Description" TextWrapping="Wrap" Text="ENTER PRODUCT DESCRIPTION" VerticalAlignment="Top" Height="107" TextAlignment="Center" Margin="3,33,3,0" Foreground="{DynamicResource ActiveText}" Background="{DynamicResource ButtonBackgroundPushed}" BorderBrush="{DynamicResource ButtonBackground}" SelectionChanged="SelectionChange" FontSize="18"/>
                         </Grid>
                         <ListBox x:Name="lstProduct" IsSynchronizedWithCurrentItem="True" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="{DynamicResource BorderBackground}" BorderBrush="{DynamicResource ButtonBorder}" Margin="0,259,0,0" SelectionChanged="LstPicture_SelectionChanged" HorizontalAlignment="Left" Width="395" Padding="0" Visibility="Hidden">
                             <ListBox.ItemsPanel>
@@ -66,11 +66,11 @@
                                 </ItemsPanelTemplate>
                             </ListBox.ItemsPanel>
                         </ListBox>
-                        <Grid Height="54" Background="{DynamicResource BorderBackground}" Margin="210,0,0,0" Width="185" HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <Grid Height="56" Background="{DynamicResource BorderBackground}" Margin="210,0,0,0" Width="185" HorizontalAlignment="Left" VerticalAlignment="Top">
                             <Border VerticalAlignment="Top" Height="28" BorderBrush="{DynamicResource ButtonBackground}" BorderThickness="1" MouseLeftButtonUp="Create_Click">
                                 <Label Content="CREATE PRODUCKT NAME" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="5,0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
                             </Border>
-                            <TextBox x:Name="txt_Name" TextWrapping="Wrap" Text="ENTER PRODUCT NAME" VerticalAlignment="Top" Height="21" TextAlignment="Center" Margin="3,31,3,0" Foreground="{DynamicResource ActiveText}" Background="{DynamicResource ButtonBackgroundPushed}" BorderBrush="{DynamicResource ButtonBackground}" LostFocus="Textbox_LostFocus" SelectionChanged="SelectionChange" GotFocus="TextBox_GotFocus"/>
+                            <TextBox x:Name="txt_Name" TextWrapping="Wrap" Text="ENTER PRODUCT NAME" VerticalAlignment="Top" Height="25" TextAlignment="Center" Margin="3,31,3,3" Foreground="{DynamicResource ActiveText}" Background="{DynamicResource ButtonBackgroundPushed}" BorderBrush="{DynamicResource ButtonBackground}" LostFocus="Textbox_LostFocus" SelectionChanged="SelectionChange" GotFocus="TextBox_GotFocus" FontSize="18" Padding="0,-2,0,0"/>
                         </Grid>
                         <StackPanel Margin="421,0,0,0" Orientation="Vertical" VerticalAlignment="Top">
                             <Grid Height="54" Background="{DynamicResource BorderBackground}" Width="515" HorizontalAlignment="Right" VerticalAlignment="Top">
@@ -88,13 +88,13 @@
                                             <Label Content="Name" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
                                         </Border>
                                         <Border VerticalAlignment="Center" HorizontalAlignment="Left" BorderThickness="1" MouseLeftButtonUp="Create_Click" Width="190" Margin="0,2.5">
-                                            <Label x:Name="lbl_Name_1" Content="Name" Background="{DynamicResource BorderBackground}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
+                                            <Label x:Name="lbl_Name_1" Content="" Background="{DynamicResource BorderBackground}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
                                         </Border>
                                         <Border VerticalAlignment="Center" HorizontalAlignment="Left" BorderThickness="1" MouseLeftButtonUp="Create_Click" Width="50" Margin="0,2.5">
                                             <Label Content="PRICE" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
                                         </Border>
                                         <Border VerticalAlignment="Center" HorizontalAlignment="Left" BorderThickness="1" MouseLeftButtonUp="Create_Click" Width="100" Margin="0,2.5">
-                                            <Label x:Name="lbl_Price_1" Content="99" Background="{DynamicResource BorderBackground}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
+                                            <Label x:Name="lbl_Price_1" Content="" Background="{DynamicResource BorderBackground}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center" TextInput="TextInput_Change" SourceUpdated="SourceUpdate_Change"/>
                                         </Border>
                                         <Border VerticalAlignment="Center" HorizontalAlignment="Left" BorderThickness="1" MouseLeftButtonUp="Create_Click" Width="50" Margin="0,2.5">
                                             <Label Content="QTY" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
@@ -122,13 +122,13 @@
                                             <Label Content="Name" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
                                         </Border>
                                         <Border VerticalAlignment="Center" HorizontalAlignment="Left" BorderThickness="1" MouseLeftButtonUp="Create_Click" Width="190" Margin="0,2.5">
-                                            <Label x:Name="lbl_Name_2" Content="Name" Background="{DynamicResource BorderBackground}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
+                                            <Label x:Name="lbl_Name_2" Content="" Background="{DynamicResource BorderBackground}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
                                         </Border>
                                         <Border VerticalAlignment="Center" HorizontalAlignment="Left" BorderThickness="1" MouseLeftButtonUp="Create_Click" Width="50" Margin="0,2.5">
                                             <Label Content="PRICE" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
                                         </Border>
                                         <Border VerticalAlignment="Center" HorizontalAlignment="Left" BorderThickness="1" MouseLeftButtonUp="Create_Click" Width="100" Margin="0,2.5">
-                                            <Label x:Name="lbl_Price_2" Content="99" Background="{DynamicResource BorderBackground}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
+                                            <Label x:Name="lbl_Price_2" Content="" Background="{DynamicResource BorderBackground}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
                                         </Border>
                                         <Border VerticalAlignment="Center" HorizontalAlignment="Left" BorderThickness="1" MouseLeftButtonUp="Create_Click" Width="50" Margin="0,2.5">
                                             <Label Content="QTY" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
@@ -156,13 +156,13 @@
                                             <Label Content="Name" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
                                         </Border>
                                         <Border VerticalAlignment="Center" HorizontalAlignment="Left" BorderThickness="1" MouseLeftButtonUp="Create_Click" Width="190" Margin="0,2.5">
-                                            <Label x:Name="lbl_Name_3" Content="Name" Background="{DynamicResource BorderBackground}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
+                                            <Label x:Name="lbl_Name_3" Content="" Background="{DynamicResource BorderBackground}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
                                         </Border>
                                         <Border VerticalAlignment="Center" HorizontalAlignment="Left" BorderThickness="1" MouseLeftButtonUp="Create_Click" Width="50" Margin="0,2.5">
                                             <Label Content="PRICE" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
                                         </Border>
                                         <Border VerticalAlignment="Center" HorizontalAlignment="Left" BorderThickness="1" MouseLeftButtonUp="Create_Click" Width="100" Margin="0,2.5">
-                                            <Label x:Name="lbl_Price_3" Content="99" Background="{DynamicResource BorderBackground}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
+                                            <Label x:Name="lbl_Price_3" Content="" Background="{DynamicResource BorderBackground}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
                                         </Border>
                                         <Border VerticalAlignment="Center" HorizontalAlignment="Left" BorderThickness="1" MouseLeftButtonUp="Create_Click" Width="50" Margin="0,2.5">
                                             <Label Content="QTY" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
@@ -190,13 +190,13 @@
                                             <Label Content="Name" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
                                         </Border>
                                         <Border VerticalAlignment="Center" HorizontalAlignment="Left" BorderThickness="1" MouseLeftButtonUp="Create_Click" Width="190" Margin="0,2.5">
-                                            <Label x:Name="lbl_Name_4" Content="Name" Background="{DynamicResource BorderBackground}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
+                                            <Label x:Name="lbl_Name_4" Content="" Background="{DynamicResource BorderBackground}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
                                         </Border>
                                         <Border VerticalAlignment="Center" HorizontalAlignment="Left" BorderThickness="1" MouseLeftButtonUp="Create_Click" Width="50" Margin="0,2.5">
                                             <Label Content="PRICE" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
                                         </Border>
                                         <Border VerticalAlignment="Center" HorizontalAlignment="Left" BorderThickness="1" MouseLeftButtonUp="Create_Click" Width="100" Margin="0,2.5">
-                                            <Label x:Name="lbl_Price_4" Content="99" Background="{DynamicResource BorderBackground}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
+                                            <Label x:Name="lbl_Price_4" Content="" Background="{DynamicResource BorderBackground}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
                                         </Border>
                                         <Border VerticalAlignment="Center" HorizontalAlignment="Left" BorderThickness="1" MouseLeftButtonUp="Create_Click" Width="50" Margin="0,2.5">
                                             <Label Content="QTY" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
@@ -224,13 +224,13 @@
                                             <Label Content="Name" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
                                         </Border>
                                         <Border VerticalAlignment="Center" HorizontalAlignment="Left" BorderThickness="1" MouseLeftButtonUp="Create_Click" Width="190" Margin="0,2.5">
-                                            <Label x:Name="lbl_Name_5" Content="Name" Background="{DynamicResource BorderBackground}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
+                                            <Label x:Name="lbl_Name_5" Content="" Background="{DynamicResource BorderBackground}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
                                         </Border>
                                         <Border VerticalAlignment="Center" HorizontalAlignment="Left" BorderThickness="1" MouseLeftButtonUp="Create_Click" Width="50" Margin="0,2.5">
                                             <Label Content="PRICE" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
                                         </Border>
                                         <Border VerticalAlignment="Center" HorizontalAlignment="Left" BorderThickness="1" MouseLeftButtonUp="Create_Click" Width="100" Margin="0,2.5">
-                                            <Label x:Name="lbl_Price_5" Content="99" Background="{DynamicResource BorderBackground}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
+                                            <Label x:Name="lbl_Price_5" Content="" Background="{DynamicResource BorderBackground}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
                                         </Border>
                                         <Border VerticalAlignment="Center" HorizontalAlignment="Left" BorderThickness="1" MouseLeftButtonUp="Create_Click" Width="50" Margin="0,2.5">
                                             <Label Content="QTY" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
@@ -258,13 +258,13 @@
                                             <Label Content="Name" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
                                         </Border>
                                         <Border VerticalAlignment="Center" HorizontalAlignment="Left" BorderThickness="1" MouseLeftButtonUp="Create_Click" Width="190" Margin="0,2.5">
-                                            <Label x:Name="lbl_Name_6" Content="Name" Background="{DynamicResource BorderBackground}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
+                                            <Label x:Name="lbl_Name_6" Content="" Background="{DynamicResource BorderBackground}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
                                         </Border>
                                         <Border VerticalAlignment="Center" HorizontalAlignment="Left" BorderThickness="1" MouseLeftButtonUp="Create_Click" Width="50" Margin="0,2.5">
                                             <Label Content="PRICE" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
                                         </Border>
                                         <Border VerticalAlignment="Center" HorizontalAlignment="Left" BorderThickness="1" MouseLeftButtonUp="Create_Click" Width="100" Margin="0,2.5">
-                                            <Label x:Name="lbl_Price_6" Content="99" Background="{DynamicResource BorderBackground}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
+                                            <Label x:Name="lbl_Price_6" Content="" Background="{DynamicResource BorderBackground}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
                                         </Border>
                                         <Border VerticalAlignment="Center" HorizontalAlignment="Left" BorderThickness="1" MouseLeftButtonUp="Create_Click" Width="50" Margin="0,2.5">
                                             <Label Content="QTY" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
@@ -289,16 +289,16 @@
                                     </DockPanel>
                                     <DockPanel Background="{DynamicResource BorderBackground}" Height="28">
                                         <Border VerticalAlignment="Center" HorizontalAlignment="Left" BorderThickness="1" MouseLeftButtonUp="Create_Click" Width="50">
-                                            <Label Content="Name" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
+                                            <Label Content="" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
                                         </Border>
                                         <Border VerticalAlignment="Center" HorizontalAlignment="Left" BorderThickness="1" MouseLeftButtonUp="Create_Click" Width="190" Margin="0,2.5">
-                                            <Label x:Name="lbl_Name_7" Content="Name" Background="{DynamicResource BorderBackground}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
+                                            <Label x:Name="lbl_Name_7" Content="" Background="{DynamicResource BorderBackground}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
                                         </Border>
                                         <Border VerticalAlignment="Center" HorizontalAlignment="Left" BorderThickness="1" MouseLeftButtonUp="Create_Click" Width="50" Margin="0,2.5">
-                                            <Label Content="PRICE" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
+                                            <Label Content="" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
                                         </Border>
                                         <Border VerticalAlignment="Center" HorizontalAlignment="Left" BorderThickness="1" MouseLeftButtonUp="Create_Click" Width="100" Margin="0,2.5">
-                                            <Label x:Name="lbl_Price_7" Content="99" Background="{DynamicResource BorderBackground}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
+                                            <Label x:Name="lbl_Price_7" Content="" Background="{DynamicResource BorderBackground}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
                                         </Border>
                                         <Border VerticalAlignment="Center" HorizontalAlignment="Left" BorderThickness="1" MouseLeftButtonUp="Create_Click" Width="50" Margin="0,2.5">
                                             <Label Content="QTY" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
@@ -357,16 +357,16 @@
                                     </DockPanel>
                                     <DockPanel Background="{DynamicResource BorderBackground}" Height="28">
                                         <Border VerticalAlignment="Center" HorizontalAlignment="Left" BorderThickness="1" MouseLeftButtonUp="Create_Click" Width="50">
-                                            <Label Content="Name" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
+                                            <Label Content="" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
                                         </Border>
                                         <Border VerticalAlignment="Center" HorizontalAlignment="Left" BorderThickness="1" MouseLeftButtonUp="Create_Click" Width="190" Margin="0,2.5">
-                                            <Label x:Name="lbl_Name_9" Content="Name" Background="{DynamicResource BorderBackground}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
+                                            <Label x:Name="lbl_Name_9" Content="" Background="{DynamicResource BorderBackground}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
                                         </Border>
                                         <Border VerticalAlignment="Center" HorizontalAlignment="Left" BorderThickness="1" MouseLeftButtonUp="Create_Click" Width="50" Margin="0,2.5">
                                             <Label Content="PRICE" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
                                         </Border>
                                         <Border VerticalAlignment="Center" HorizontalAlignment="Left" BorderThickness="1" MouseLeftButtonUp="Create_Click" Width="100" Margin="0,2.5">
-                                            <TextBox x:Name="txt_SalesPrice" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="21" TextAlignment="Center" Foreground="{DynamicResource ActiveText}" Background="{DynamicResource BorderBackground}" BorderBrush="{DynamicResource ButtonBackground}" LostFocus="Textbox_LostFocus" GotFocus="TextBox_GotFocus" Margin="0" PreviewTextInput="txt_SalesPrice_PreviewTextInput"/>
+                                            <TextBox x:Name="txt_SalesPrice" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" TextAlignment="Center" Foreground="{DynamicResource ActiveText}" Background="{DynamicResource BorderBackground}" BorderBrush="{DynamicResource ButtonBackground}" LostFocus="Textbox_LostFocus" GotFocus="TextBox_GotFocus" Margin="0" PreviewTextInput="txt_SalesPrice_PreviewTextInput"/>
                                         </Border>
                                         <Border VerticalAlignment="Center" HorizontalAlignment="Left" BorderThickness="1" MouseLeftButtonUp="Create_Click" Width="50" Margin="0,2.5">
                                             <Label Content="" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="0" VerticalContentAlignment="Center" Margin="2,1,0,1" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Width="44"/>
@@ -381,6 +381,33 @@
                             </Grid>
                         </StackPanel>
                         <Button x:Name="btn_GenerateCode_Copy" Style="{StaticResource ButtonUnPushed}" Content="SAVE" Width="119" Height="21" VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" FontWeight="Bold" Foreground="Black" Margin="0,0,16,24" Padding="1" Click="SaveProduct_Click" IsCancel="True"/>
+                        <Grid Height="150" Background="{DynamicResource BorderBackground}" Margin="15,240,0,0" Width="185" HorizontalAlignment="Left" VerticalAlignment="Top">
+                            <Border VerticalAlignment="Top" Height="28" BorderBrush="{DynamicResource ButtonBackground}" BorderThickness="1" MouseLeftButtonUp="Create_Click">
+                                <Label Content="CREATE INFORMATION" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="5,0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
+                            </Border>
+                            <TextBox x:Name="txt_Description1" TextWrapping="Wrap" Text="ENTER PRODUCT INFORMATION" VerticalAlignment="Top" Height="107" TextAlignment="Center" Margin="3,33,3,0" Foreground="{DynamicResource ActiveText}" Background="{DynamicResource ButtonBackgroundPushed}" BorderBrush="{DynamicResource ButtonBackground}" SelectionChanged="SelectionChange" FontSize="18"/>
+                        </Grid>
+                        <Grid Height="150" Background="{DynamicResource BorderBackground}" Margin="211,240,0,0" Width="185" HorizontalAlignment="Left" VerticalAlignment="Top">
+                            <Border VerticalAlignment="Top" Height="28" BorderBrush="{DynamicResource ButtonBackground}" BorderThickness="1" MouseLeftButtonUp="Create_Click">
+                                <Label Content="EXPIRE DATE" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="5,0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
+                            </Border>
+                            <DatePicker x:Name="dpBorn" VerticalAlignment="Bottom" Height="45" FontSize="20" BorderBrush="{DynamicResource ActiveText}" Background="{DynamicResource ButtonBackgroundPushed}" SelectedDateChanged="DpBorn_SelectedDateChanged" Margin="0,0,0,10"/>
+                            <CheckBox Content="ACTIVATE" HorizontalAlignment="Left" Margin="52,59,0,0" VerticalAlignment="Top" Foreground="#FFAAFACA" Background="{DynamicResource ActiveText}" BorderBrush="{DynamicResource ButtonBackground}" Padding="4,0,0,-3"/>
+                        </Grid>
+                        <Grid Height="150" Background="{DynamicResource BorderBackground}" Margin="211,405,0,0" Width="185" HorizontalAlignment="Left" VerticalAlignment="Top">
+                            <Border VerticalAlignment="Top" Height="28" BorderBrush="{DynamicResource ButtonBackground}" BorderThickness="1" MouseLeftButtonUp="Create_Click">
+                                <Label Content="ENDDATE" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="5,0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
+                            </Border>
+                            <DatePicker x:Name="dpBorn1" VerticalAlignment="Bottom" Height="45" FontSize="20" BorderBrush="{DynamicResource ActiveText}" Background="{DynamicResource ButtonBackgroundPushed}" SelectedDateChanged="DpBorn_SelectedDateChanged" Margin="0,0,0,10"/>
+                            <CheckBox Content="ACTIVATE" HorizontalAlignment="Left" Margin="52,59,0,0" VerticalAlignment="Top" Foreground="#FFAAFACA" Background="{DynamicResource ActiveText}" BorderBrush="{DynamicResource ButtonBackground}" Padding="4,0,0,-3"/>
+                        </Grid>
+                        <Grid Height="150" Background="{DynamicResource BorderBackground}" Margin="15,404,0,0" Width="185" HorizontalAlignment="Left" VerticalAlignment="Top">
+                            <Border VerticalAlignment="Top" Height="28" BorderBrush="{DynamicResource ButtonBackground}" BorderThickness="1" MouseLeftButtonUp="Create_Click">
+                                <Label Content="STARTDATE" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="5,0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
+                            </Border>
+                            <DatePicker x:Name="dpBorn2" VerticalAlignment="Bottom" Height="45" FontSize="20" BorderBrush="{DynamicResource ActiveText}" Background="{DynamicResource ButtonBackgroundPushed}" SelectedDateChanged="DpBorn_SelectedDateChanged" Margin="0,0,0,10"/>
+                            <CheckBox Content="ACTIVATE" HorizontalAlignment="Left" Margin="52,59,0,0" VerticalAlignment="Top" Foreground="#FFAAFACA" Background="{DynamicResource ActiveText}" BorderBrush="{DynamicResource ButtonBackground}" Padding="4,0,0,-3"/>
+                        </Grid>
                     </Grid>
                 </Grid>
                 <DockPanel Margin="0,970.04,0,0">

@@ -23,7 +23,6 @@ namespace NSOP_Tournament_Pro
     /// </summary>
     public partial class UserAdminCreator : UserControl
     {
-
         private string _Id = "";
         private string _Name = "";
         private string _Picture;
@@ -37,47 +36,19 @@ namespace NSOP_Tournament_Pro
         private DateTime _EndDate;
         private DateTime _Expire;
 
-        private string _Id_1 = "";
-        private string _Id_2 = "";
-        private string _Id_3 = "";
-        private string _Id_4 = "";
-        private string _Id_5 = "";
-        private string _Id_6 = "";
-
-        private int _Qty_1 = 0;
-        private int _Qty_2 = 0;
-        private int _Qty_3 = 0;
-        private int _Qty_4 = 0;
-        private int _Qty_5 = 0;
-        private int _Qty_6 = 0;
-
-        public string ID { get => _Id; set { _Id = value; } }
+        public string ID { get => _Id; set { _Id = value; lblProductCode.Content = ID; } }
         public string ProductName { get => _Name; set { _Name = value; } }
         public string Picture { get => _Picture; set { _Picture = value; } }
         public string Info { get => _Info; set { _Info = value; } }
 
         public string Description { get => _Description; set { _Description = value; } }
-        public int Price { get => _Price; set { _Price = value; } }
+        public int Price { get => _Price; set { _Price = value; txt_SalesPrice.Text = Price.ToString(); } }
         public int Discount { get => _Discount; set { _Discount = value; } }
         public int Quantity { get => _Quantity; set { _Quantity = value; } }
 
         public DateTime Expires { get => _Expire; set { _Expire = value; } }
         public DateTime StartDate { get => _StartDate; set { _StartDate = value; } }
         public DateTime EndDate { get => _EndDate; set { _EndDate = value; } }
-
-        public string ID_1 { get => _Id_1; set { _Id_1 = value; } }
-        public string ID_2 { get => _Id_2; set { _Id_2 = value; } }
-        public string ID_3 { get => _Id_3; set { _Id_3 = value; } }
-        public string ID_4 { get => _Id_4; set { _Id_4 = value; } }
-        public string ID_5 { get => _Id_5; set { _Id_5 = value; } }
-        public string ID_6 { get => _Id_6; set { _Id_6 = value; } }
-
-        public int Qty_1 { get => _Qty_1; set { _Qty_1 = value; } }
-        public int Qty_2 { get => _Qty_2; set { _Qty_2 = value; } }
-        public int Qty_3 { get => _Qty_3; set { _Qty_3 = value; } }
-        public int Qty_4 { get => _Qty_4; set { _Qty_4 = value; } }
-        public int Qty_5 { get => _Qty_5; set { _Qty_5 = value; } }
-        public int Qty_6 { get => _Qty_6; set { _Qty_6 = value; } }
 
         public List<Border> listPicture = new List<Border>();
         public string[] _productID = new string[9];
@@ -96,7 +67,7 @@ namespace NSOP_Tournament_Pro
             List<Border> _B = new List<Border>();
             Border _b0 = new Border
             {
-                Name = "Admin",
+                Name = "i_Admin",
                 Width = 100,
                 Height = 100,
                 Background = BrushBackground("i_Admin")
@@ -104,7 +75,7 @@ namespace NSOP_Tournament_Pro
             _B.Add(_b0);
             Border _b1 = new Border
             {
-                Name = "Website",
+                Name = "i_Website",
                 Width = 100,
                 Height = 100,
                 Background = BrushBackground("i_Website")
@@ -112,7 +83,7 @@ namespace NSOP_Tournament_Pro
             _B.Add(_b1);
             Border _b2 = new Border
             {
-                Name = "Tokens",
+                Name = "i_Tokens",
                 Width = 100,
                 Height = 100,
                 Background = BrushBackground("i_Tokens")
@@ -120,7 +91,7 @@ namespace NSOP_Tournament_Pro
             _B.Add(_b2);
             Border _b3 = new Border
             {
-                Name = "Tickets_icon",
+                Name = "i_Ticket",
                 Width = 100,
                 Height = 100,
                 Background = BrushBackground("i_Ticket")
@@ -128,7 +99,7 @@ namespace NSOP_Tournament_Pro
             _B.Add(_b3);
             Border _b4 = new Border
             {
-                Name = "Person",
+                Name = "i_Person",
                 Width = 100,
                 Height = 100,
                 Background = BrushBackground("i_Person")
@@ -227,6 +198,9 @@ namespace NSOP_Tournament_Pro
                     if (item == (sender as ListBox).SelectedItem)
                     {
                         Picture = (item as Border).Name;
+                        brdPicture.Background = (item as Border).Background;
+                        lstProduct.Visibility = Visibility.Hidden;
+                        lstProduct.SelectedIndex = -1;
                         break;
                     }
                 }
@@ -334,6 +308,7 @@ namespace NSOP_Tournament_Pro
         {
             int _tp = 0;
             int _teller = -1;
+            
             foreach (var item in _productQTY)
             {
                 try
@@ -352,6 +327,7 @@ namespace NSOP_Tournament_Pro
                             Price = _tp;
                         }
                         else Price = 0;
+                        lbl_Price_7.Content = Price.ToString();
                     } 
                     else if (_teller == 8) // prosent
                     {
@@ -362,9 +338,9 @@ namespace NSOP_Tournament_Pro
                         {
                             float x = (((Price *100)  / 100) * _prosent); //DataAccess.RoundUp((Price / 100), 2);
 
-                           // TotalPrice = (int)DataAccess.RoundUp((Price -(x/100)), 1);
+                            Price = (int)DataAccess.RoundUp((Price -(x/100)), 1);
                         }
-                       // else TotalPrice = Price;
+                        else Price = Price;
                     }
                 }
                 catch (Exception)
@@ -384,11 +360,29 @@ namespace NSOP_Tournament_Pro
                 _productPrice[_teller].Content = item.Price.ToString();
                 _productQTY[_teller].SelectedIndex = item.Quantity;
             }
+            _productQTY[7].SelectedIndex = 1;
         }
 
         private void QTY_MouseEnter(object sender, MouseEventArgs e)
         {
             (sender as ComboBox).Focus();
         }
+
+        private void TextInput_Change(object sender, TextCompositionEventArgs e)
+        {
+            int _Value = Convert.ToInt16((sender as TextBox).Name.Substring((sender as TextBox).Name.Length - 1, (sender as TextBox).Name.Length));
+           
+        }
+
+        private void SourceUpdate_Change(object sender, DataTransferEventArgs e)
+        {
+
+            switch ((sender as TextBox).Name)
+            {
+
+            }
+        }
+
+    
     }
 }
