@@ -987,9 +987,6 @@
     <None Include="Resources\th.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ticket.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\tj.png" />
   </ItemGroup>
   <ItemGroup>
@@ -1099,6 +1096,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Tickets-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\i_Tournament.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ticket.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -100,8 +100,8 @@ namespace NSOP_Tournament_Pro
                     this.BottomLeft = "SALE";
                     this.BottomRight = "SALE";
                     this.BottomCenter = "BUY NOW";
-                    this.ProductPicture = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject("Website")));
-                    this.SalePicture = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject("Sales_1")));
+                    this.ProductPicture = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject("i_Website")));
+                    this.SalePicture = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject("i_Sale")));
                     break;
                 case 1:
                     this.Header = "TOKENS";
@@ -113,8 +113,8 @@ namespace NSOP_Tournament_Pro
                     this.BottomLeft = "SALE";
                     this.BottomRight = "SALE";
                     this.BottomCenter = "BUY NOW";
-                    this.ProductPicture = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject("Tokens")));
-                    this.SalePicture = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject("Sales_1")));
+                    this.ProductPicture = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject("i_Tokens")));
+                    this.SalePicture = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject("i_Sale")));
                     break;
                 case 2:
                 case 3:
@@ -131,8 +131,8 @@ namespace NSOP_Tournament_Pro
                     this.BottomLeft = "SALE";
                     this.BottomRight = "SALE";
                     this.BottomCenter = "BUY NOW";
-                    this.ProductPicture = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject("Tickets_icon")));
-                    this.SalePicture = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject("Sales_1")));
+                    this.ProductPicture = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject("i_Ticket")));
+                    this.SalePicture = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject("i_Sale")));
                     break;
             }
             this.Width = 150;

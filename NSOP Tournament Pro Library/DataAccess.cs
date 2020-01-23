@@ -417,7 +417,8 @@ namespace NSOP_Tournament_Pro_Library
             ResetPasswordVerify,
             ResetPasswordOK,
             UpdateFailed,
-            GetStartProduct
+            GetStartProduct,
+            SaveNew
         }
         public static T ParseEnum<T>(string value)
         {

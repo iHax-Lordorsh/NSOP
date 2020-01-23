@@ -203,16 +203,6 @@ namespace NSOP_Tournament_Pro.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Admin {
-            get {
-                object obj = ResourceManager.GetObject("Admin", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         public static System.Drawing.Bitmap ae {
             get {
                 object obj = ResourceManager.GetObject("ae", resourceCulture);
@@ -1333,6 +1323,86 @@ namespace NSOP_Tournament_Pro.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap i_Admin {
+            get {
+                object obj = ResourceManager.GetObject("i_Admin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap i_Mail {
+            get {
+                object obj = ResourceManager.GetObject("i_Mail", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap i_Person {
+            get {
+                object obj = ResourceManager.GetObject("i_Person", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap i_Sale {
+            get {
+                object obj = ResourceManager.GetObject("i_Sale", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap i_Ticket {
+            get {
+                object obj = ResourceManager.GetObject("i_Ticket", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap i_Tokens {
+            get {
+                object obj = ResourceManager.GetObject("i_Tokens", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap i_Tournament {
+            get {
+                object obj = ResourceManager.GetObject("i_Tournament", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap i_Website {
+            get {
+                object obj = ResourceManager.GetObject("i_Website", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap id {
             get {
                 object obj = ResourceManager.GetObject("id", resourceCulture);
@@ -1673,16 +1743,6 @@ namespace NSOP_Tournament_Pro.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap mail {
-            get {
-                object obj = ResourceManager.GetObject("mail", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         public static System.Drawing.Bitmap mc {
             get {
                 object obj = ResourceManager.GetObject("mc", resourceCulture);
@@ -1706,16 +1766,6 @@ namespace NSOP_Tournament_Pro.Properties {
         public static System.Drawing.Bitmap me {
             get {
                 object obj = ResourceManager.GetObject("me", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap members {
-            get {
-                object obj = ResourceManager.GetObject("members", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -2073,6 +2123,26 @@ namespace NSOP_Tournament_Pro.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap p_Members {
+            get {
+                object obj = ResourceManager.GetObject("p_Members", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap p_Ticket {
+            get {
+                object obj = ResourceManager.GetObject("p_Ticket", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap pa {
             get {
                 object obj = ResourceManager.GetObject("pa", resourceCulture);
@@ -2136,16 +2206,6 @@ namespace NSOP_Tournament_Pro.Properties {
         public static System.Drawing.Bitmap pl {
             get {
                 object obj = ResourceManager.GetObject("pl", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap Player {
-            get {
-                object obj = ResourceManager.GetObject("Player", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -2306,16 +2366,6 @@ namespace NSOP_Tournament_Pro.Properties {
         public static System.Drawing.Bitmap Sales_1 {
             get {
                 object obj = ResourceManager.GetObject("Sales_1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap Sales1 {
-            get {
-                object obj = ResourceManager.GetObject("Sales1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -2623,26 +2673,6 @@ namespace NSOP_Tournament_Pro.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ticket {
-            get {
-                object obj = ResourceManager.GetObject("ticket", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap Tickets_icon {
-            get {
-                object obj = ResourceManager.GetObject("Tickets_icon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         public static System.Drawing.Bitmap tj {
             get {
                 object obj = ResourceManager.GetObject("tj", resourceCulture);
@@ -2696,16 +2726,6 @@ namespace NSOP_Tournament_Pro.Properties {
         public static System.Drawing.Bitmap to {
             get {
                 object obj = ResourceManager.GetObject("to", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap Tokens {
-            get {
-                object obj = ResourceManager.GetObject("Tokens", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -2906,16 +2926,6 @@ namespace NSOP_Tournament_Pro.Properties {
         public static System.Drawing.Bitmap wales {
             get {
                 object obj = ResourceManager.GetObject("wales", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap Website {
-            get {
-                object obj = ResourceManager.GetObject("Website", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

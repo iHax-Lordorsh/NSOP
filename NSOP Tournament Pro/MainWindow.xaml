@@ -153,7 +153,7 @@
 
                 <Border x:Name="brdCenter" Margin="515,90,415,0" BorderThickness="2">
                     <Grid>
-                        <local:UserAdminCreator x:Name="uAdminCreator" d:IsHidden="True"/>
+                        <local:UserAdminCreator x:Name="uAdminCreator"/>
                     </Grid>
                 </Border>
                 <Border x:Name="brdRight" Margin="0,90,0,0" HorizontalAlignment="Right" BorderThickness="2">
@@ -169,7 +169,7 @@
 
             </Grid>
         </Border>
-        <Border x:Name="brdLoggin" Margin="10" Background="Black">
+        <Border x:Name="brdLoggin" Margin="10" Background="Black" d:IsHidden="True">
             <Border x:Name="brdLoggin1" BorderThickness="5" Background="#FF003200" CornerRadius="35" RenderTransformOrigin="0.5,0.5" Width="1025" Height="578">
                 <Border.RenderTransform>
                     <TransformGroup>
