@@ -219,23 +219,23 @@ namespace NSOP_Tournament_Pro
                 Info = vAC.Info,
                 Description = vAC.Description,
                 Price = vAC.Price,
-                Discount = vAC.Discount,
-                Quantity = vAC.Quantity,
+                Discount = Convert.ToInt16(vAC._productQTY[8].SelectedItem),
+                Quantity = Convert.ToInt16(vAC._productQTY[7].SelectedItem),
                 StartDate = vAC.StartDate,
                 EndDate = vAC.EndDate,
                 Expires = vAC.Expires,
-                ID_1 = vAC.ID_1,
-                ID_2 = vAC.ID_2,
-                ID_3 = vAC.ID_3,
-                ID_4 = vAC.ID_4,
-                ID_5 = vAC.ID_5,
-                ID_6 = vAC.ID_6,
-                Qty_1 = vAC.Qty_1,
-                Qty_2 = vAC.Qty_2,
-                Qty_3 = vAC.Qty_3,
-                Qty_4 = vAC.Qty_4,
-                Qty_5 = vAC.Qty_5,
-                Qty_6 = vAC.Qty_6
+                ID_1 = vAC._productID[1],
+                ID_2 = vAC._productID[2],
+                ID_3 = vAC._productID[3],
+                ID_4 = vAC._productID[4],
+                ID_5 = vAC._productID[5],
+                ID_6 = vAC._productID[6],
+                Qty_1 = Convert.ToInt16(vAC._productQTY[1].SelectedItem),
+                Qty_2 = Convert.ToInt16(vAC._productQTY[2].SelectedItem),
+                Qty_3 = Convert.ToInt16(vAC._productQTY[3].SelectedItem),
+                Qty_4 = Convert.ToInt16(vAC._productQTY[4].SelectedItem),
+                Qty_5 = Convert.ToInt16(vAC._productQTY[5].SelectedItem),
+                Qty_6 = Convert.ToInt16(vAC._productQTY[6].SelectedItem)
             };
             return _p;
         }
@@ -1381,9 +1381,9 @@ namespace NSOP_Tournament_Pro
 
         private void img_LoggIn_1_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            // Populate Administration Creating screen
-            uAdminCreator.Fill();
-            client.SendObject(UpdateCommunicationPacket(DataAccess.Request.GetStartProduct, new Product().ToBytes(), DataAccess.ClassType.Product, ""));
+            //// Populate Administration Creating screen
+            //uAdminCreator.Fill();
+            //client.SendObject(UpdateCommunicationPacket(DataAccess.Request.GetStartProduct, new Product().ToBytes(), DataAccess.ClassType.Product, ""));
         }
     }
 }
