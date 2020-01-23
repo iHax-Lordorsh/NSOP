@@ -116,6 +116,7 @@ namespace NSOP_Torunament_Pro_Library
             this.Qty_5 = _p.Qty_5;
             this.ID_6 = _p.ID_6;
             this.Qty_6 = _p.Qty_6;
+            this._StartProductsList = _p._StartProductsList;
 
         }
 
@@ -267,7 +268,7 @@ namespace NSOP_Torunament_Pro_Library
         //    con.Close();
         //    return _isOk;
         //}
-  
+
         //public static bool UpdateClub(Product product)
         //{
         //    SqlConnection con = new SqlConnection("Data Source = NSOP\\POKER; Initial Catalog = dbPerson; Trusted_Connection = True; Asynchronous Processing=True; ");
@@ -337,11 +338,11 @@ namespace NSOP_Torunament_Pro_Library
             con.Close();
             return _isOk;
         }
-   
+
         public static Product GetProduct(string ID)
         {
             Product _p = new Product();
-            SqlConnection con = new SqlConnection("Data Source = NSOP\\POKER; Initial Catalog = dbPerson; Trusted_Connection = True; Asynchronous Processing=True; ");
+            SqlConnection con = new SqlConnection("Data Source = NSOP\\POKER; Initial Catalog = dbOption; Trusted_Connection = True; Asynchronous Processing=True; ");
             if (con.State == ConnectionState.Closed)
             {
                 con.Open();
@@ -350,10 +351,10 @@ namespace NSOP_Torunament_Pro_Library
             {
                 SqlDataReader _SqlData = null;
                 StringBuilder _s = new StringBuilder();
-                _s.Append($"SELECT * FROM dbo.tbPerson WHERE ");
+                _s.Append($"SELECT * FROM dbo.tbProduct ");
                 if (ID.Length > 0)
                 {
-                    _s.Append($"PlayerID = '{ID}' AND ");
+                    _s.Append($"PlayerID = '{ID}' ");
                 }
                 _s.Append($";");
 
@@ -413,7 +414,7 @@ namespace NSOP_Torunament_Pro_Library
                 _s.Append($"SELECT * FROM dbo.tbProduct WHERE ");
                 if (ID.Length > 0)
                 {
-                    _s.Append($"ID = '{ID}' AND ");
+                    _s.Append($"ID = '{ID}'");
                 }
                 _s.Append($";");
 
@@ -459,6 +460,125 @@ namespace NSOP_Torunament_Pro_Library
             }
             con.Close();
             return _p;
+        }
+        public List<Product> GetStartUpProductList()
+        {
+            List<Product> _pList = new List<Product>();
+            SqlConnection con = new SqlConnection("Data Source = NSOP\\POKER; Initial Catalog = dbOption; Trusted_Connection = True; Asynchronous Processing=True; ");
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            try
+            {
+                SqlDataReader _SqlData = null;
+                StringBuilder _s = new StringBuilder();
+                _s.Append($"SELECT * FROM dbo.tbProduct WHERE ");
+                _s.Append($"ID LIKE '%0000 0000%'  ");
+                _s.Append($";");
+
+                SqlCommand _SqlStr = new SqlCommand(_s.ToString(), con);
+
+                _SqlData = _SqlStr.ExecuteReader();
+                _SqlStr.Dispose();
+                while (_SqlData.Read())
+                {
+                    Product _product = new Product();
+                    //Populate Product
+                    _product.ID = _SqlData["ID"].ToString();
+                    _product.ProductName = _SqlData["Name"].ToString();
+                    _product.Picture = _SqlData["Picture"].ToString();
+                    _product.Info = _SqlData["Info"].ToString();
+                    _product.Description = _SqlData["Decription"].ToString();
+                    _product.Price = (int)_SqlData["Price"];
+                    _product.Discount = (int)_SqlData["Disount"];
+
+                    if (_SqlData["Expires"].ToString() == "")
+                    {
+                    }
+                    else _product.Expires = DateTime.Parse(_SqlData["Expires"].ToString());
+
+                    if (_SqlData["StartDate"].ToString() == "")
+                    {
+                    }
+                    else _product.StartDate = DateTime.Parse(_SqlData["StartDate"].ToString());
+
+                    if (_SqlData["EndDate"].ToString() == "")
+                    {
+                    }
+                    else _product.EndDate = DateTime.Parse(_SqlData["EndDate"].ToString());
+
+                    if (_SqlData["Qty_1"].ToString() == "")
+                    {
+                    }
+                    else _product.Qty_1 = (int)_SqlData["Qty_1"];
+
+                    if (_SqlData["Qty_2"].ToString() == "")
+                    {
+                    }
+                    else _product.Qty_2 = (int)_SqlData["Qty_2"];
+
+                    if (_SqlData["Qty_3"].ToString() == "")
+                    {
+                    }
+                    else _product.Qty_3 = (int)_SqlData["Qty_3"];
+
+                    if (_SqlData["Qty_4"].ToString() == "")
+                    {
+                    }
+                    else _product.Qty_4 = (int)_SqlData["Qty_4"];
+
+                    if (_SqlData["Qty_5"].ToString() == "")
+                    {
+                    }
+                    else _product.Qty_5 = (int)_SqlData["Qty_5"];
+
+                    if (_SqlData["Qty_6"].ToString() == "")
+                    {
+                    }
+                    else _product.Qty_6 = (int)_SqlData["Qty_6"];
+
+                    if (_SqlData["ID_1"].ToString() == "")
+                    {
+                    }
+                    else _product.ID_1 = _SqlData["ID_1"].ToString();
+
+                    if (_SqlData["ID_2"].ToString() == "")
+                    {
+                    }
+                    else _product.ID_2 = _SqlData["ID_2"].ToString();
+
+                    if (_SqlData["ID_3"].ToString() == "")
+                    {
+                    }
+                    else _product.ID_3 = _SqlData["ID_3"].ToString();
+
+                    if (_SqlData["ID_4"].ToString() == "")
+                    {
+                    }
+                    else _product.ID_4 = _SqlData["ID_4"].ToString();
+
+                    if (_SqlData["ID_5"].ToString() == "")
+                    {
+                    }
+                    else _product.ID_5 = _SqlData["ID_5"].ToString();
+
+                    if (_SqlData["ID_6"].ToString() == "")
+                    {
+                    }
+                    else _product.ID_6 = _SqlData["ID_6"].ToString();
+
+
+                    _pList.Add(_product);
+                }
+                //Save LifeTime
+            }
+            catch (Exception e)
+            {
+                _ = e.ToString();
+            }
+            con.Close();
+            return _pList;
         }
         public List<Product> GetProductList(string startId, string endId)
         {

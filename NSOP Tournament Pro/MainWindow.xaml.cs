@@ -119,9 +119,7 @@ namespace NSOP_Tournament_Pro
             lstAvatar.SelectedIndex = -1;
             // User Initialize
 
-            // Populate Administration Creating screen
-            uAdminCreator.Fill();
-            client.SendObject(UpdateCommunicationPacket(DataAccess.Request.GetStartProduct, new Product().ToBytes()  , DataAccess.ClassType.Product, ""));
+         
         }
 
         private List<Border> UpdateAvatars()
@@ -1338,6 +1336,13 @@ namespace NSOP_Tournament_Pro
                 case "UModule_6":
                     break;
             }
+        }
+
+        private void img_LoggIn_1_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            // Populate Administration Creating screen
+            uAdminCreator.Fill();
+            client.SendObject(UpdateCommunicationPacket(DataAccess.Request.GetStartProduct, new Product().ToBytes(), DataAccess.ClassType.Product, ""));
         }
     }
 }

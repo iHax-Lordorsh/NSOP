@@ -154,6 +154,7 @@ namespace NSOP_Tournament_Pro
                     switch (cp.Request)
                     {
                         case DataAccess.Request.GetStartProduct:
+                            Product _p = new Product(cp.ObjectType);
                             Action GetStartProduct = delegate
                             {
                                 var mainWnd = Application.Current.MainWindow as MainWindow;
