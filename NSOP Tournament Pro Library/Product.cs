@@ -186,7 +186,7 @@ namespace NSOP_Torunament_Pro_Library
                 //Personalia
                 cmd.CommandText += $"'{ID}', '{ProductName}','{Picture}', '{Info}', ";
                 cmd.CommandText += $"'{Description}','{Price}', '{Discount}', '{Quantity}', ";
-                cmd.CommandText += $"'{Expires}', '{StartDate}', '{EndDate}', ";
+                cmd.CommandText += $"'{Expires.ToShortDateString()}', '{StartDate.ToShortDateString()}', '{EndDate.ToShortDateString()}', ";
                 cmd.CommandText += $"'{ID_1}', '{Qty_1}', ";
                 cmd.CommandText += $"'{ID_2}', '{Qty_2}', ";
                 cmd.CommandText += $"'{ID_3}', '{Qty_3}', ";
@@ -372,9 +372,9 @@ namespace NSOP_Torunament_Pro_Library
                     _p.Description = _SqlData["Description"].ToString();
                     _p.Price = (int)_SqlData["Price"];
                     _p.Discount = (int)_SqlData["Discount"];
-                    _p.Expires = (DateTime)_SqlData["Expires"];
-                    _p.StartDate = (DateTime)_SqlData["StartDate"];
-                    _p.EndDate = (DateTime)_SqlData["EndDate"];
+                    _p.Expires = DateTime.Parse(_SqlData["Expires"].ToString());
+                    _p.StartDate = DateTime.Parse(_SqlData["StartDate"].ToString());
+                    _p.EndDate = DateTime.Parse(_SqlData["EndDate"].ToString());
 
                     _p.ID_1 = _SqlData["ID_1"].ToString();
                     _p.Qty_1 = (int)_SqlData["Qty_1"];
@@ -489,9 +489,9 @@ namespace NSOP_Torunament_Pro_Library
                     _product.ProductName = _SqlData["Name"].ToString();
                     _product.Picture = _SqlData["Picture"].ToString();
                     _product.Info = _SqlData["Info"].ToString();
-                    _product.Description = _SqlData["Decription"].ToString();
+                    _product.Description = _SqlData["Description"].ToString();
                     _product.Price = (int)_SqlData["Price"];
-                    _product.Discount = (int)_SqlData["Disount"];
+                    _product.Discount = (int)_SqlData["Discount"];
 
                     if (_SqlData["Expires"].ToString() == "")
                     {
@@ -615,9 +615,9 @@ namespace NSOP_Torunament_Pro_Library
                     _product.ProductName = _SqlData["Name"].ToString();
                     _product.Picture = _SqlData["Picture"].ToString();
                     _product.Info = _SqlData["Info"].ToString();
-                    _product.Description = _SqlData["Decription"].ToString();
+                    _product.Description = _SqlData["Description"].ToString();
                     _product.Price = (int)_SqlData["Price"];
-                    _product.Discount = (int)_SqlData["Disount"];
+                    _product.Discount = (int)_SqlData["Discount"];
 
                     if (_SqlData["Expires"].ToString() == "")
                     {
