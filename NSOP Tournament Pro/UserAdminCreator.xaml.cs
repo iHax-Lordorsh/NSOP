@@ -99,7 +99,7 @@ namespace NSOP_Tournament_Pro
                 Name = "Admin",
                 Width = 100,
                 Height = 100,
-                Background = BrushBackground("Admin")
+                Background = BrushBackground("i_Admin")
             };
             _B.Add(_b0);
             Border _b1 = new Border
@@ -107,7 +107,7 @@ namespace NSOP_Tournament_Pro
                 Name = "Website",
                 Width = 100,
                 Height = 100,
-                Background = BrushBackground("Website")
+                Background = BrushBackground("i_Website")
             };
             _B.Add(_b1);
             Border _b2 = new Border
@@ -115,7 +115,7 @@ namespace NSOP_Tournament_Pro
                 Name = "Tokens",
                 Width = 100,
                 Height = 100,
-                Background = BrushBackground("Tokens")
+                Background = BrushBackground("i_Tokens")
             };
             _B.Add(_b2);
             Border _b3 = new Border
@@ -123,15 +123,15 @@ namespace NSOP_Tournament_Pro
                 Name = "Tickets_icon",
                 Width = 100,
                 Height = 100,
-                Background = BrushBackground("Tickets_icon")
+                Background = BrushBackground("i_Ticket")
             };
             _B.Add(_b3);
             Border _b4 = new Border
             {
-                Name = "Player",
+                Name = "Person",
                 Width = 100,
                 Height = 100,
-                Background = BrushBackground("Player")
+                Background = BrushBackground("i_Person")
             };
             _B.Add(_b4);
             return _B;
@@ -201,7 +201,10 @@ namespace NSOP_Tournament_Pro
             {
                 case "brdProduct":
                     grdProduct.Visibility = Visibility.Visible;
-                    
+                    // Populate Administration Creating screen
+                    var mainWnd = Application.Current.MainWindow as MainWindow;
+                    this.Fill();
+                    mainWnd.GetStartProducts();
                     break;
                 case "brdGadget":
                     grdProduct.Visibility = Visibility.Hidden;
@@ -231,7 +234,8 @@ namespace NSOP_Tournament_Pro
         }
         private void SaveProduct_Click(object sender, RoutedEventArgs e)
         {
-
+            var mainWnd = Application.Current.MainWindow as MainWindow;
+            mainWnd.SaveNewProduct();
         }
         private void Textbox_LostFocus(object sender, RoutedEventArgs e)
         {
@@ -371,7 +375,7 @@ namespace NSOP_Tournament_Pro
 
         internal void ShowProductCreator(Product product)
         {
-            int _teller = -1;
+            int _teller = 0;
             foreach (var item in product._StartProductsList)
             {
                 _teller++;

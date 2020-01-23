@@ -199,6 +199,47 @@ namespace NSOP_Tournament_Pro
             txt_Login_PW_1.Visibility = Visibility.Visible;
         }
 
+        internal void GetStartProducts()
+        {
+            client.SendObject(UpdateCommunicationPacket(DataAccess.Request.GetStartProduct, new Product().ToBytes(), DataAccess.ClassType.Product, ""));
+        }
+
+        internal void SaveNewProduct()
+        {
+            client.SendObject(UpdateCommunicationPacket(DataAccess.Request.SaveNew, PopulateProduct(uAdminCreator).ToBytes(), DataAccess.ClassType.Product, ""));
+        }
+
+        private Product PopulateProduct(UserAdminCreator vAC)
+        {
+            Product _p = new Product
+            {
+                ID = vAC.ID,
+                ProductName = vAC.ProductName,
+                Picture = vAC.Picture,
+                Info = vAC.Info,
+                Description = vAC.Description,
+                Price = vAC.Price,
+                Discount = vAC.Discount,
+                Quantity = vAC.Quantity,
+                StartDate = vAC.StartDate,
+                EndDate = vAC.EndDate,
+                Expires = vAC.Expires,
+                ID_1 = vAC.ID_1,
+                ID_2 = vAC.ID_2,
+                ID_3 = vAC.ID_3,
+                ID_4 = vAC.ID_4,
+                ID_5 = vAC.ID_5,
+                ID_6 = vAC.ID_6,
+                Qty_1 = vAC.Qty_1,
+                Qty_2 = vAC.Qty_2,
+                Qty_3 = vAC.Qty_3,
+                Qty_4 = vAC.Qty_4,
+                Qty_5 = vAC.Qty_5,
+                Qty_6 = vAC.Qty_6
+            };
+            return _p;
+        }
+
         //private void PerformPersonAction(Person _p)
         //{
         //    string _Header;
@@ -491,7 +532,7 @@ namespace NSOP_Tournament_Pro
 
             UModule_1.BottomLeft = _adminPerson.AdminSubscribtion.ToShortDateString();
             UModule_1.BottomRight = "RENEW ->>>";
-            UModule_1.Picture = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject("Admin")));
+            UModule_1.Picture = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject("i_Admin")));
 
             // Website
             UModule_2.TopLeft = "WEBSITE";
@@ -503,14 +544,14 @@ namespace NSOP_Tournament_Pro
 
             UModule_2.BottomLeft = _adminPerson.WebSideSubscribtion.ToShortDateString();
             UModule_2.BottomRight = "RENEW ->>>";
-            UModule_2.Picture = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject("Website")));
+            UModule_2.Picture = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject("i_Website")));
 
             // Tokens
             UModule_3.TopLeft = "TOKENS";
             UModule_3.TopRight = _adminPerson.Tokens.ToString();
             UModule_3.Center = _adminPerson.Tokens.ToString();
             UModule_3.BottomRight = "BUY ->>>";
-            UModule_3.Picture = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject("Tokens")));
+            UModule_3.Picture = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject("i_Tokens")));
 
             // SubscrGadgetiptions
             UModule_4.Picture = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject("NSOP")));
@@ -531,12 +572,12 @@ namespace NSOP_Tournament_Pro
             UModule_Right_2.TopLeft = "MENMERS";
             UModule_Right_2.TopRight = _adminPerson.PersonRegQTY.ToString();
             UModule_Right_2.BottomRight = "REISTRER _adminPerson ->>>";
-            UModule_Right_2.Background = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject("members")));
+            UModule_Right_2.Background = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject("p_Members")));
 
             UModule_Right_3.TopLeft = "TICKET SALE";
             UModule_Right_3.TopRight = _adminPerson.TicketSaleQTY.ToString();
             UModule_Right_3.BottomRight = "SELL TICKETS ->>>";
-            UModule_Right_3.Background = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject("ticket")));
+            UModule_Right_3.Background = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject("p_Ticket")));
 
             UModule_Right_4.TopLeft = "WALL OF FAME  |  RANK  |  LEAGUE";
             UModule_Right_4.BottomRight = "GO TO SITE ->>>";
