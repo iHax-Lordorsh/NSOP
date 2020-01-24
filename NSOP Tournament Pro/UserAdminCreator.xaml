@@ -391,21 +391,21 @@
                             <Border VerticalAlignment="Top" Height="28" BorderBrush="{DynamicResource ButtonBackground}" BorderThickness="1" MouseLeftButtonUp="Create_Click">
                                 <Label Content="EXPIRE DATE" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="5,0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
                             </Border>
-                            <DatePicker x:Name="dpBorn" VerticalAlignment="Bottom" Height="45" FontSize="20" BorderBrush="{DynamicResource ActiveText}" Background="{DynamicResource ButtonBackgroundPushed}" SelectedDateChanged="DpBorn_SelectedDateChanged" Margin="0,0,0,10"/>
+                            <DatePicker x:Name="dpBorn" VerticalAlignment="Bottom" Height="45" FontSize="20" BorderBrush="{DynamicResource ActiveText}" Background="{DynamicResource ButtonBackgroundPushed}" Margin="0,0,0,10"/>
                             <CheckBox Content="ACTIVATE" HorizontalAlignment="Left" Margin="52,59,0,0" VerticalAlignment="Top" Foreground="#FFAAFACA" Background="{DynamicResource ActiveText}" BorderBrush="{DynamicResource ButtonBackground}" Padding="4,0,0,-3"/>
                         </Grid>
                         <Grid Height="150" Background="{DynamicResource BorderBackground}" Margin="211,405,0,0" Width="185" HorizontalAlignment="Left" VerticalAlignment="Top">
                             <Border VerticalAlignment="Top" Height="28" BorderBrush="{DynamicResource ButtonBackground}" BorderThickness="1" MouseLeftButtonUp="Create_Click">
                                 <Label Content="ENDDATE" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="5,0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
                             </Border>
-                            <DatePicker x:Name="dpBorn1" VerticalAlignment="Bottom" Height="45" FontSize="20" BorderBrush="{DynamicResource ActiveText}" Background="{DynamicResource ButtonBackgroundPushed}" SelectedDateChanged="DpBorn_SelectedDateChanged" Margin="0,0,0,10"/>
+                            <DatePicker x:Name="dpBorn1" VerticalAlignment="Bottom" Height="45" FontSize="20" BorderBrush="{DynamicResource ActiveText}" Background="{DynamicResource ButtonBackgroundPushed}" Margin="0,0,0,10"/>
                             <CheckBox Content="ACTIVATE" HorizontalAlignment="Left" Margin="52,59,0,0" VerticalAlignment="Top" Foreground="#FFAAFACA" Background="{DynamicResource ActiveText}" BorderBrush="{DynamicResource ButtonBackground}" Padding="4,0,0,-3"/>
                         </Grid>
                         <Grid Height="150" Background="{DynamicResource BorderBackground}" Margin="15,404,0,0" Width="185" HorizontalAlignment="Left" VerticalAlignment="Top">
                             <Border VerticalAlignment="Top" Height="28" BorderBrush="{DynamicResource ButtonBackground}" BorderThickness="1" MouseLeftButtonUp="Create_Click">
                                 <Label Content="STARTDATE" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="5,0" VerticalContentAlignment="Center" Margin="2,1" HorizontalContentAlignment="Center"/>
                             </Border>
-                            <DatePicker x:Name="dpBorn2" VerticalAlignment="Bottom" Height="45" FontSize="20" BorderBrush="{DynamicResource ActiveText}" Background="{DynamicResource ButtonBackgroundPushed}" SelectedDateChanged="DpBorn_SelectedDateChanged" Margin="0,0,0,10"/>
+                            <DatePicker x:Name="dpBorn2" VerticalAlignment="Bottom" Height="45" FontSize="20" BorderBrush="{DynamicResource ActiveText}" Background="{DynamicResource ButtonBackgroundPushed}" Margin="0,0,0,10"/>
                             <CheckBox Content="ACTIVATE" HorizontalAlignment="Left" Margin="52,59,0,0" VerticalAlignment="Top" Foreground="#FFAAFACA" Background="{DynamicResource ActiveText}" BorderBrush="{DynamicResource ButtonBackground}" Padding="4,0,0,-3"/>
                         </Grid>
                     </Grid>
