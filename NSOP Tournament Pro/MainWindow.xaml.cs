@@ -234,7 +234,7 @@ namespace NSOP_Tournament_Pro
                 Qty_5 = Convert.ToInt16(vAC.ProductQTY[5].SelectedItem),
                 Qty_6 = Convert.ToInt16(vAC.ProductQTY[6].SelectedItem)
             };
-            if (vAC.isExpireDate != "")
+            if (vAC.Expires != "")
             {
                 _p.Expires = vAC.Expires;
             }

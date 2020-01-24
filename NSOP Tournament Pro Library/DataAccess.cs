@@ -34,12 +34,13 @@ namespace NSOP_Tournament_Pro_Library
         private static extern bool EnumSystemLocalesEx(EnumLocalesProcExDelegate pEnumProcEx,
            LocaleType dwFlags, int lParam, IntPtr lpReserved);
 
-        public static List<string> GetNumbers(int maxValue)
+        public static List<string> GetNumbers(int starValue, int stepValue, int CountValue)
         {
+            // 0 100 30 
             List<string> _list = new List<string>();
-            for (int i = 0; i <= maxValue; i++)
+            for (int i = starValue; i <= CountValue; i++)
             {
-                _list.Add(i.ToString());
+                _list.Add((i * stepValue).ToString());
             }
             return _list;
         }
@@ -211,7 +212,7 @@ namespace NSOP_Tournament_Pro_Library
         public static List<string> GetMounth()
         {
             List<string> _l = new List<string>();
-
+            _l.Add("Never");
             for (int i = 1; i <= 12; i++)
             {
                 _l.Add(i.ToString() + " Mounth");
