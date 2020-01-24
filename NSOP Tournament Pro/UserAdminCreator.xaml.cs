@@ -429,7 +429,6 @@ namespace NSOP_Tournament_Pro
 
         private void cbExpireDate_Unchecked(object sender, RoutedEventArgs e)
         {
-
         }
     }
 }
