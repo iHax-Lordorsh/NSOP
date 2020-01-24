@@ -26,7 +26,7 @@ namespace NSOP_Tournament_Pro
         private string _Id = "";
         private string _Name = "";
         private string _Picture;
-        private string _Info = "";
+        private string _Information = "";
         private string _Description = "";
         private int _Price = 0;
         private int _Discount = 0;
@@ -34,27 +34,36 @@ namespace NSOP_Tournament_Pro
 
         private DateTime _StartDate;
         private DateTime _EndDate;
-        private DateTime _Expire;
+        private string _Expire;
+
+        private string _isExpireDate ="";
+        private bool _isStartDate;
+        private bool _isEndDate;
 
         public string ID { get => _Id; set { _Id = value; lblProductCode.Content = ID; } }
         public string ProductName { get => _Name; set { _Name = value; } }
         public string Picture { get => _Picture; set { _Picture = value; } }
-        public string Info { get => _Info; set { _Info = value; } }
+        public string Information { get => _Information; set { _Information = value; } }
 
         public string Description { get => _Description; set { _Description = value; } }
         public int Price { get => _Price; set { _Price = value; txt_SalesPrice.Text = Price.ToString(); } }
         public int Discount { get => _Discount; set { _Discount = value; } }
         public int Quantity { get => _Quantity; set { _Quantity = value; } }
 
-        public DateTime Expires { get => _Expire; set { _Expire = value; } }
+        public string Expires { get => _Expire; set { _Expire = value; } }
         public DateTime StartDate { get => _StartDate; set { _StartDate = value; } }
         public DateTime EndDate { get => _EndDate; set { _EndDate = value; } }
 
+        public string isExpireDate { get => _isExpireDate; set { _isExpireDate = value; } }
+        public bool isStartDate { get => _isStartDate; set { _isStartDate = value; } }
+        public bool isEndDate { get => _isEndDate; set { _isEndDate = value; } }
+
+
         public List<Border> listPicture = new List<Border>();
-        public string[] _productID = new string[9];
-        public Label[] _productName = new Label[9];
-        public Label[] _productPrice = new Label[9];
-        public ComboBox[] _productQTY = new ComboBox[9];
+        public string[] ProductID = new string[9];
+        public Label[] ProductNames = new Label[9];
+        public Label[] ProductPrices = new Label[9];
+        public ComboBox[] ProductQTY = new ComboBox[9];
 
         public UserAdminCreator()
         {
@@ -110,59 +119,62 @@ namespace NSOP_Tournament_Pro
 
         internal void Fill()
         {
-            _productID[0] = "";
-            _productID[1] = "";
-            _productID[2] = "";
-            _productID[3] = "";
-            _productID[4] = "";
-            _productID[5] = "";
-            _productID[6] = "";
-            _productID[7] = "";
-            _productID[8] = "";
+            ProductID[0] = "";
+            ProductID[1] = "";
+            ProductID[2] = "";
+            ProductID[3] = "";
+            ProductID[4] = "";
+            ProductID[5] = "";
+            ProductID[6] = "";
+            ProductID[7] = "";
+            ProductID[8] = "";
 
-            _productName[0] = new Label();
-            _productName[1] = lbl_Name_1;
-            _productName[2] = lbl_Name_2;
-            _productName[3] = lbl_Name_3;
-            _productName[4] = lbl_Name_4;
-            _productName[5] = lbl_Name_5;
-            _productName[6] = lbl_Name_6;
-            _productName[7] = lbl_Name_7;
-            _productName[8] = lbl_Name_8;
+            ProductNames[0] = new Label();
+            ProductNames[1] = lbl_Name_1;
+            ProductNames[2] = lbl_Name_2;
+            ProductNames[3] = lbl_Name_3;
+            ProductNames[4] = lbl_Name_4;
+            ProductNames[5] = lbl_Name_5;
+            ProductNames[6] = lbl_Name_6;
+            ProductNames[7] = lbl_Name_7;
+            ProductNames[8] = lbl_Name_8;
 
-            _productPrice[0] = new Label();
-            _productPrice[1] = lbl_Price_1;
-            _productPrice[2] = lbl_Price_2;
-            _productPrice[3] = lbl_Price_3;
-            _productPrice[4] = lbl_Price_4;
-            _productPrice[5] = lbl_Price_5;
-            _productPrice[6] = lbl_Price_6;
-            _productPrice[7] = lbl_Price_7;
-            _productPrice[8] = lbl_Price_8;
-            foreach (var item in _productPrice)
+            ProductPrices[0] = new Label();
+            ProductPrices[1] = lbl_Price_1;
+            ProductPrices[2] = lbl_Price_2;
+            ProductPrices[3] = lbl_Price_3;
+            ProductPrices[4] = lbl_Price_4;
+            ProductPrices[5] = lbl_Price_5;
+            ProductPrices[6] = lbl_Price_6;
+            ProductPrices[7] = lbl_Price_7;
+            ProductPrices[8] = lbl_Price_8;
+            foreach (var item in ProductPrices)
             {
                 item.Content = "1";
             }
-            _productQTY[0] = new ComboBox();
-            _productQTY[1] = cbx_QTY_1;
-            _productQTY[2] = cbx_QTY_2;
-            _productQTY[3] = cbx_QTY_3;
-            _productQTY[4] = cbx_QTY_4;
-            _productQTY[5] = cbx_QTY_5;
-            _productQTY[6] = cbx_QTY_6;
-            _productQTY[7] = cbx_QTY_7;
-            _productQTY[8] = cbx_QTY_8;
-            foreach (var item in _productQTY)
+            ProductQTY[0] = new ComboBox();
+            ProductQTY[1] = cbx_QTY_1;
+            ProductQTY[2] = cbx_QTY_2;
+            ProductQTY[3] = cbx_QTY_3;
+            ProductQTY[4] = cbx_QTY_4;
+            ProductQTY[5] = cbx_QTY_5;
+            ProductQTY[6] = cbx_QTY_6;
+            ProductQTY[7] = cbx_QTY_7;
+            ProductQTY[8] = cbx_QTY_8;
+            foreach (var item in ProductQTY)
             {
                 item.ItemsSource = DataAccess.GetNumbers(12);
                 item.SelectedIndex = 0;
             }
-            _productQTY[8].ItemsSource = DataAccess.GetNumbers(100);
+            ProductQTY[8].ItemsSource = DataAccess.GetNumbers(100);
             listPicture = GetItemPicture();
             lstProduct.ItemsSource = listPicture;
             lstProduct.Items.Refresh();
             lstProduct.SelectedIndex = -1;
-      
+
+            cbx_Expire.ItemsSource = DataAccess.GetMounth();
+
+
         }
 
 
@@ -263,6 +275,24 @@ namespace NSOP_Tournament_Pro
                         _Description = (sender as TextBox).Text.ToString();
                     }
                     break;
+                case "txt_Information":
+                    if ((sender as TextBox).Text.Length >= 3)
+                    {
+                        // Code is correct you can now verify
+                        (sender as TextBox).Background = (LinearGradientBrush)FindResource("ButtonBackgroundPushed");
+                        (sender as TextBox).Foreground = (SolidColorBrush)FindResource("ActiveText");
+                        (sender as TextBox).Tag = 1;
+                        _Information = (sender as TextBox).Text.ToString();
+                    }
+                    else
+                    {
+                        // You type the wrong code
+                        (sender as TextBox).Background = (SolidColorBrush)FindResource("ErrorBackground");
+                        (sender as TextBox).Foreground = (SolidColorBrush)FindResource("ErrorText");
+                        (sender as TextBox).Tag = 0;
+                        _Information = (sender as TextBox).Text.ToString();
+                    }
+                    break;
             }
         }
         private void brdPicture_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -309,14 +339,14 @@ namespace NSOP_Tournament_Pro
             int _tp = 0;
             int _teller = -1;
             
-            foreach (var item in _productQTY)
+            foreach (var item in ProductQTY)
             {
                 try
                 {
                     _teller++;
                     if (_teller <= 6) // price
                     {
-                        _tp += (Convert.ToInt16(item.SelectedItem.ToString()) * Convert.ToInt16(_productPrice[_teller].Content.ToString()));
+                        _tp += (Convert.ToInt16(item.SelectedItem.ToString()) * Convert.ToInt16(ProductPrices[_teller].Content.ToString()));
                     }
                     else if (_teller == 7) // price
                     {
@@ -331,7 +361,7 @@ namespace NSOP_Tournament_Pro
                     } 
                     else if (_teller == 8) // prosent
                     {
-                        _productPrice[_teller].Content = item.SelectedItem.ToString();
+                        ProductPrices[_teller].Content = item.SelectedItem.ToString();
                         _Discount = Convert.ToInt16(item.SelectedItem.ToString());
                         int _prosent = Convert.ToInt16(item.SelectedItem.ToString());
                         if (_prosent > 0)
@@ -355,12 +385,12 @@ namespace NSOP_Tournament_Pro
             foreach (var item in product._StartProductsList)
             {
                 _teller++;
-                _productID[_teller] = item.ID;
-                _productName[_teller].Content = item.ProductName;
-                _productPrice[_teller].Content = item.Price.ToString();
-                _productQTY[_teller].SelectedIndex = item.Quantity;
+                ProductID[_teller] = item.ID;
+                ProductNames[_teller].Content = item.ProductName;
+                ProductPrices[_teller].Content = item.Price.ToString();
+                ProductQTY[_teller].SelectedIndex = item.Quantity;
             }
-            _productQTY[7].SelectedIndex = 1;
+            ProductQTY[7].SelectedIndex = 1;
         }
 
         private void QTY_MouseEnter(object sender, MouseEventArgs e)
@@ -368,21 +398,38 @@ namespace NSOP_Tournament_Pro
             (sender as ComboBox).Focus();
         }
 
-        private void TextInput_Change(object sender, TextCompositionEventArgs e)
+        private void cbStartDate_Checked(object sender, RoutedEventArgs e)
         {
-            int _Value = Convert.ToInt16((sender as TextBox).Name.Substring((sender as TextBox).Name.Length - 1, (sender as TextBox).Name.Length));
-           
+            isStartDate = false;
+        }
+        private void cbStartDate_Unchecked(object sender, RoutedEventArgs e)
+        {
+            isStartDate = true;
+        }
+        private void cpEndDate_Checked(object sender, RoutedEventArgs e)
+        {
+            isEndDate = false;
+        }
+        private void cpEndDate_Unchecked(object sender, RoutedEventArgs e)
+        {
+            isEndDate = true;
         }
 
-        private void SourceUpdate_Change(object sender, DataTransferEventArgs e)
+        private void cbx_Expire_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
-            switch ((sender as TextBox).Name)
+            if ((sender as ComboBox).SelectedIndex > -1)
             {
-
+                isExpireDate = (sender as ComboBox).SelectedItem.ToString();
             }
         }
 
-    
+        private void cbExpireDate_Checked(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void cbExpireDate_Unchecked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

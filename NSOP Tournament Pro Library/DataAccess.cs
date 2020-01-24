@@ -208,6 +208,17 @@ namespace NSOP_Tournament_Pro_Library
             return _ID;
         }
 
+        public static List<string> GetMounth()
+        {
+            List<string> _l = new List<string>();
+
+            for (int i = 1; i <= 12; i++)
+            {
+                _l.Add(i.ToString() + " Mounth");
+            }
+            return _l;
+        }
+
         /// <summary>
         /// vFormat : Upper, Lower og Normal
         /// </summary>

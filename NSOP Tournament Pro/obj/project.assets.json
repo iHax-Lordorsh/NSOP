@@ -668,24 +668,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Administrator\\.nuget\\packages\\": {},
+    "C:\\Users\\Lordorsh\\.nuget\\packages\\": {},
     "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Programmering\\NSOP\\NSOP Tournament Pro\\NSOP Tournament Pro.csproj",
+      "projectUniqueName": "E:\\Programmering\\NSOP\\NSOP Tournament Pro\\NSOP Tournament Pro.csproj",
       "projectName": "NSOP Tournament Pro",
-      "projectPath": "C:\\Programmering\\NSOP\\NSOP Tournament Pro\\NSOP Tournament Pro.csproj",
-      "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "C:\\Programmering\\NSOP\\NSOP Tournament Pro\\obj\\",
+      "projectPath": "E:\\Programmering\\NSOP\\NSOP Tournament Pro\\NSOP Tournament Pro.csproj",
+      "packagesPath": "C:\\Users\\Lordorsh\\.nuget\\packages\\",
+      "outputPath": "E:\\Programmering\\NSOP\\NSOP Tournament Pro\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Lordorsh\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -699,8 +699,8 @@
       "frameworks": {
         "net472": {
           "projectReferences": {
-            "C:\\Programmering\\NSOP\\NSOP Tournament Pro Library\\NSOP Tournament Pro Library.csproj": {
-              "projectPath": "C:\\Programmering\\NSOP\\NSOP Tournament Pro Library\\NSOP Tournament Pro Library.csproj"
+            "E:\\Programmering\\NSOP\\NSOP Tournament Pro Library\\NSOP Tournament Pro Library.csproj": {
+              "projectPath": "E:\\Programmering\\NSOP\\NSOP Tournament Pro Library\\NSOP Tournament Pro Library.csproj"
             }
           }
         }

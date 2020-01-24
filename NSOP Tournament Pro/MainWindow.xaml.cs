@@ -216,26 +216,36 @@ namespace NSOP_Tournament_Pro
                 ID = vAC.ID,
                 ProductName = vAC.ProductName,
                 Picture = vAC.Picture,
-                Info = vAC.Info,
+                Information = vAC.Information,
                 Description = vAC.Description,
                 Price = vAC.Price,
-                Discount = Convert.ToInt16(vAC._productQTY[8].SelectedItem),
-                Quantity = Convert.ToInt16(vAC._productQTY[7].SelectedItem),
-                StartDate = vAC.StartDate,
-                EndDate = vAC.EndDate,
-                Expires = vAC.Expires,
-                ID_1 = vAC._productID[1],
-                ID_2 = vAC._productID[2],
-                ID_3 = vAC._productID[3],
-                ID_4 = vAC._productID[4],
-                ID_5 = vAC._productID[5],
-                ID_6 = vAC._productID[6],
-                Qty_1 = Convert.ToInt16(vAC._productQTY[1].SelectedItem),
-                Qty_2 = Convert.ToInt16(vAC._productQTY[2].SelectedItem),
-                Qty_3 = Convert.ToInt16(vAC._productQTY[3].SelectedItem),
-                Qty_4 = Convert.ToInt16(vAC._productQTY[4].SelectedItem),
-                Qty_5 = Convert.ToInt16(vAC._productQTY[5].SelectedItem),
-                Qty_6 = Convert.ToInt16(vAC._productQTY[6].SelectedItem)
+                Discount = Convert.ToInt16(vAC.ProductQTY[8].SelectedItem),
+                Quantity = Convert.ToInt16(vAC.ProductQTY[7].SelectedItem),
+                ID_1 = vAC.ProductID[1],
+                ID_2 = vAC.ProductID[2],
+                ID_3 = vAC.ProductID[3],
+                ID_4 = vAC.ProductID[4],
+                ID_5 = vAC.ProductID[5],
+                ID_6 = vAC.ProductID[6],
+                Qty_1 = Convert.ToInt16(vAC.ProductQTY[1].SelectedItem),
+                Qty_2 = Convert.ToInt16(vAC.ProductQTY[2].SelectedItem),
+                Qty_3 = Convert.ToInt16(vAC.ProductQTY[3].SelectedItem),
+                Qty_4 = Convert.ToInt16(vAC.ProductQTY[4].SelectedItem),
+                Qty_5 = Convert.ToInt16(vAC.ProductQTY[5].SelectedItem),
+                Qty_6 = Convert.ToInt16(vAC.ProductQTY[6].SelectedItem)
+            };
+            if (vAC.isExpireDate != "")
+            {
+                _p.Expires = vAC.Expires;
+            }
+            else _p.Expires = "";
+            if (vAC.isStartDate)
+            {
+                _p.StartDate = vAC.StartDate;
+            };
+            if (vAC.isEndDate)
+            {
+                _p.EndDate = vAC.EndDate;
             };
             return _p;
         }
