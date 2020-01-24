@@ -228,3 +228,5 @@ E:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.csproj.G
 E:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.csproj.CopyComplete
 E:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.exe
 E:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.pdb
+E:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserProductView.g.cs
+E:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserProductView.baml

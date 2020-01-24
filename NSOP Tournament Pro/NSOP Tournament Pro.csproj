@@ -72,6 +72,9 @@
     <Compile Include="UserItemCard.xaml.cs">
       <DependentUpon>UserItemCard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserProductView.xaml.cs">
+      <DependentUpon>UserProductView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserSalesBox.xaml.cs">
       <DependentUpon>UserSalesBox.xaml</DependentUpon>
     </Compile>
@@ -119,6 +122,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserItemCard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserProductView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

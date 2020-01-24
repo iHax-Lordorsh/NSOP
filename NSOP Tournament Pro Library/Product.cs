@@ -20,7 +20,7 @@ namespace NSOP_Torunament_Pro_Library
         private string _Picture;
         private string _Info = "";
         private string _Description = "";
-        private int _Price = 0;
+        private decimal _Price = 0;
         private int _Discount = 0;
         private int _Quantity = 0;
 
@@ -48,7 +48,7 @@ namespace NSOP_Torunament_Pro_Library
         public string Information { get => _Info; set { _Info = value; } }
 
         public string Description { get => _Description; set { _Description = value; } }
-        public int Price { get => _Price; set { _Price = value; } }
+        public decimal Price { get => _Price; set { _Price = value; } }
         public int Discount { get => _Discount; set { _Discount = value; } }
         public int Quantity { get => _Quantity; set { _Quantity = value; } }
 

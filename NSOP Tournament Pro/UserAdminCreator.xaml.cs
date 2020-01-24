@@ -28,7 +28,7 @@ namespace NSOP_Tournament_Pro
         private string _Picture;
         private string _Information = "";
         private string _Description = "";
-        private int _Price = 0;
+        private decimal _Price = 0;
         private int _Discount = 0;
         private int _Quantity = 0;
 
@@ -46,7 +46,7 @@ namespace NSOP_Tournament_Pro
         public string Information { get => _Information; set { _Information = value; } }
 
         public string Description { get => _Description; set { _Description = value; } }
-        public int Price { get => _Price; set { _Price = value; txt_SalesPrice.Text = Price.ToString(); } }
+        public decimal Price { get => _Price; set { _Price = value; txt_SalesPrice.Text = Price.ToString(); } }
         public int Discount { get => _Discount; set { _Discount = value; } }
         public int Quantity { get => _Quantity; set { _Quantity = value; } }
 
@@ -161,12 +161,14 @@ namespace NSOP_Tournament_Pro
             ProductQTY[6] = cbx_QTY_6;
             ProductQTY[7] = cbx_QTY_7;
             ProductQTY[8] = cbx_QTY_8;
-            foreach (var item in ProductQTY)
-            {
-                item.ItemsSource = DataAccess.GetNumbers(12);
-                item.SelectedIndex = 0;
-            }
-            ProductQTY[8].ItemsSource = DataAccess.GetNumbers(100);
+            ProductQTY[1].ItemsSource = DataAccess.GetNumbers(0, 1, 1);
+            ProductQTY[2].ItemsSource = DataAccess.GetNumbers(0, 1, 1);
+            ProductQTY[3].ItemsSource = DataAccess.GetNumbers(0, 1, 1);
+            ProductQTY[4].ItemsSource = DataAccess.GetNumbers(0, 100, 30);
+            ProductQTY[5].ItemsSource = DataAccess.GetNumbers(0, 0, 0);
+            ProductQTY[6].ItemsSource = DataAccess.GetNumbers(0, 0, 0);
+            ProductQTY[7].ItemsSource = DataAccess.GetNumbers(0, 0, 0);
+            ProductQTY[8].ItemsSource = DataAccess.GetNumbers(0, 0, 0);
             listPicture = GetItemPicture();
             lstProduct.ItemsSource = listPicture;
             lstProduct.Items.Refresh();
@@ -419,16 +421,8 @@ namespace NSOP_Tournament_Pro
         {
             if ((sender as ComboBox).SelectedIndex > -1)
             {
-                isExpireDate = (sender as ComboBox).SelectedItem.ToString();
+                Expires = (sender as ComboBox).SelectedItem.ToString();
             }
-        }
-
-        private void cbExpireDate_Checked(object sender, RoutedEventArgs e)
-        {
-        }
-
-        private void cbExpireDate_Unchecked(object sender, RoutedEventArgs e)
-        {
         }
     }
 }

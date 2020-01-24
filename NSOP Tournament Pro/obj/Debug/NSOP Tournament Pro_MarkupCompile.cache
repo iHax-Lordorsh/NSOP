@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 E:\Programmering\NSOP\NSOP Tournament Pro\App.xaml
-11-1648992877
+12-1017822402
 
-151793013725
+15317341066
 26-203295588
-MainWindow.xaml;ResourceDictionaries\StoryDictionary.xaml;ResourceDictionaries\StyleDictionary.xaml;Simple Styles.xaml;UserAdminCreator.xaml;UserModuleSimple.xaml;UserItemCard.xaml;UserSalesBox.xaml;UserSalesStand.xaml;UserItemList.xaml;UserSubscription.xaml;
+MainWindow.xaml;ResourceDictionaries\StoryDictionary.xaml;ResourceDictionaries\StyleDictionary.xaml;Simple Styles.xaml;UserAdminCreator.xaml;UserModuleSimple.xaml;UserItemCard.xaml;UserProductView.xaml;UserSalesBox.xaml;UserSalesStand.xaml;UserItemList.xaml;UserSubscription.xaml;
 
-True
+False
 
