@@ -209,6 +209,14 @@ namespace NSOP_Tournament_Pro_Library
             return _ID;
         }
 
+        public static List<string> GetProductTypes()
+        {
+            List<string> _l = new List<string>();
+            _l.Add("Subscription");
+            _l.Add("Token");
+            return _l;
+        }
+
         public static List<string> GetMounth()
         {
             List<string> _l = new List<string>();
@@ -430,7 +438,10 @@ namespace NSOP_Tournament_Pro_Library
             ResetPasswordOK,
             UpdateFailed,
             GetStartProduct,
-            SaveNew
+            SaveNew,
+            GetProductsAll,
+            GetProductSubscription,
+            GetProductToken
         }
         public static T ParseEnum<T>(string value)
         {

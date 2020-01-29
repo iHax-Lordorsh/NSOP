@@ -119,7 +119,10 @@ namespace NSOP_Tournament_Pro
             lstAvatar.SelectedIndex = -1;
             // User Initialize
 
-         
+            brdEditClub.Visibility = Visibility.Hidden;
+            uProductView.Visibility = Visibility.Hidden;
+            uAdminCreator.Visibility = Visibility.Hidden;
+
         }
 
         private List<Border> UpdateAvatars()
@@ -197,6 +200,11 @@ namespace NSOP_Tournament_Pro
             txt_Login_6.Text = "";
             txt_Login_6.Visibility = Visibility.Hidden;
             txt_Login_PW_1.Visibility = Visibility.Visible;
+        }
+
+        internal void ShowAllProduct(Product product)
+        {
+            uProductView.ShowBroduct(product);
         }
 
         internal void GetStartProducts()
@@ -414,6 +422,22 @@ namespace NSOP_Tournament_Pro
         {
             uAdminCreator.ShowProductCreator(product);
         }
+        public void GetAllProduct()
+        {
+            // Get all Produxt
+            client.SendObject(UpdateCommunicationPacket(DataAccess.Request.GetProductsAll, PopulateProduct(uAdminCreator).ToBytes(), DataAccess.ClassType.Product, ""));
+
+        }
+        public void ShowSubscriptionProduct()
+        {
+            // Get all Produxt
+            client.SendObject(UpdateCommunicationPacket(DataAccess.Request.GetProductSubscription, PopulateProduct(uAdminCreator).ToBytes(), DataAccess.ClassType.Product, ""));
+        }
+        public void ShowTokenProduct()
+        {
+            // Get all Produxt
+            client.SendObject(UpdateCommunicationPacket(DataAccess.Request.GetProductToken, PopulateProduct(uAdminCreator).ToBytes(), DataAccess.ClassType.Product, ""));
+        }
         // **************************   UPDATES
         private void UpdateAdmin(Person _person)
         {
@@ -625,6 +649,7 @@ namespace NSOP_Tournament_Pro
             _adminPerson.StandPassWord = person.StandPassWord;
             UpdateAdminSite();
         }
+
 
         //internal void UpdateData(byte[] buffer, string _packet)
         //{
@@ -939,6 +964,8 @@ namespace NSOP_Tournament_Pro
             switch (((UserModuleSimple)sender as UserModuleSimple).Name.ToString().ToUpper())
             {
                 case "UMODULE_1": // Admin subscription
+                    uProductView.Visibility = Visibility.Visible;
+                    uAdminCreator.Visibility = Visibility.Hidden;
                     break;
                 case "UMODULE_2": // Web subscription
                     break;
@@ -949,6 +976,8 @@ namespace NSOP_Tournament_Pro
                 case "UMODULE_5": // Gadget 2
                     break;
                 case "UMODULE_6": // Gadget 3
+                    uAdminCreator.Visibility = Visibility.Visible;
+                    uProductView.Visibility = Visibility.Hidden;
                     break;
             }
         }
@@ -1369,31 +1398,12 @@ namespace NSOP_Tournament_Pro
             brd_ForgotPassword.Visibility = Visibility.Hidden;
         }
 
-        private void UModule_1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            switch ((sender as UserModuleSimple).Name)
-            {
-                case "UModule_1": // Admin Subscription
-                    // Show admin subscriptions
-                    break;
-                case "UModule_2": // Web Supscribtion
-                    break;
-                case "UModule_3": // Buy Tokens
-                    break;
-                case "UModule_4":
-                    break;
-                case "UModule_5":
-                    break;
-                case "UModule_6":
-                    break;
-            }
-        }
-
         private void img_LoggIn_1_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             //// Populate Administration Creating screen
             //uAdminCreator.Fill();
             //client.SendObject(UpdateCommunicationPacket(DataAccess.Request.GetStartProduct, new Product().ToBytes(), DataAccess.ClassType.Product, ""));
         }
+
     }
 }

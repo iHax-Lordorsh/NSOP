@@ -24,10 +24,10 @@ namespace NSOP_Tournament_Pro
     public partial class UserSalesBox : UserControl
     {
         private string _1 = "";
-        public string Header { get => _1;  set { txtHeader.Text = value.ToString(); _1 = value; } }
+        public string ProductName { get => _1;  set { txtHeader.Text = value.ToString(); _1 = value; } }
 
         private string _2 = "";
-        public string Info { get => _2; set { txtInfo.Text = value.ToString(); _2 = value; } }
+        public string Description { get => _2; set { txtInfo.Text = value.ToString(); _2 = value; } }
 
         private string _3 = "";
         public string TopLeft { get => _3; set { lblTopLeft.Content = value.ToString(); _3 = value; } }
@@ -37,7 +37,7 @@ namespace NSOP_Tournament_Pro
 
         private string _4 = "";
 
-        public string TopCenter { get => _4; set { lblTopCenter.Content = value.ToString(); _4 = value; } }
+        public string ProductType { get => _4; set { lblTopCenter.Content = value.ToString(); _4 = value; } }
 
         private string _5 = "";
         public string BottomLeft { get => _5; set { lblBottomLeft.Content = value.ToString(); _5 = value; } }
@@ -76,8 +76,8 @@ namespace NSOP_Tournament_Pro
             }
         }
 
-        private double _12;
-        public double Price { get => _12; set => _12 = value; }
+        private decimal _12;
+        public decimal Price { get => _12; set => _12 = value; }
 
         public List<UserSalesBox> Products = new List<UserSalesBox>();
 
@@ -91,12 +91,12 @@ namespace NSOP_Tournament_Pro
             switch (i)
             {
                 case 0:
-                    this.Header = "WEBSITE";
-                    this.Info = "All you can eat";
+                    this.ProductName = "WEBSITE";
+                    this.Description = "All you can eat";
                     this.Price = 1299;
                     this.TopLeft = "1299,-";
                     this.TopRight = "1299,-";
-                    this.TopCenter = "SUBSCRIPTION";
+                    this.ProductType = "SUBSCRIPTION";
                     this.BottomLeft = "SALE";
                     this.BottomRight = "SALE";
                     this.BottomCenter = "BUY NOW";
@@ -104,12 +104,12 @@ namespace NSOP_Tournament_Pro
                     this.SalePicture = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject("i_Sale")));
                     break;
                 case 1:
-                    this.Header = "TOKENS";
-                    this.Info = "All you can eat";
+                    this.ProductName = "TOKENS";
+                    this.Description = "All you can eat";
                     this.Price = 399;
                     this.TopLeft = "399,-";
                     this.TopRight = "399,-";
-                    this.TopCenter = "SUBSCRIPTION";
+                    this.ProductType = "SUBSCRIPTION";
                     this.BottomLeft = "SALE";
                     this.BottomRight = "SALE";
                     this.BottomCenter = "BUY NOW";
@@ -122,12 +122,12 @@ namespace NSOP_Tournament_Pro
                 case 5:
                 case 6:
                 case 7:
-                    this.Header = "TICKETS";
-                    this.Info = "All you can eat";
+                    this.ProductName = "TICKETS";
+                    this.Description = "All you can eat";
                     this.Price = 99;
                     this.TopLeft = "99,-";
                     this.TopRight = "99,-";
-                    this.TopCenter = "SUBSCRIPTION";
+                    this.ProductType = "SUBSCRIPTION";
                     this.BottomLeft = "SALE";
                     this.BottomRight = "SALE";
                     this.BottomCenter = "BUY NOW";

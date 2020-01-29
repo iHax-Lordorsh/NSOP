@@ -152,6 +152,9 @@ namespace NSOP_Tournament_Pro_Library
                         case DataAccess.Request.GetStartProduct:
                             _product._StartProductsList = _product.GetStartUpProductList();
                             break;
+                        case DataAccess.Request.GetProductsAll:
+                            _product._StartProductsList = _product.GetAllProductList(this.Request);
+                            break;
                         case DataAccess.Request.SaveNew:
                             _product.SaveNew();
                             break;

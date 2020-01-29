@@ -40,6 +40,8 @@ namespace NSOP_Tournament_Pro
         private bool _isStartDate;
         private bool _isEndDate;
 
+        private string _ProductType;
+
         public string ID { get => _Id; set { _Id = value; lblProductCode.Content = ID; } }
         public string ProductName { get => _Name; set { _Name = value; } }
         public string Picture { get => _Picture; set { _Picture = value; } }
@@ -57,6 +59,8 @@ namespace NSOP_Tournament_Pro
         public string isExpireDate { get => _isExpireDate; set { _isExpireDate = value; } }
         public bool isStartDate { get => _isStartDate; set { _isStartDate = value; } }
         public bool isEndDate { get => _isEndDate; set { _isEndDate = value; } }
+
+        public string ProductType { get => _Expire; set { _Expire = value; } }
 
 
         public List<Border> listPicture = new List<Border>();
@@ -165,18 +169,18 @@ namespace NSOP_Tournament_Pro
             ProductQTY[2].ItemsSource = DataAccess.GetNumbers(0, 1, 1);
             ProductQTY[3].ItemsSource = DataAccess.GetNumbers(0, 1, 1);
             ProductQTY[4].ItemsSource = DataAccess.GetNumbers(0, 100, 30);
-            ProductQTY[5].ItemsSource = DataAccess.GetNumbers(0, 0, 0);
-            ProductQTY[6].ItemsSource = DataAccess.GetNumbers(0, 0, 0);
-            ProductQTY[7].ItemsSource = DataAccess.GetNumbers(0, 0, 0);
-            ProductQTY[8].ItemsSource = DataAccess.GetNumbers(0, 0, 0);
+            ProductQTY[5].ItemsSource = DataAccess.GetNumbers(0, 1, 1);
+            ProductQTY[6].ItemsSource = DataAccess.GetNumbers(0, 1, 1);
+            ProductQTY[7].ItemsSource = DataAccess.GetNumbers(0, 1, 1);
+            ProductQTY[8].ItemsSource = DataAccess.GetNumbers(0, 1, 100);
             listPicture = GetItemPicture();
             lstProduct.ItemsSource = listPicture;
             lstProduct.Items.Refresh();
             lstProduct.SelectedIndex = -1;
 
             cbx_Expire.ItemsSource = DataAccess.GetMounth();
-
-
+            cbx_ProductType.ItemsSource = DataAccess.GetProductTypes();
+            cbx_ProductType.SelectedIndex = 1;
         }
 
 
@@ -338,9 +342,9 @@ namespace NSOP_Tournament_Pro
         }
         private void QTY_SelectionChange(object sender, SelectionChangedEventArgs e)
         {
-            int _tp = 0;
+            decimal _tp = 0;
             int _teller = -1;
-            
+         
             foreach (var item in ProductQTY)
             {
                 try
@@ -348,11 +352,11 @@ namespace NSOP_Tournament_Pro
                     _teller++;
                     if (_teller <= 6) // price
                     {
-                        _tp += (Convert.ToInt16(item.SelectedItem.ToString()) * Convert.ToInt16(ProductPrices[_teller].Content.ToString()));
+                        _tp += (Convert.ToDecimal(item.SelectedItem.ToString()) * Convert.ToDecimal(ProductPrices[_teller].Content.ToString()));
                     }
                     else if (_teller == 7) // price
                     {
-                        int _qty = Convert.ToInt16(item.SelectedItem.ToString());
+                        decimal _qty = Convert.ToDecimal(item.SelectedItem.ToString());
                         if (_qty > 0)
                         {
                             _tp *= _qty;
@@ -368,9 +372,9 @@ namespace NSOP_Tournament_Pro
                         int _prosent = Convert.ToInt16(item.SelectedItem.ToString());
                         if (_prosent > 0)
                         {
-                            float x = (((Price *100)  / 100) * _prosent); //DataAccess.RoundUp((Price / 100), 2);
+                            decimal _discount = ((Price / 100) * _prosent); //DataAccess.RoundUp((Price / 100), 2);
 
-                            Price = (int)DataAccess.RoundUp((Price -(x/100)), 1);
+                            Price -= Convert.ToInt16(DataAccess.RoundUp(Convert.ToDouble(_discount.ToString()), 100));
                         }
                         else Price = Price;
                     }
@@ -422,6 +426,14 @@ namespace NSOP_Tournament_Pro
             if ((sender as ComboBox).SelectedIndex > -1)
             {
                 Expires = (sender as ComboBox).SelectedItem.ToString();
+            }
+        }
+
+        private void cbx_ProductType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if ((sender as ComboBox).SelectedIndex > -1)
+            {
+                ProductType = (sender as ComboBox).SelectedItem.ToString();
             }
         }
     }

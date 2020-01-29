@@ -55,7 +55,7 @@
                             </Grid>
                             <Label x:Name="lblClubHeader1" Content="MY SUBSCRIPTIONS / CHIPS" VerticalAlignment="Top" Background="Black" Foreground="{DynamicResource ActiveText}" FontSize="14" Height="28"/>
                             <StackPanel Margin="0,5,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
-                                <local:UserModuleSimple x:Name="UModule_1" Height="155" Width="155" MouseLeftButtonUp="UModule_Click" MouseLeftButtonDown="UModule_1_MouseLeftButtonDown"/>
+                                <local:UserModuleSimple x:Name="UModule_1" Height="155" Width="155" MouseLeftButtonUp="UModule_Click"/>
                                 <local:UserModuleSimple x:Name="UModule_2" Height="155" Width="155" Margin="10,0" MouseLeftButtonUp="UModule_Click"/>
                                 <local:UserModuleSimple x:Name="UModule_3" Height="155" Width="155" Margin="0" MouseLeftButtonUp="UModule_Click"/>
                             </StackPanel>
@@ -74,7 +74,7 @@
                         <ListBox x:Name="lstClubAction" Background="{x:Null}" Margin="0,28,0,0" BorderBrush="{x:Null}"/>
                     </Grid>
                 </Border>
-                <Border x:Name="brdEditClub" BorderThickness="2" Width="500" Background="{DynamicResource BorderBackground}" BorderBrush="{DynamicResource ButtonBorder}" HorizontalAlignment="Left" Margin="0,120,0,0">
+                <Border x:Name="brdEditClub" BorderThickness="2" Width="500" Background="{DynamicResource BorderBackground}" BorderBrush="{DynamicResource ButtonBorder}" HorizontalAlignment="Left" Margin="0,120,0,0" d:IsHidden="True">
                     <Grid>
                         <DockPanel Margin="0" Background="{DynamicResource BorderBackgroundLocked}" VerticalAlignment="Top">
                             <Border x:Name="brdMyClubData" VerticalAlignment="Top" Height="28" Background="{DynamicResource BorderBackground}" BorderBrush="{DynamicResource ButtonBackground}" BorderThickness="1" HorizontalAlignment="Left">
@@ -153,7 +153,8 @@
 
                 <Border x:Name="brdCenter" Margin="515,90,415,0" BorderThickness="2">
                     <Grid>
-                        <local:UserAdminCreator x:Name="uAdminCreator"/>
+                        <local:UserAdminCreator x:Name="uAdminCreator" d:IsHidden="True"/>
+                        <local:UserProductView x:Name="uProductView" HorizontalAlignment="Left" VerticalAlignment="Top" d:IsHidden="True"/>
                     </Grid>
                 </Border>
                 <Border x:Name="brdRight" Margin="0,90,0,0" HorizontalAlignment="Right" BorderThickness="2">

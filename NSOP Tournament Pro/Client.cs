@@ -151,16 +151,24 @@ namespace NSOP_Tournament_Pro
             switch (cp.ClassType)
             {
                 case DataAccess.ClassType.Product:
+                    Product _p = new Product(cp.ObjectType);
                     switch (cp.Request)
                     {
+                        case DataAccess.Request.GetProductsAll:
+                            Action ShowAllProducts = delegate
+                            {
+                                var mainWnd = Application.Current.MainWindow as MainWindow;
+                                mainWnd.ShowAllProduct(new Product(cp.ObjectType));
+                            };
+                            Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, ShowAllProducts);
+                            break;
                         case DataAccess.Request.GetStartProduct:
-                            Product _p = new Product(cp.ObjectType);
-                            Action GetStartProduct = delegate
+                            Action ShowStartProduct = delegate
                             {
                                 var mainWnd = Application.Current.MainWindow as MainWindow;
                                 mainWnd.ShowAdminCreator(new Product(cp.ObjectType));
                             };
-                            Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, GetStartProduct); 
+                            Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, ShowStartProduct);
                             break;
                         case DataAccess.Request.New:
                             break;
@@ -201,6 +209,8 @@ namespace NSOP_Tournament_Pro
                         case DataAccess.Request.ResetPasswordOK:
                             break;
                         case DataAccess.Request.UpdateFailed:
+                            break;
+                        case DataAccess.Request.SaveNew:
                             break;
                     }
                     break;
