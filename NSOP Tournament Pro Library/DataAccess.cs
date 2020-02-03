@@ -103,8 +103,10 @@ namespace NSOP_Tournament_Pro_Library
         }
         public static List<string> GetCountries()
         {
-            List<string> countries = new List<string>();
-
+            List<string> countries = new List<string>
+            {
+                "ANY [AA]"
+            };
             foreach (CultureInfo culture in CultureInfo.GetCultures(CultureTypes.SpecificCultures))
             {
                 RegionInfo region = new RegionInfo(culture.LCID);
@@ -118,6 +120,7 @@ namespace NSOP_Tournament_Pro_Library
 
             return countries;
         }
+
         public static CultureInfo GetCountriesISO(string culture)
         {
             CultureInfo _Culture = new CultureInfo(culture);
@@ -211,16 +214,20 @@ namespace NSOP_Tournament_Pro_Library
 
         public static List<string> GetProductTypes()
         {
-            List<string> _l = new List<string>();
-            _l.Add("Subscription");
-            _l.Add("Token");
+            List<string> _l = new List<string>
+            {
+                "Subscription",
+                "Token"
+            };
             return _l;
         }
 
         public static List<string> GetMounth()
         {
-            List<string> _l = new List<string>();
-            _l.Add("Never");
+            List<string> _l = new List<string>
+            {
+                "Never"
+            };
             for (int i = 1; i <= 12; i++)
             {
                 _l.Add(i.ToString() + " Mounth");
@@ -392,6 +399,443 @@ namespace NSOP_Tournament_Pro_Library
             return Round(value, precision, RoundingDirection.Down);
         }
 
+        public static List<string> ListOptionLaguage()
+        {
+            List<string> xList = new List<string>
+            {
+                "NO",
+                "ENG"
+            };
+
+            return xList;
+        }
+        public static List<string> ListOptionFee()
+        {
+            List<string> xList = new List<string>
+            {
+                "0",
+                "100",
+                "200",
+                "300",
+                "400",
+                "500"
+            };
+
+            return xList;
+        }
+        public static List<string> ListYesNo()
+        {
+            List<string> xList = new List<string>
+            {
+                "NONE",
+                "LOCAL",
+                "NATIONAL",
+                "WORLD",
+                "ANY"
+            };
+
+            return xList;
+        }
+        public static List<string> ListGame()
+        {
+            List<string> xList = new List<string>
+            {
+                "TOURNAMENT",
+                "LEAGUE"
+            };
+
+            return xList;
+        }
+        public static List<string> ListGameType()
+        {
+            List<string> xValue = new List<string>
+            {
+                "TEXAS HOLDEM",
+                "OMAHA",
+                "OMAHA HI-LO",
+                "7-CARD STUD",
+                "5-CARD DRAW",
+                "RAZZ",
+                "HORSE",
+                "RIVER"
+            };
+            return xValue;
+        }
+        public static List<string> ListStyle()
+        {
+            List<string> xValue = new List<string>
+            {
+                "FREEZEOUT",
+                "RE-BUY",
+                "RE-ENTER"
+            };
+            return xValue;
+        }
+        public static List<string> ListVariant()
+        {
+            List<string> xValue = new List<string>
+            {
+                "NO LIMIT",
+                "FIXED LIMIT",
+                "POT LIMIT"
+            };
+            return xValue;
+        }
+        public static List<string> ListGenderAge()
+        {
+            List<string> xValue = new List<string>
+            {
+                "ANY",
+                "FEMALE",
+                "MALE",
+                "SENIOR"
+            };
+            return xValue;
+        }
+        public static List<string> ListMembership()
+        {
+            List<string> xValue = new List<string>
+            {
+                "ANY",
+                "LOCAL",
+                "NSOP",
+                "NATIONAL",
+                "WORLD"
+            };
+            return xValue;
+        }
+        public static List<string> ListChipsX()
+        {
+            List<string> xValue = new List<string>
+            {
+                "0",
+                "100",
+                "150",
+                "200",
+                "250",
+                "300",
+                "400",
+                "500",
+                "600",
+                "700",
+                "750",
+                "800",
+                "900",
+                "1000",
+                "1500",
+                "2000",
+                "2500",
+                "3000",
+                "4000",
+                "5000",
+                "7500",
+                "10000"
+            };
+            return xValue;
+        }
+        public static List<string> ListChips()
+        {
+            List<string> xValue = new List<string>
+            {
+                "0",
+                "1000",
+                "1500",
+                "2000",
+                "2500",
+                "3000",
+                "4000",
+                "5000",
+                "6000",
+                "7000",
+                "7500",
+                "8000",
+                "9000",
+                "10000",
+                "15000",
+                "20000",
+                "25000",
+                "30000",
+                "40000",
+                "50000",
+                "75000",
+                "100000"
+            };
+            return xValue;
+        }
+        public static List<string> List100000()
+        {
+            List<string> xValue = new List<string>
+            {
+                "0",
+                "100",
+                "200",
+                "250",
+                "300",
+                "400",
+                "500",
+                "750",
+                "1000",
+                "1500",
+                "2000",
+                "2500",
+                "3000",
+                "4000",
+                "5000",
+                "6000",
+                "7000",
+                "7500",
+                "8000",
+                "9000",
+                "10000",
+                "15000",
+                "20000",
+                "25000",
+                "30000",
+                "40000",
+                "50000",
+                "75000",
+                "100000"
+            };
+            return xValue;
+        }
+        public static List<string> List10000()
+        {
+            List<string> xValue = new List<string>
+            {
+                "0",
+                "10",
+                "20",
+                "25",
+                "30",
+                "40",
+                "50",
+                "75",
+                "100",
+                "150",
+                "200",
+                "250",
+                "300",
+                "400",
+                "500",
+                "600",
+                "700",
+                "750",
+                "800",
+                "900",
+                "1000",
+                "1500",
+                "2000",
+                "2500",
+                "3000",
+                "4000",
+                "5000",
+                "7500",
+                "10000"
+            };
+            return xValue;
+        }
+        public static List<string> ListPoints()
+        {
+            List<string> xValue = new List<string>
+            {
+                "0",
+                "100",
+                "150",
+                "200",
+                "250",
+                "300",
+                "350",
+                "400",
+                "450",
+                "500",
+                "600",
+                "700",
+                "750",
+                "800",
+                "900",
+                "1000"
+            };
+            return xValue;
+        }
+        public static List<string> ListYear()
+        {
+            List<string> xValue = new List<string>();
+            for (int i = DateTime.Now.Year; i <= DateTime.Now.Year + 2; i++)
+            {
+                xValue.Add(i.ToString());
+            }
+            return xValue;
+        }
+        public static List<string> List31()
+        {
+            List<string> xValue = new List<string>();
+            for (int i = 1; i <= 31; i++)
+            {
+                xValue.Add(i.ToString());
+            }
+            return xValue;
+        }
+        public static List<string> List60()
+        {
+            List<string> xValue = new List<string>();
+            for (int i = 0; i <= 59; i++)
+            {
+                xValue.Add(i.ToString());
+            }
+            return xValue;
+        }
+        public static List<string> List24()
+        {
+            List<string> xValue = new List<string>();
+            for (int i = 0; i <= 24; i++)
+            {
+                xValue.Add(i.ToString());
+            }
+            return xValue;
+        }
+        public static List<string> List12()
+        {
+            List<string> xValue = new List<string>();
+            for (int i = 1; i <= 12; i++)
+            {
+                xValue.Add(i.ToString());
+            }
+            return xValue;
+        }
+        public static List<string> List10()
+        {
+            List<string> xValue = new List<string>();
+            for (int i = 0; i <= 10; i++)
+            {
+                xValue.Add(i.ToString());
+            }
+            return xValue;
+        }
+        public static List<string> ListMinus()
+        {
+            List<string> xValue = new List<string>();
+            for (int i = 0; i <= 10; i++)
+            {
+                xValue.Add((i*-1).ToString());
+            }
+            return xValue;
+        }
+        public static List<string> ListMinPluss()
+        {
+            List<string> xValue = new List<string>();
+            for (int i = -10; i <= 10; i++)
+            {
+                xValue.Add((i).ToString());
+            }
+            return xValue;
+        }
+
+        public static List<string> ListTable()
+        {
+            List<string> xValue = new List<string>();
+            for (int i = 2; i <= 10; i++)
+            {
+                xValue.Add(i.ToString());
+            }
+            return xValue;
+        }
+        public static List<string> ListTables()
+        {
+            List<string> xValue = new List<string>();
+            for (int i = 1; i <= 250; i++)
+            {
+                xValue.Add(i.ToString());
+            }
+            return xValue;
+        }
+        public static List<string> ListHighLow()
+        {
+            List<string> xValue = new List<string>
+            {
+                "HIGH",
+                "LOW"
+            };
+            return xValue;
+        }
+        public static List<string> ListOptionCash()
+        {
+            List<string> xValue = new List<string>
+            {
+                "0",
+                "10",
+                "20",
+                "25",
+                "30",
+                "40",
+                "50",
+                "75",
+                "100",
+                "150",
+                "200",
+                "250",
+                "300",
+                "400",
+                "500",
+                "600",
+                "700",
+                "750",
+                "800",
+                "900",
+                "1000",
+                "1500",
+                "2000",
+                "2500",
+                "3000",
+                "4000",
+                "5000",
+                "7500",
+                "10000"
+            };
+            return xValue;
+        }
+        public static List<string> ListOptionPoint()
+        {
+            List<string> xValue = new List<string>();
+            for (int i = 0; i <= 10; i++)
+            {
+                xValue.Add(i.ToString());
+            }
+            return xValue;
+
+        }
+        public static List<string> ListOptionChips()
+        {
+            List<string> xValue = new List<string>
+            {
+                "0",
+                "1000",
+                "1500",
+                "2000",
+                "2500",
+                "3000",
+                "4000",
+                "5000",
+                "6000",
+                "7000",
+                "7500",
+                "8000",
+                "9000",
+                "10000",
+                "15000",
+                "20000",
+                "25000",
+                "30000",
+                "40000",
+                "50000",
+                "75000",
+                "100000"
+            };
+            return xValue;
+
+        }
+
+
+
         public enum IdType
         {
             Person,
@@ -441,7 +885,8 @@ namespace NSOP_Tournament_Pro_Library
             SaveNew,
             GetProductsAll,
             GetProductSubscription,
-            GetProductToken
+            GetProductToken,
+            MailDontExist
         }
         public static T ParseEnum<T>(string value)
         {

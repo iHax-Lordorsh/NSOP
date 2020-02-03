@@ -230,3 +230,7 @@ E:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.exe
 E:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.pdb
 E:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserProductView.g.cs
 E:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserProductView.baml
+E:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserPersonCreator.g.cs
+E:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserPersonCreator.baml
+E:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserTournamentCreate.g.cs
+E:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserTournamentCreate.baml

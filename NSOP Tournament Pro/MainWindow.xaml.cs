@@ -77,6 +77,7 @@ namespace NSOP_Tournament_Pro
                 {
                     frameHolder.Source = new CroppedBitmap(bi, new Int32Rect(205, 125, 250, 250));
                     USS.Picture = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), frameHolder.Source);
+                    uPersonCreate.frameHolder.Source = frameHolder.Source;
 
                 }));
             }
@@ -87,7 +88,7 @@ namespace NSOP_Tournament_Pro
         }
 
         private List<Border> listAvatar = new List<Border>();
-        private List<string> listNationalities = new List<string>();
+        private readonly List<string> listNationalities = new List<string>();
 
         public MainWindow()
         {
@@ -240,18 +241,19 @@ namespace NSOP_Tournament_Pro
                 Qty_3 = Convert.ToInt16(vAC.ProductQTY[3].SelectedItem),
                 Qty_4 = Convert.ToInt16(vAC.ProductQTY[4].SelectedItem),
                 Qty_5 = Convert.ToInt16(vAC.ProductQTY[5].SelectedItem),
-                Qty_6 = Convert.ToInt16(vAC.ProductQTY[6].SelectedItem)
+                Qty_6 = Convert.ToInt16(vAC.ProductQTY[6].SelectedItem),
+                ProductType = vAC.ProductType
             };
             if (vAC.Expires != "")
             {
                 _p.Expires = vAC.Expires;
             }
             else _p.Expires = "";
-            if (vAC.isStartDate)
+            if (vAC.IsStartDate)
             {
                 _p.StartDate = vAC.StartDate;
             };
-            if (vAC.isEndDate)
+            if (vAC.IsEndDate)
             {
                 _p.EndDate = vAC.EndDate;
             };
@@ -335,7 +337,6 @@ namespace NSOP_Tournament_Pro
             VerificationCode = cp.Info;
             VerificationLocation = cp.Request;
         }
-
       
         internal void PersonExist()
         {
@@ -603,9 +604,9 @@ namespace NSOP_Tournament_Pro
             UModule_Right_1.BottomRight = "VIEW / CREATE TOURNAMENT ->>>";
             UModule_Right_1.Background = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject("a3")));
 
-            UModule_Right_2.TopLeft = "MENMERS";
+            UModule_Right_2.TopLeft = "MEMBERS";
             UModule_Right_2.TopRight = _adminPerson.PersonRegQTY.ToString();
-            UModule_Right_2.BottomRight = "REISTRER _adminPerson ->>>";
+            UModule_Right_2.BottomRight = "VIEW / CREATE TOURNAMENT ->>>";
             UModule_Right_2.Background = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject("p_Members")));
 
             UModule_Right_3.TopLeft = "TICKET SALE";
@@ -649,6 +650,19 @@ namespace NSOP_Tournament_Pro
             _adminPerson.StandPassWord = person.StandPassWord;
             UpdateAdminSite();
         }
+        // **************************   SAVE
+        internal void SaveNewPerson(Person person)
+        {
+            // Populate admin and save changes
+            client.SendObject(UpdateCommunicationPacket(DataAccess.Request.SaveNew, person.ToBytes(), DataAccess.ClassType.Person, ""));
+        }
+        // **************************   CHECK
+        internal void CheckIfPersonExist(Person person)
+        {
+            // Populate admin and save changes
+            client.SendObject(UpdateCommunicationPacket(DataAccess.Request.Get, person.ToBytes(), DataAccess.ClassType.Person, ""));
+        }
+
 
 
         //internal void UpdateData(byte[] buffer, string _packet)
@@ -948,11 +962,17 @@ namespace NSOP_Tournament_Pro
                 case "TAKE PICTURE":
                     ((Button)sender as Button).Content = "EDIT PICTURE";
                     grdEditPicture.Visibility = Visibility.Visible;
-                    _adminPerson.Picture = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), frameHolder.Source);
-                    brdEditPicture.Background = ByteToBrushBackground(_adminPerson.Picture);
+                    TakePicture();
                     break;
             }
         }
+
+        public void TakePicture()
+        {
+            _adminPerson.Picture = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), frameHolder.Source);
+            brdEditPicture.Background = ByteToBrushBackground(_adminPerson.Picture);
+        }
+
         private void BtnSaveClubChanges_Click(object sender, RoutedEventArgs e)
         {
             // Populate admin and save changes
@@ -966,18 +986,30 @@ namespace NSOP_Tournament_Pro
                 case "UMODULE_1": // Admin subscription
                     uProductView.Visibility = Visibility.Visible;
                     uAdminCreator.Visibility = Visibility.Hidden;
+                    uPersonCreate.Visibility = Visibility.Hidden;
+                    uTournamentCreate.Visibility = Visibility.Hidden;
                     break;
                 case "UMODULE_2": // Web subscription
+                    uPersonCreate.Visibility = Visibility.Visible;
+                    uProductView.Visibility = Visibility.Hidden;
+                    uAdminCreator.Visibility = Visibility.Hidden;
+                    uTournamentCreate.Visibility = Visibility.Hidden;
                     break;
                 case "UMODULE_3": // Buy Tokens
+                    uAdminCreator.Visibility = Visibility.Visible;
+                    uProductView.Visibility = Visibility.Hidden;
+                    uPersonCreate.Visibility = Visibility.Hidden;
+                    uTournamentCreate.Visibility = Visibility.Hidden;
                     break;
                 case "UMODULE_4": // Gadget 1
+                    uTournamentCreate.Visibility = Visibility.Visible;
+                    uAdminCreator.Visibility = Visibility.Hidden;
+                    uProductView.Visibility = Visibility.Hidden;
+                    uPersonCreate.Visibility = Visibility.Hidden;
                     break;
                 case "UMODULE_5": // Gadget 2
                     break;
                 case "UMODULE_6": // Gadget 3
-                    uAdminCreator.Visibility = Visibility.Visible;
-                    uProductView.Visibility = Visibility.Hidden;
                     break;
             }
         }
@@ -1005,7 +1037,6 @@ namespace NSOP_Tournament_Pro
                 {
                     if (item == (sender as ListBox).SelectedItem)
                     {
-                        string x = (item as Border).Name;
                         _adminPerson.ClubPicture = (item as Border).Name;
                         brdEditClubPicture.Background = BrushBackground((item as Border).Name);
                         brdEditClubPicture.Tag = (item as Border).Name;
@@ -1398,7 +1429,7 @@ namespace NSOP_Tournament_Pro
             brd_ForgotPassword.Visibility = Visibility.Hidden;
         }
 
-        private void img_LoggIn_1_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private void Img_LoggIn_1_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             //// Populate Administration Creating screen
             //uAdminCreator.Fill();

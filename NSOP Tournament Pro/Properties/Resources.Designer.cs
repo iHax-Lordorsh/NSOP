@@ -193,6 +193,16 @@ namespace NSOP_Tournament_Pro.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap aa {
+            get {
+                object obj = ResourceManager.GetObject("aa", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap ad {
             get {
                 object obj = ResourceManager.GetObject("ad", resourceCulture);

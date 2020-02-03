@@ -155,6 +155,8 @@ namespace NSOP_Tournament_Pro
                     switch (cp.Request)
                     {
                         case DataAccess.Request.GetProductsAll:
+                        case DataAccess.Request.GetProductSubscription:
+                        case DataAccess.Request.GetProductToken:
                             Action ShowAllProducts = delegate
                             {
                                 var mainWnd = Application.Current.MainWindow as MainWindow;
@@ -270,6 +272,12 @@ namespace NSOP_Tournament_Pro
                         case DataAccess.Request.Delete:
                             break;
                         case DataAccess.Request.Get:
+                            Action MailDontExist = delegate
+                            {
+                                var mainWnd = Application.Current.MainWindow as MainWindow;
+                                mainWnd.uPersonCreate.UpdatePerson(new Person(cp.ObjectType));
+                            };
+                            Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, MailDontExist);
                             break;
                         case DataAccess.Request.Getall:
                             break;
@@ -292,13 +300,24 @@ namespace NSOP_Tournament_Pro
                                 mainWnd.NewAccountVerify(cp.Info, cp.Request);
                             };
                             Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, NewAccountVerify);
-
                             break;
                         case DataAccess.Request.VerifyOK:
                             break;
                         case DataAccess.Request.BadEMail:
                             break;
                         case DataAccess.Request.UpdateFailed:
+                            break;
+                        case DataAccess.Request.GetStartProduct:
+                            break;
+                        case DataAccess.Request.SaveNew:
+                            break;
+                        case DataAccess.Request.GetProductsAll:
+                            break;
+                        case DataAccess.Request.GetProductSubscription:
+                            break;
+                        case DataAccess.Request.GetProductToken:
+                            break;
+                        case DataAccess.Request.MailDontExist:
                             break;
                     }
                     break;

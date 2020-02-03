@@ -72,6 +72,9 @@
     <Compile Include="UserItemCard.xaml.cs">
       <DependentUpon>UserItemCard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserPersonCreator.xaml.cs">
+      <DependentUpon>UserPersonCreator.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserProductView.xaml.cs">
       <DependentUpon>UserProductView.xaml</DependentUpon>
     </Compile>
@@ -86,6 +89,9 @@
     </Compile>
     <Compile Include="UserSubscription.xaml.cs">
       <DependentUpon>UserSubscription.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserTournamentCreate.xaml.cs">
+      <DependentUpon>UserTournamentCreate.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -125,6 +131,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserPersonCreator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserProductView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -142,6 +152,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserSubscription.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserTournamentCreate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1109,6 +1123,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ticket.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AA.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

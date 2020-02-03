@@ -901,7 +901,7 @@ namespace NSOP_Tournament_Pro_Library
             con.Close();
             return _p;
         }
-        public Person GetPerson(string personID)
+        public Person GetPerson(string dataRow, string dataValue)
         {
             SqlConnection con = new SqlConnection("Data Source = NSOP\\POKER; Initial Catalog = dbPerson; Trusted_Connection = True; Asynchronous Processing=True; ");
             if (con.State == ConnectionState.Closed)
@@ -911,13 +911,13 @@ namespace NSOP_Tournament_Pro_Library
             try
             {
                 SqlDataReader _SqlData = null;
-                SqlCommand _SqlStr = new SqlCommand($"SELECT * FROM dbo.tbPerson WHERE PlayerID = '{personID}';", con);
+                SqlCommand _SqlStr = new SqlCommand($"SELECT * FROM dbo.tbPerson WHERE '{dataRow}' = '{dataValue}';", con);
                 _SqlData = _SqlStr.ExecuteReader();
                 _SqlStr.Dispose();
                 while (_SqlData.Read())
                 {
                     // Populate Personalia
-                    this.PlayerID = personID;
+                    this.PlayerID = _SqlData["PlayerID"].ToString();
                     this.FirstName = _SqlData["FirstName"].ToString();
                     this.LastName = _SqlData["LastName"].ToString();
                     this.Picture = (byte[])_SqlData["Picture"];

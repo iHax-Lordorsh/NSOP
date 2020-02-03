@@ -395,7 +395,7 @@
         <Setter Property="Background" Value="{StaticResource ActiveText}"/>
         <Setter Property="BorderBrush" Value="{StaticResource ButtonBorder}" />
         <Setter Property="Foreground" Value="{StaticResource HeaderFontColor}" />
-        <Setter Property="FontSize" Value="18" />
+        <Setter Property="FontSize" Value="16" />
         <Setter Property="FontWeight" Value="ExtraBold"/>
         <Setter Property="BorderThickness" Value="3"/>
     </Style>
@@ -406,7 +406,7 @@
         <Setter Property="Background" Value="{StaticResource ActiveText}"/>
         <Setter Property="BorderBrush" Value="{StaticResource ButtonBorder}" />
         <Setter Property="Foreground" Value="{StaticResource HeaderFontColor}" />
-        <Setter Property="FontSize" Value="28" />
+        <Setter Property="FontSize" Value="20" />
         <Setter Property="BorderThickness" Value="1"/>
     </Style>
 
@@ -464,10 +464,10 @@
                         <Grid Background="{DynamicResource ButtonBackgroundPushed}"
                 FlowDirection="LeftToRight"
                 HorizontalAlignment="Center"
-                Height="42"
+                Height="22"
                 Margin="0"
                 VerticalAlignment="Center"
-                Width="44">
+                Width="24">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="35*" />
                                 <ColumnDefinition Width="35*" />

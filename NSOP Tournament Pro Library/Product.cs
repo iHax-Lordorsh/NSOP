@@ -75,7 +75,7 @@ namespace NSOP_Torunament_Pro_Library
         public int Qty_6 { get => _Qty_6; set { _Qty_6 = value; } }
 
         private List<Product> _list = new List<Product>();
-        public List<Product> _StartProductsList { get => _list; set => _list = value; }
+        public List<Product> StartProductsList { get => _list; set => _list = value; }
 
         // ***********
         // CONSTRUCTORS
@@ -120,7 +120,7 @@ namespace NSOP_Torunament_Pro_Library
             this.Qty_5 = _p.Qty_5;
             this.ID_6 = _p.ID_6;
             this.Qty_6 = _p.Qty_6;
-            this._StartProductsList = _p._StartProductsList;
+            this.StartProductsList = _p.StartProductsList;
             this.ProductType = _p.ProductType;
 
         }
@@ -194,7 +194,7 @@ namespace NSOP_Torunament_Pro_Library
                 cmd.CommandText += $"'{ID_3}', {Qty_3}, ";
                 cmd.CommandText += $"'{ID_4}', {Qty_4}, ";
                 cmd.CommandText += $"'{ID_5}', {Qty_5}, ";
-                cmd.CommandText += $"'{ID_6}', {Qty_6}, {ProductType} ";
+                cmd.CommandText += $"'{ID_6}', {Qty_6}, '{ProductType}' ";
 
                 cmd.CommandText += $") ";
                 cmd.Parameters.AddWithValue("@Price", Convert.ToDecimal(Price.ToString()));
@@ -427,32 +427,34 @@ namespace NSOP_Torunament_Pro_Library
                 _SqlStr.Dispose();
                 while (_SqlData.Read())
                 {
-                    Product _product = new Product();
-                    //Populate Product
-                    _product.ID = _SqlData["ID"].ToString();
-                    _product.ProductName = _SqlData["Name"].ToString();
-                    _product.Picture = _SqlData["Picture"].ToString();
-                    _product.Information = _SqlData["Info"].ToString();
-                    _product.Description = _SqlData["Description"].ToString();
-                    _product.Price = (decimal)_SqlData["Price"];
-                    _product.Discount = (int)_SqlData["Discount"];
-                    _product.Expires = _SqlData["Expires"].ToString();
-                    _product.StartDate = DateTime.Parse(_SqlData["StartDate"].ToString());
-                    _product.EndDate = DateTime.Parse(_SqlData["EndDate"].ToString());
+                    Product _product = new Product
+                    {
+                        //Populate Product
+                        ID = _SqlData["ID"].ToString(),
+                        ProductName = _SqlData["Name"].ToString(),
+                        Picture = _SqlData["Picture"].ToString(),
+                        Information = _SqlData["Info"].ToString(),
+                        Description = _SqlData["Description"].ToString(),
+                        Price = (decimal)_SqlData["Price"],
+                        Discount = (int)_SqlData["Discount"],
+                        Expires = _SqlData["Expires"].ToString(),
+                        StartDate = DateTime.Parse(_SqlData["StartDate"].ToString()),
+                        EndDate = DateTime.Parse(_SqlData["EndDate"].ToString()),
 
-                    _product.ID_1 = _SqlData["ID_1"].ToString();
-                    _product.Qty_1 = (int)_SqlData["Qty_1"];
-                    _product.ID_2 = _SqlData["ID_2"].ToString();
-                    _product.Qty_2 = (int)_SqlData["Qty_2"];
-                    _product.ID_3 = _SqlData["ID_3"].ToString();
-                    _product.Qty_3 = (int)_SqlData["Qty_3"];
-                    _product.ID_4 = _SqlData["ID_4"].ToString();
-                    _product.Qty_4 = (int)_SqlData["Qty_4"];
-                    _product.ID_5 = _SqlData["ID_5"].ToString();
-                    _product.Qty_5 = (int)_SqlData["Qty_5"];
-                    _product.ID_6 = _SqlData["ID_6"].ToString();
-                    _product.Qty_6 = (int)_SqlData["Qty_6"];
-                    _StartProductsList.Add(_product);
+                        ID_1 = _SqlData["ID_1"].ToString(),
+                        Qty_1 = (int)_SqlData["Qty_1"],
+                        ID_2 = _SqlData["ID_2"].ToString(),
+                        Qty_2 = (int)_SqlData["Qty_2"],
+                        ID_3 = _SqlData["ID_3"].ToString(),
+                        Qty_3 = (int)_SqlData["Qty_3"],
+                        ID_4 = _SqlData["ID_4"].ToString(),
+                        Qty_4 = (int)_SqlData["Qty_4"],
+                        ID_5 = _SqlData["ID_5"].ToString(),
+                        Qty_5 = (int)_SqlData["Qty_5"],
+                        ID_6 = _SqlData["ID_6"].ToString(),
+                        Qty_6 = (int)_SqlData["Qty_6"]
+                    };
+                    StartProductsList.Add(_product);
 
                 }
                 //Save LifeTime
@@ -486,15 +488,17 @@ namespace NSOP_Torunament_Pro_Library
                 _SqlStr.Dispose();
                 while (_SqlData.Read())
                 {
-                    Product _product = new Product();
-                    //Populate Product
-                    _product.ID = _SqlData["ID"].ToString();
-                    _product.ProductName = _SqlData["Name"].ToString();
-                    _product.Picture = _SqlData["Picture"].ToString();
-                    _product.Information = _SqlData["Info"].ToString();
-                    _product.Description = _SqlData["Description"].ToString();
-                    _product.Price = (decimal)_SqlData["Price"];
-                    _product.Discount = (int)_SqlData["Discount"];
+                    Product _product = new Product
+                    {
+                        //Populate Product
+                        ID = _SqlData["ID"].ToString(),
+                        ProductName = _SqlData["Name"].ToString(),
+                        Picture = _SqlData["Picture"].ToString(),
+                        Information = _SqlData["Info"].ToString(),
+                        Description = _SqlData["Description"].ToString(),
+                        Price = (decimal)_SqlData["Price"],
+                        Discount = (int)_SqlData["Discount"]
+                    };
 
                     if (_SqlData["Expires"].ToString() == "")
                     {
@@ -604,10 +608,14 @@ namespace NSOP_Torunament_Pro_Library
                 switch (DataAccess.ParseEnum<DataAccess.Request>(productType))
                 {
                     case DataAccess.Request.GetProductsAll:
-                        //  AND ProductType = '{productType}' 
+                        break;
+                    case DataAccess.Request.GetProductSubscription:
+                        _s.Append($"AND ProductType = 'Subscription' ");
+                        break;
+                    case DataAccess.Request.GetProductToken:
+                        _s.Append($"AND ProductType = 'Token' ");
                         break;
                     default:
-                        _s.Append($"AND ProductType = '{productType.ToString()}' ");
                         //  AND ProductType = '{productType}' 
                         break;
                 }
@@ -619,15 +627,17 @@ namespace NSOP_Torunament_Pro_Library
                 _SqlStr.Dispose();
                 while (_SqlData.Read())
                 {
-                    Product _product = new Product();
-                    //Populate Product
-                    _product.ID = _SqlData["ID"].ToString();
-                    _product.ProductName = _SqlData["Name"].ToString();
-                    _product.Picture = _SqlData["Picture"].ToString();
-                    _product.Information = _SqlData["Info"].ToString();
-                    _product.Description = _SqlData["Description"].ToString();
-                    _product.Price = (decimal)_SqlData["Price"];
-                    _product.Discount = (int)_SqlData["Discount"];
+                    Product _product = new Product
+                    {
+                        //Populate Product
+                        ID = _SqlData["ID"].ToString(),
+                        ProductName = _SqlData["Name"].ToString(),
+                        Picture = _SqlData["Picture"].ToString(),
+                        Information = _SqlData["Info"].ToString(),
+                        Description = _SqlData["Description"].ToString(),
+                        Price = (decimal)_SqlData["Price"],
+                        Discount = (int)_SqlData["Discount"]
+                    };
 
                     if (_SqlData["Expires"].ToString() == "")
                     {
@@ -749,15 +759,17 @@ namespace NSOP_Torunament_Pro_Library
                 _SqlStr.Dispose();
                 while (_SqlData.Read())
                 {
-                    Product _product = new Product();
-                    //Populate Product
-                    _product.ID = _SqlData["ID"].ToString();
-                    _product.ProductName = _SqlData["Name"].ToString();
-                    _product.Picture = _SqlData["Picture"].ToString();
-                    _product.Information = _SqlData["Info"].ToString();
-                    _product.Description = _SqlData["Description"].ToString();
-                    _product.Price = (decimal)_SqlData["Price"];
-                    _product.Discount = (int)_SqlData["Discount"];
+                    Product _product = new Product
+                    {
+                        //Populate Product
+                        ID = _SqlData["ID"].ToString(),
+                        ProductName = _SqlData["Name"].ToString(),
+                        Picture = _SqlData["Picture"].ToString(),
+                        Information = _SqlData["Info"].ToString(),
+                        Description = _SqlData["Description"].ToString(),
+                        Price = (decimal)_SqlData["Price"],
+                        Discount = (int)_SqlData["Discount"]
+                    };
 
                     if (_SqlData["Expires"].ToString() == "")
                     {

@@ -36,8 +36,8 @@ namespace NSOP_Tournament_Pro_Library
         private string _Gender = "Any";
         public string Gender { get => _Gender; set => _Gender = value; }
 
-        private byte[] _Nationality = null;
-        public byte[] Nationality { get => _Nationality; set => _Nationality = value; }
+        private string _Nationality = null;
+        public string Nationality { get => _Nationality; set => _Nationality = value; }
 
         private string _Iso3166Name = "NO";
         public string Iso3166Name { get => _Iso3166Name; set => _Iso3166Name = value; }
@@ -198,6 +198,54 @@ namespace NSOP_Tournament_Pro_Library
         private bool _IsPlayed = false;
         public bool IsPlayed { get => _IsPlayed; set => _IsPlayed = value; }
 
+        private short _FinalTableSize = 0;
+        public short FinalTableSize { get => _FinalTableSize; set => _FinalTableSize = value; }
+
+        private short _StartHour = 0;
+        public short StartHour { get => _StartHour; set => _StartHour = value; }
+
+        private short _StartMinuttes = 0;
+        public short StartMinuttes { get => _StartMinuttes; set => _StartMinuttes = value; }
+
+        private short _SevenDeucePoint = 0;
+        public short SevenDeucePoint { get => _SevenDeucePoint; set => _SevenDeucePoint = value; }
+        private short _SevenDeuceChips = 0;
+        public short SevenDeuceChips { get => _SevenDeuceChips; set => _SevenDeuceChips = value; }
+        private short _SevenDeuceChipsQTY = 0;
+        public short SevenDeuceChipsQTY { get => _SevenDeuceChipsQTY; set => _SevenDeuceChipsQTY = value; }
+
+        private short _BadBeatPoint = 0;
+        public short BadBeatPoint { get => _BadBeatPoint; set => _BadBeatPoint = value; }
+        private short _BadBeatChips = 0;
+        public short BadBeatChips { get => _BadBeatChips; set => _BadBeatChips = value; }
+        private short _BadBeatQTYY = 0;
+        public short BadBeatQTY { get => _BadBeatQTYY; set => _BadBeatQTYY = value; }
+
+        private short _HuntedPoint = 0;
+        public short HuntedPoint { get => _HuntedPoint; set => _HuntedPoint = value; }
+        private short _HuntedChips = 0;
+        public short HuntedChips { get => _HuntedChips; set => _HuntedChips = value; }
+        private short _HuntedQTYY = 0;
+        public short HuntedQTY { get => _HuntedQTYY; set => _HuntedQTYY = value; }
+
+        private short _TakeoutPoint = 0;
+        public short TakeoutPoint { get => _TakeoutPoint; set => _TakeoutPoint = value; }
+        private short _TakeoutChips = 0;
+        public short TakeoutChips { get => _TakeoutChips; set => _TakeoutChips = value; }
+        private short _TakeoutQTYY = 0;
+        public short TakeoutQTY { get => _TakeoutQTYY; set => _TakeoutQTYY = value; }
+
+
+        private short _TimeCardPoint = 0;
+        public short TimeCardPoint { get => _TimeCardPoint; set => _TimeCardPoint = value; }
+        private short _TimeCardChips = 0;
+        public short TimeCardChips { get => _TimeCardChips; set => _TimeCardChips = value; }
+        private short _TimeCardQTYY = 0;
+        public short TimeCardQTY { get => _TimeCardQTYY; set => _TimeCardQTYY = value; }
+
+
+
+
         // empty Constructor
         public Tournament()
         {
@@ -205,7 +253,7 @@ namespace NSOP_Tournament_Pro_Library
 
         // Constructor to send Tournament
         public Tournament(string TournamentID, string TournamentName, byte[] Picture, string GameType, string GameStyle, string GameLimits, string GameVariant,
-            string Gender, byte[] Nationality, string Iso3166Name, bool ClubMembership, bool NSOPMembership, bool NationalMembership, bool WorldMembership)
+            string Gender, string Nationality, string Iso3166Name, bool ClubMembership, bool NSOPMembership, bool NationalMembership, bool WorldMembership)
         {
             this.ClassType = "Tournament";
             this.TournamentID = TournamentID;
@@ -405,7 +453,7 @@ namespace NSOP_Tournament_Pro_Library
                     this.GameLimits = _SqlData["GameLimits"].ToString();
                     this.GameVariant = _SqlData["GameVariant"].ToString();
                     this.Gender = _SqlData["Gender"].ToString();
-                    this.Nationality = (byte[])_SqlData["Nationality"];
+                    this.Nationality = _SqlData["Nationality"].ToString();
                     this.Iso3166Name = _SqlData["Iso3166Name"].ToString();
                     this.ClubMembership = (bool)_SqlData["ClubMembership"];
                     this.NSOPMembership = (bool)_SqlData["NSOPMembership"];
