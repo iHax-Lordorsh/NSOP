@@ -47,7 +47,7 @@ namespace NSOP_Tournament_Pro
                     mainWnd.ShowSubscriptionProduct();
                     // Show all Subscriptions
                     break;
-                case "brdToken":
+                case "brdTokens":
                     mainWnd.ShowTokenProduct();
                     // Show all Tokens
                     break;
@@ -61,7 +61,7 @@ namespace NSOP_Tournament_Pro
         internal void ShowBroduct(Product product)
         {
 
-            lstProduct.ItemsSource = PopulateProducts(product._StartProductsList);
+            lstProduct.ItemsSource = PopulateProducts(product.StartProductsList);
             lstProduct.Items.Refresh();
             lstProduct.Visibility = Visibility.Visible;
         }
@@ -71,20 +71,21 @@ namespace NSOP_Tournament_Pro
             List<UserSalesBox> _uAB = new List<UserSalesBox>();
             foreach (var item in startProductsList)
             {
-                UserSalesBox _u = new UserSalesBox();
-
-                _u.ProductName = item.ProductName;
-                _u.Description = item.Description;
-                _u.Price = item.Price;
-                _u.TopLeft = "";
-                _u.TopRight = "";
-                _u.ProductType = item.ProductName;
-                _u.BottomLeft = "Info";
-                _u.BottomRight = "Info";
-                _u.BottomCenter = "BUY NOW";
-                _u.ProductPicture = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject(item.Picture)));
-                _u.Width = 200;
-                _u.Margin = new Thickness(25, 25, 25, 25);
+                UserSalesBox _u = new UserSalesBox
+                {
+                    ProductName = item.ProductName,
+                    Description = item.Description,
+                    Price = item.Price,
+                    TopLeft = item.Price.ToString(),
+                    TopRight = item.Price.ToString(),
+                    ProductType = item.ProductType,
+                    BottomLeft = "Info",
+                    BottomRight = "Info",
+                    BottomCenter = "BUY NOW",
+                    ProductPicture = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject(item.Picture))),
+                    Width = 200,
+                    Margin = new Thickness(25, 25, 25, 25)
+                };
                 // _u.SalePicture = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject("i_Sale")));
                 _uAB.Add(_u);
             }

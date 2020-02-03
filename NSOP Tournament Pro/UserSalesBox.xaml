@@ -21,19 +21,19 @@
                 </Style>
             </Border.Style>
             <Grid>
-                <Label x:Name="lblTopCenter" Content="" VerticalAlignment="Top" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Height="28" Padding="5,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" UseLayoutRounding="False"/>
-                <Label x:Name="lblTopLeft" Content="" VerticalAlignment="Top" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Height="28" Padding="5,0" VerticalContentAlignment="Center" HorizontalAlignment="Left"/>
-                <Label x:Name="lblTopRight" Content="" VerticalAlignment="Top" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Height="28" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Padding="5,0" VerticalContentAlignment="Center"/>
-                <Label VerticalAlignment="Bottom" x:Name="lblBottomCenter" Content="" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" Padding="5,0" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center"/>
-                <Label VerticalAlignment="Bottom" x:Name="lblBottomLeft" Content="" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" Padding="5,0" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalContentAlignment="Bottom" HorizontalAlignment="Left"/>
-                <Label VerticalAlignment="Bottom" x:Name="lblBottomRight" Content="" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" Padding="5,0" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Right" UseLayoutRounding="False" HorizontalAlignment="Right"/>
-                <Border x:Name="brdItem" BorderThickness="1" Height="236" VerticalAlignment="Top" Margin="0,54,0,0" Width="236">
+                <Label x:Name="lblTopCenter" Content="" VerticalAlignment="Top" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" Height="28" Padding="5,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" UseLayoutRounding="False" FontSize="14"/>
+                <Label x:Name="lblTopLeft" Content="" VerticalAlignment="Top" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" Height="28" Padding="5,0" VerticalContentAlignment="Center" HorizontalAlignment="Left" FontSize="14"/>
+                <Label x:Name="lblTopRight" Content="" VerticalAlignment="Top" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" Height="28" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Padding="5,0" VerticalContentAlignment="Center" FontSize="14"/>
+                <Label VerticalAlignment="Bottom" x:Name="lblBottomCenter" Content="" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" Padding="5,0" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" FontSize="14"/>
+                <Label VerticalAlignment="Bottom" x:Name="lblBottomLeft" Content="" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" Padding="5,0" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalContentAlignment="Bottom" HorizontalAlignment="Left" FontSize="14"/>
+                <Label VerticalAlignment="Bottom" x:Name="lblBottomRight" Content="" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" Padding="5,0" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Right" UseLayoutRounding="False" HorizontalAlignment="Right" FontSize="14"/>
+                <Border x:Name="brdItem" BorderThickness="1" Height="236" VerticalAlignment="Top" Margin="0,56,0,0" Width="236">
                     <Border.Background>
                         <ImageBrush/>
                     </Border.Background>
                 </Border>
-                <TextBlock x:Name="txtHeader" TextWrapping="Wrap" VerticalAlignment="Top" Margin="10,33,10,0" Foreground="{DynamicResource ActiveText}" FontSize="16" TextAlignment="Center" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
-                <TextBlock x:Name="txtInfo" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="10,234.546,0,0" Width="216" Height="138.287" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource FontColor1}" Padding="5" TextAlignment="Center"/>
+                <TextBlock x:Name="txtHeader" TextWrapping="Wrap" VerticalAlignment="Top" Margin="10,31,10,0" Foreground="{DynamicResource ActiveText}" FontSize="18" TextAlignment="Center" Background="{DynamicResource ButtonBackgroundPushed}" Height="25"/>
+                <TextBlock x:Name="txtInfo" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="10,234.546,0,0" Width="216" Height="138.287" Background="{DynamicResource DeactiveText}" Padding="5" TextAlignment="Center" FontSize="16" Foreground="{DynamicResource ActiveText}"/>
                 <Border x:Name="brdSale" BorderThickness="0" HorizontalAlignment="Right" Height="75" VerticalAlignment="Top" Width="75" Margin="0,28,-35,0">
                     <Border.Background>
                         <ImageBrush/>

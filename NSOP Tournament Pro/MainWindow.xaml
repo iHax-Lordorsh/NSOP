@@ -51,7 +51,7 @@
                                 <Border x:Name="brdClubPicture" BorderThickness="1" HorizontalAlignment="Left" Height="75" VerticalAlignment="Top" Width="75"/>
                                 <Label x:Name="lblClubName" Content="" VerticalAlignment="Top" Background="{x:Null}" Foreground="{DynamicResource ActiveText}" FontSize="24" Margin="80,0,0,0" Height="42" FontWeight="Bold"/>
                                 <Label x:Name="lblClubIDText" Content="CLUB ID :" VerticalAlignment="Bottom" Background="{x:Null}" Foreground="{DynamicResource ActiveText}" FontSize="20" Margin="80,0,0,0" Height="33" HorizontalAlignment="Left"/>
-                                <Label x:Name="lblClubID" Content="" VerticalAlignment="Bottom" Background="{x:Null}" Foreground="{DynamicResource ActiveText}" FontSize="20" Height="33" HorizontalAlignment="Left" Margin="170,0,0,0" Width="200"/>
+                                <Label x:Name="lblClubID" Content="" VerticalAlignment="Bottom" Background="{x:Null}" Foreground="{DynamicResource ActiveText}" FontSize="20" Height="33" HorizontalAlignment="Left" Margin="170,0,0,0" Width="316"/>
                             </Grid>
                             <Label x:Name="lblClubHeader1" Content="MY SUBSCRIPTIONS / CHIPS" VerticalAlignment="Top" Background="Black" Foreground="{DynamicResource ActiveText}" FontSize="14" Height="28"/>
                             <StackPanel Margin="0,5,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
@@ -74,7 +74,7 @@
                         <ListBox x:Name="lstClubAction" Background="{x:Null}" Margin="0,28,0,0" BorderBrush="{x:Null}"/>
                     </Grid>
                 </Border>
-                <Border x:Name="brdEditClub" BorderThickness="2" Width="500" Background="{DynamicResource BorderBackground}" BorderBrush="{DynamicResource ButtonBorder}" HorizontalAlignment="Left" Margin="0,120,0,0" d:IsHidden="True">
+                <Border x:Name="brdEditClub" BorderThickness="2" Width="500" Background="{DynamicResource BorderBackground}" BorderBrush="{DynamicResource ButtonBorder}" HorizontalAlignment="Left" Margin="0,120,0,0">
                     <Grid>
                         <DockPanel Margin="0" Background="{DynamicResource BorderBackgroundLocked}" VerticalAlignment="Top">
                             <Border x:Name="brdMyClubData" VerticalAlignment="Top" Height="28" Background="{DynamicResource BorderBackground}" BorderBrush="{DynamicResource ButtonBackground}" BorderThickness="1" HorizontalAlignment="Left">
@@ -155,6 +155,8 @@
                     <Grid>
                         <local:UserAdminCreator x:Name="uAdminCreator" d:IsHidden="True"/>
                         <local:UserProductView x:Name="uProductView" HorizontalAlignment="Left" VerticalAlignment="Top" d:IsHidden="True"/>
+                        <local:UserPersonCreator x:Name="uPersonCreate"/>
+                        <local:UserTournamentCreate x:Name="uTournamentCreate"/>
                     </Grid>
                 </Border>
                 <Border x:Name="brdRight" Margin="0,90,0,0" HorizontalAlignment="Right" BorderThickness="2">
@@ -188,7 +190,7 @@
                     </LinearGradientBrush>
                 </Border.BorderBrush>
                 <Grid Margin="25">
-                    <Image x:Name="img_LoggIn_1" HorizontalAlignment="Left" Height="200" VerticalAlignment="Top" Width="200" Source="NSOP.png" MouseLeftButtonUp="img_LoggIn_1_MouseLeftButtonUp"/>
+                    <Image x:Name="img_LoggIn_1" HorizontalAlignment="Left" Height="200" VerticalAlignment="Top" Width="200" Source="NSOP.png" MouseLeftButtonUp="Img_LoggIn_1_MouseLeftButtonUp"/>
                     <Image x:Name="img_LoggIn_2" HorizontalAlignment="Right" Height="200" VerticalAlignment="Top" Width="200" Source="NSOP.png"/>
                     <StackPanel Margin="324.333,0,339.667,0" Orientation="Vertical" VerticalAlignment="Bottom">
                         <StackPanel x:Name="stk_LoggIn_1" Orientation="Vertical">

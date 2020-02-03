@@ -1,0 +1,429 @@
+﻿<UserControl x:Class="NSOP_Tournament_Pro.UserTournamentCreate"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NSOP_Tournament_Pro"
+             mc:Ignorable="d" 
+             d:DesignHeight="990" d:DesignWidth="990">
+    <Border x:Name="brdOutline" BorderThickness="2">
+        <Border.Style>
+            <Style>
+                <Setter Property="Border.Background" Value="{DynamicResource BorderBackground}"/>
+                <Setter Property="Border.BorderBrush" Value="{DynamicResource ButtonBorder}"/>
+                <Style.Triggers>
+                    <Trigger Property="UIElement.IsMouseOver" Value="True">
+                        <Setter Property="Border.Background" Value="{DynamicResource LightBorderBrush}" />
+                        <Setter Property="Border.BorderBrush" Value="{DynamicResource ActiveText}" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Border.Style>
+        <Grid>
+            <DockPanel Margin="0,0,0,958" Background="{DynamicResource DeactiveText}">
+                <Border x:Name="brdPersonCreate" VerticalAlignment="Top" Height="28" HorizontalAlignment="Left" BorderBrush="{DynamicResource ButtonBackground}" BorderThickness="1" MouseLeftButtonUp="Button_Click" Width="170">
+                    <Label x:Name="lblTopLeft" Content="CREATE TOURNAMENT" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="5,0" VerticalContentAlignment="Center" Margin="1" HorizontalContentAlignment="Center"/>
+                </Border>
+                <Border x:Name="brdPersonSearch" VerticalAlignment="Top" Height="28" Background="{DynamicResource ButtonBackground}" BorderThickness="1" BorderBrush="{DynamicResource ButtonBackground}" MouseLeftButtonUp="Button_Click" Width="170">
+                    <Label x:Name="lblTopCenter" Content="TOURNAMENT SEARCH" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="5,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="1"/>
+                </Border>
+                <Border x:Name="brdPersonStats" VerticalAlignment="Top" Height="28" Background="{DynamicResource ButtonBackground}" BorderThickness="1" BorderBrush="{DynamicResource ButtonBackground}" MouseLeftButtonUp="Button_Click" Width="170">
+                    <Label x:Name="lblTopCenter1" Content="TOURNAMENT STATS" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="5,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="1"/>
+                </Border>
+                <Border x:Name="brdOther" VerticalAlignment="Top" Height="28" Background="{DynamicResource ButtonBackground}" BorderThickness="1" HorizontalAlignment="Right" Width="250" BorderBrush="{DynamicResource ButtonBackground}" MouseLeftButtonUp="Button_Click">
+                    <Label x:Name="lblTopRight" Content="OTHER" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" FontSize="14" Padding="5,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                </Border>
+            </DockPanel>
+            <Grid Margin="3,32,3,17" Background="{DynamicResource BorderBackground}">
+                <Grid>
+                    <StackPanel Margin="20,10,20,0" Orientation="Vertical">
+                        <Border x:Name="brd_T_1" BorderBrush="{DynamicResource ButtonBorder}" BorderThickness="1" VerticalAlignment="Top" Background="{DynamicResource ButtonBackgroundPushed}" CornerRadius="0,0,5,5" Height="250">
+                            <Grid Margin="0">
+                                <DockPanel Margin="0" Background="{DynamicResource DeactiveText}" VerticalAlignment="Top">
+                                    <Label x:Name="lbl_TH_1" Content="TOURNAMEN STANDARD SETUP" VerticalAlignment="Top" Height="27" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource BorderBackgroundLocked}" HorizontalAlignment="Center" Width="301.977"/>
+                                    <TextBox TextWrapping="Wrap" Text="Enter Name" Background="{DynamicResource ButtonBackgroundPushed}" Foreground="{DynamicResource ActiveText}" BorderBrush="{DynamicResource ButtonBackground}" Height="22" FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Right" Width="260" Padding="0,-3,0,0" Margin="0,0,10,0"/>
+                                </DockPanel>
+                                <Grid Margin="5,30,10,0" VerticalAlignment="Top">
+                                    <StackPanel Margin="120,0,0,0" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                            <Grid Height="50" VerticalAlignment="Top" HorizontalAlignment="Left">
+                                                <ComboBox x:Name="cbx_T1" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" Width="170" HorizontalAlignment="Left" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged"/>
+                                                <Label x:Name="lbl_TH_2_Copy22" Content="GAME" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                            </Grid>
+                                            <Grid Height="50" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,0,0,0">
+                                                <ComboBox x:Name="cbx_T2" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" Width="170" HorizontalAlignment="Left" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged"/>
+                                                <Label x:Name="lbl_TH_2_Copy23" Content="GAME STYLE" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                            </Grid>
+                                            <Grid Height="50" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,0,0,0">
+                                                <ComboBox x:Name="cbx_T3" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" Width="170" HorizontalAlignment="Left" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged"/>
+                                                <Label x:Name="lbl_TH_2_Copy27" Content="GAME VARIANT" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                            </Grid>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0,5,0,0">
+                                            <Grid Width="170" Height="50">
+                                                <DatePicker x:Name="bpStartDate" VerticalAlignment="Bottom" FontSize="16" BorderBrush="{x:Null}" Background="{x:Null}" Height="25" Foreground="{DynamicResource ActiveText}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FirstDayOfWeek="Monday" Width="170" HorizontalAlignment="Left" Padding="0"/>
+                                                <Label x:Name="lbl_TH_2_Copy30" Content="STARTING DATE" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                            </Grid>
+                                            <Grid Height="50" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,0,0,0">
+                                                <ComboBox x:Name="cbx_T4" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" Width="170" HorizontalAlignment="Left" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged"/>
+                                                <Label x:Name="lbl_TH_2_Copy28" Content="ENRTY FEE" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                            </Grid>
+                                            <Grid Height="50" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,0,0,0">
+                                                <ComboBox x:Name="cbx_T5" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" Width="170" HorizontalAlignment="Left" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged"/>
+                                                <Label x:Name="lbl_TH_2_Copy29" Content="STARTING CHIPS" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                            </Grid>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0,5,0,0">
+                                            <Grid VerticalAlignment="Top" HorizontalAlignment="Left" Height="50">
+                                                <Label x:Name="lbl_TH_1_Copy" Content=":" VerticalAlignment="Bottom" Foreground="{DynamicResource ActiveText}" HorizontalContentAlignment="Center" FontSize="24" Padding="0" Background="{x:Null}" HorizontalAlignment="Left" Width="170" FontWeight="Bold"/>
+                                                <ComboBox x:Name="cbx_T36" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Center" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" HorizontalAlignment="Left" Width="80" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged"/>
+                                                <ComboBox x:Name="cbx_T37" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" HorizontalAlignment="Right" Width="75" Margin="0" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged"/>
+                                                <Label x:Name="lbl_TH_2_Copy31" Content="STARTING TIME" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                            </Grid>
+                                            <Grid Height="50" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,0,0,0">
+                                                <ComboBox x:Name="cbx_T6" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" Width="170" HorizontalAlignment="Left" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged"/>
+                                                <Label x:Name="lbl_TH_2_Copy32" Content="CLUB FEE" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                            </Grid>
+                                            <Grid Height="50" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,0,0,0">
+                                                <ComboBox x:Name="cbx_T7" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" Width="170" HorizontalAlignment="Left" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged"/>
+                                                <Label x:Name="lbl_TH_2_Copy33" Content="LATE REG LEVEL" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                            </Grid>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                            <Grid Height="50" VerticalAlignment="Top" HorizontalAlignment="Left">
+                                                <ComboBox x:Name="cbx_T8" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" Width="170" HorizontalAlignment="Left" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged"/>
+                                                <Label x:Name="lbl_TH_2_Copy35" Content="NATIONALITY" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                            </Grid>
+                                            <Grid Height="50" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,0,0,0">
+                                                <ComboBox x:Name="cbx_T9" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" Width="170" HorizontalAlignment="Left" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged"/>
+                                                <Label x:Name="lbl_TH_2_Copy36" Content="GENDER AND AGE" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                            </Grid>
+                                            <Grid Height="50" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,0,0,0">
+                                                <ComboBox x:Name="cbx_T10" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" Width="170" HorizontalAlignment="Left" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged"/>
+                                                <Label x:Name="lbl_TH_2_Copy37" Content="MEMBERS RESTRICTION" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                            </Grid>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <Label x:Name="lbl_TH_2_Copy34" Content="PICTURE" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0,5,0,0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22" HorizontalAlignment="Left" Width="100"/>
+                                    <Border x:Name="brdTournamentPicture" BorderThickness="1" BorderBrush="{DynamicResource ButtonBorder}" MouseLeftButtonUp="OpenAvatar_Click" Width="100" Height="100" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,33,0,0"/>
+                                    <Grid HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="50" Margin="0,137,0,5" Width="100">
+                                        <Image x:Name="imgNationality" Margin="5"/>
+                                    </Grid>
+                                </Grid>
+                                <StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,43,5,0">
+                                    <local:UserItemList HorizontalAlignment="Right" VerticalAlignment="Top" Height="50"/>
+                                    <local:UserItemList HorizontalAlignment="Right" VerticalAlignment="Top" Height="50" Margin="0,10,0,0"/>
+                                    <local:UserItemList HorizontalAlignment="Right" VerticalAlignment="Top" Height="50" Margin="0,10,0,0"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                        <Border x:Name="brd_T_2" BorderBrush="{DynamicResource ButtonBorder}" BorderThickness="1" VerticalAlignment="Top" Background="{DynamicResource ButtonBackgroundPushed}" CornerRadius="0,0,5,5" Margin="0,3,0,0" Height="90">
+                            <Grid Margin="0">
+                                <DockPanel Margin="0" Background="{DynamicResource DeactiveText}" VerticalAlignment="Top">
+                                    <Label x:Name="lbl_TH_2" Content="TOURNAMENT TABLE SETUP" VerticalAlignment="Top" Height="27" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource BorderBackgroundLocked}" HorizontalAlignment="Center" Width="301.977"/>
+                                </DockPanel>
+                                <Grid Margin="0,30,0,0" HorizontalAlignment="Center">
+                                    <StackPanel Margin="10,0,0,0" Orientation="Horizontal" VerticalAlignment="Top">
+                                        <Grid Height="50">
+                                            <ComboBox x:Name="cbx_T11" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" Width="220" HorizontalAlignment="Left" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged"/>
+                                            <Label x:Name="lbl_TH_2_Copy" Content="TABLESIZE" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                        </Grid>
+                                        <Grid Height="50" Margin="10,0,0,0">
+                                            <ComboBox x:Name="cbx_T12" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" Width="220" HorizontalAlignment="Left" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged"/>
+                                            <Label x:Name="lbl_TH_2_Copy1" Content="MAX TABLES" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                        </Grid>
+                                        <Grid Height="50" Margin="10,0,0,0">
+                                            <ComboBox x:Name="cbx_T13" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" Width="220" HorizontalAlignment="Left" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged"/>
+                                            <Label x:Name="lbl_TH_2_Copy2" Content="STARTING TABLE" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                        </Grid>
+                                        <Grid Height="50" Margin="10,0,0,0">
+                                            <ComboBox x:Name="cbx_T14" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" Width="220" HorizontalAlignment="Left" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged"/>
+                                            <Label x:Name="lbl_TH_2_Copy3" Content="REMOVE TABLE FROM" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                        </Grid>
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
+                        </Border>
+                        <Border x:Name="brd_T_3" BorderBrush="{DynamicResource ButtonBorder}" BorderThickness="1" VerticalAlignment="Top" Background="{DynamicResource ButtonBackgroundPushed}" CornerRadius="0,0,5,5" Margin="0,3,0,0" Height="90">
+                            <Grid Margin="0">
+                                <DockPanel Margin="0" Background="{DynamicResource DeactiveText}" VerticalAlignment="Top">
+                                    <Label x:Name="lbl_TH_3" Content="RE - BUY SETUP" VerticalAlignment="Top" Height="27" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource BorderBackgroundLocked}" HorizontalAlignment="Center" Width="301.977"/>
+                                </DockPanel>
+                                <Grid Margin="0,30,0,0" HorizontalAlignment="Center" VerticalAlignment="Top">
+                                    <StackPanel Margin="10,0,0,0" Orientation="Horizontal" Height="55">
+                                        <Grid Height="50" Width="175">
+                                            <ComboBox x:Name="cbx_T15" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged"/>
+                                            <Label x:Name="lbl_TH_2_Copy4" Content="RE-BUY QUANTITY" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                        </Grid>
+                                        <Grid Height="50" Margin="10,0,0,0" Width="175">
+                                            <ComboBox x:Name="cbx_T16" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged"/>
+                                            <Label x:Name="lbl_TH_2_Copy5" Content="RE-BUY COST" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                        </Grid>
+                                        <Grid Height="50" Margin="10,0,0,0" Width="175">
+                                            <ComboBox x:Name="cbx_T17" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged"/>
+                                            <Label x:Name="lbl_TH_2_Copy6" Content="RE-BUY FEE" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                        </Grid>
+                                        <Grid Height="50" Margin="10,0,0,0" Width="175">
+                                            <ComboBox x:Name="cbx_T18" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged"/>
+                                            <Label x:Name="lbl_TH_2_Copy7" Content="RE-BUY CHIPS" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                        </Grid>
+                                        <Grid Height="50" Margin="10,6.5,0,6.5" Width="175">
+                                            <ComboBox x:Name="cbx_T19" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged"/>
+                                            <Label x:Name="lbl_TH_2_Copy8" Content="RE-BUY CLUB POINT" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                        </Grid>
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
+                        </Border>
+                        <Border x:Name="brd_T_4" BorderBrush="{DynamicResource ButtonBorder}" BorderThickness="1" VerticalAlignment="Top" Background="{DynamicResource ButtonBackgroundPushed}" CornerRadius="0,0,5,5" Margin="0,3,0,0" Height="90">
+                            <Grid Margin="0">
+                                <DockPanel Margin="0" Background="{DynamicResource DeactiveText}" VerticalAlignment="Top">
+                                    <Label x:Name="lbl_TH_4" Content="ADD - ON SETUP" VerticalAlignment="Top" Height="27" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource BorderBackgroundLocked}" HorizontalAlignment="Center" Width="301.977"/>
+                                </DockPanel>
+                                <Grid Margin="0,30,0,0" HorizontalAlignment="Center">
+                                    <StackPanel Margin="10,0,0,0" Orientation="Horizontal" Height="55" VerticalAlignment="Top">
+                                        <Grid Height="50" Width="175">
+                                            <ComboBox x:Name="cbx_T20" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged"/>
+                                            <Label x:Name="lbl_TH_2_Copy9" Content="ADD - ON QUANTITY" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                        </Grid>
+                                        <Grid Height="50" Margin="10,0,0,0" Width="175">
+                                            <ComboBox x:Name="cbx_T21" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged"/>
+                                            <Label x:Name="lbl_TH_2_Copy10" Content="ADD - ON COST" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                        </Grid>
+                                        <Grid Height="50" Margin="10,0,0,0" Width="175">
+                                            <ComboBox x:Name="cbx_T22" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged"/>
+                                            <Label x:Name="lbl_TH_2_Copy11" Content="ADD - ON FEE" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                        </Grid>
+                                        <Grid Height="50" Margin="10,0,0,0" Width="175">
+                                            <ComboBox x:Name="cbx_T23" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged"/>
+                                            <Label x:Name="lbl_TH_2_Copy12" Content="ADD - ON CHIPS" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                        </Grid>
+                                        <Grid Height="50" Margin="10,6.5,0,6.5" Width="175">
+                                            <ComboBox x:Name="cbx_T24" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged"/>
+                                            <Label x:Name="lbl_TH_2_Copy13" Content="ADD - ON CLUB POINT" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                        </Grid>
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
+                        </Border>
+                        <Border x:Name="brd_T_5" BorderBrush="{DynamicResource ButtonBorder}" BorderThickness="1" VerticalAlignment="Top" Background="{DynamicResource ButtonBackgroundPushed}" CornerRadius="0,0,5,5" Margin="0,3,0,0" Height="205">
+                            <Grid Margin="0">
+                                <DockPanel Margin="0" Background="{DynamicResource DeactiveText}" VerticalAlignment="Top">
+                                    <Label x:Name="lbl_TH_5" Content="LEAGUE SETUP" VerticalAlignment="Top" Height="27" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource BorderBackgroundLocked}" HorizontalAlignment="Center" Width="301.977"/>
+                                </DockPanel>
+                                <Grid Margin="0,35,0,0" HorizontalAlignment="Left">
+                                    <StackPanel Margin="10,0,0,0" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left">
+                                        <StackPanel Margin="0,0,10,0" Orientation="Horizontal" Height="55" HorizontalAlignment="Left">
+                                            <Grid Height="50" Width="150">
+                                                <ComboBox x:Name="cbx_T25" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged" Margin="5,0"/>
+                                                <Label x:Name="lbl_TH_2_Copy14" Content="TOTAL LEAGUE ROUNDS" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                            </Grid>
+                                            <Grid Height="50" Margin="10,0,0,0" Width="150">
+                                                <ComboBox x:Name="cbx_T26" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True"  MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged" Margin="5,0"/>
+                                                <Label x:Name="lbl_TH_2_Copy15" Content="VALID ROUNDS" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                            </Grid>
+                                            <Grid Height="50" Margin="10,0,0,0" Width="150">
+                                                <ComboBox x:Name="cbx_T27" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged" Margin="5,0"/>
+                                                <Label x:Name="lbl_TH_2_Copy16" Content="ROUND FEE TO FINAL" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                            </Grid>
+                                            <Grid Height="50" Margin="10,0,0,0" Width="150">
+                                                <ComboBox x:Name="cbx_T28" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged" Margin="5,0"/>
+                                                <Label x:Name="lbl_TH_2_Copy17" Content="FINAL TABLESIZE" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                            </Grid>
+                                            <Grid Height="50" Margin="10,6.5,0,6.5" Width="150" Visibility="Hidden">
+                                                <ComboBox x:Name="cbx_T29" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged"/>
+                                                <Label x:Name="lbl_TH_2_Copy18" Content="FINAL PAYOUTS" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                            </Grid>
+                                        </StackPanel>
+                                        <StackPanel Margin="0,0,10,0" Orientation="Horizontal" Height="55" HorizontalAlignment="Left">
+                                            <Grid Height="50" Width="175">
+                                                <ComboBox x:Name="cbx_T30" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged" Margin="5,0"/>
+                                                <Label x:Name="lbl_TH_2_Copy19" Content="MIN. ROUND PLAYED" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                            </Grid>
+                                            <Grid Height="50" Margin="10,0,0,0" Width="175">
+                                                <ComboBox x:Name="cbx_T31" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged" Margin="5,0"/>
+                                                <Label x:Name="lbl_TH_2_Copy20" Content="MIN. FINAL POINTS" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                            </Grid>
+                                            <Grid Height="50" Margin="10,0,0,0" Width="175">
+                                                <ComboBox x:Name="cbx_T32" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged" Margin="5,0"/>
+                                                <Label x:Name="lbl_TH_2_Copy21" Content="DIRECT FINAL QUALIFIERS" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                            </Grid>
+                                        </StackPanel>
+                                        <StackPanel Margin="0,0,10,0" Orientation="Horizontal" Height="55" HorizontalAlignment="Left">
+                                            <Grid Height="50" Width="175">
+                                                <ComboBox x:Name="cbx_T33" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged" Margin="5,0"/>
+                                                <Label x:Name="lbl_TH_2_Copy24" Content="MIN. ROUND PLAYED" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                            </Grid>
+                                            <Grid Height="50" Margin="10,0,0,0" Width="175">
+                                                <ComboBox x:Name="cbx_T34" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged" Margin="5,0"/>
+                                                <Label x:Name="lbl_TH_2_Copy25" Content="MIN. SEMI POINTS" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                            </Grid>
+                                            <Grid Height="50" Margin="10,0,0,0" Width="175">
+                                                <ComboBox x:Name="cbx_T35" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged" Margin="5,0"/>
+                                                <Label x:Name="lbl_TH_2_Copy26" Content="SEMI -&gt; TO FINAL" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                            </Grid>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Grid>
+                                <StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,30,10,0">
+                                    <local:UserItemList HorizontalAlignment="Right" VerticalAlignment="Top" Height="50"/>
+                                    <local:UserItemList HorizontalAlignment="Right" VerticalAlignment="Top" Height="50" Margin="0,10,0,0"/>
+                                    <local:UserItemList HorizontalAlignment="Right" VerticalAlignment="Top" Height="50" Margin="0,10,0,0"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                        <Border x:Name="brd_T_6" BorderBrush="{DynamicResource ButtonBorder}" BorderThickness="1" VerticalAlignment="Top" Background="{DynamicResource ButtonBackgroundPushed}" CornerRadius="0,0,5,5" Margin="0,3,0,0" Height="150">
+                            <Grid Margin="0">
+                                <DockPanel Margin="0" Background="{DynamicResource DeactiveText}" VerticalAlignment="Top">
+                                    <Label x:Name="lbl_TH_6" Content="ALTERNATIVE RULES" VerticalAlignment="Top" Height="27" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource BorderBackgroundLocked}" HorizontalAlignment="Center" Width="301.977"/>
+                                </DockPanel>
+                                <Grid Margin="0,30,0,0">
+                                    <StackPanel Margin="10,0,0,0" Orientation="Horizontal" VerticalAlignment="Top">
+                                        <Grid>
+                                            <DockPanel Margin="0,0,0,28">
+                                                <Viewbox HorizontalAlignment="Left" VerticalAlignment="Top" Stretch="Fill" Width="22" Height="22" Margin="0">
+                                                    <CheckBox x:Name="chk_1" Height="15.098" Width="15.975" Background="{DynamicResource ActiveText}" BorderBrush="{DynamicResource ButtonBorder}"/>
+                                                </Viewbox>
+                                                <Label x:Name="lbl_TH_2_Copy38" Content="SEVEN DEUCE" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                            </DockPanel>
+                                            <StackPanel Margin="0,25,0,0" Orientation="Vertical">
+                                                <Grid Height="25">
+                                                    <ComboBox x:Name="cbx_T38" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged" HorizontalAlignment="Right" Width="85" Margin="0,0,55,0"/>
+                                                    <Label x:Name="lbl_TH_2_Copy42" Content="POINT" VerticalAlignment="Bottom" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22" HorizontalAlignment="Right" Width="50"/>
+                                                </Grid>
+                                                <Grid Height="25" Margin="0,5,0,0">
+                                                    <ComboBox x:Name="cbx_T39" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged" HorizontalAlignment="Right" Width="85" Margin="0,0,55,0"/>
+                                                    <Label x:Name="lbl_TH_2_Copy39" Content="CHIPS" VerticalAlignment="Bottom" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22" HorizontalAlignment="Right" Width="50"/>
+                                                </Grid>
+                                                <Grid Height="25" Margin="0,5,0,0">
+                                                    <ComboBox x:Name="cbx_T40" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged" HorizontalAlignment="Right" Width="85" Margin="0,0,55,0"/>
+                                                    <Label x:Name="lbl_TH_2_Copy53" Content="QTY" VerticalAlignment="Bottom" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22" HorizontalAlignment="Right" Width="50"/>
+                                                </Grid>
+                                            </StackPanel>
+                                        </Grid>
+                                        <Grid Margin="15,0,0,0">
+                                            <DockPanel Margin="0,0,0,28">
+                                                <Viewbox HorizontalAlignment="Left" VerticalAlignment="Top" Stretch="Fill" Width="22" Height="22" Margin="0">
+                                                    <CheckBox x:Name="chk_2" Height="15.098" Width="15.975" Background="{DynamicResource ActiveText}" BorderBrush="{DynamicResource ButtonBorder}"/>
+                                                </Viewbox>
+                                                <Label x:Name="lbl_TH_2_Copy40" Content="BADBEAT" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                            </DockPanel>
+                                            <StackPanel Margin="0,25,0,0" Orientation="Vertical">
+                                                <Grid Height="25">
+                                                    <ComboBox x:Name="cbx_T41" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged" HorizontalAlignment="Right" Width="85" Margin="0,0,55,0"/>
+                                                    <Label x:Name="lbl_TH_2_Copy41" Content="POINT" VerticalAlignment="Bottom" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22" HorizontalAlignment="Right" Width="50"/>
+                                                </Grid>
+                                                <Grid Height="25" Margin="0,5,0,0">
+                                                    <ComboBox x:Name="cbx_T42" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged" HorizontalAlignment="Right" Width="85" Margin="0,0,55,0"/>
+                                                    <Label x:Name="lbl_TH_2_Copy43" Content="CHIPS" VerticalAlignment="Bottom" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22" HorizontalAlignment="Right" Width="50"/>
+                                                </Grid>
+                                                <Grid Height="25" Margin="0,5,0,0">
+                                                    <ComboBox x:Name="cbx_T43" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged" HorizontalAlignment="Right" Width="85" Margin="0,0,55,0"/>
+                                                    <Label x:Name="lbl_TH_2_Copy44" Content="QTY" VerticalAlignment="Bottom" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22" HorizontalAlignment="Right" Width="50"/>
+                                                </Grid>
+                                            </StackPanel>
+                                        </Grid>
+                                        <Grid Margin="15,0,0,0">
+                                            <DockPanel Margin="0,0,0,28">
+                                                <Viewbox HorizontalAlignment="Left" VerticalAlignment="Top" Stretch="Fill" Width="22" Height="22" Margin="0">
+                                                    <CheckBox x:Name="chk_3" Height="15.098" Width="15.975" Background="{DynamicResource ActiveText}" BorderBrush="{DynamicResource ButtonBorder}"/>
+                                                </Viewbox>
+                                                <Label x:Name="lbl_TH_2_Copy45" Content="HUNTED" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                            </DockPanel>
+                                            <StackPanel Margin="0,25,0,0" Orientation="Vertical">
+                                                <Grid Height="25">
+                                                    <ComboBox x:Name="cbx_T44" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged" HorizontalAlignment="Right" Width="85" Margin="0,0,55,0"/>
+                                                    <Label x:Name="lbl_TH_2_Copy46" Content="POINT" VerticalAlignment="Bottom" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22" HorizontalAlignment="Right" Width="50"/>
+                                                </Grid>
+                                                <Grid Height="25" Margin="0,5,0,0">
+                                                    <ComboBox x:Name="cbx_T45" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged" HorizontalAlignment="Right" Width="85" Margin="0,0,55,0"/>
+                                                    <Label x:Name="lbl_TH_2_Copy47" Content="CHIPS" VerticalAlignment="Bottom" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22" HorizontalAlignment="Right" Width="50"/>
+                                                </Grid>
+                                                <Grid Height="25" Margin="0,5,0,0">
+                                                    <ComboBox x:Name="cbx_T46" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged" HorizontalAlignment="Right" Width="85" Margin="0,0,55,0"/>
+                                                    <Label x:Name="lbl_TH_2_Copy48" Content="QTY" VerticalAlignment="Bottom" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22" HorizontalAlignment="Right" Width="50"/>
+                                                </Grid>
+                                            </StackPanel>
+                                        </Grid>
+                                        <Grid Margin="15,0,0,0">
+                                            <DockPanel Margin="0,0,0,28">
+                                                <Viewbox HorizontalAlignment="Left" VerticalAlignment="Top" Stretch="Fill" Width="22" Height="22" Margin="0">
+                                                    <CheckBox x:Name="chk_4" Height="15.098" Width="15.975" Background="{DynamicResource ActiveText}" BorderBrush="{DynamicResource ButtonBorder}"/>
+                                                </Viewbox>
+                                                <Label x:Name="lbl_TH_2_Copy49" Content="TAKEOUT" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                            </DockPanel>
+                                            <StackPanel Margin="0,25,0,0" Orientation="Vertical">
+                                                <Grid Height="25">
+                                                    <ComboBox x:Name="cbx_T47" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged" HorizontalAlignment="Right" Width="85" Margin="0,0,55,0"/>
+                                                    <Label x:Name="lbl_TH_2_Copy50" Content="POINT" VerticalAlignment="Bottom" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22" HorizontalAlignment="Right" Width="50"/>
+                                                </Grid>
+                                                <Grid Height="25" Margin="0,5,0,0">
+                                                    <ComboBox x:Name="cbx_T48" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged" HorizontalAlignment="Right" Width="85" Margin="0,0,55,0"/>
+                                                    <Label x:Name="lbl_TH_2_Copy51" Content="CHIPS" VerticalAlignment="Bottom" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22" HorizontalAlignment="Right" Width="50"/>
+                                                </Grid>
+                                                <Grid Height="25" Margin="0,5,0,0">
+                                                    <ComboBox x:Name="cbx_T49" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged" HorizontalAlignment="Right" Width="85" Margin="0,0,55,0"/>
+                                                    <Label x:Name="lbl_TH_2_Copy52" Content="QTY" VerticalAlignment="Bottom" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22" HorizontalAlignment="Right" Width="50"/>
+                                                </Grid>
+                                            </StackPanel>
+                                        </Grid>
+                                        <Grid Margin="15,0,0,0">
+                                            <DockPanel Margin="0,0,0,28">
+                                                <Viewbox HorizontalAlignment="Left" VerticalAlignment="Top" Stretch="Fill" Width="22" Height="22" Margin="0">
+                                                    <CheckBox x:Name="chk_5" Height="15.098" Width="15.975" Background="{DynamicResource ActiveText}" BorderBrush="{DynamicResource ButtonBorder}"/>
+                                                </Viewbox>
+                                                <Label x:Name="lbl_TH_2_Copy54" Content="TIMECARD" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                            </DockPanel>
+                                            <StackPanel Margin="0,25,0,0" Orientation="Vertical">
+                                                <Grid Height="25">
+                                                    <ComboBox x:Name="cbx_T50" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged" HorizontalAlignment="Right" Width="85" Margin="0,0,55,0"/>
+                                                    <Label x:Name="lbl_TH_2_Copy55" Content="POINT" VerticalAlignment="Bottom" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22" HorizontalAlignment="Right" Width="50"/>
+                                                </Grid>
+                                                <Grid Height="25" Margin="0,5,0,0">
+                                                    <ComboBox x:Name="cbx_T51" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged" HorizontalAlignment="Right" Width="85" Margin="0,0,55,0"/>
+                                                    <Label x:Name="lbl_TH_2_Copy56" Content="CHIPS" VerticalAlignment="Bottom" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22" HorizontalAlignment="Right" Width="50"/>
+                                                </Grid>
+                                                <Grid Height="25" Margin="0,5,0,0">
+                                                    <ComboBox x:Name="cbx_T52" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged" HorizontalAlignment="Right" Width="85" Margin="0,0,55,0"/>
+                                                    <Label x:Name="lbl_TH_2_Copy57" Content="QTY" VerticalAlignment="Bottom" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22" HorizontalAlignment="Right" Width="50"/>
+                                                </Grid>
+                                            </StackPanel>
+                                        </Grid>
+                                        <Grid Margin="15,0,0,0" d:IsHidden="True" Visibility="Hidden">
+                                            <DockPanel Margin="0,0,0,28">
+                                                <Viewbox HorizontalAlignment="Left" VerticalAlignment="Top" Stretch="Fill" Width="22" Height="22" Margin="0">
+                                                    <CheckBox x:Name="chk_6" Height="15.098" Width="15.975" Background="{DynamicResource ActiveText}" BorderBrush="{DynamicResource ButtonBorder}"/>
+                                                </Viewbox>
+                                                <Label x:Name="lbl_TH_2_Copy58" Content="TIMECARD" VerticalAlignment="Top" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22"/>
+                                            </DockPanel>
+                                            <StackPanel Margin="0,25,0,0" Orientation="Vertical">
+                                                <Grid Height="25">
+                                                    <ComboBox x:Name="cbx_T53" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged" HorizontalAlignment="Right" Width="85" Margin="0,0,55,0"/>
+                                                    <Label x:Name="lbl_TH_2_Copy59" Content="POINT" VerticalAlignment="Bottom" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22" HorizontalAlignment="Right" Width="50"/>
+                                                </Grid>
+                                                <Grid Height="25" Margin="0,5,0,0">
+                                                    <ComboBox x:Name="cbx_T54" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged" HorizontalAlignment="Right" Width="85" Margin="0,0,55,0"/>
+                                                    <Label x:Name="lbl_TH_2_Copy60" Content="CHIPS" VerticalAlignment="Bottom" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22" HorizontalAlignment="Right" Width="50"/>
+                                                </Grid>
+                                                <Grid Height="25" Margin="0,5,0,0">
+                                                    <ComboBox x:Name="cbx_T55" VerticalAlignment="Bottom" Height="25" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource ActiveText}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" MouseEnter="cbx_MouseEnter" SelectionChanged="cbx_SelectionChanged" HorizontalAlignment="Right" Width="85" Margin="0,0,55,0"/>
+                                                    <Label x:Name="lbl_TH_2_Copy61" Content="QTY" VerticalAlignment="Bottom" Foreground="{DynamicResource HeaderFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" Padding="0" Margin="0" Background="{DynamicResource ButtonBackgroundPushed}" Height="22" HorizontalAlignment="Right" Width="50"/>
+                                                </Grid>
+                                            </StackPanel>
+                                        </Grid>
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
+                        </Border>
+                    </StackPanel>
+                </Grid>
+                <Button x:Name="btnSavePerson" Style="{StaticResource ButtonUnPushed}" Width="136" Height="26" VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="18" FontWeight="Bold" Foreground="Black" Margin="0,0,25,5" Click="BtnSaveTournament_Click" Content="SAVE"/>
+            </Grid>
+            <DockPanel Margin="0,970.04,0,0">
+                <Label VerticalAlignment="Bottom" x:Name="lblBottomLeft" Content="" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" Padding="5,0" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalContentAlignment="Bottom" HorizontalAlignment="Left"/>
+                <Label VerticalAlignment="Bottom" x:Name="lblBottomCenter" Content="" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" Padding="5,0" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" Width="982"/>
+                <Label VerticalAlignment="Bottom" x:Name="lblBottomRight" Content="" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" Padding="5,0" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Right" UseLayoutRounding="False" HorizontalAlignment="Right"/>
+            </DockPanel>
+        </Grid>
+    </Border>
+</UserControl>

@@ -55,7 +55,6 @@
     <Compile Include="Lifetime.cs" />
     <Compile Include="ModulAccess.cs" />
     <Compile Include="Person.cs" />
-    <Compile Include="PersonList.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Random.cs" />

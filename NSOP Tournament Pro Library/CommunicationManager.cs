@@ -21,7 +21,7 @@ namespace NSOP_Tournament_Pro_Library
         public byte[] ObjectType { get; set; }
 
         public CommunicationManager()
-        {
+        { 
         }
         public CommunicationManager(byte[] packetBytes)
         {
@@ -211,7 +211,7 @@ namespace NSOP_Tournament_Pro_Library
                     {
                         case DataAccess.Request.SaveNew:
                             // Check if person exists                           
-                            if (Person.IfPersonExists("", _person.EMail, ""))
+                            if (Person.IfPersonExists("", _person.EMail,""))
                             {
                                 // person excists returning perosn
                                 _person = Person.GetPerson("", _person.EMail, _person.PassWord);
@@ -277,7 +277,7 @@ namespace NSOP_Tournament_Pro_Library
                             //Check if Person exists
                             if (Person.IfPersonExists("", _person.EMail, ""))
                             {
-                                _person.GetPerson("EMail", _person.EMail);
+                                _person.GetPerson("EMail",_person.EMail);
                             }
                             else
                             {

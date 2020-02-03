@@ -23,7 +23,7 @@ namespace NSOP_Tournament_Pro_Library
 {
     public static class DataAccess
     {
-
+       
         #region Windows API
 
         private delegate bool EnumLocalesProcExDelegate(
@@ -155,7 +155,7 @@ namespace NSOP_Tournament_Pro_Library
 
             return countries;
         }
-
+ 
         /// <summary>
         /// idType is either Person, Tournament, Blindstructure, Payoutsturcture, Pointstructure
         /// </summary>
@@ -716,7 +716,7 @@ namespace NSOP_Tournament_Pro_Library
             List<string> xValue = new List<string>();
             for (int i = 0; i <= 10; i++)
             {
-                xValue.Add((i * -1).ToString());
+                xValue.Add((i*-1).ToString());
             }
             return xValue;
         }

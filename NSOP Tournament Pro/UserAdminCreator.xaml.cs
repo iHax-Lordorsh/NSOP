@@ -36,11 +36,11 @@ namespace NSOP_Tournament_Pro
         private DateTime _EndDate;
         private string _Expire;
 
-        private string _isExpireDate = "";
+        private string _isExpireDate ="";
         private bool _isStartDate;
         private bool _isEndDate;
 
-        private string _ProductType = "";
+        private string _ProductType ="";
 
         public string ID { get => _Id; set { _Id = value; lblProductCode.Content = ID; } }
         public string ProductName { get => _Name; set { _Name = value; } }
@@ -343,7 +343,7 @@ namespace NSOP_Tournament_Pro
         {
             decimal _tp = 0;
             int _teller = -1;
-
+         
             foreach (var item in ProductQTY)
             {
                 try
@@ -363,7 +363,7 @@ namespace NSOP_Tournament_Pro
                         }
                         else Price = 0;
                         lbl_Price_7.Content = Price.ToString();
-                    }
+                    } 
                     else if (_teller == 8) // prosent
                     {
                         ProductPrices[_teller].Content = item.SelectedItem.ToString();
