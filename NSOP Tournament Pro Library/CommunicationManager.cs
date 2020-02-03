@@ -21,7 +21,7 @@ namespace NSOP_Tournament_Pro_Library
         public byte[] ObjectType { get; set; }
 
         public CommunicationManager()
-        { 
+        {
         }
         public CommunicationManager(byte[] packetBytes)
         {
@@ -150,10 +150,12 @@ namespace NSOP_Tournament_Pro_Library
                     switch (this.Request)
                     {
                         case DataAccess.Request.GetStartProduct:
-                            _product._StartProductsList = _product.GetStartUpProductList();
+                            _product.StartProductsList = _product.GetStartUpProductList();
                             break;
                         case DataAccess.Request.GetProductsAll:
-                            _product._StartProductsList = _product.GetAllProductList(this.Request);
+                        case DataAccess.Request.GetProductSubscription:
+                        case DataAccess.Request.GetProductToken:
+                            _product.StartProductsList = _product.GetAllProductList(this.Request.ToString());
                             break;
                         case DataAccess.Request.SaveNew:
                             _product.SaveNew();
@@ -207,6 +209,21 @@ namespace NSOP_Tournament_Pro_Library
                     Person _person = new Person(this.ObjectType);
                     switch (this.Request)
                     {
+                        case DataAccess.Request.SaveNew:
+                            // Check if person exists                           
+                            if (Person.IfPersonExists("", _person.EMail, ""))
+                            {
+                                // person excists returning perosn
+                                _person = Person.GetPerson("", _person.EMail, _person.PassWord);
+                                this.Request = DataAccess.Request.LoggInOK;
+                            }
+                            else
+                            {
+                                //person not found
+                                this.Request = DataAccess.Request.LoggInFailed;
+                            }
+
+                            break;
                         // Logg In Request to server
                         case DataAccess.Request.LogIn:
                             // Check if person exists                           
@@ -257,6 +274,16 @@ namespace NSOP_Tournament_Pro_Library
                         case DataAccess.Request.Delete:
                             break;
                         case DataAccess.Request.Get:
+                            //Check if Person exists
+                            if (Person.IfPersonExists("", _person.EMail, ""))
+                            {
+                                _person.GetPerson("EMail", _person.EMail);
+                            }
+                            else
+                            {
+                                //person not found
+                                this.Request = DataAccess.Request.MailDontExist;
+                            }
                             break;
                         case DataAccess.Request.Getall:
                             break;
@@ -326,6 +353,16 @@ namespace NSOP_Tournament_Pro_Library
                         case DataAccess.Request.ResetPasswordVerify:
                             break;
                         case DataAccess.Request.ResetPasswordOK:
+                            break;
+                        case DataAccess.Request.UpdateFailed:
+                            break;
+                        case DataAccess.Request.GetStartProduct:
+                            break;
+                        case DataAccess.Request.GetProductsAll:
+                            break;
+                        case DataAccess.Request.GetProductSubscription:
+                            break;
+                        case DataAccess.Request.GetProductToken:
                             break;
                     }
                     this.ObjectType = _person.ToBytes();
