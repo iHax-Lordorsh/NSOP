@@ -310,6 +310,13 @@ namespace NSOP_Tournament_Pro
                         case DataAccess.Request.GetStartProduct:
                             break;
                         case DataAccess.Request.SaveNew:
+                            Person _p1 = new Person(cp.ObjectType);
+                            Action SaveNew = delegate
+                            {
+                                var mainWnd = Application.Current.MainWindow as MainWindow;
+                                mainWnd.AddClubAction("PERSON CREATED","","", _p1.Picture,$"{_p1.FirstName} {_p1.LastName}",_p1.PlayerID,"",null,"","","");
+                            };
+                            Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, SaveNew);
                             break;
                         case DataAccess.Request.GetProductsAll:
                             break;

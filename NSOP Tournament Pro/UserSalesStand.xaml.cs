@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using AForge.Video;
 using AForge.Video.DirectShow;
+using NSOP_Torunament_cro_Library;
 using NSOP_Tournament_Pro_Library;
 
 namespace NSOP_Tournament_Pro
@@ -20,32 +21,12 @@ namespace NSOP_Tournament_Pro
     /// </summary>
     public partial class UserSalesStand : UserControl
     {
-        private byte[] _Image = null;
-        public byte[] Picture
-        {
-            get => _Image; set
-            {
-                _Image = value;
-                System.Windows.Controls.Image IMG = new System.Windows.Controls.Image();
-                ImageBrush myBrush = new ImageBrush();
-                IMG.Source = DataAccess.ConvertByteArrayToBitMapImage(Picture);
-                myBrush.ImageSource = IMG.Source;
-                brdPicture.Background = myBrush;
-            }
-        }
-        public string Gender { get; private set; }
-        public byte[] NationalityPicture { get; private set; }
-        public string Nationality { get; private set; }
-        public string Iso3166Name { get; private set; }
-        public DateTime BornDate { get; private set; }
-        public string FirstName { get; private set; }
-        public string LastName { get; private set; }
-        public string Mobile { get; private set; }
-        public string EMail { get; private set; }
-        public string NickName { get; private set; }
-        public string ClubID { get; private set; }
-        public string PlayerID { get; private set; }
+        private Club _ClubData = new Club();
+        public Club ClubData { get => _ClubData; set => _ClubData = value; }
 
+        private Person _PersonData = new Person();
+        public Person PersonData { get => _PersonData; set => _PersonData = value; }
+               
         public UserSalesStand()
         {
             InitializeComponent();
@@ -65,7 +46,7 @@ namespace NSOP_Tournament_Pro
             switch (b.Name.ToString())
             {
                 case "btnMale":
-                    Gender = "MALE";
+                    PersonData.Gender = "MALE";
                     btnMale.Style = (Style)FindResource("ButtonPushed");
                     btnMale.Foreground = (SolidColorBrush)FindResource("ActiveText");
 
@@ -73,7 +54,7 @@ namespace NSOP_Tournament_Pro
                     btnFemale.Foreground = (SolidColorBrush)FindResource("DeactiveText");
                     break;
                 case "btnFemale":
-                    Gender = "FEMALE";
+                    PersonData.Gender = "FEMALE";
                     btnFemale.Style = (Style)FindResource("ButtonPushed");
                     btnFemale.Foreground = (SolidColorBrush)FindResource("ActiveText");
 
@@ -90,14 +71,14 @@ namespace NSOP_Tournament_Pro
                 CultureInfo _Culture = new CultureInfo(_Iso3166Name.ToLower());
                 //              _ = new BitmapImage();
                 //                BitmapImage bImage = DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject(_Iso3166Name.ToLower(), _Culture));
-                NationalityPicture = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject(_Iso3166Name.ToLower(), _Culture)));
-                Nationality = cbxNationality.SelectedItem.ToString().Substring(0, cbxNationality.SelectedItem.ToString().Length - 4);
-                Iso3166Name = _Iso3166Name;
+                imgNationality.Source = DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject(_Iso3166Name.ToLower(), _Culture));
+                PersonData.Nationality = cbxNationality.SelectedItem.ToString().Substring(0, cbxNationality.SelectedItem.ToString().Length - 4);
+                PersonData.Iso3166Name = _Iso3166Name;
             }
         }
         private void Birthday_Changed(object sender, SelectionChangedEventArgs e)
         {
-            BornDate = DateTime.Parse((sender as DatePicker).Text.ToString());
+            PersonData.BornDate = DateTime.Parse((sender as DatePicker).Text.ToString());
         }
         private void Textbox_LostFocus(object sender, RoutedEventArgs e)
         {
@@ -118,7 +99,7 @@ namespace NSOP_Tournament_Pro
                 case "txt_1": // FirstName
                     if ((sender as TextBox).Text.Length >= 2)
                     {
-                        FirstName = (sender as TextBox).Text.ToString();
+                        PersonData.FirstName = (sender as TextBox).Text.ToString();
                         (sender as TextBox).Background = (LinearGradientBrush)FindResource("ButtonBackgroundPushed");
                         (sender as TextBox).Foreground = (SolidColorBrush)FindResource("ActiveText");
                     }
@@ -131,7 +112,7 @@ namespace NSOP_Tournament_Pro
                 case "txt_2": // LastName
                     if ((sender as TextBox).Text.Length >= 2)
                     {
-                        LastName = (sender as TextBox).Text.ToString();
+                        PersonData.LastName = (sender as TextBox).Text.ToString();
                         (sender as TextBox).Background = (LinearGradientBrush)FindResource("ButtonBackgroundPushed");
                         (sender as TextBox).Foreground = (SolidColorBrush)FindResource("ActiveText");
                     }
@@ -146,9 +127,9 @@ namespace NSOP_Tournament_Pro
                     {
                         if ((sender as TextBox).Text.Length > 10)
                         {
-                            Mobile = (sender as TextBox).Text.Substring(0, 10);
+                            PersonData.Mobile = (sender as TextBox).Text.Substring(0, 10);
                         }
-                        else Mobile = (sender as TextBox).Text.ToString();
+                        else PersonData.Mobile = (sender as TextBox).Text.ToString();
                         (sender as TextBox).Background = (LinearGradientBrush)FindResource("ButtonBackgroundPushed");
                         (sender as TextBox).Foreground = (SolidColorBrush)FindResource("ActiveText");
                     }
@@ -161,7 +142,7 @@ namespace NSOP_Tournament_Pro
                 case "txt_4": // E-mail
                     if ((sender as TextBox).Text.Contains("@") && (sender as TextBox).Text.Contains(".") && (sender as TextBox).Text.Length >= 7)
                     {
-                        EMail = (sender as TextBox).Text.ToString();
+                        PersonData.EMail = (sender as TextBox).Text.ToString();
                         (sender as TextBox).Background = (LinearGradientBrush)FindResource("ButtonBackgroundPushed");
                         (sender as TextBox).Foreground = (SolidColorBrush)FindResource("ActiveText");
                     }
@@ -172,7 +153,7 @@ namespace NSOP_Tournament_Pro
                     }
                     break;
                 case "txt_5": // Nickname
-                    NickName = (sender as TextBox).Text.ToString();
+                    PersonData.NickName = (sender as TextBox).Text.ToString();
                     (sender as TextBox).Background = (LinearGradientBrush)FindResource("ButtonBackgroundPushed");
                     (sender as TextBox).Foreground = (SolidColorBrush)FindResource("ActiveText");
                     break;
@@ -191,44 +172,8 @@ namespace NSOP_Tournament_Pro
         }
         private void Search_Click(object sender, RoutedEventArgs e)
         {
-            _ = new Button();
-            Button btn = (Button)sender;
-            Person _p = FillPerson();
-            switch (btn.Name)
-            {
-                case "btnNew":
-//                    _p.ActionType = "New";
-                    break;
-                case "btnUpdate":
-  //                  _p.ActionType = "Update";
-                    _p.ClubID = ClubID;
-                    _p.PlayerID = PlayerID;
-                    break;
-                case "btnDelete":
-                   // _p.ActionType = "Delete";
-                    _p.ClubID = ClubID;
-                    //       _p.PlayerID = UPC.PlayerID;
-                    _p.PlayerID = PlayerID;
-                    break;
-                case "btnGet":
-                   // _p.ActionType = "Get";
-                    _p.ClubID = "0000 0000 0000 000C";
-                    //                    _p.PlayerID = txtIDSearch.Text.ToString();
-                    break;
-                case "btnGetAll":
-                    break;
-            }
-            try
-            {
-                var mainWnd = Application.Current.MainWindow as MainWindow;
-                mainWnd.client.SendObject(_p.ToBytes());
-                //Client.Send(FillTournament().ToBytes());
-            }
-            catch (Exception)
-            {
-                // xxx plz reconnect
-            }
         }
+
         private void ChangeTab_Click(object sender, MouseButtonEventArgs e)
         {
             switch (((Border)sender).Name )
@@ -302,17 +247,17 @@ namespace NSOP_Tournament_Pro
             // First time registration
             Person _p = new Person
             {
-                FirstName = FirstName,
-                LastName = LastName,
-                Picture = Picture,
-                Mobile = Mobile,
-                EMail = EMail,
-                Gender = Gender,
-                Nationality = Nationality,
-                Iso3166Name = Iso3166Name,
-                BornDate = BornDate,
+                FirstName = PersonData.FirstName,
+                LastName = PersonData.LastName,
+                Picture = PersonData.Picture,
+                Mobile = PersonData.Mobile,
+                EMail = PersonData.EMail,
+                Gender = PersonData.Gender,
+                Nationality = PersonData.Nationality,
+                Iso3166Name = PersonData.Iso3166Name,
+                BornDate = PersonData.BornDate,
                 RegDate = DateTime.Parse(DateTime.Now.ToShortDateString()),
-                NickName = NickName,
+                NickName = PersonData.NickName,
                 IsPlayerRemoved = false
             };
 
@@ -329,7 +274,7 @@ namespace NSOP_Tournament_Pro
         private void TakePicture_Click(object sender, RoutedEventArgs e)
         {
             var mainWnd = Application.Current.MainWindow as MainWindow;
-            Picture = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), mainWnd.frameHolder.Source);
+            PersonData.Picture = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), mainWnd.frameHolder.Source);
         }
 
         private void Buy_Click(object sender, RoutedEventArgs e)

@@ -115,7 +115,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Simple Styles.xaml">
+    <Page Include="ResourceDictionaries\Simple Styles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -984,6 +984,9 @@
     <None Include="Resources\Star5.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\StringResourses.en">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
     <None Include="Resources\sv.png" />
   </ItemGroup>
   <ItemGroup>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
         xmlns:local="clr-namespace:NSOP_Tournament_Pro"
-        x:Class="NSOP_Tournament_Pro.MainWindow"
+          x:Class="NSOP_Tournament_Pro.MainWindow"
         mc:Ignorable="d" Background="Black" WindowStyle="None" WindowStartupLocation="CenterScreen" WindowState="Maximized" ResizeMode="NoResize" Height="1440" Width="2560" Closing="Window_Closing">
     <Grid>
         <Border x:Name="brdBackground" BorderThickness="0" Background="#FF003200" RenderTransformOrigin="0.5,0.5" Margin="0">
@@ -74,7 +74,7 @@
                         <ListBox x:Name="lstClubAction" Background="{x:Null}" Margin="0,28,0,0" BorderBrush="{x:Null}"/>
                     </Grid>
                 </Border>
-                <Border x:Name="brdEditClub" BorderThickness="2" Width="500" Background="{DynamicResource BorderBackground}" BorderBrush="{DynamicResource ButtonBorder}" HorizontalAlignment="Left" Margin="0,120,0,0">
+                <Border x:Name="brdEditClub" BorderThickness="2" Width="500" Background="{DynamicResource BorderBackground}" BorderBrush="{DynamicResource ButtonBorder}" HorizontalAlignment="Left" Margin="0,120,0,0" d:IsHidden="True">
                     <Grid>
                         <DockPanel Margin="0" Background="{DynamicResource BorderBackgroundLocked}" VerticalAlignment="Top">
                             <Border x:Name="brdMyClubData" VerticalAlignment="Top" Height="28" Background="{DynamicResource BorderBackground}" BorderBrush="{DynamicResource ButtonBackground}" BorderThickness="1" HorizontalAlignment="Left">
@@ -172,7 +172,7 @@
 
             </Grid>
         </Border>
-        <Border x:Name="brdLoggin" Margin="10" Background="Black" d:IsHidden="True">
+        <Border x:Name="brdLoggin" Margin="10" Background="Black">
             <Border x:Name="brdLoggin1" BorderThickness="5" Background="#FF003200" CornerRadius="35" RenderTransformOrigin="0.5,0.5" Width="1025" Height="578">
                 <Border.RenderTransform>
                     <TransformGroup>
@@ -225,11 +225,11 @@
                     <Image x:Name="img_LoggIn_Star_2" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,373.698,644.667,0" Source="Star5.png" Width="10" Height="10"/>
                     <Button x:Name="btn_ForgotPassword" Style="{StaticResource ButtonUnPushed}" Content="FORGOT PASSWORD" Width="260" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="18" FontWeight="Bold" Foreground="Black" Margin="10,0,10.5,3" Padding="1" Click="LogginRequest_Click" IsCancel="True"/>
                     <Grid Margin="694,485,11,3">
-                        <Button x:Name="btn_LogIn" Style="{StaticResource ButtonUnPushed}" Content="LOGG IN" Width="260" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="Black" Padding="1" Click="LogginRequest_Click" IsCancel="True"/>
+                        <Button x:Name="btn_LogIn" Style="{StaticResource ButtonUnPushed}" Content = "" Width="260" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="Black" Padding="1" Click="LogginRequest_Click" IsCancel="True"/>
                         <Button x:Name="btn_NewAccount" Style="{StaticResource ButtonUnPushed}" Content="NEW ACCOUNT" Width="260" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="Black" Padding="1" Click="LogginRequest_Click" IsCancel="True"/>
                     </Grid>
                     <StackPanel Margin="0,28,0,448" Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Button x:Name="btn_LoggIn_LoggIn" Style="{StaticResource ButtonUnPushed}" Content="LOGG INN" Width="160" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource DeactiveText}" Padding="1" Click="Loggin_Click"/>
+                        <Button x:Name="btn_LoggIn_LoggIn" Style="{StaticResource ButtonUnPushed}" Content="LOG IN" Width="160" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource DeactiveText}" Padding="1" Click="Loggin_Click"/>
                         <Button x:Name="btn_LoggIn_NewAccount" Style="{StaticResource ButtonPushed}" Content="NEW USER" Width="160" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource ActiveText}" Padding="1" Click="Loggin_Click"/>
                     </StackPanel>
                     <Border x:Name="brd_Verify" BorderThickness="3" Background="#FF003200" CornerRadius="25" RenderTransformOrigin="0.5,0.5" Padding="4,0,0,0" Margin="0" d:IsHidden="True">

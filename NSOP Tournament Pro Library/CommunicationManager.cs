@@ -211,18 +211,16 @@ namespace NSOP_Tournament_Pro_Library
                     {
                         case DataAccess.Request.SaveNew:
                             // Check if person exists                           
-                            if (Person.IfPersonExists("", _person.EMail,""))
+                            if (Person.IfPersonExists("", _person.EMail, ""))
                             {
                                 // person excists returning perosn
-                                _person = Person.GetPerson("", _person.EMail, _person.PassWord);
-                                this.Request = DataAccess.Request.LoggInOK;
+                                _person.SaveNew();
                             }
                             else
                             {
                                 //person not found
                                 this.Request = DataAccess.Request.LoggInFailed;
                             }
-
                             break;
                         // Logg In Request to server
                         case DataAccess.Request.LogIn:

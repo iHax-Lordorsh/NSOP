@@ -10,12 +10,6 @@ namespace NSOP_Tournament_Pro
     /// </summary>
     public partial class UserItemList : UserControl
     {
-        private string _ActionType = "";
-        public string ActionType { get => _ActionType; set => _ActionType = value; }
-
-        private string _ClassType = "";
-        public string ClassType { get => _ClassType; set => _ClassType = value; }
-
         // **********
         // HEADER
         // **********

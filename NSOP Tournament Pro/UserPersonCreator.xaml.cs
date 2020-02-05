@@ -171,7 +171,7 @@ namespace NSOP_Tournament_Pro
                     {
                         (sender as TextBox).Background = (LinearGradientBrush)FindResource("ButtonBackgroundPushed");
                         (sender as TextBox).Foreground = (SolidColorBrush)FindResource("ActiveText");
-                        (sender as TextBox).Tag = 1;
+                       (sender as TextBox).Tag = 1;
 
                     }
                     else
@@ -188,8 +188,8 @@ namespace NSOP_Tournament_Pro
                         (sender as TextBox).Foreground = (SolidColorBrush)FindResource("ActiveText");
                         (sender as TextBox).Tag = 1;
                         PersonData.EMail = (sender as TextBox).Text;
-                        var mainWnd = Application.Current.MainWindow as MainWindow;
-                        mainWnd.CheckIfPersonExist(PersonData);
+                      //  var mainWnd = Application.Current.MainWindow as MainWindow;
+                      //  mainWnd.CheckIfPersonExist(PersonData);
                     }
                     else
                     {
@@ -258,6 +258,12 @@ namespace NSOP_Tournament_Pro
         {
             (sender as TextBox).Background = (LinearGradientBrush)FindResource("ButtonBackgroundPushed");
             (sender as TextBox).Foreground = (SolidColorBrush)FindResource("ActiveText");
+            if ((sender as TextBox).Name == "txt_Edit_8" && (sender as TextBox).Text.Contains("@") && (sender as TextBox).Text.Contains(".") && (sender as TextBox).Text.Length >= 7)
+            {
+                PersonData.EMail = (sender as TextBox).Text;
+                var mainWnd = Application.Current.MainWindow as MainWindow;
+                mainWnd.CheckIfPersonExist(PersonData);
+            }
         }
 
         private void Button_Click(object sender, MouseButtonEventArgs e)
@@ -287,13 +293,19 @@ namespace NSOP_Tournament_Pro
         private void BtnSavePerson_Click(object sender, RoutedEventArgs e)
         {
             var mainWnd = Application.Current.MainWindow as MainWindow;
+            // check if pickture = null
+            if (PersonData.Picture == null)
+            {
+                PersonData.Picture = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject("i_Person")));
+            }
+
             mainWnd.SaveNewPerson(PersonData);
         }
 
         private void Chk_ClubID_Checked(object sender, RoutedEventArgs e)
         {
             var mainWnd = Application.Current.MainWindow as MainWindow;
-            txt_Edit_6.Text = mainWnd._adminPerson.ClubID;
+            txt_Edit_6.Text = mainWnd._adminClub.ID;
         }
 
         internal void UpdatePerson(Person person)
@@ -305,18 +317,19 @@ namespace NSOP_Tournament_Pro
             txt_Edit_4.Text = person.NickName;
             dpBorn.Text = person.BornDate.ToShortDateString();
             GenderSelection(person.Gender);
-            cbxNationality.Text = person.Nationality + $"[{person.Iso3166Name}]";
+            string x = $"{person.Nationality} [{person.Iso3166Name}]";
+            cbxNationality.Text = $"{person.Nationality} [{person.Iso3166Name}]";
             brdEditPicture.Background = ByteToBrushBackground(person.Picture);
-            if (person.ClubID.Length>0)
-            {
-                chk_ClubID.IsChecked = true;
-                txt_Edit_6.Text = person.ClubID;
-            }
+            grdEditPicture.Visibility = Visibility.Visible;
+            btnTakePersonPicture.Content= "EDIT PICTURE";
+            
         }
 
         private void chk_ClubID_Unchecked(object sender, RoutedEventArgs e)
         {
             txt_Edit_6.Text = "";
         }
+
+    
     }
 }

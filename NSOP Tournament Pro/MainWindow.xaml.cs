@@ -32,6 +32,7 @@ using System.Resources;
 using System.Reflection;
 using NSOP_Tournament_Pro_Library;
 using NSOP_Torunament_Pro_Library;
+using NSOP_Torunament_cro_Library;
 
 namespace NSOP_Tournament_Pro
 {
@@ -50,11 +51,13 @@ namespace NSOP_Tournament_Pro
         //private readonly List<CultureInfo> cultures = new List<CultureInfo>();
         public Client client = new Client();
         public Person _adminPerson = new Person();
+        public Club _adminClub = new Club();
         private string _Header;
         private string _Sub;
         private string _Text;
         private string _Fotter;
 
+        private List<UserItemList> UTList;// = new List<UserItemList>();
         public string VerificationCode { get; set; }
         public DataAccess.Request VerificationLocation { get; set; }
 
@@ -76,7 +79,6 @@ namespace NSOP_Tournament_Pro
                 Dispatcher.BeginInvoke(new ThreadStart(delegate
                 {
                     frameHolder.Source = new CroppedBitmap(bi, new Int32Rect(205, 125, 250, 250));
-                    USS.Picture = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), frameHolder.Source);
                     uPersonCreate.frameHolder.Source = frameHolder.Source;
 
                 }));
@@ -93,6 +95,11 @@ namespace NSOP_Tournament_Pro
         public MainWindow()
         {
             InitializeComponent();
+
+            //System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("ru-RU");
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en"); 
+
+
             Loaded += MainWindow_Loaded;
             Setup();
         }
@@ -124,6 +131,9 @@ namespace NSOP_Tournament_Pro
             uProductView.Visibility = Visibility.Hidden;
             uAdminCreator.Visibility = Visibility.Hidden;
 
+            UTList = new List<UserItemList>();
+            lstClubAction.ItemsSource = UTList;
+            lstClubAction.Items.Refresh();
         }
 
         private List<Border> UpdateAvatars()
@@ -409,6 +419,28 @@ namespace NSOP_Tournament_Pro
             lbl_Error_Text.Content = text.ToUpper();
             // populate message
         }
+
+        internal void AddClubAction(string topLeft, string topCenter, string topRight,byte[] picture, string centerTop, string centerMiddle, string centerBottom, byte[] smallPicture, string bottomLeft, string BottomCenter, string BottomRight)
+        {
+            UserItemList _uTL = new UserItemList
+            {
+                TopLeft = topLeft,
+                TopCenter = topCenter,
+                TopRight = topRight,
+                CenterTop = centerTop,
+                CenterMiddle = centerMiddle,
+                CenterBottom = centerBottom,
+                BottomLeft = bottomLeft,
+                BottomCenter = BottomCenter,
+                BottomRight = BottomRight,
+                Picture = picture,
+                PictureSmall = smallPicture
+            };
+            _uTL.Width = 485;
+            UTList.Add(_uTL);
+            lstClubAction.Items.Refresh();
+        }
+
         internal void ShowAdminScreen(Person person)
         {
             UpdateAdmin(person);
@@ -459,34 +491,6 @@ namespace NSOP_Tournament_Pro
             _adminPerson.UserID = _person.UserID;
             _adminPerson.IsPlayerRemoved = _person.IsPlayerRemoved;
             _adminPerson.IsLoggedInn = _person.IsLoggedInn;
-            _adminPerson.ClubID = _person.ClubID;
-            _adminPerson.ClubName = _person.ClubName;
-            _adminPerson.ClubPicture = _person.ClubPicture;
-
-            // Populate Rank
-            _adminPerson.ClubRank = _person.ClubRank;
-            _adminPerson.ClubPoints = _person.ClubPoints;
-            _adminPerson.ClubMembership = _person.ClubMembership;
-            _adminPerson.ClubMembershipExpires = _person.ClubMembershipExpires;
-            _adminPerson.ClubRegDate = _person.ClubRegDate;
-            _adminPerson.NSOPID = _person.NSOPID;
-            _adminPerson.NSOPRank = _person.NSOPRank;
-            _adminPerson.NSOPPoints = _person.NSOPPoints;
-            _adminPerson.NSOPMembership = _person.NSOPMembership;
-            _adminPerson.NSOPMembershipExpires = _person.NSOPMembershipExpires;
-            _adminPerson.NSOPRegDate = _person.NSOPRegDate;
-            _adminPerson.NationalID = _person.NationalID;
-            _adminPerson.NationalRank = _person.NationalRank;
-            _adminPerson.NationalPoints = _person.NationalPoints;
-            _adminPerson.NationalMembership = _person.NationalMembership;
-            _adminPerson.NationalMembershipExpires = _person.NationalMembershipExpires;
-            _adminPerson.NationalRegDate = _person.NationalRegDate;
-            _adminPerson.WorldID = _person.WorldID;
-            _adminPerson.WorldRank = _person.WorldRank;
-            _adminPerson.WorldPoints = _person.WorldPoints;
-            _adminPerson.WorldMembership = _person.WorldMembership;
-            _adminPerson.WorldMembershipExpires = _person.WorldMembershipExpires;
-            _adminPerson.WorldRegDate = _person.WorldRegDate;
 
             // Populate Lifetime
             _adminPerson.LifetimePlayed = _person.LifetimePlayed;
@@ -503,20 +507,7 @@ namespace NSOP_Tournament_Pro
             _adminPerson.LifetimeMoneySpent = _person.LifetimeMoneySpent;
 
             // Populate Modul Access
-            _adminPerson.AdminSubscribtion = _person.AdminSubscribtion;
-            _adminPerson.WebSideSubscribtion = _person.WebSideSubscribtion;
             _adminPerson.LastLogin = _person.LastLogin;
-            _adminPerson.Tokens = _person.Tokens;
-            _adminPerson.TournamentCreatorQTY = _person.TournamentCreatorQTY;
-            _adminPerson.PersonRegQTY = _person.PersonRegQTY;
-            _adminPerson.TicketSaleQTY = _person.TicketSaleQTY;
-            _adminPerson.BlindStructureQTY = _person.BlindStructureQTY;
-            _adminPerson.PayoutStructureQTY = _person.PayoutStructureQTY;
-            _adminPerson.PointStructureQTY = _person.PointStructureQTY;
-            _adminPerson.AdvertiseModuleQTY = _person.AdvertiseModuleQTY;
-            _adminPerson.TableManagerQTY = _person.TableManagerQTY;
-            _adminPerson.StandUserName = _person.StandUserName;
-            _adminPerson.StandPassWord = _person.StandPassWord;
         }
         private void UpdateAdminSite()
         {
@@ -529,13 +520,13 @@ namespace NSOP_Tournament_Pro
             // **************
             // Club
             // **************
-            lblClubID.Content = _adminPerson.ClubID;
-            lblClubName.Content = _adminPerson.ClubName;
-            txt_Edit_9.Text = _adminPerson.ClubName;
+            lblClubID.Content = _adminClub.ID;
+            lblClubName.Content = _adminClub.Name;
+            txt_Edit_9.Text = _adminClub.Name;
             GenderSelection(_adminPerson.Gender);
-            brdClubPicture.Background = BrushBackground(_adminPerson.ClubPicture);
-            brdEditClubPicture.Background = BrushBackground(_adminPerson.ClubPicture);
-            brdEditPicture.Background = ByteToBrushBackground(_adminPerson.Picture);
+            brdClubPicture.Background = BrushBackground(_adminClub.Name);
+            brdEditClubPicture.Background = BrushBackground(_adminClub.Name);
+            //brdEditPicture.Background = ByteToBrushBackground(_adminPerson.Picture);
             txt_Edit_1.Text = _adminPerson.FirstName;
             txt_Edit_2.Text = _adminPerson.LastName;
             txt_Edit_8.Text = _adminPerson.EMail;
@@ -552,39 +543,39 @@ namespace NSOP_Tournament_Pro
             }
            
             txt_Edit_4.Text = _adminPerson.NickName;
-            txt_Edit_6.Text = _adminPerson.StandUserName;
-            txt_Edit_7.Text = _adminPerson.StandPassWord;
+            txt_Edit_6.Text = _adminClub.StandUserName;
+            txt_Edit_7.Text = _adminClub.StandPassWord;
             // **************
             // Subscriptions
             // **************
             // Administrator
             UModule_1.TopLeft = "ADMINISTRATOR";
-            if (_adminPerson.AdminSubscribtion.ToUniversalTime() >= DateTime.Now.ToUniversalTime())
+            if (_adminClub.AdminSubscribtion.ToUniversalTime() >= DateTime.Now.ToUniversalTime())
             {
                 UModule_1.TopRight = "1";
             }
             else UModule_1.TopRight = "0";
 
-            UModule_1.BottomLeft = _adminPerson.AdminSubscribtion.ToShortDateString();
+            UModule_1.BottomLeft = _adminClub.AdminSubscribtion.ToShortDateString();
             UModule_1.BottomRight = "RENEW ->>>";
             UModule_1.Picture = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject("i_Admin")));
 
             // Website
             UModule_2.TopLeft = "WEBSITE";
-            if (_adminPerson.AdminSubscribtion.ToUniversalTime() >= DateTime.Now.ToUniversalTime())
+            if (_adminClub.AdminSubscribtion.ToUniversalTime() >= DateTime.Now.ToUniversalTime())
             {
                 UModule_2.TopRight = "1";
             }
             else UModule_2.TopRight = "0";
 
-            UModule_2.BottomLeft = _adminPerson.WebSideSubscribtion.ToShortDateString();
+            UModule_2.BottomLeft = _adminClub.WebSideSubscribtion.ToShortDateString();
             UModule_2.BottomRight = "RENEW ->>>";
             UModule_2.Picture = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject("i_Website")));
 
             // Tokens
             UModule_3.TopLeft = "TOKENS";
-            UModule_3.TopRight = _adminPerson.Tokens.ToString();
-            UModule_3.Center = _adminPerson.Tokens.ToString();
+            UModule_3.TopRight = _adminClub.Tokens.ToString();
+            UModule_3.Center = _adminClub.Tokens.ToString();
             UModule_3.BottomRight = "BUY ->>>";
             UModule_3.Picture = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject("i_Tokens")));
 
@@ -600,17 +591,17 @@ namespace NSOP_Tournament_Pro
             // Tournamnet
             // Website
             UModule_Right_1.TopLeft = "TOURNAMENTS";
-            UModule_Right_1.TopRight = _adminPerson.TournamentCreatorQTY.ToString();
+            UModule_Right_1.TopRight = _adminClub.TournamentCreatorQTY.ToString();
             UModule_Right_1.BottomRight = "VIEW / CREATE TOURNAMENT ->>>";
             UModule_Right_1.Background = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject("a3")));
 
             UModule_Right_2.TopLeft = "MEMBERS";
-            UModule_Right_2.TopRight = _adminPerson.PersonRegQTY.ToString();
+            UModule_Right_2.TopRight = _adminClub.PersonRegQTY.ToString();
             UModule_Right_2.BottomRight = "VIEW / CREATE TOURNAMENT ->>>";
             UModule_Right_2.Background = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject("p_Members")));
 
             UModule_Right_3.TopLeft = "TICKET SALE";
-            UModule_Right_3.TopRight = _adminPerson.TicketSaleQTY.ToString();
+            UModule_Right_3.TopRight = _adminClub.TicketSaleQTY.ToString();
             UModule_Right_3.BottomRight = "SELL TICKETS ->>>";
             UModule_Right_3.Background = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject("p_Ticket")));
 
@@ -620,9 +611,7 @@ namespace NSOP_Tournament_Pro
         }
         public void UpdateAdminPerson()
         {
-            _adminPerson.PlayerID = DataAccess.FillID(DataAccess.IdType.Person);
-            _adminPerson.ClubID = DataAccess.FillID(DataAccess.IdType.Club);
-            _adminPerson.ClubName = txt_Login_2.Text.ToString().ToUpper() + " POKER CLUB";
+            //_adminPerson.ClubName = txt_Login_2.Text.ToString().ToUpper() + " POKER CLUB";
             _adminPerson.FirstName = txt_Login_1.Text.ToString();
             _adminPerson.LastName = txt_Login_2.Text.ToString();
             _adminPerson.EMail = txt_Login_5.Text.ToString();
@@ -630,24 +619,24 @@ namespace NSOP_Tournament_Pro
             _adminPerson.UserID = "";
             _adminPerson.PassWord = txt_Login_PW_1.Password.ToString();
             _adminPerson.Picture = DataAccess.ImageSourceToBytes(new PngBitmapEncoder(), DataAccess.ToBitmapImage((Bitmap)Properties.Resources.ResourceManager.GetObject("profile")));
-            _adminPerson.ClubPicture = "Avatar_1";
-            _adminPerson.StandUserName = txt_Login_1.Text.ToString().Substring(0, 1) + txt_Login_2.Text.ToString().Substring(0, 1) + DateTime.Now.Year.ToString();
-            _adminPerson.StandPassWord = DataAccess.GetVerificationCode();
+           // _adminPerson.ClubPicture = "Avatar_1";
+          //  _adminPerson.StandUserName = txt_Login_1.Text.ToString().Substring(0, 1) + txt_Login_2.Text.ToString().Substring(0, 1) + DateTime.Now.Year.ToString();
+          //  _adminPerson.StandPassWord = DataAccess.GetVerificationCode();
         }
         public void UpdateAdminPerson(Person person)
         {
             _adminPerson.PlayerID = person.PlayerID;
-            _adminPerson.ClubID = person.ClubID;
-            _adminPerson.ClubName = person.ClubName;
+          //  _adminPerson.ClubID = person.ClubID;
+          //  _adminPerson.ClubName = person.ClubName;
             _adminPerson.FirstName = person.FirstName;
             _adminPerson.LastName = person.LastName;
             _adminPerson.EMail = person.EMail;
             _adminPerson.Mobile = person.Mobile;
             _adminPerson.UserID = person.UserID;
             _adminPerson.Picture = person.Picture;
-            _adminPerson.ClubPicture = person.ClubPicture;
-            _adminPerson.StandUserName = person.StandUserName;
-            _adminPerson.StandPassWord = person.StandPassWord;
+         //   _adminPerson.ClubPicture = person.ClubPicture;
+          //  _adminPerson.StandUserName = person.StandUserName;
+          //  _adminPerson.StandPassWord = person.StandPassWord;
             UpdateAdminSite();
         }
         // **************************   SAVE
@@ -1037,7 +1026,7 @@ namespace NSOP_Tournament_Pro
                 {
                     if (item == (sender as ListBox).SelectedItem)
                     {
-                        _adminPerson.ClubPicture = (item as Border).Name;
+                        _adminClub.Picture = (item as Border).Name;
                         brdEditClubPicture.Background = BrushBackground((item as Border).Name);
                         brdEditClubPicture.Tag = (item as Border).Name;
                         break;
@@ -1277,7 +1266,7 @@ namespace NSOP_Tournament_Pro
                         (sender as TextBox).Background = (LinearGradientBrush)FindResource("ButtonBackgroundPushed");
                         (sender as TextBox).Foreground = (SolidColorBrush)FindResource("ActiveText");
                         (sender as TextBox).Tag = 1;
-                        _adminPerson.StandUserName = (sender as TextBox).Text.ToString();
+                        _adminClub.StandUserName = (sender as TextBox).Text.ToString();
                     }
                     else
                     {
@@ -1292,7 +1281,7 @@ namespace NSOP_Tournament_Pro
                         (sender as TextBox).Background = (LinearGradientBrush)FindResource("ButtonBackgroundPushed");
                         (sender as TextBox).Foreground = (SolidColorBrush)FindResource("ActiveText");
                         (sender as TextBox).Tag = 1;
-                        _adminPerson.StandPassWord = (sender as TextBox).Text.ToString();
+                        _adminClub.StandPassWord = (sender as TextBox).Text.ToString();
                     }
                     else
                     {
@@ -1307,7 +1296,7 @@ namespace NSOP_Tournament_Pro
                         (sender as TextBox).Background = (LinearGradientBrush)FindResource("ButtonBackgroundPushed");
                         (sender as TextBox).Foreground = (SolidColorBrush)FindResource("ActiveText");
                         (sender as TextBox).Tag = 1;
-                        _adminPerson.ClubName = (sender as TextBox).Text.ToString();
+                        _adminClub.Name = (sender as TextBox).Text.ToString();
                     }
                     else
                     {

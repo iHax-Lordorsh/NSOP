@@ -182,7 +182,6 @@ E:\Programmering\NSOP\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.csp
 E:\Programmering\NSOP\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.csproj.CopyComplete
 E:\Programmering\NSOP\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.exe
 E:\Programmering\NSOP\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.pdb
-E:\Programmering\NSOP\NSOP Tournament Pro\bin\Debug\Properties\Resources.resx
 E:\Programmering\NSOP\NSOP Tournament Pro\bin\Debug\NSOP Tournament Pro.exe.config
 E:\Programmering\NSOP\NSOP Tournament Pro\bin\Debug\NSOP Tournament Pro.exe
 E:\Programmering\NSOP\NSOP Tournament Pro\bin\Debug\NSOP Tournament Pro.pdb
@@ -200,7 +199,6 @@ E:\Programmering\NSOP\NSOP Tournament Pro\bin\Debug\NSOP Torunament Pro Library.
 E:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.csprojAssemblyReference.cache
 E:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\ResourceDictionaries\StoryDictionary.baml
 E:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\ResourceDictionaries\StyleDictionary.baml
-E:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\Simple Styles.baml
 E:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\MainWindow.g.cs
 E:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserAdminCreator.g.cs
 E:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserModuleSimple.g.cs
@@ -223,8 +221,6 @@ E:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserSalesStand.baml
 E:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserItemList.baml
 E:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserSubscription.baml
 E:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.g.resources
-E:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\NSOP_Tournament_Pro.Properties.Resources.resources
-E:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.csproj.GenerateResource.cache
 E:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.csproj.CopyComplete
 E:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.exe
 E:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.pdb
@@ -234,3 +230,7 @@ E:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserPersonCreator.g.cs
 E:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserPersonCreator.baml
 E:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserTournamentCreate.g.cs
 E:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\UserTournamentCreate.baml
+E:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\ResourceDictionaries\Simple Styles.baml
+E:\Programmering\NSOP\NSOP Tournament Pro\bin\Debug\Properties\Resources.resx
+E:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\NSOP_Tournament_Pro.Properties.Resources.resources
+E:\Programmering\NSOP\NSOP Tournament Pro\obj\Debug\NSOP Tournament Pro.csproj.GenerateResource.cache

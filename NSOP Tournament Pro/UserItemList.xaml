@@ -38,7 +38,7 @@
                         <Label x:Name="lbl_Header_2" Content="" Background="{x:Null}" Foreground="{DynamicResource ActiveText}" Padding="5,0" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalContentAlignment="Bottom" Margin="-3,-2,0,0" FontSize="11"/>
                     </Border>
                     <Border VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,8,0,0" Height="25" BorderBrush="{DynamicResource ButtonBorder}" BorderThickness="0,0,1,1" Width="300">
-                        <Label x:Name="lblCenterMiddle" Content="" Background="{x:Null}" Foreground="{DynamicResource ActiveText}" FontSize="18" Padding="5,0" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalContentAlignment="Center" UseLayoutRounding="True"/>
+                        <Label x:Name="lblCenterMiddle" Content="" Background="{x:Null}" Foreground="{DynamicResource ActiveText}" FontSize="18" Padding="5,0" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalContentAlignment="Center" UseLayoutRounding="True" Margin="0,0,32,0"/>
                     </Border>
                 </Grid>
                 <Grid Margin="390,31,3,18">
@@ -52,7 +52,7 @@
                 <Label VerticalAlignment="Bottom" x:Name="lblBottomCenter" Content="" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" Padding="5,0" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center"/>
                 <Label VerticalAlignment="Bottom" x:Name="lblBottomLeft" Content="" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" Padding="5,0" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalContentAlignment="Bottom" HorizontalAlignment="Left"/>
                 <Label VerticalAlignment="Bottom" x:Name="lblBottomRight" Content="" Background="{DynamicResource DeactiveText}" Foreground="{DynamicResource ActiveText}" Padding="5,0" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Right" UseLayoutRounding="False" HorizontalAlignment="Right"/>
-                <Border x:Name="brdSmallPicture" BorderThickness="1" VerticalAlignment="Top" Height="22" Width="32" HorizontalAlignment="Left" Margin="416.5,140.5,0,0"/>
+                <Border x:Name="brdSmallPicture" BorderThickness="1" VerticalAlignment="Top" Height="22" Width="32" HorizontalAlignment="Left" Margin="353,76,0,0"/>
             </Grid>
         </Border>
     </Viewbox>
